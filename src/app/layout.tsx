@@ -33,7 +33,8 @@ export default function Layout({ children }: { children: ReactNode }) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </head>
       <body className='min-h-screen bg-background text-foreground'>
-        <nav className='border-b'>
+        {/* Make navbar sticky */}
+        <nav className='sticky top-0 z-10 bg-background border-b'>
           <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex items-center justify-between h-16'>
               <Link href='/' className='flex-shrink-0'>
