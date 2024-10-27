@@ -178,7 +178,7 @@ const chapters: Chapter[] = [
           <label for="q3d" class="incorrect">d) Error</label><br>
   
           <h3>Question 4</h3>
-          <p>Which Python data type is mutable?</p>
+          <p>Which Python data type is immutable?</p>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="incorrect">a) Tuple</label><br>
           <input type="radio" id="q4b" name="q4" value="b">

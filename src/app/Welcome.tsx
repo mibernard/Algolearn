@@ -31,7 +31,7 @@ export default function Welcome() {
             <div>
               <h3 className='font-semibold'>Lightning-Fast Transactions</h3>
               <p className='text-sm text-muted-foreground'>
-                Experience near-instant finality with Algorand&apos;s Pure Proof-of-Stake consensus.
+                Experience instant finality with Algorand&apos;s Pure Proof-of-Stake consensus.
               </p>
             </div>
           </div>
@@ -40,7 +40,7 @@ export default function Welcome() {
             <div>
               <h3 className='font-semibold'>Easy to Learn and Use</h3>
               <p className='text-sm text-muted-foreground'>
-                Write smart contracts in Python, JavaScript, or Go - languages you already know and love.
+                Write smart contracts in Python - a language everyone knows and loves.
               </p>
             </div>
           </div>
