@@ -31,7 +31,7 @@ export default function Welcome() {
             <div>
               <h3 className='font-semibold'>Lightning-Fast Transactions</h3>
               <p className='text-sm text-muted-foreground'>
-                Experience near-instant finality with Algorand's Pure Proof-of-Stake consensus.
+                Experience near-instant finality with Algorand&apos;s Pure Proof-of-Stake consensus.
               </p>
             </div>
           </div>

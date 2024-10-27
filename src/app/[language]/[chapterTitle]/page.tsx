@@ -43,6 +43,7 @@ export default function ChapterPage() {
       setOutput(response.data.output);
     } catch (error) {
       setOutput('Error running code');
+      console.error(error);
     }
   };
 

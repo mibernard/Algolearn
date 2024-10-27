@@ -41,6 +41,7 @@ export default function Chapter() {
       setOutput(response.data.output);
     } catch (error) {
       setOutput('Error running code');
+      console.error(error);
     }
   };
 

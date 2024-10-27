@@ -14,6 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import chapters, { Chapter } from '@/data/chapters';
 import '@/styles/globals.css';
+import Image from 'next/image';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
@@ -38,7 +39,14 @@ export default function Layout({ children }: { children: ReactNode }) {
           <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex items-center justify-between h-16'>
               <Link href='/' className='flex-shrink-0'>
-                <img className='h-8 w-auto' src='/placeholder.svg?height=32&width=32' alt='AlgoLearn Logo' />
+                <Image
+                  // className='h-8 w-auto'
+                  src='/placeholder.svg'
+                  alt='AlgoLearn Logo'
+                  width={32}
+                  height={32}
+                  priority
+                />
               </Link>
               <div className='hidden md:block ml-10'>
                 <div className='flex items-baseline space-x-4'>
