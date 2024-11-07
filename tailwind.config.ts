@@ -56,6 +56,20 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            pre: {
+              backgroundColor: 'transparent', // Remove the black background
+              color: 'inherit', // Use the default text color
+              boxShadow: 'none', // Remove any box shadow if present
+              padding: '1rem', // Optional padding for spacing
+              border: '1px solid hsl(var(--border))', // Optional light border
+              borderRadius: '0.5rem', // Optional rounded corners
+            },
+          },
+        },
+      },
     },
   },
   plugins: [

@@ -106,10 +106,12 @@ export default function Welcome() {
         <p className='text-muted-foreground mb-6'>
           Start your journey with Algorand smart contracts today and build the decentralized applications of tomorrow.
         </p>
-        <Button size='lg'>
-          Get Started
-          <ArrowRight className='ml-2 h-5 w-5' />
-        </Button>
+        <Link href='/python' passHref>
+          <Button size='lg'>
+            Get Started
+            <ArrowRight className='ml-2 h-5 w-5' />
+          </Button>
+        </Link>
       </div>
     </div>
   );

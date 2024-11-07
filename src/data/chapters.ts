@@ -23,46 +23,39 @@ const chapters: Chapter[] = [
         <li>Tuple: An ordered collection of items enclosed within parentheses.</li>
     </ul>
     
-    <p class=content>
-    my_number = 1000      # Integer<br>
-    my_text = "Hello!"    # String<br>
-    my_float = 7.5        # Float<br>
-    my_bool_1 = True      # Boolean<br>
-    my_bool_2 = False     # Boolean<br>
-    my_list = []          # List<br>
-    my_dictionary = {}    # Dictionary<br>
-    my_tuple = (1, 2, 3)  # Tuple</p>
+    <pre class="overflow-auto shadow-md"><code>my_number = 1000      # Integer
+my_text = "Hello!"    # String
+my_float = 7.5        # Float
+my_bool_1 = True      # Boolean
+my_bool_2 = False     # Boolean
+my_list = []          # List
+my_dictionary = {}    # Dictionary
+my_tuple = (1, 2, 3)  # Tuple</code></pre>
     
     <p>These data types are essential for storing and manipulating different kinds of information in Python.</p>
     <p>The name you see before the '=' is what's called a "variable". You can name it whatever you want! Above you can see how I named my variables eg; my_number, my_text, my_float, my_bool_1.</p>
     <p>It's good practice to name your variable relevant to its purpose. For example if I was creating a variable that would represent the cash price of an item, I might name it something like:</p>
     
-    <p class=content>
-    item_cost = 1                        # The cost of an item, which will be 1 dollar<br>
-    supply_remaining = 2_500_000_000    # The number of items in inventory that are remaining, Note that we use '_' instead of commas as a separator<br>
-    name_CTO = "John Woods"<br>
-    value_of_a_quarter = 0.25
-    </p>
+    <pre class="overflow-auto shadow-md"><code>item_cost = 1                       # The cost of an item, which will be 1 dollar
+supply_remaining = 2_500_000_000    # The number of items in inventory that are remaining, Note that we use '_' instead of commas as a separator
+name_CTO = "John Woods"
+value_of_a_quarter = 0.25</code></pre>
     
     <p>You might notice that I use the underscore symbol "_" instead of spaces in my variable. Something to keep in mind is you cannot start a variable with an integer, use any special characters aside from "_", and you cannot use spaces.
     Here are some examples of incorrect variables that will not work in your code, and will cause an error, <strong>DO NOT USE</strong>:</p>
     
-    <p class=content>
-    3variable = 5     # Starts with a number<br>
-    my-variable = 6   # Contains a hyphen<br>
-    my variable = 7   # Contains a space
-    </p>
+    <pre class="overflow-auto shadow-md"><code>3variable = 5     # Starts with a number
+my-variable = 6   # Contains a hyphen
+my variable = 7   # Contains a space</code></pre>
     
     <h2>General Arithmetic for Integers, Floats, and Strings</h2>
     
     <p>General arithmetic operations are a great place to start! Let's try creating a number variable, and printing it to the console.</p>
     <p>If this is your first time programming, or even if you have programmed before, you'll quickly find out or are already familiar that printing is one of the most commonly used functions for debugging. It's how you "see" what the value is of your variable at a specific point in your code.</p>
     
-    <p class=content>
-    my_number = 1<br>
-    my_number_plus_one = my_number + 1<br>
-    print(my_number_plus_one)
-    </p>
+    <pre class="overflow-auto shadow-md"><code>my_number = 1
+my_number_plus_one = my_number + 1
+print(my_number_plus_one)</code></pre>
     
     <p>The steps that occur here:</p>
     <ol class=inText>
@@ -72,17 +65,15 @@ const chapters: Chapter[] = [
     </ol>
     
     <p>There are several arithmetic operators (Like "+" or "-") available in Python, and they are as follows:</p>
-    <p class=content>
-    a = 10<br>
-    b = 3<br><br>
-    addition = a + b          # Addition: 13<br>
-    subtraction = a - b       # Subtraction: 7<br>
-    multiplication = a * b    # Multiplication: 30<br>
-    division = a / b          # Division: 3.3333333333333335<br>
-    floor_division = a // b   # Floor Division: 3<br>
-    modulus = a % b           # Modulus: 1<br>
-    exponentiation = a ** b   # Exponentiation: 1000
-    </p>
+    <pre class="overflow-auto shadow-md"><code>a = 10
+b = 3
+addition = a + b          # Addition: 13
+subtraction = a - b       # Subtraction: 7
+multiplication = a * b    # Multiplication: 30
+division = a / b          # Division: 3.3333333333333335
+floor_division = a // b   # Floor Division: 3
+modulus = a % b           # Modulus: 1
+exponentiation = a ** b   # Exponentiation: 1000</code></pre>
     
     <p>Similar to integers and floats, you can also use arithmetic operators on strings, these are mostly limited to:</p>
     <ul class=inText>
@@ -90,28 +81,24 @@ const chapters: Chapter[] = [
     </ul>
     <p>The act of combining strings together or multiplying a single string is often referred to as <strong>concatenation</strong>.</p>
     
-    <p class=content>
-    result = "Hello, " + "World!"<br>
-    print(result) # result is "Hello, World!"<br><br>
-    string = "Hello"<br>
-    result = string * 3<br>
-    print(result) # result is "HelloHelloHello"
-    </p>
+    <pre class="overflow-auto shadow-md"><code>result = "Hello, " + "World!"
+print(result) # result is "Hello, World!"
+string = "Hello"
+result = string * 3
+print(result) # result is "HelloHelloHello"</code></pre>
     
     <p>We won't dive into Lists, Dictionaries, or Tuples just yet, but I would like to mention, and this is something you'll see in practice later— that lists and dictionaries are mutable, whereas tuples are immutable.
     When you hear mutable, think "can be changed", where mutable means it can be changed and immutable means it cannot be changed.</p>
     
     <p>Example:</p>
-    <p class=content>
-    my_tuple = (1, 2)<br>
-    print(my_tuple[0])<br>
-    my_tuple[0] = 2<br>
-    print(my_tuple)<br><br>
-    # ERROR<br>
-    #    my_tuple[0] = 2<br>
-    #    ~~~~~~~~^^^<br>
-    # TypeError: 'tuple' object does not support item assignment
-    </p>
+    <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
+print(my_tuple[0])
+my_tuple[0] = 2
+print(my_tuple)
+# ERROR
+#    my_tuple[0] = 2
+#    ~~~~~~~~^^^
+# TypeError: 'tuple' object does not support item assignment</code></pre>
     
     <p>A more advanced concept to start early with, but another thing we will review later:</p>
     <h2>Examples of mutable and immutable parameters on an asset on Algorand</h2>
@@ -137,9 +124,7 @@ const chapters: Chapter[] = [
     </ul>
     <em>*Note: Exception for various ARC types like ARC19 and ARC69 that use the reserve address and/or note field to point to metadata*</em>
   
-      
-  
-      <form>
+      <hr><form>
       <h1>Quiz</h1>
           <h3>Question 1</h3>
           <p>What data type is used to store whole numbers in Python?</p>
@@ -165,9 +150,7 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code snippet?</p>
-          <pre>string = "Hello"
-  result = string * 3
-  print(result) </pre>
+          <pre><code>string = "Hello"\nresult = string * 3\nprint(result)</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="correct">a) HelloHelloHello</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -188,7 +171,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) Integer</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: `a = 10\nb = 3.5\nprint(a+b)`,
@@ -201,37 +184,36 @@ const chapters: Chapter[] = [
     <p>Now we'll dive into a bit more advanced data structures, dictionaries! A dictionary is like a list, except it uses curly brackets { } instead of square brackets [ ]— but most importantly, dictionaries also differ in that they store values with keys, and can accept several data types. A dictionary can be highly versatile, and can not only be used for data storage, but for more complex algorithms like hashmaps, which we'll go over later. Most interestingly, we can have dictionaries with dictionaries within them, and even lists as well! It's important to mention that keys and values have a colon ' : ' separator between them.</p>
     
     <p>Here's a simple example of a dictionary:</p>
-    <p class=content>this_is_my_dictionary = {"name": "John", "age": 22}</p>
+    <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22}</code></pre>
     
     <p>In lists, we used a process called indexing, and the index notation format to access values, eg; my_list[3]. With dictionaries, we use a similar process called key access, and the key notation format to access values.</p>
     
     <p>The main difference is that we use keys, instead of solely integers that refer to position, to select values from a dictionary— and not to confuse you, but a key in a dictionary can also be an integer =).</p>
     
     <p>For example, in this_is_my_dictionary above, you'll see the value "John" belongs to the key, "name". As well as the value 22, belongs to the key, "age". This is what key notation would look like for accessing a value for a specific key in a dictionary:</p>
-    <p class=content>name_value = this_is_my_dictionary['name']<br>
-    print(name_value)</p>
-    <p># Output: "John"</p>
+    <pre class="overflow-auto shadow-md"><code>name_value = this_is_my_dictionary['name']
+print(name_value)
+# Output: "John"</code></pre>
     
     <p>Try printing the "age" value in the code editor below:</p>
-    <p class=content>age_value = this_is_my_dictionary['age']<br>
-    print(age_value)</p>
-    <p># Output: 22</p>
+    <pre class="overflow-auto shadow-md"><code>age_value = this_is_my_dictionary['age']
+print(age_value)
+# Output: 22</code></pre>
     
     <p>Now we'll look over a more intricate dictionary, that's a bit larger and complex.</p>
-    <p class=content>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}</p>
+    <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}</code></pre>
     
     <p>We see something in this dictionary that we haven't seen before, a list as the value to a key. Let's try accessing the 1st index of John's likes using a mix of key notation and index notation!</p>
-    <p class=content>likes = this_is_my_dictionary['likes']<br>
-    print(likes)</p>
-    <p># Output:<br># ["Exercise", "Cooking", "Coding"]</p>
+    <pre class="overflow-auto shadow-md"><code>likes = this_is_my_dictionary['likes']
+print(likes)
+# Output:# ["Exercise", "Cooking", "Coding"]</code></pre>
     
-    <p class=content>likes_first_index = likes[1]<br>
-    print(likes_first_index)</p>
-    <p># Output:<br># "Cooking"</p>
-  
     
+    <pre class="overflow-auto shadow-md"><code>likes_first_index = likes[1]
+print(likes_first_index)
+# Output:# "Cooking"</code></pre>
   
-      <form>
+      <hr><form>
       <h1>Quiz</h1>
           <h3>Question 1</h3>
           <p>What is the correct way to define a dictionary in Python?</p>
@@ -257,10 +239,7 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
-          <pre>
-  this_is_my_dictionary = {"name": "John", "age": 22}
-  print(this_is_my_dictionary['age'])
-          </pre>
+          <pre><code>this_is_my_dictionary = {"name": "John", "age": 22}\nprint(this_is_my_dictionary['age'])</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) "John"</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -272,10 +251,7 @@ const chapters: Chapter[] = [
   
           <h3>Question 4</h3>
           <p>What will be the output of the following code?</p>
-          <pre>
-  this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}
-  print(this_is_my_dictionary['likes'][1])
-          </pre>
+          <pre><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}\nprint(this_is_my_dictionary['likes'][1])</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="incorrect">a) "Exercise"</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -285,7 +261,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) ["Exercise", "Cooking", "Coding"]</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: `this_is_my_dictionary = {"name": "John", "age": 22}\nprint(this_is_my_dictionary)`,
@@ -298,28 +274,28 @@ const chapters: Chapter[] = [
     <p>Before we go over dictionaries, which are the most common datatype when sending and receiving information between applications (back-end to front-end, front-end to back-end, or back-end to websites, etc.), and this is especially true when interacting with the Algorand blockchain, I think it's important to have an understanding of how lists work.</p>
     
     <p>Below is an example of a list:</p>
-    <p class=content>my_list = [7, "Hello", False, 63.5]</p>
+    <pre class="overflow-auto shadow-md"><code>my_list = [7, "Hello", False, 63.5]</code></pre>
     
     <p>A list can hold all types of data, and you can have all kinds of data in one list. You use lists when you need exactly that, a list. Lists are also mutable, as opposed to tuples—which means we can rearrange, extend, and replace items in a list, meaning they're super flexible!</p>
     
     <p>A list is a collection of data enclosed between square brackets [ ], and separated by commas. An example of common kinds of data you would have in a list on Algorand could be one that has asset ID's.</p>
-    <p class=content>asset_ids = [1265975021, 1138500612, 400593267]</p>
+    <pre class="overflow-auto shadow-md"><code>asset_ids = [1265975021, 1138500612, 400593267]</code></pre>
     
     <p>Or perhaps a list of addresses:</p>
-    <p class=content>addresses = [<br>
-    'WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU',<br>
-    '7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY',<br>
-    'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA'<br>]</p>
+    <pre class="overflow-auto shadow-md"><code>addresses = [
+'WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU',
+'7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY',
+'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA']</code></pre>
     
     <p>Although lists don't have to be organized in anyway and are not descriptive, they can be manipulated. For example, if you wanted to remove duplicate entries in a list, you could use the set() function.</p>
-    <p class=content>my_list = [1, 1, 2, 3, 4, 4]<br>
-    my_list_without_duplicates = set(my_list)<br>
-    print(my_list_without_duplicates)</p>
+    <pre class="overflow-auto shadow-md"><code>my_list = [1, 1, 2, 3, 4, 4]
+my_list_without_duplicates = set(my_list)
+print(my_list_without_duplicates)</code></pre>
     
-    <p># Output:<br># [1, 2, 3, 4]</p>
+    <p># Output:# [1, 2, 3, 4]</p>
     
     <p>Let's look back at the first example of a list:</p>
-    <p class=content>my_list = [7, "Hello", False, 63.5]</p>
+    <pre class="overflow-auto shadow-md"><code>my_list = [7, "Hello", False, 63.5]</code></pre>
     
     <p>In the list above we have an integer at the first spot, 7; a string in the second spot, "Hello"; a boolean (True or False value) in the third spot; a float (AKA decimal value), in the fourth spot.
     I refer to the places these items are in the list as "spots", but the correct term is actually "indexes". We referenced them as the first, second, third, and fourth spot— however, in programming lists are zero-indexed. This means that we always start from zero, and use an integer to refer to their position in the list. This feels strange, but it is something you should have ingrained into your mind, as this is universal across all programming when indexing for positions in a list.</p>
@@ -327,26 +303,26 @@ const chapters: Chapter[] = [
     <p>The correct reference to the positions would be Index 0 for 7, Index 1 for "Hello", Index 2 for False, and Index 3 for 63.5. But, how would we see this utilized in a programming scenario?</p>
     
     <p>To interact with the list, we must first assign it to a variable:</p>
-    <p class=content>my_list = [7, "Hello", False, 63.5]</p>
+    <pre class="overflow-auto shadow-md"><code>my_list = [7, "Hello", False, 63.5]</code></pre>
     
     <p>Now, we can use index notation to pick out items of our choice by using their position, let's start with just printing the list to the terminal:</p>
-    <p class=content>print(my_list)</p>
-    <p># Output: [7, "Hello", False, 63.5]</p>
+    <pre class="overflow-auto shadow-md"><code>print(my_list)
+# Output: [7, "Hello", False, 63.5]</code></pre>
     
     <p>... and now lets print the item at index 1 (the second item since the first item is always 0) using index notation:</p>
-    <p class=content>first_index_my_list = my_list[1]<br>
-    print(first_index_my_list)</p>
-    <p># Output: "Hello"</p>
+    <pre class="overflow-auto shadow-md"><code>first_index_my_list = my_list[1]
+print(first_index_my_list)
+# Output: "Hello"</code></pre>
     
     <p>Try printing the third index into the console using index notation, I've already defined the list for you below, click run when you're ready to run the code! The output should be 63.5</p>
     
-    <p>IDE WINDOW:<br>
-    my_list = [7, "Hello", False, 63.5]<br>
-    . . .<br>
+    <p>IDE WINDOW:
+    my_list = [7, "Hello", False, 63.5]
+    . . .
     CHECK OUTPUT IS 63.5 AND SHOW "SUCCESS"</p>
     <p>Next chapter: Dictionaries</p>
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
           <h3>Question 1</h3>
           <p>What is the correct way to define a list in Python?</p>
@@ -372,10 +348,9 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
-          <pre>
-  my_list = [7, "Hello", False, 63.5]
-  print(my_list[2])
-          </pre>
+          <pre><code>my_list = [7, "Hello", False, 63.5]
+print(my_list[2])
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 7</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -387,11 +362,10 @@ const chapters: Chapter[] = [
   
           <h3>Question 4</h3>
           <p>What is the correct way to remove duplicate entries in a list?</p>
-          <pre>
-  my_list = [1, 1, 2, 3, 4, 4]
-  my_list_without_duplicates = set(my_list)
-  print(my_list_without_duplicates)
-          </pre>
+          <pre><code>my_list = [1, 1, 2, 3, 4, 4]
+my_list_without_duplicates = set(my_list)
+print(my_list_without_duplicates)
+</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) Using the set() function</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -401,7 +375,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) Using the tuple() function</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: `my_list = [7, "Hello", False, 63.5]\nprint(my_list)`,
@@ -415,65 +389,54 @@ const chapters: Chapter[] = [
     <p>To define a function, we use the <code>def</code> keyword followed by the function name and parentheses. Inside the parentheses, we can specify parameters that the function can accept. The code block within every function starts with a colon (:) and is indented.</p>
     <p>Let's start with a simple function that prints a greeting message:</p>
     
-    <p class=content>
-    def greet():<br>
-        print("Hello, world!")
-    </p>
+    <pre class="overflow-auto shadow-md"><code>def greet():
+    print("Hello, world!")
+</code></pre>
     
     <p>When we call the <code>greet()</code> function, it prints "Hello, world!" to the console.</p>
     <p>Functions can also accept parameters, which allow us to pass values into the function for processing. Here's an example:</p>
     
-    <p class=content>
-    def greet(name):<br>
-        print(f"Hello, {name}!")<br><br>
-    greet("Alice")  # Output: "Hello, Alice!"<br>
-    greet("Bob")    # Output: "Hello, Bob!"
-    </p>
+    <pre class="overflow-auto shadow-md"><code>def greet(name):
+    print(f"Hello, {name}!")
+greet("Alice")  # Output: "Hello, Alice!"
+greet("Bob")    # Output: "Hello, Bob!"</code></pre>
     
     <p>In this example, the <code>greet</code> function accepts one parameter <code>name</code>. When we call the function and pass in a value like "Alice" or "Bob", the function prints a personalized greeting message.</p>
     <p>Functions can return values using the <code>return</code> statement. This allows us to capture the result of a function and use it in our code. Here's an example:</p>
     
-    <p class=content>
-    def add(a, b):<br>
-        return a + b<br><br>
-    result = add(3, 5)<br>
-    print(result)  # Output: 8
-    </p>
+    <pre class="overflow-auto shadow-md"><code>def add(a, b):
+    return a + b
+result = add(3, 5)
+print(result)  # Output: 8</code></pre>
     
     <p>The <code>add</code> function takes two parameters <code>a</code> and <code>b</code>, adds them together, and returns the result. We can then store the returned value in a variable and print it.</p>
     <p>Functions can have default parameter values, which are used if no argument is provided when the function is called. Here's an example:</p>
     
-    <p class=content>
-    def greet(name="world"):<br>
-        print(f"Hello, {name}!")<br><br>
-    greet()         # Output: Hello, world!<br>
-    greet("Alice")  # Output: Hello, Alice!
-    </p>
+    <pre class="overflow-auto shadow-md"><code>def greet(name="world"):
+    print(f"Hello, {name}!")
+greet()         # Output: Hello, world!
+greet("Alice")  # Output: Hello, Alice!</code></pre>
     
     <p>In this example, the <code>greet</code> function has a default parameter value of "world". If no argument is passed when the function is called, it uses the default value.</p>
     <p>We can also define functions that accept a variable number of arguments using the <code>*args</code> and <code>**kwargs</code> syntax. Here's an example:</p>
     
-    <p class=content>
-    def add(*args):<br>
-        return sum(args)<br><br>
-    print(add(1, 2, 3))        # Output: 6<br>
-    print(add(4, 5, 6, 7))    # Output: 22
-    </p>
+    <pre class="overflow-auto shadow-md"><code>def add(*args):
+    return sum(args)
+print(add(1, 2, 3))        # Output: 6
+print(add(4, 5, 6, 7))    # Output: 22</code></pre>
     
     <p>The <code>add</code> function uses <code>*args</code> to accept a variable number of arguments. Inside the function, <code>args</code> is a tuple containing all the arguments passed. We use the <code>sum</code> function to add all the values together and return the result.</p>
     <p>The <code>**kwargs</code> syntax allows us to accept a variable number of keyword arguments. Here's an example:</p>
     
-    <p class=content>
-    def print_info(**kwargs):<br>
-        for key, value in kwargs.items():<br>
-            print(f"{key}: {value}")<br><br>
-    print_info(name="Alice", age=30, city="New York")
-    </p>
+    <pre class="overflow-auto shadow-md"><code>def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+print_info(name="Alice", age=30, city="New York")</code></pre>
     
     <p>In this example, the <code>print_info</code> function uses <code>**kwargs</code> to accept a varying number of keyword arguments. Inside the function, <code>kwargs</code> is a dictionary containing all the keyword arguments passed. We loop through the dictionary and print each key-value pair.</p>
     <p>Functions are a fundamental part of Python programming, enabling us to create modular, reusable, and maintainable code. As we progress, we'll explore more advanced concepts and techniques related to functions.</p>
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -489,12 +452,10 @@ const chapters: Chapter[] = [
   
           <h3>Question 2</h3>
           <p>What will be the output of the following code?</p>
-          <pre>
-  def greet(name):
-      print(f"Hello, {name}!")
-  
-  greet("Alice")
-          </pre>
+          <pre><code>def greet(name):
+    print(f"Hello, {name}!")  
+greet("Alice")
+</code></pre>
           <input type="radio" id="q2a" name="q2" value="a">
           <label for="q2a" class="incorrect">a) Hello, world!</label><br>
           <input type="radio" id="q2b" name="q2" value="b">
@@ -506,13 +467,11 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What does the following function return?</p>
-          <pre>
-  def add(a, b):
-      return a + b
-  
-  result = add(3, 5)
-  print(result)
-          </pre>
+          <pre><code>def add(a, b):
+    return a + b  
+result = add(3, 5)
+print(result)
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 35</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -524,12 +483,10 @@ const chapters: Chapter[] = [
   
           <h3>Question 4</h3>
           <p>What will be the output of the following code?</p>
-          <pre>
-  def greet(name="world"):
-      print(f"Hello, {name}!")
-  
-  greet()
-          </pre>
+          <pre><code>def greet(name="world"):
+    print(f"Hello, {name}!")  
+greet()
+</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) Hello, world!</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -539,7 +496,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) world, Hello!</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: `def greet():\n    print("Hello, world!")\ngreet()`,
@@ -552,31 +509,30 @@ const chapters: Chapter[] = [
     content: `
     <p>This code begins with module imports, which is a fancy way of saying— "someone wrote some code that does something, and I want to use that something in my code". It isn't possible to use libraries, which are just collections of code created by someone, without formally importing them at the beginning of your code. Imports must appear before usage of anything within them because like the English language, python interpreters read from top to bottom.</p>
     
-    <p>The module imports are the algod.py file from the v2 client folder, in the algosdk library.</p>
-    <p class=content>library/folder/  file.py/        class<br>
-    from algosdk.v2client.algod import AlgodClient</p>
+    <p>The module imports are the algod.py file from the v2 client folder, in the algosdk library: library/folder/file.py/class</p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient</code></pre>
     
     <p>The period " . " between "algosdk" and "v2client" indicates where we are going from the algosdk library, which is the v2client folder. From the v2client folder, we then enter the algod python file, and extract the AlgodClient class to use in our code. This is how you import the file, function, or "class" (we will go over classes later) that you want to use within your code. If we did not import AlgodClient specifically, we could still access it in our code from the Algod file. We would just need to type out the algod_client variable like so:</p>
-    <p class=content>from algosdk.v2client import algod<br>
-    algod_client = algod.AlgodClient(node_token, node_port)</p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.v2client import algod
+algod_client = algod.AlgodClient(node_token, node_port)</code></pre>
     
     <p>We could also stop at v2client, and follow a similar workflow</p>
-    <p class=content>from algosdk import v2client<br>
-    algod_client = v2client.algod.AlgodClient(node_token, node_port)</p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk import v2client
+algod_client = v2client.algod.AlgodClient(node_token, node_port)</code></pre>
     
     <p>We can see now why sometimes its more efficient to import a specific file, method, or function instead of the entire library— it is certainly easier to read, and write, and is generally much more concise. For the random module, the library comes with python naturally when installed, so you will notice that with a fresh installation of python, you will not have access to the algosdk library, but you will have access to the random library. To gain access to the algosdk library, you would simply need to install it using the pip installer.</p>
-    <p class=content>pip install py-algorand-sdk</p>
+    <pre class="overflow-auto shadow-md"><code>pip install py-algorand-sdk</code></pre>
     
     <p>If you don't have pip, it must be installed manually, which is gone over in the Installation guide on this webpage.</p>
-    <p class=content>import random</p>
+    <pre class="overflow-auto shadow-md"><code>import random</code></pre>
     
     <p>To decide on whether or not you want to import a specific file, function, or method, you would need to use your intuition! For example, I use the general import random at the top of my file, yet I only use randint from that module. So it may be better to use</p>
-    <p class=content>from random import randint</p>
+    <pre class="overflow-auto shadow-md"><code>from random import randint</code></pre>
     
     <p>For the sake of understanding, lets just say perhaps the person writing the code unsure of whether or not the code will need other functions from the random library. Perhaps I plan to also use randrange from the random library with randint, so for now I'll import the entire random library.</p>
     
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -623,16 +579,11 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) pip install py-algosdk</label><br>
   
-          <br>
+          
       </form>
     
     `,
-    initialCode: `# Import the entire random module
-  import random
-  
-  # Generate a random integer between 1 and 10
-  random_number = random.randint(1, 10)
-  print(f"Random number (full random import): {random_number}")
+    initialCode: `# Import the entire random module\nimport random\n# Generate a random integer between 1 and 10\nrandom_number = random.randint(1, 10)\nprint(f"Random number (full random import): {random_number}")
   `,
   },
   {
@@ -647,13 +598,10 @@ const chapters: Chapter[] = [
     <p>Now that we have access to an Algorand testnet node, as well as a basic understanding of how to work with different kinds of variables, functions and imports. It's time to get started!</p>
     <p>This will reaffirm your ability to use functions, methods, and imports— as well as key notation: eg; accessing the name of a customer in a variable named my_dictionary</p>
     
-    <p class=content>
-    <code>
-    my_dictionary = {'customer-name': 'Jerry'}<br>
-    customer_name = my_dictionary['customer-name']<br>
-    print(customer_name)
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>my_dictionary = {'customer-name': 'Jerry'}
+customer_name = my_dictionary['customer-name']
+print(customer_name)</code>
+</pre>
     
     <p>If you are using your own algorand testnet node on Windows, you will need to access your algod_token and algod_port from your node's data directory:</p>
     
@@ -670,34 +618,22 @@ const chapters: Chapter[] = [
     
     <p>When programming, you will format this information for variables like so:</p>
     
-    <p class=content>
-    <code>
-    algod_token = 'b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd'<br>
-    algod_port = 'http://127.0.0.1:8080'
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>algod_token = 'b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd'
+algod_port = 'http://127.0.0.1:8080'</code></pre>
     
     <p>If you are not using your own algorand testnet node, you can use these:</p>
     <p>(Free service does not require token, and the algod_token variable will be an empty string '', whereas the algod_server will be the algonode testnet cloud link)</p>
-    <p class=content>
-    <code>
-    algod_token = ''<br>
-    algod_server = 'https://testnet-api.algonode.cloud'
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>algod_token = ''
+algod_server = 'https://testnet-api.algonode.cloud'</code></pre>
     
     <p>Let's started by simply getting the status of the Algorand testnet network!</p>
-    <p class=content>
-    <code>
-    from algosdk.v2client.algod import AlgodClient<br><br>
-    algod_token = ''  # Leave '' for public nodely service, or enter your node token <br>
-    algod_server = 'https://testnet-api.algonode.cloud' # Use this cloud link, or enter your own host & port<br><br>
-    # Initialize AlgodClient<br>
-    algod_client = AlgodClient(algod_token, algod_server)<br><br>
-    status = algod_client.status()<br><br>
-    print(status)
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+algod_token = ''  # Leave '' for public nodely service, or enter your node token 
+algod_server = 'https://testnet-api.algonode.cloud' # Use this cloud link, or enter your own host & port
+# Initialize AlgodClient
+algod_client = AlgodClient(algod_token, algod_server)
+status = algod_client.status()
+print(status)</code></pre>
     
     <p>First we import the AlgodClient from algod.py in the v2client folder of the algosdk library.</p>
     <p>Then, we define our token and server for the node we'll be using.</p>
@@ -740,31 +676,22 @@ const chapters: Chapter[] = [
     </ul>
     </p>
     
-    <p>#Code IDE</p>
     
-    <p class=content>
-    <code>
-    status = {'catchpoint': '', 'catchpoint-acquired-blocks': 0, 'catchpoint-processed-accounts': 0, 'catchpoint-processed-kvs': 0,<br>
-    'catchpoint-total-accounts': 0, 'catchpoint-total-blocks': 0, 'catchpoint-total-kvs': 0, 'catchpoint-verified-accounts': 0,<br> 
-    'catchpoint-verified-kvs': 0, 'catchup-time': 0, 'last-catchpoint': '', 'last-round': 41422522,<br>
-    'last-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95',<br> 
-    'next-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95',<br>
-    'next-version-round': 41422523, 'next-version-supported': True, 'stopped-at-unsupported-round': False,<br> 
-    'time-since-last-round': 1687057197}<br><br>
-    #Enter code below to get the 'last-round' value printed to the console!
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>status = {'catchpoint': '', 'catchpoint-acquired-blocks': 0, 'catchpoint-processed-accounts': 0, 'catchpoint-processed-kvs': 0,
+'catchpoint-total-accounts': 0, 'catchpoint-total-blocks': 0, 'catchpoint-total-kvs': 0, 'catchpoint-verified-accounts': 0, 
+'catchpoint-verified-kvs': 0, 'catchup-time': 0, 'last-catchpoint': '', 'last-round': 41422522,
+'last-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95', 
+'next-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95',
+'next-version-round': 41422523, 'next-version-supported': True, 'stopped-at-unsupported-round': False, 
+'time-since-last-round': 1687057197}
+#Enter code below to get the 'last-round' value printed to the console!</code></pre>
     
     <p>Reveal Answer?</p>
-    <p class=content>
-    <code>
-    last_round = status['last-round']<br>
-    print(last_round)
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>last_round = status['last-round']
+print(last_round)</code></pre>
   
   
-      <form>
+      <hr><form>
      <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -791,11 +718,10 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the value of 'last_round' if the key 'last-round' in the status dictionary is 1000?</p>
-          <pre>
-  status = {'last-round': 1000}
+          <pre><code>status = {'last-round': 1000}
   last_round = status['last-round']
   print(last_round)
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) '1000'</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -816,24 +742,24 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) algod_client = AlgodClient('my_token', 'http://127.0.0.1:8080')</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: `# Using public Algorand testnet with empty token
-  from algosdk.v2client.algod import AlgodClient
+from algosdk.v2client.algod import AlgodClient
   
-  algod_token = ''
-  algod_server = 'https://testnet-api.algonode.cloud'
+algod_token = ''
+algod_server = 'https://testnet-api.algonode.cloud'
   
-  # Initialize AlgodClient
-  algod_client = AlgodClient(algod_token, algod_server)
+# Initialize AlgodClient
+algod_client = AlgodClient(algod_token, algod_server)
   
-  # Fetch and print status from the public testnet
-  try:
-      status = algod_client.status()
-      print(f"Connected to public Algorand testnet! Last round: {status['last-round']}")
-  except Exception as e:
-      print(f"Failed to connect to public testnet: {e}")
+# Fetch and print status from the public testnet
+try:
+    status = algod_client.status()
+    print(f"Connected to public Algorand testnet! Last round: {status['last-round']}")
+except Exception as e:
+    print(f"Failed to connect to public testnet: {e}")
   `,
   },
 
@@ -842,83 +768,69 @@ const chapters: Chapter[] = [
     language: 'Python',
     title: 'Payment Transactions',
     content: `
-    <p class=content>
-    <code>
-    from algosdk.v2client.algod import AlgodClient<br>
-    from algosdk.transaction import PaymentTxn, wait_for_confirmation<br>
-    from algosdk import account<br>
-    from algosdk import mnemonic<br>
-    from algosdk.util import algos_to_microalgos
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algosdk.transaction import PaymentTxn, wait_for_confirmation
+from algosdk import account
+from algosdk import mnemonic
+from algosdk.util import algos_to_microalgos    
+</code></pre>
     
     <p><strong>TWO WAYS TO IMPORT AN ACCOUNT</strong></p>
     
-    <p><strong>METHOD 1</strong><br>
+    <p><strong>METHOD 1</strong>
     CREATE A NEW ACCOUNT</p>
-    <p class=content>
-    <code>
-    private_key, address = account.generate_account()<br>
-    print(private_key)<br>
-    print(address)
-    </code>
-    </p>
-    <p>Output:<br>
-    6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg== <== Private Key<br>
+    <pre class="overflow-auto shadow-md"><code>private_key, address = account.generate_account()
+print(private_key)
+print(address)</code></pre>
+    <p>Output:
+    6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg== <== Private Key
     I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU <== Address</p>
     
-    <p>IF NEEDED TO IMPORT TO A WALLET, YOU CAN OBTAIN THE MNEMONIC FROM THE PRIVATE KEY<br>
+    <p>IF NEEDED TO IMPORT TO A WALLET, YOU CAN OBTAIN THE MNEMONIC FROM THE PRIVATE KEY
     REDEEM MNEMONIC FROM PRIVATE KEY</p>
-    <p class=content>
-    <code>
-    mnemonic_phrase = mnemonic.from_private_key(private_key)<br>
-    print(mnemonic_phrase)
-    </code>
-    </p>
-    <p>Output:<br>
+    <pre class="overflow-auto shadow-md"><code>mnemonic_phrase = mnemonic.from_private_key(private_key)
+print(mnemonic_phrase)
+</code></pre>
+    <p>Output:
     brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual <== Mnemonic</p>
     
-    <p><strong>METHOD 2</strong><br>
-    USE MNEMONIC TO OBTAIN PRIVATE KEY<br>
+    <p><strong>METHOD 2</strong>
+    USE MNEMONIC TO OBTAIN PRIVATE KEY
     REDEEM PRIVATE KEY FROM MNEMONIC</p>
-    <p class=content>
-    <code>
-    mnemonic_phrase = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual'<br>
-    private_key = mnemonic.to_private_key(mnemonic_phrase)<br>
-    print(private_key)
-    </code>
-    </p>
-    <p>Output:<br>
+    <pre class="overflow-auto shadow-md"><code>mnemonic_phrase = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual'
+private_key = mnemonic.to_private_key(mnemonic_phrase)
+print(private_key)</code></pre>
+    <p>Output:
     6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg== <== Private Key</p>
     
     <p>When developing in Python, there are two methods to obtain a private key and address to use for signing transactions you create. The private key is in base64 format and required for transaction signing.</p>
     
     <p><strong>Method 1: Create a brand new account and obtain the private key and address directly</strong></p>
     <p>In the algosdk's account module, there is a function called generate_account(), which you can import at the beginning of your code, and is defined here:</p>
-    <p><code>(function) def generate_account() -> tuple[str, Any]<br>
+    <p><code>(function) def generate_account() -> tuple[str, Any]
     Generate an account.</code></p>
-    <p>Returns:<br>
+    <p>Returns:
     (str, str): private key, account address</p>
     
     <p>This returns the private key and account address as strings. Since this returns a tuple of two items, you would assign two variables to the output of the function, and then subsequently print them.</p>
-    <p>In testnet, you can now fund the account by inputting the address at <a href="https://bank.testnet.algorand.network/" target="_blank">https://bank.testnet.algorand.network/</a>.<br>
+    <p>In testnet, you can now fund the account by inputting the address at <a href="https://bank.testnet.algorand.network/" target="_blank">https://bank.testnet.algorand.network/</a>.
     All accounts require a minimum balance of 0.1 Algo to send transactions, and then 0.001 Algorand per transaction fee.</p>
     
     <p>Should you need the mnemonic to import into a wallet application later, you can do so with the from_private_key() function in the mnemonic library as well; input your private key into the function and assign the output variable to something like "mnemonic_phrase". Function is defined below:</p>
-    <p><code>(function) def from_private_key(private_key: Any) -> str<br>
+    <p><code>(function) def from_private_key(private_key: Any) -> str
     Return the mnemonic for the private key.</code></p>
-    <p>Args:<br>
+    <p>Args:
     private_key (str): private key in base64</p>
-    <p>Returns:<br>
+    <p>Returns:
     str: mnemonic</p>
     
     <p><strong>Method 2: Convert an Existing Mnemonic to a Private Key</strong></p>
     <p>Should you already have a mnemonic and require the private key in base64 format, you can create a variable called "mnemonic_phrase" and use the result of the to_private_key() function in the mnemonic library, which is defined below:</p>
-    <p><code>(function) def to_private_key(mnemonic: Any) -> str<br>
+    <p><code>(function) def to_private_key(mnemonic: Any) -> str
     Return the private key for the mnemonic.</code></p>
-    <p>Args:<br>
+    <p>Args:
     mnemonic (str): mnemonic of the private key</p>
-    <p>Returns:<br>
+    <p>Returns:
     str: private key in base64</p>
     <p>The mnemonic must be a string, meaning it is enclosed in apostrophes or double quotes ('' or ""), and there must be a space between words.</p>
     
@@ -926,33 +838,29 @@ const chapters: Chapter[] = [
     
     <p>We will be trying a typical payment transaction with a note field, followed by a rekey transaction (rekey to a new account and back to ourselves from the new account), and an account closing transaction. All three are under the scope of a payment transaction.</p>
     
-    <p class=content>
-    <code>
-    from algosdk.v2client.algod import AlgodClient<br>
-    from algosdk.account import generate_account<br>
-    from algosdk.util import algos_to_microalgos<br>
-    from algosdk.transaction import PaymentTxn, wait_for_confirmation<br><br>
-    algod_token = ''<br>
-    algod_server = 'https://testnet-api.algonode.cloud'<br>
-    algod_client = AlgodClient(algod_token, algod_server)<br><br>
-    address = 'I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU'<br>
-    private_key = '6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=='<br><br>
-    amount = algos_to_microalgos(1.001)<br><br>
-    params = algod_client.suggested_params()<br><br>
-    new_account_private_key, new_account_address = generate_account()<br><br>
-    basic_payment_transaction = PaymentTxn(<br>
-        sender = address,<br>
-        receiver = new_account_address,<br>
-        sp = params,<br>
-        amt = amount,<br>
-        note = "Here's your one Algo!"<br>
-    )<br><br>
-    signed_basic_payment_transaction = basic_payment_transaction.sign(private_key)<br>
-    transaction_id = algod_client.send_transaction(signed_basic_payment_transaction)<br>
-    wait_for_confirmation(algod_client, transaction_id)<br>
-    print(transaction_id)
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algosdk.account import generate_account
+from algosdk.util import algos_to_microalgos
+from algosdk.transaction import PaymentTxn, wait_for_confirmation
+algod_token = ''
+algod_server = 'https://testnet-api.algonode.cloud'
+algod_client = AlgodClient(algod_token, algod_server)
+address = 'I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU'
+private_key = '6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=='
+amount = algos_to_microalgos(1.001)
+params = algod_client.suggested_params()
+new_account_private_key, new_account_address = generate_account()
+basic_payment_transaction = PaymentTxn(
+    sender = address,
+    receiver = new_account_address,
+    sp = params,
+    amt = amount,
+    note = "Here's your one Algo!"
+)
+signed_basic_payment_transaction = basic_payment_transaction.sign(private_key)
+transaction_id = algod_client.send_transaction(signed_basic_payment_transaction)
+wait_for_confirmation(algod_client, transaction_id)
+print(transaction_id)</code></pre>
     
     <p>Steps:</p>
     <ol class=inText>
@@ -979,11 +887,11 @@ const chapters: Chapter[] = [
     <p>In the algorand SDK's, when we want to reference an amount of algo, that amount needs to be in a format called "Microalgo"; Microalgo is essentially an amount of algo times 1,000,000. Meaning that 1 Algo would be 1,000,000 Microalgo, and the transaction fee of 0.001 Algo is 1,000 Microalgo.</p>
     
     <p>Instead of manually calculating the microalgo amount each time, what we can do is use the algos_to_microalgos() function, and pass in the amount of algo as an argument, defined below:</p>
-    <p><code>(function) def algos_to_microalgos(algos: Any) -> Any<br>
+    <p><code>(function) def algos_to_microalgos(algos: Any) -> Any
     Convert algos to microalgos.</code></p>
-    <p>Args:<br>
+    <p>Args:
     algos (int or decimal): how many algos</p>
-    <p>Returns:<br>
+    <p>Returns:
     int: how many microalgos</p>
     
     <p>The PaymentTransaction class comes with a lot of functionality, aside from simple payment transactions of an amount of Algo to more advanced features, including:</p>
@@ -993,98 +901,94 @@ const chapters: Chapter[] = [
     </ul>
     
     <p><strong>PaymentTransaction format:</strong></p>
-    <p><code>class PaymentTxn(<br>
-        sender: str,<br>
-        sp: SuggestedParams,<br>
-        receiver: Any,<br>
-        amt: Any,<br>
-        close_remainder_to: Any | None = None,<br>
-        note: Any | None = None,<br>
-        lease: Any | None = None,<br>
-        rekey_to: Any | None = None<br>
-    )<br>
+    <p><code>class PaymentTxn(
+        sender: str,
+        sp: SuggestedParams,
+        receiver: Any,
+        amt: Any,
+        close_remainder_to: Any | None = None,
+        note: Any | None = None,
+        lease: Any | None = None,
+        rekey_to: Any | None = None
+    )
     Represents a payment transaction.</code></p>
-    <p>Args:<br>
-    sender (str): address of the sender<br>
-    sp (SuggestedParams): suggested params from algod<br>
-    receiver (str): address of the receiver<br>
-    amt (int): amount in microAlgos to be sent<br>
-    close_remainder_to (str, optional): if nonempty, account will be closed and remaining algos will be sent to this address<br>
-    note (bytes, optional): arbitrary optional bytes<br>
-    lease (byte[32], optional): specifies a lease, and no other transaction with the same sender and lease can be confirmed in this transaction's valid rounds<br>
+    <p>Args:
+    sender (str): address of the sender
+    sp (SuggestedParams): suggested params from algod
+    receiver (str): address of the receiver
+    amt (int): amount in microAlgos to be sent
+    close_remainder_to (str, optional): if nonempty, account will be closed and remaining algos will be sent to this address
+    note (bytes, optional): arbitrary optional bytes
+    lease (byte[32], optional): specifies a lease, and no other transaction with the same sender and lease can be confirmed in this transaction's valid rounds
     rekey_to (str, optional): additionally rekey the sender to this address</p>
     
     <p>After we define our Payment Transaction class parameters, we can then use the sign() method that is included within it. This sign function accepts our private key, and outputs a signed transaction object, which is needed to input to the send_transaction() function:</p>
-    <p><code>(method) def sign(private_key: Any) -> SignedTransaction<br>
+    <p><code>(method) def sign(private_key: Any) -> SignedTransaction
     Sign the transaction with a private key.</code></p>
-    <p>Args:<br>
+    <p>Args:
     private_key (str): the private key of the signing account</p>
-    <p>Returns:<br>
+    <p>Returns:
     SignedTransaction: signed transaction with the signature</p>
     
     <p>The wait_for_confirmation() function requires the AlgodClient class variable we created, as well as the transaction ID to wait for:</p>
-    <p><code>(function) def wait_for_confirmation(<br>
-        algod_client: AlgodClient,<br>
-        txid: str<br>
+    <p><code>(function) def wait_for_confirmation(
+        algod_client: AlgodClient,
+        txid: str
     )</code></p>
     
     <p>Lastly, the send_transaction() function, which accepts signed transaction objects:</p>
-    <p><code>(method) def send_transaction(<br>
-        txn: GenericSignedTransaction<br>
+    <p><code>(method) def send_transaction(
+        txn: GenericSignedTransaction
     ) -> Outputs transaction ID</code></p>
     
     <p>Below are examples of rekey transactions and close amount to transactions, which are sent in succession (BUT NOT A GROUP TRANSACTION, WHICH WE WILL LEARN ABOUT LATER)</p>
     
-    <p class=content>
-    <code>
-    # Rekey Transaction<br>
-    rekey_to_new_account_payment = PaymentTxn(<br>
-        sender = address,<br>
-        receiver = new_account_address,<br>
-        sp = params,<br>
-        amt = 0,<br>
-        rekey_to = new_account_address,<br>
-        note = "Take care of my account for me! I'll be back in a week"<br>
-    )<br><br>
-    signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)<br>
-    transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)<br>
-    wait_for_confirmation(algod_client, transaction_id)<br>
-    print(transaction_id)<br><br>
-    # New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key<br><br>
-    rekey_back_to_old_account_from_new_account = PaymentTxn(<br>
-        sender = address,<br>
-        receiver = address,<br>
-        sp = params,<br>
-        rekey_to = address,<br>
-        amt = 0,<br>
-        note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"<br>
-    )<br><br>
-    signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)<br>
-    transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)<br>
-    wait_for_confirmation(algod_client, transaction_id)<br>
-    print(transaction_id)<br><br>
-    # Close remainder to transaction<br><br>
-    close_account_to_new_account = PaymentTxn(<br>
-        sender = address,<br>
-        receiver = new_account_address,<br>
-        sp = params,<br>
-        amt = 0,<br>
-        close_remainder_to = new_account_address,<br>
-        note = 'Take care of my precious Algo!'<br>
-    )<br><br>
-    signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)<br>
-    transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)<br>
-    wait_for_confirmation(algod_client, transaction_id)<br>
+    <pre class="overflow-auto shadow-md"><code># Rekey Transaction
+    rekey_to_new_account_payment = PaymentTxn(
+        sender = address,
+        receiver = new_account_address,
+        sp = params,
+        amt = 0,
+        rekey_to = new_account_address,
+        note = "Take care of my account for me! I'll be back in a week"
+    )
+    signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)
+    transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)
+    wait_for_confirmation(algod_client, transaction_id)
     print(transaction_id)
-    </code>
-    </p>
+    # New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key
+    rekey_back_to_old_account_from_new_account = PaymentTxn(
+        sender = address,
+        receiver = address,
+        sp = params,
+        rekey_to = address,
+        amt = 0,
+        note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"
+    )
+    signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)
+    transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)
+    wait_for_confirmation(algod_client, transaction_id)
+    print(transaction_id)
+    # Close remainder to transaction
+    close_account_to_new_account = PaymentTxn(
+        sender = address,
+        receiver = new_account_address,
+        sp = params,
+        amt = 0,
+        close_remainder_to = new_account_address,
+        note = 'Take care of my precious Algo!'
+    )
+    signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)
+    transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)
+    wait_for_confirmation(algod_client, transaction_id)
+    print(transaction_id)</code></pre>
     
     <p>Although the Payment Transaction has many possible inputs, the bare minimum is using the sender, sp, receiver, and amt field. Anything else is at your discretion!</p>
     
     <p><strong>DISCLAIMER:</strong> that when rekeying and closing out accounts, this process is irreversible! If you don't know the person, or feel unsure about doing so, you should never use these transactions outside of testing purposes without ultimate confidence. No platforms currently utilize rekey transactions for users, but do use them internally when generating smart contracts for contract to contract calls, which will come later in our learning process.</p>
     
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -1111,11 +1015,10 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
   <p>What is the correct way to initialize an AlgodClient instance to connect to the Algorand testnet?</p>
-  <pre>
-  algod_token = ''
+  <pre><code>algod_token = ''
   algod_server = 'https://testnet-api.algonode.cloud'
   algod_client = algod.AlgodClient(algod_token, algod_server)
-  </pre>
+</code></pre>
   <input type="radio" id="q3a" name="q3" value="a">
   <label for="q3a" class="correct">a) algod.AlgodClient()</label><br>
   <input type="radio" id="q3b" name="q3" value="b">
@@ -1148,25 +1051,4502 @@ const chapters: Chapter[] = [
           <input type="radio" id="q5d" name="q5" value="d">
           <label for="q5d" class="incorrect">d) algodClient.sendSignedTransaction()</label><br>
   
-          <br>
+          
       </form>
     
     `,
     initialCode: `from algosdk import account, mnemonic
   
-  # Generate a new account
-  private_key, address = account.generate_account()
+# Generate a new account
+private_key, address = account.generate_account()
   
-  # Display the private key and address
-  print("Private Key:", private_key)
-  print("Address:", address)
+# Display the private key and address
+print("Private Key:", private_key)
+print("Address:", address)
   
-  # Generate mnemonic phrase from private key
-  mnemonic_phrase = mnemonic.from_private_key(private_key)
-  print("Mnemonic Phrase:", mnemonic_phrase)
+# Generate mnemonic phrase from private key
+mnemonic_phrase = mnemonic.from_private_key(private_key)
+print("Mnemonic Phrase:", mnemonic_phrase)
   
     `,
   },
+  {
+    id: 20,
+    language: 'Python',
+    title: 'Python Installation',
+    content: `
+    <p>This tutorial guides you through developing Discord bots for the Algorand blockchain. It’s designed to complement the YouTube tutorial series.</p>
+    <h2>YouTube Tutorial</h2>
+    <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/JjmH-KA7UcQ"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+    
+    <h2>Installing Dependencies</h2>
+    <h3>Using Regular Terminal (not Ubuntu)</h3>
+    <ul class="inText">
+        <li><strong>PIP Installation:</strong></li>
+    </ul>
+    <pre class="overflow-auto shadow-md">
+<code>curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</code>
+<code>python get-pip.py</code></pre>
+    <ul class="inText">
+        <li><strong>AIOHTTP (required before installing Discord.py):</strong></li>
+    </ul>
+    <pre class="overflow-auto shadow-md">
+    <code>pip install aiohttp>=3.9.0b0</code>
+    </pre>
+    <ul class="inText">
+        <li><strong>Discord.py:</strong></li>
+    </ul>
+    <pre class="overflow-auto shadow-md">
+    <code>pip install discord.py</code>
+    </pre>
+    <ul class="inText">
+        <li><strong>Python AlgoSDK:</strong></li>
+    </ul>
+    <pre class="overflow-auto shadow-md">
+    <code>pip3 install py-algorand-sdk</code>
+    </pre>
+    
+    <h3>Using Ubuntu Terminal</h3>
+    <h4>Algorand Node Installation</h4>
+    <pre class="overflow-auto shadow-md">
+    <code>sudo apt-get update</code>
+    <code>sudo apt-get install -y gnupg2 curl software-properties-common</code>
+    <code>curl -o - https://releases.algorand.com/key.pub | sudo tee /etc/apt/trusted.gpg.d/algorand.asc</code>
+    <code>sudo add-apt-repository "deb [arch=amd64] https://releases.algorand.com/deb/ stable main"</code>
+    <code>sudo apt-get update</code>
+    <code>sudo apt-get install -y algorand-devtools</code>
+    </pre>
+    
+    <h4>Preparing & Running Algorand Node</h4>
+    <pre class="overflow-auto shadow-md">
+    <code>mkdir ~/node</code>
+    <code>cd ~/node</code>
+    <code>curl https://raw.githubusercontent.com/algorand/go-algorand/rel/stable/cmd/updater/update.sh -O</code>
+    <code>chmod 744 update.sh</code>
+    <code>./update.sh -i -c stable -p ~/node -d ~/node/data -n</code>
+    <code>goal node start -d data</code>
+    <code>goal node catchup <a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Get Catchpoint from Mainnet</a> -d data</code>
+    </pre>
+    
+    <h4>Algorand Node Commands</h4>
+    <ul class="inText">
+        <li><strong>Start Node:</strong> <code>goal node start -d data</code></li>
+        <li><strong>Restart Node:</strong> <code>goal node restart -d data</code></li>
+        <li><strong>Stop Node:</strong> <code>goal node stop -d data</code></li>
+        <li><strong>Catchup Node:</strong> <code>goal node catchup [Catchpoint Link] -d data</code></li>
+    </ul>
+    
+    <h4>Obtain Algorand Node Token & Port</h4>
+    <pre class="overflow-auto shadow-md">
+    <code>cd node/data</code>
+    <code>cat algod.token</code> (Displays token)
+    <code>cat algod.net</code> (Displays port)
+    </pre>
+    
+    <h4>Basic Terminal Commands</h4>
+    <ul class="inText">
+        <li><strong>Clear Terminal:</strong> <code>clear</code></li>
+        <li><strong>Create Folder:</strong> <code>mkdir FolderName</code></li>
+        <li><strong>List Directories:</strong> <code>ls</code></li>
+        <li><strong>Change Directory:</strong> <code>cd FolderName</code></li>
+        <li><strong>Move Up One Directory:</strong> <code>cd ..</code></li>
+        <li><strong>Delete Directory:</strong> <code>rm -r FolderName</code></li>
+        <li><strong>View File Contents:</strong> <code>cat FileName</code></li>
+    </ul>
+    
+    <h2>Useful Links</h2>
+    <ul class="inText">
+        <li><a href="https://www.python.org/downloads/" target="_blank">Install Python (Select 'Add Python to PATH')</a></li>
+        <li><a href="https://code.visualstudio.com/Download" target="_blank">Install Visual Studio Code</a></li>
+        <li><a href="https://www.microsoft.com/store/productId/9MTTCL66CPXJ?ocid=pdpshare" target="_blank">Microsoft Store Ubuntu LTS</a></li>
+        <li><a href="https://developer.algorand.org/docs/run-a-node/setup/install/" target="_blank">Algorand Node Documentation</a></li>
+        <li><a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Algorand Node Mainnet Catchpoint</a></li>
+        <li><a href="https://discord.com/developers" target="_blank">Discord Developer Portal</a></li>
+    </ul>
+    
+    <hr><form>
+        <h1>Quiz</h1>
+        <h3>Question 1</h3>
+        <p>Which package should be installed before installing discord.py?</p>
+        <input type="radio" id="q1a" name="q1" value="a">
+        <label for="q1a" class="incorrect">a) py-algorand-sdk</label><br>
+        <input type="radio" id="q1b" name="q1" value="b">
+        <label for="q1b" class="correct">b) aiohttp>=3.9.0b0</label><br>
+        <input type="radio" id="q1c" name="q1" value="c">
+        <label for="q1c" class="incorrect">c) Visual Studio Code</label><br>
+        <input type="radio" id="q1d" name="q1" value="d">
+        <label for="q1d" class="incorrect">d) Node</label><br>
+        
+        <h3>Question 2</h3>
+        <p>What command starts the Algorand node?</p>
+        <input type="radio" id="q2a" name="q2" value="a">
+        <label for="q2a" class="incorrect">a) mkdir node</label><br>
+        <input type="radio" id="q2b" name="q2" value="b">
+        <label for="q2b" class="correct">b) goal node start -d data</label><br>
+        <input type="radio" id="q2c" name="q2" value="c">
+        <label for="q2c" class="incorrect">c) chmod 744 update.sh</label><br>
+        <input type="radio" id="q2d" name="q2" value="d">
+        <label for="q2d" class="incorrect">d) apt-get update</label><br>
+    </form>
+    `,
+    initialCode: `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py\npython get-pip.py\npip install aiohttp>=3.9.0b0\npip install discord.py\npip3 install py-algorand-sdk`,
+  },
+  {
+    id: 21,
+    language: 'Python',
+    title: 'Compiling Launching and Interacting with Your First Contract',
+    content: `
+    <p>In this chapter, you'll learn how to compile, launch, and interact with a basic smart contract on the Algorand blockchain. You'll set up essential tools, generate and fund accounts, deploy your contract, and make your first interaction using Python.</p>
+    <h2>YouTube Tutorial</h2>
+<div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/SJrR47eho7Y"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+    <h2>Compiling</h2>
+    <p>Make sure you have Python installed, and then install <strong>algokit</strong> and <strong>algorand-python</strong> via Python's pip installer:</p>
+    <pre class="overflow-auto shadow-md"><code>pip install algokit
+pip install algorand-python</code></pre>
+    
+    <p>Use <code>algokit compile py helloWorldContract.py</code> in the terminal line (assuming your contract is named <code>helloWorldContract.py</code>) to generate your approval and clear TEAL files, as well as the ARC32 JSON for the contract. We will use these to launch and interact with the contract later.</p>
+
+    <h3>helloWorldContract.py</h3>
+    <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String
+from algopy.arc4 import abimethod
+
+class HelloWorldContract(ARC4Contract):
+    
+    @abimethod
+    def hello(self, name: String) -> String:
+        return "Hello, " + name</code></pre>
+
+    <p>Once you have your approval and clear TEAL files, as well as your ARC32 JSON, it's time to launch your contract!</p>
+
+    <h2>Generating and Funding an Account</h2>
+    <p>Generate and fund an account using the code below. Use the testnet dispenser at <a href="https://bank.testnet.algorand.network/">https://bank.testnet.algorand.network/</a>.</p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+print(private_key, address)</code></pre>
+
+    <p>Then, place your private key and the public testnet API and URL provided by nodely.io (as indicated in the tutorial) into your <code>.env</code> file.</p>
+
+    <p><strong>Note:</strong> Feel free to reuse this template when launching future contracts, but remember to adjust <code>approval_teal_file_name</code> and <code>clear_teal_file_name</code> variables, as well as the <code>global</code> and <code>local</code> state <code>num_uints</code> and <code>num_bytes</code> values for future contracts.</p>
+
+    <h2>Launching the Contract</h2>
+    <pre class="overflow-auto shadow-md"><code>import os
+from algosdk.account import address_from_private_key
+from algosdk.v2client.algod import AlgodClient
+from base64 import b64decode
+from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
+from algosdk.logic import get_application_address
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+algod_client = AlgodClient(algod_token, algod_server)
+path = Path(__file__).parent / './HelloWorldContract.arc32.json'
+app_id = int(os.getenv('app_id'))
+my_signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+application_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=path,
+    app_id=app_id,
+    signer=my_signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+application_client.compose_call(atc, call_abi_method='hello', name='AlgoLearn Community')
+
+result = atc.execute(algod_client, 2)
+print(result.abi_results[0].tx_id)
+print(result.abi_results[0].return_value)</code></pre>
+    
+    <p>Once your contract is launched, place your new <code>app_id</code> into your <code>.env</code> file, and try interacting with it using the application client methods above!</p>
+  `,
+    initialCode: `from algosdk.v2client.algod import AlgodClient
+algod_token = ''  # Enter node token
+algod_server = 'https://testnet-api.algonode.cloud' # Algorand testnet
+algod_client = AlgodClient(algod_token, algod_server)
+status = algod_client.status()
+print(status)`,
+  },
+  {
+    id: 22,
+    language: 'Python',
+    title: 'Generating Funding and Interacting with Your First Contract',
+    content: `
+      <h2>Video Walkthrough</h2>
+      <p>Watch the tutorial video to understand the steps in deploying your first Algorand smart contract:</p>
+  <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/SJrR47eho7Y"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+      <h2>Generating an Account</h2>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+  
+  private_key, address = generate_account()
+  print(private_key, address)</code></pre>
+  
+      <h2>Funding the Account</h2>
+      <p>To fund the account, visit the Algorand testnet dispenser: <a href="https://bank.testnet.algorand.network/">https://bank.testnet.algorand.network/</a></p>
+  
+      <h2>Setting Environment Variables (.env)</h2>
+      <p>Set up environment variables in a <code>.env</code> file. This includes the Algod token and server details, your private key, and the application ID of your contract:</p>
+      <pre class="overflow-auto shadow-md"><code># Algod Token is blank when using Nodely API
+  algod_token=
+  algod_server=https://testnet-api.4160.nodely.dev
+  
+  # Private key for generated account
+  private_key=ENTER PRIVATE KEY FOR ACCOUNT HERE
+  
+  # Application ID from contract generated by LaunchSmartContract.py
+  app_id=ENTER GENERATED APP ID HERE</code></pre>
+  
+      <h2>Writing the Hello World Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String
+  from algopy.arc4 import abimethod
+  
+  class HelloWorldContract(ARC4Contract):
+      
+      @abimethod
+      def hello(self, name: String) -> String:
+          return "Hello, " + name</code></pre>
+  
+      <h2>Launching the Contract</h2>
+      <p><strong>Note:</strong> Make sure the contract name matches the approval and clear TEAL file names.</p>
+      <p>If your class is defined as:</p>
+      <pre class="overflow-auto shadow-md"><code>class HelloWorldContract(ARC4Contract):</code></pre>
+      <p>Your approval and clear TEAL file names in <code>LaunchSmartContract.py</code> should be:</p>
+      <pre class="overflow-auto shadow-md"><code>approval_teal_file_name = 'HelloWorldContract.approval.teal'
+  clear_teal_file_name = 'HelloWorldContract.clear.teal'</code></pre>
+  
+      <pre class="overflow-auto shadow-md"><code>import os
+  from algosdk.account import address_from_private_key
+  from algosdk.v2client.algod import AlgodClient
+  from base64 import b64decode
+  from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
+  from algosdk.logic import get_application_address
+  from algosdk.util import microalgos_to_algos, algos_to_microalgos
+  from dotenv import load_dotenv
+  
+  load_dotenv()
+  
+  algod_token = os.getenv('algod_token')
+  algod_server = os.getenv('algod_server')
+  private_key = os.getenv('private_key')
+  address = address_from_private_key(private_key)
+  
+  algod_client = AlgodClient(algod_token, algod_server)
+  
+  approval_teal_file_name = 'HelloWorldContract.approval.teal'
+  clear_teal_file_name = 'HelloWorldContract.clear.teal'
+  
+  with open(f'./{approval_teal_file_name}', 'r') as f:
+      approval_teal_source = f.read()
+  
+  with open(f'./{clear_teal_file_name}', 'r') as f:
+      clear_teal_source = f.read()
+  
+  approval_result = algod_client.compile(approval_teal_source)
+  approval_program = b64decode(approval_result['result'])
+  
+  clear_result = algod_client.compile(clear_teal_source)
+  clear_program = b64decode(clear_result['result'])
+  
+  global_schema = StateSchema(num_uints=0, num_byte_slices=0)
+  local_schema = StateSchema(num_uints=0, num_byte_slices=0)
+  
+  params = algod_client.suggested_params()
+  
+  txn = ApplicationCreateTxn(
+      sender=address,
+      sp=params,
+      on_complete=OnComplete.NoOpOC,
+      approval_program=approval_program,
+      clear_program=clear_program,
+      global_schema=global_schema,
+      local_schema=local_schema,
+  )
+  
+  signed_txn = txn.sign(private_key)
+  tx_id = algod_client.send_transaction(signed_txn)
+  print(f'Contract Deployed Tx ID: {tx_id}')
+  
+  wait_for_confirmation(algod_client, tx_id)
+  tx_info = algod_client.pending_transaction_info(tx_id)
+  
+  app_id = tx_info['application-index']
+  print(f'App ID: {app_id}')
+  
+  app_address = get_application_address(app_id)
+  print(f'App Address: {app_address}')
+  
+  amount_to_send = algos_to_microalgos(0.1)
+  
+  payment_txn = PaymentTxn(
+      sender=address,
+      sp=params,
+      receiver=app_address,
+      amt=amount_to_send
+  )
+  
+  signed_payment_tx = payment_txn.sign(private_key)
+  tx_id = algod_client.send_transaction(signed_payment_tx)
+  print(f'Application funded with 0.1 Algo for MBR: {tx_id}')</code></pre>
+  
+      <h2>Interacting with the Hello World Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>import os
+  from algosdk.account import address_from_private_key
+  from algosdk.v2client.algod import AlgodClient
+  from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner
+  from algokit_utils import ApplicationClient
+  from pathlib import Path
+  
+  algod_token = os.getenv('algod_token')
+  algod_server = os.getenv('algod_server')
+  
+  private_key = os.getenv('private_key')
+  address = address_from_private_key(private_key)
+  
+  algod_client = AlgodClient(algod_token, algod_server)
+  path = Path(__file__).parent / './HelloWorldContract.arc32.json'
+  app_id = int(os.getenv('app_id'))
+  my_signer = AccountTransactionSigner(private_key)
+  params = algod_client.suggested_params()
+  
+  application_client = ApplicationClient(
+      algod_client=algod_client,
+      app_spec=path,
+      app_id=app_id,
+      signer=my_signer,
+      sender=address,
+      suggested_params=params,
+  )
+  
+  atc = AtomicTransactionComposer()
+  application_client.compose_call(atc, call_abi_method='hello', name='AlgoLearn Community')
+  
+  result = atc.execute(algod_client, 2)
+  print(result.abi_results[0].tx_id)
+  print(result.abi_results[0].return_value)</code></pre>
+    `,
+    initialCode: `from algosdk.account import generate_account
+  private_key, address = generate_account()
+  print(private_key, address)`,
+  },
+
+  {
+    id: 23,
+    language: 'Python',
+    title: 'Creating Launching and Interacting with an Archer Smart Contract',
+    content: `
+      <h2>Video Walkthrough</h2>
+      <p>Watch these videos to understand the process of setting up the Archer smart contract:</p>
+      <p>Part 1:</p>
+      <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/7MPmd7yZe78"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+      <p>Part 2:</p>
+      <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+  <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/BAINcnpxBrg"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+      <h2>Generating Accounts</h2>
+      <p>This contract will require two accounts. Use the code below to generate them:</p>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+  
+  private_key, address = generate_account()
+  print(private_key, address)</code></pre>
+  
+      <h2>Funding the Accounts</h2>
+      <p>To fund the accounts, visit the Algorand testnet dispenser: <a href="https://bank.testnet.algorand.network/">https://bank.testnet.algorand.network/</a></p>
+  
+      <h2>Setting Environment Variables (.env)</h2>
+      <p>Define the following environment variables:</p>
+      <pre class="overflow-auto shadow-md"><code># Private keys for both generated accounts
+  private_key=ENTER FIRST PRIVATE KEY
+  private_key_2=ENTER SECOND PRIVATE KEY
+  
+  # Algod token and server (Nodely API)
+  algod_token=
+  algod_server=https://testnet-api.4160.nodely.dev
+  
+  # Application ID generated by LaunchSmartContract.py
+  app_id=722568747</code></pre>
+  
+      <h2>Archer Class Example</h2>
+      <pre class="overflow-auto shadow-md"><code>class Archer:
+      def __init__(self, x):
+          self.arrows = x
+          self.bow_equipped = False
+          
+      def equip_bow(self):
+          assert self.bow_equipped == False
+          self.bow_equipped = True
+          
+      def unequip_bow(self):
+          self.bow_equipped = False
+          
+      def shoot_arrow(self):
+          assert self.bow_equipped == True
+          self.arrows -= 1
+      
+  
+  my_archer = Archer(10)
+  print(my_archer.arrows)
+  print(my_archer.bow_equipped)
+  
+  my_archer.equip_bow()
+  print(my_archer.bow_equipped)
+  
+  my_archer.unequip_bow()
+  print(my_archer.bow_equipped)
+  
+  for i in range(5):
+      my_archer.shoot_arrow()
+      print(my_archer.arrows)</code></pre>
+  
+      <h2>Archer Smart Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, GlobalState, LocalState, UInt64, Txn
+  from algopy.arc4 import abimethod, String
+  
+  class Archer(ARC4Contract):
+      def __init__(self) -> None:
+          self.arrows = LocalState(UInt64)
+          self.bow_equipped = LocalState(bool)
+          self.archersCreated = GlobalState(UInt64(0))
+          
+      @abimethod(allow_actions=['OptIn'])
+      def createArcher(self, x: UInt64) -> tuple[String, String, UInt64, String, UInt64]:
+          self.arrows[Txn.sender] = x
+          self.bow_equipped[Txn.sender] = False
+          self.archersCreated.value += UInt64(1)
+          
+          return String('An Archer was Created!'), String("Archer has this many arrows: "), x, String("Contract has created this many archers so far: "), self.archersCreated.value
+          
+      @abimethod()
+      def EquipBow(self) -> tuple[String, bool]:
+          assert self.bow_equipped[Txn.sender] == False
+          self.bow_equipped[Txn.sender] = True
+          return String('Archer Equipped their Bow: '), self.bow_equipped[Txn.sender]
+          
+      @abimethod()
+      def UnequipBow(self) -> tuple[String, bool]:
+          assert self.bow_equipped[Txn.sender] == True
+          self.bow_equipped[Txn.sender] = False
+          return String('Archer Unequipped their Bow: '), self.bow_equipped[Txn.sender]
+  
+      @abimethod()
+      def ShootArrow(self) -> tuple[String, String, UInt64]:
+          assert self.bow_equipped[Txn.sender] == True
+          assert self.arrows[Txn.sender] > UInt64(0)
+          self.arrows[Txn.sender] -= UInt64(1)
+          return String('Archer shot an arrow!'), String('Arrows Remaining: '), self.arrows[Txn.sender]</code></pre>
+  
+      <h2>Launching the Contract</h2>
+      <p><strong>Note:</strong> Ensure the contract name matches the approval and clear TEAL file names.</p>
+      <p>If your class is defined as:</p>
+      <pre class="overflow-auto shadow-md"><code>class Archer(ARC4Contract):</code></pre>
+      <p>Your approval and clear TEAL file names in <code>LaunchSmartContract.py</code> should be:</p>
+      <pre class="overflow-auto shadow-md"><code>approval_teal_file_name = 'Archer.approval.teal'
+  clear_teal_file_name = 'Archer.clear.teal'</code></pre>
+  
+      <pre class="overflow-auto shadow-md"><code>import os
+  from algosdk.v2client.algod import AlgodClient
+  from algosdk.account import address_from_private_key
+  from base64 import b64decode
+  from algosdk.transaction import StateSchema, ApplicationCreateTxn, OnComplete, wait_for_confirmation
+  from algosdk import logic
+  from dotenv import load_dotenv
+  
+  load_dotenv()
+  
+  node_token = os.getenv('algod_token')
+  node_server = os.getenv('algod_server')
+  private_key = os.getenv('private_key')
+  
+  algod_client = AlgodClient(node_token, node_server)
+  
+  address = address_from_private_key(private_key)
+  
+  params = algod_client.suggested_params()
+  
+  approval_teal_file_name = 'Archer.approval.teal'
+  clear_teal_file_name= 'Archer.clear.teal'
+  
+  with open(f'./{approval_teal_file_name}', 'r') as f:
+      approval_teal_source = f.read()
+  
+  with open(f'./{clear_teal_file_name}', 'r') as f:
+      clear_teal_source = f.read()
+  
+  approval_result = algod_client.compile(approval_teal_source)
+  approval_program = b64decode(approval_result['result'])
+  
+  clear_result = algod_client.compile(clear_teal_source)
+  clear_program = b64decode(clear_result['result'])
+  
+  global_schema = StateSchema(num_uints=1, num_byte_slices=0)
+  local_schema = StateSchema(num_uints=2, num_byte_slices=0)
+  
+  tx = ApplicationCreateTxn(
+      sender=address,
+      sp=params,
+      on_complete=OnComplete.NoOpOC,
+      approval_program=approval_program,
+      clear_program=clear_program,
+      global_schema=global_schema,
+      local_schema=local_schema
+  )
+  
+  signed_txn = tx.sign(private_key)
+  
+  try:
+      tx_id = algod_client.send_transaction(signed_txn)
+  except Exception as e:
+      print("Failed due to:", e)
+      
+  print(f'Tx ID: {tx_id}')
+  wait_for_confirmation(algod_client, tx_id)
+  tx_info = algod_client.pending_transaction_info(tx_id)
+  application_id = tx_info['application-index']
+  print(f'Application ID: {application_id}')
+  
+  app_address = logic.get_application_address(application_id)
+  print(f'Application Address: {app_address}')</code></pre>
+  
+      <h2>Interacting with the Archer Smart Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+  from algokit_utils import ApplicationClient
+  from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer
+  from algosdk.account import address_from_private_key
+  from algosdk.transaction import OnComplete
+  from pathlib import Path
+  import os
+  
+  node_token = os.getenv('algod_token')
+  node_server = os.getenv('algod_server')
+  
+  private_key = os.getenv('private_key_2')
+  
+  algod_client = AlgodClient(node_token, node_server)
+  path = Path(__file__).parent / './Archer.arc32.json'
+  app_id = int(os.getenv('app_id'))
+  signer = AccountTransactionSigner(private_key)
+  address = address_from_private_key(private_key)
+  params = algod_client.suggested_params()
+  
+  application_client = ApplicationClient(
+      algod_client=algod_client,
+      app_spec=path,
+      app_id=app_id,
+      signer=signer,
+      sender=address,
+      suggested_params=params,
+  )
+  
+  atc = AtomicTransactionComposer()
+  
+  application_client.compose_call(atc, call_abi_method='createArcher', transaction_parameters={'on_complete': OnComplete.OptInOC}, x=5)
+  application_client.compose_call(atc, call_abi_method='EquipBow')
+  application_client.compose_call(atc, call_abi_method='UneqipBow')
+  application_client.compose_call(atc, call_abi_method='EquipBow', transaction_parameters={'note': 'Extra Equip Bow Transaction'})
+  application_client.compose_call(atc, call_abi_method='ShootArrow')
+  
+  result = atc.execute(algod_client, 2)
+  tx_ids = [result.abi_results[i].tx_id for i in range(0, len(result.abi_results))]
+  abi_results = [result.abi_results[i].return_value for i in range(0, len(result.abi_results))]
+  
+  for i in range(len(result.abi_results)):
+      print(tx_ids[i])
+      print(abi_results[i])
+      print('\\n')</code></pre>
+    `,
+    initialCode: `from algosdk.account import generate_account
+  private_key, address = generate_account()
+  print(private_key, address)`,
+  },
+
+  {
+    id: 24,
+    language: 'Python',
+    title: 'Simple Staking Smart Contract POC',
+    content: `
+      <h2>Video Walkthrough</h2>
+      <p>Watch the tutorial video for an introduction to this staking smart contract:</p>
+  <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+  <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/dJHugoV36xg"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+      <h2>Generating an Account</h2>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+  
+  private_key, address = generate_account()
+  print(private_key, address)</code></pre>
+  
+      <h2>Funding the Account</h2>
+      <p>To fund the account, visit the Algorand testnet dispenser: <a href="https://bank.testnet.algorand.network/">https://bank.testnet.algorand.network/</a></p>
+  
+      <h2>Algod Node API Information</h2>
+      <p>Use the following Nodely API as your Algod Node API:</p>
+      <p><a href="https://testnet-api.4160.nodely.dev">https://testnet-api.4160.nodely.dev</a></p>
+      <p>Documentation: <a href="https://nodely.io/docs/free/start">https://nodely.io/docs/free/start</a></p>
+  
+      <h2>Staking Contract Code</h2>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, gtxn, Global, BoxRef, Txn, UInt64, itxn
+  from algopy.arc4 import abimethod
+  from algopy.arc4 import UInt64 as arc4UInt64
+  
+  class StakingContract(ARC4Contract):
+      def __init__(self) -> None:
+          pass
+      
+      @abimethod
+      def stake(self,
+              pay_amount: gtxn.PaymentTransaction,
+              fee_payment: gtxn.PaymentTransaction) -> tuple[UInt64, UInt64]:
+          
+          assert pay_amount.receiver == Global.current_application_address
+          assert fee_payment.amount == 21_700
+          
+          staking_box = BoxRef(key=Txn.sender.bytes)
+          value, exists = staking_box.maybe()
+          
+          if exists:
+              amount_staked = arc4UInt64.from_bytes(value[0:8])
+              initial_stake_time = arc4UInt64.from_bytes(value[8:16])
+              time_difference = Global.latest_timestamp - initial_stake_time.native
+              
+              reward = time_difference * 1000
+              itxn.Payment(receiver=Txn.sender,amount=reward,fee=Global.min_txn_fee).submit()
+              
+              new_total_stake = amount_staked.native + pay_amount.amount
+              staking_box.put(arc4UInt64(new_total_stake).bytes + arc4UInt64(Global.latest_timestamp).bytes)
+          
+          else:        
+              reward = UInt64(0)
+              staking_box.create(size=16)
+              staking_box.put(arc4UInt64(pay_amount.amount).bytes + arc4UInt64(Global.latest_timestamp).bytes)
+          
+          return pay_amount.amount, reward
+      
+      @abimethod
+      def claimRewardAndWithdraw(self) -> UInt64:
+          
+          staking_box = BoxRef(key=Txn.sender.bytes)
+          value, exists = staking_box.maybe()
+          
+          assert exists
+          
+          amount_staked = arc4UInt64.from_bytes(value[0:8])
+          initial_stake_time = arc4UInt64.from_bytes(value[8:16])
+          
+          time_difference = Global.latest_timestamp - initial_stake_time.native
+          reward = time_difference * 1000
+          amount_to_send = reward + amount_staked.native
+          
+          itxn.Payment(receiver=Txn.sender,amount=amount_to_send,fee=Global.min_txn_fee).submit()
+          staking_box.delete()
+          
+          return amount_to_send</code></pre>
+  
+      <h2>Compiling the Contract</h2>
+      <p>Use the following command to compile the contract:</p>
+      <pre class="overflow-auto shadow-md"><code>algokit compile py MyStakingContract.py</code></pre>
+  
+      <h2>Launching the Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
+  from algosdk.account import address_from_private_key
+  from algosdk.v2client.algod import AlgodClient
+  from algosdk import logic
+  from dotenv import load_dotenv
+  import base64
+  import os
+  
+  load_dotenv()
+  
+  node_token = os.getenv('algod_token')
+  node_server = os.getenv('algod_server')
+  algod_client = AlgodClient(node_token, node_server)
+  
+  private_key = os.getenv('private_key')
+  address = address_from_private_key(private_key)
+  
+  params = algod_client.suggested_params()
+  
+  approval_teal_file_name = 'StakingContract.approval.teal'
+  clear_teal_file_name = 'StakingContract.clear.teal'
+  
+  with open(f'./{approval_teal_file_name}', 'r') as f:
+      approval_teal_source = f.read()
+  
+  with open(f'{clear_teal_file_name}', 'r') as f:
+      clear_teal_source = f.read()
+  
+  approval_result = algod_client.compile(approval_teal_source)
+  approval_program = base64.b64decode(approval_result['result'])
+  
+  clear_result = algod_client.compile(clear_teal_source)
+  clear_program = base64.b64decode(clear_result['result'])
+  
+  global_schema = StateSchema(num_uints=0, num_byte_slices=0)
+  local_schema = StateSchema(num_uints=0, num_byte_slices=0)
+  
+  txn = ApplicationCreateTxn(
+      sender = address,
+      sp = params,
+      on_complete=OnComplete.NoOpOC,
+      approval_program=approval_program,
+      clear_program=clear_program,
+      global_schema=global_schema,
+      local_schema=local_schema,
+  )
+  signed_txn = txn.sign(private_key)
+  
+  try:
+      txid = algod_client.send_transaction(signed_txn)
+  except Exception as e:
+      print(e)
+      
+  print(f'Tx ID: {txid}')
+  wait_for_confirmation(algod_client, txid)
+  tx_info = algod_client.pending_transaction_info(txid)
+  print(f'App ID: {tx_info["application-index"]}')
+  
+  app_address = logic.get_application_address(tx_info["application-index"])
+  print(f'Application Address: {app_address}')</code></pre>
+  
+      <h2>Funding the Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>activate_contract = PaymentTxn(
+      sender = address,
+      sp = params,
+      receiver = app_address,
+      amt = 100_000
+  )
+  
+  signed_activation = activate_contract.sign(private_key)
+  activation_tx = algod_client.send_transaction(signed_activation)
+  print(f'MBR For Contract to be Active Account Funded: {activation_tx}')</code></pre>
+  
+      <h2>Box Fees and MBR Calculation</h2>
+      <p>Box Minimum Balance Requirement (MBR) Calculation:</p>
+      <pre class="overflow-auto shadow-md"><code>box_creation_fee = 2500
+  box_byte_fee = 400
+  
+  address_bytes = 32
+  uint64_2 = 16
+  
+  box_mbr = box_creation_fee + ((address_bytes + uint64_2) * 400)
+  print(box_mbr)</code></pre>
+  
+      <p>Read more about MBR for boxes: <a href="https://developer.algorand.org/articles/smart-contract-storage-boxes/">Algorand Box Storage Documentation</a></p>
+  
+      <h2>Staking to the Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+  from algosdk.v2client.algod import AlgodClient
+  from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer, TransactionWithSigner
+  from algosdk.transaction import PaymentTxn
+  from algosdk.account import address_from_private_key
+  from pathlib import Path
+  import os
+  from algosdk.util import algos_to_microalgos
+  from algosdk.abi import ABIType
+  
+  algod_token = os.getenv('algod_token')
+  algod_server = os.getenv('algod_server')
+  algod_client = AlgodClient(algod_token, algod_server)
+  
+  path = Path(__file__).parent / './StakingContract.arc32.json'
+  app_id = int(os.getenv('app_id'))
+  private_key = os.getenv('private_key')
+  signer = AccountTransactionSigner(private_key)
+  address = address_from_private_key(private_key)
+  params = algod_client.suggested_params()
+  
+  app_client = ApplicationClient(
+      algod_client=algod_client,
+      app_spec=path,
+      app_id=app_id,
+      signer=signer,
+      sender=address,
+      suggested_params=params,
+  )
+  
+  atc = AtomicTransactionComposer()
+  
+  address_coder = ABIType.from_string('(address)')
+  box_key = address_coder.encode((address,))
+  
+  stake_algo_transaction = PaymentTxn(sender=address, sp=params,receiver=app_client.app_address,amt=algos_to_microalgos(0.1))
+  stake_with_signer_tx = TransactionWithSigner(stake_algo_transaction, signer)
+  
+  fee_payment_txn = PaymentTxn(sender=address, sp=params,receiver=app_client.app_address,amt=21700)
+  fee_payment_with_signer_tx = TransactionWithSigner(fee_payment_txn, signer)
+  
+  app_client.compose_call(atc, call_abi_method='stake',pay_amount=stake_with_signer_tx, fee_payment=fee_payment_with_signer_tx, transaction_parameters={'boxes': [[app_id, box_key]]})
+  
+  result = atc.execute(algod_client, 2)
+  print(result.tx_ids[0])
+  print(result.abi_results[0].return_value)</code></pre>
+  
+      <h2>Claiming Reward and Withdrawing from Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+  from algosdk.v2client.algod import AlgodClient
+  from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer
+  from algosdk.account import address_from_private_key
+  from algosdk.abi import ABIType
+  from pathlib import Path
+  import os
+  
+  algod_token = os.getenv('algod_token')
+  algod_server = os.getenv('algod_server')
+  algod_client = AlgodClient(algod_token, algod_server)
+  
+  path = Path(__file__).parent / './StakingContract.arc32.json'
+  app_id = int(os.getenv('app_id'))
+  private_key = os.getenv('private_key')
+  signer = AccountTransactionSigner(private_key)
+  address = address_from_private_key(private_key)
+  params = algod_client.suggested_params()
+  
+  app_client = ApplicationClient(
+      algod_client=algod_client,
+      app_spec=path,
+      app_id=app_id,
+      signer=signer,
+      sender=address,
+      suggested_params=params,
+  )
+  
+  atc = AtomicTransactionComposer()
+  
+  address_coder = ABIType.from_string('(address)')
+  box_key = address_coder.encode((address,))
+  
+  app_client.compose_call(atc, call_abi_method='claimRewardAndWithdraw', transaction_parameters={'boxes': [[app_id, box_key]]})
+  
+  result = atc.execute(algod_client, 2)
+  print(result.tx_ids[0])
+  print(result.abi_results[0].return_value)</code></pre>
+    `,
+    initialCode: `from algosdk.account import generate_account
+  private_key, address = generate_account()
+  print(private_key, address)`,
+  },
+  {
+    id: 25,
+    language: 'Python',
+    title: 'Marketplace Contract part 1 - Asset for Algo',
+    content: `
+      <h2>Video Walkthrough</h2>
+      <p>Watch the tutorial video for this chapter:</p> 
+
+<div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+  <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/cNv3Nxx7mIA"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+      
+      <h3>Step 1: Generate Two Accounts</h3>
+      <ul class="inText">
+        <li>One for Lister, one for Buyer</li>
+      </ul>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+
+print(private_key, address)
+</code></pre>
+      
+      <h3>Step 2: Load each Account with Funds</h3>
+      <p>Use the following link to load funds into each account:</p>
+      <a href="https://bank.testnet.algorand.network/" target="_blank">https://bank.testnet.algorand.network/</a>
+      
+      <h3>Step 3: Create .env</h3>
+      <pre class="overflow-auto shadow-md"><code>algod_token = 
+algod_server = https://testnet-api.4160.nodely.dev
+private_key = lqPuVOtF4p6QpsaL7iTA6mbHoy7a5+nuAPjzw7HvckiXQWUlnZQVYSCZSvUK8w+MGjh09sNsx7WybOeb0MLD/Q==
+buyer_private_key = jHx+aE6G/5RKAMJK7J7R+j3SyjKhzLsrbYIrzmmhWphJsT7CpTxqdhsjWQx4wDpx2I5B+1FiBSp16O5fXd/Sqg==
+asset_1 = 724395141
+asset_2 = 724449087
+app_id = 724455779
+</code></pre>
+      
+      <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
+      <p>Use the following terminal command to compile your contract:</p>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy.arc4 import abimethod, Address, Struct, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+
+
+class listingName(Struct):
+    lister: Address
+    counter: arc4UInt64
+    
+    
+class listingValue(Struct):
+    asset_listed: arc4UInt64
+    algo_requested: arc4UInt64    
+    
+    
+
+class listings(ARC4Contract):
+    def __init__(self) -> None:
+        self.listingCounter = GlobalState(arc4UInt64(0))
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    @abimethod
+    def postListingRequest(
+        self,
+        asset_to_list: gtxn.AssetTransferTransaction,
+        algo_amount_requested: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction,
+    ) -> tuple[String, UInt64, String, arc4UInt64]:
+        
+        assert box_fee_mbr_payment.amount == 24_900
+        assert asset_to_list.asset_receiver == Global.current_application_address
+        assert asset_to_list.asset_amount == 1
+        
+        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
+        
+        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
+        
+        listing_box = BoxRef(key=listing_box_name_info.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert not exists
+        
+        listing_box.create(size=16)
+        
+        listing_box_value_info = listingValue(arc4UInt64(asset_to_list.xfer_asset.id), algo_amount_requested)
+        
+        listing_box.put(listing_box_value_info.bytes)
+        
+        return String("User Listed Asset Successfully: "), asset_to_list.xfer_asset.id, String("User is requesting x amount of Algo: "), algo_amount_requested
+    
+    
+    @abimethod
+    def fulfillListingRequest(
+        self,
+        asset_listed: Asset,
+        listing_name: listingName,
+        payment: gtxn.PaymentTransaction,
+        transfer_fees: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64, String, UInt64]:
+        
+        assert transfer_fees.amount == 2000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == asset_listed.id
+        assert listing_value.algo_requested == payment.amount
+        
+        itxn.Payment(
+            receiver=listing_name.lister.native,
+            amount=payment.amount,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_listed,
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Fulfilled for Asset: "), asset_listed.id, String("Lister received x amount of Algo: "), payment.amount
+        
+        
+        
+    @abimethod
+    def cancelListingRequest(
+        self,
+        listing_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister.native == Txn.sender
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == listing_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listing_asset.id,
+            asset_amount=1,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Request Cancelled")</code></pre>
+
+      <p>Ensure you have the necessary imports and class definitions for your contract.</p>
+      
+      <h3>Step 5: Create Two Arbitrary Assets for Experimenting</h3>
+      <p>Follow the steps to create and configure two assets for testing purposes.</p>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
+from algosdk.account import address_from_private_key
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+asset_creation_txn = AssetConfigTxn(
+    sender=address,
+    sp=params,
+    total=100,
+    default_frozen=False,
+    asset_name='Test Asset Two',
+    unit_name='TA2',
+    manager=address,
+    reserve=address,
+    strict_empty_address_check=False,
+)
+
+signed_tx = asset_creation_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_tx)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+
+asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
+asset_info = algod_client.asset_info(asset_id)
+print(asset_info)</code></pre>
+      
+      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      
+      <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
+      <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from pathlib import Path
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(atc, call_abi_method='triggerOptIn', asset_to_opt_into=asset_1, fee_payment=wrapped_payment)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <p>Create an asset listing box to manage your asset listings.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+from base64 import b64decode
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='triggerOptIn', 
+    asset_to_opt_into=asset_1, 
+    fee_payment=wrapped_payment)
+
+
+asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_1)
+wrapped_asset_list_transaction = TransactionWithSigner(asset_to_list_transaction, signer)
+
+
+box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=24_900)
+wrapped_box_fee_payment = TransactionWithSigner(box_fee_payment_tx, signer)
+
+
+current_global_listing_counter = algod_client.application_info(app_id)['params']['global-state'][0]['value']['bytes']
+uint64_coder = ABIType.from_string('(uint64)')
+b64_decoded_global_listing_counter = b64decode(current_global_listing_counter)
+encoded_global_listing_counter = uint64_coder.decode(b64_decoded_global_listing_counter)[0]
+
+
+listing_box_counter = encoded_global_listing_counter + 1
+listing_box_coder = ABIType.from_string('(address,uint64)')
+users_listing_box_name = listing_box_coder.encode((address, listing_box_counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='postListingRequest', 
+    asset_to_list=wrapped_asset_list_transaction, 
+    algo_amount_requested=algos_to_microalgos(1), 
+    box_fee_mbr_payment=wrapped_box_fee_payment,
+    transaction_parameters={'boxes': [[app_id, users_listing_box_name]]}
+    )
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)
+</code></pre>
+      
+      <h3>Step 9: Check Respective Listing Information</h3>
+      <p>Retrieve and verify the listing information from the contract.</p>
+      <pre class="overflow-auto shadow-md"><code>import os
+from algosdk.v2client.algod import AlgodClient
+from algosdk.abi import ABIType
+from base64 import b64decode
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+app_id = int(os.getenv('app_id'))
+
+boxes = algod_client.application_boxes(app_id)['boxes']
+
+for box in boxes:
+    box_name_b64encoded = box['name']
+    print(b64decode(box_name_b64encoded))
+    box_value = b64decode(algod_client.application_box_by_name(app_id, b64decode(box_name_b64encoded))['value'])
+    print(box_value)
+
+    #Asset for Algo: '(uint64,uint64)'
+    #Asset for Asset: '(uint64,uint64,bool)'
+    #Asset for Asset Quantity: '(uint64,uint64,uint64,bool)
+    #Asset Quantity for Asset Quantity: '(uint64,uint64,uint64,uint64,bool)'
+    #Universal Listing: '(uint64,uint64,uint64,uint64,bool)'
+    listing_box_value_coder = ABIType.from_string('(uint64,uint64)')
+    print(listing_box_value_coder.decode(box_value))
+</code></pre>
+      
+      <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+      <p>Execute the purchase of the asset using the buyer's private key.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.abi import ABIType
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+atc.add_transaction(wrapped_opt_in_transaction)
+
+asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1_000_000)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='fulfillListingRequest', 
+    asset_listed=asset_1, 
+    listing_name=(lister_address,counter), 
+    payment=wrapped_asset_payment, 
+    transfer_fees=wrapped_fee_payment, 
+    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts':[lister_address]})
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <hr>
+      <form>
+        <h1>Quiz</h1>
+        <h3>Question 1</h3>
+        <p>What data type is used to store whole numbers in Python?</p>
+        <input type="radio" id="q1a" name="q1" value="a">
+        <label for="q1a" class="incorrect">a) String</label><br>
+        <input type="radio" id="q1b" name="q1" value="b">
+        <label for="q1b" class="incorrect">b) Float</label><br>
+        <input type="radio" id="q1c" name="q1" value="c">
+        <label for="q1c" class="correct">c) Integer</label><br>
+        <input type="radio" id="q1d" name="q1" value="d">
+        <label for="q1d" class="incorrect">d) Boolean</label><br>
+    
+        <h3>Question 2</h3>
+        <p>Which of the following is an example of a correct variable name in Python?</p>
+        <input type="radio" id="q2a" name="q2" value="a">
+        <label for="q2a" class="incorrect">a) 3variable</label><br>
+        <input type="radio" id="q2b" name="q2" value="b">
+        <label for="q2b" class="incorrect">b) my-variable</label><br>
+        <input type="radio" id="q2c" name="q2" value="c">
+        <label for="q2c" class="incorrect">c) my variable</label><br>
+        <input type="radio" id="q2d" name="q2" value="d">
+        <label for="q2d" class="correct">d) my_variable</label><br>
+    
+        <h3>Question 3</h3>
+        <p>What will be the result of the following code snippet?</p>
+        <pre><code>string = "Hello"\nresult = string * 3\nprint(result)</code></pre>
+        <input type="radio" id="q3a" name="q3" value="a">
+        <label for="q3a" class="correct">a) HelloHelloHello</label><br>
+        <input type="radio" id="q3b" name="q3" value="b">
+        <label for="q3b" class="incorrect">b) Hello, Hello, Hello</label><br>
+        <input type="radio" id="q3c" name="q3" value="c">
+        <label for="q3c" class="incorrect">c) Hello*3</label><br>
+        <input type="radio" id="q3d" name="q3" value="d">
+        <label for="q3d" class="incorrect">d) Error</label><br>
+    
+        <h3>Question 4</h3>
+        <p>Which Python data type is immutable?</p>
+        <input type="radio" id="q4a" name="q4" value="a">
+        <label for="q4a" class="incorrect">a) Tuple</label><br>
+        <input type="radio" id="q4b" name="q4" value="b">
+        <label for="q4b" class="incorrect">b) String</label><br>
+        <input type="radio" id="q4c" name="q4" value="c">
+        <label for="q4c" class="correct">c) List</label><br>
+        <input type="radio" id="q4d" name="q4" value="d">
+        <label for="q4d" class="incorrect">d) Integer</label><br>
+      </form>
+    `,
+    initialCode: ``, // You can input your initial code here
+  },
+  {
+    id: 26, // Adjust the ID as necessary
+    language: 'Python',
+    title: 'Marketplace Contract part 2 - Asset for Asset',
+    content: `
+      <h2>Video Walkthrough</h2>
+      <p>Watch the tutorial video for this chapter:</p> 
+      
+
+<div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+  <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/46i8OvPWPUc"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+      
+      <h3>Step 1: Generate Two Accounts</h3>
+      <ul class="inText">
+        <li>One for Lister, one for Buyer</li>
+      </ul>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+
+print(private_key, address)
+</code></pre>
+      
+      <h3>Step 2: Load each Account with Funds</h3>
+      <p>Use the following link to load funds into each account:</p>
+      <a href="https://bank.testnet.algorand.network/" target="_blank">https://bank.testnet.algorand.network/</a>
+      
+      <h3>Step 3: Create .env</h3>
+      <pre class="overflow-auto shadow-md"><code>algod_token = 
+algod_server = https://testnet-api.4160.nodely.dev
+private_key = lqPuVOtF4p6QpsaL7iTA6mbHoy7a5+nuAPjzw7HvckiXQWUlnZQVYSCZSvUK8w+MGjh09sNsx7WybOeb0MLD/Q==
+buyer_private_key = jHx+aE6G/5RKAMJK7J7R+j3SyjKhzLsrbYIrzmmhWphJsT7CpTxqdhsjWQx4wDpx2I5B+1FiBSp16O5fXd/Sqg==
+asset_1 = 724395141
+asset_2 = 724449087
+app_id = 724455779
+</code></pre>
+      
+      <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
+      <p>Use the following terminal command to compile your contract:</p>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy.arc4 import abimethod, Address, Struct, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+
+
+class listingName(Struct):
+    lister: Address
+    counter: arc4UInt64
+    
+    
+class listingValue(Struct):
+    asset_listed: arc4UInt64
+    algo_requested: arc4UInt64    
+    
+    
+
+class listings(ARC4Contract):
+    def __init__(self) -> None:
+        self.listingCounter = GlobalState(arc4UInt64(0))
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    @abimethod
+    def postListingRequest(
+        self,
+        asset_to_list: gtxn.AssetTransferTransaction,
+        algo_amount_requested: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction,
+    ) -> tuple[String, UInt64, String, arc4UInt64]:
+        
+        assert box_fee_mbr_payment.amount == 24_900
+        assert asset_to_list.asset_receiver == Global.current_application_address
+        assert asset_to_list.asset_amount == 1
+        
+        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
+        
+        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
+        
+        listing_box = BoxRef(key=listing_box_name_info.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert not exists
+        
+        listing_box.create(size=16)
+        
+        listing_box_value_info = listingValue(arc4UInt64(asset_to_list.xfer_asset.id), algo_amount_requested)
+        
+        listing_box.put(listing_box_value_info.bytes)
+        
+        return String("User Listed Asset Successfully: "), asset_to_list.xfer_asset.id, String("User is requesting x amount of Algo: "), algo_amount_requested
+    
+    
+    @abimethod
+    def fulfillListingRequest(
+        self,
+        asset_listed: Asset,
+        listing_name: listingName,
+        payment: gtxn.PaymentTransaction,
+        transfer_fees: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64, String, UInt64]:
+        
+        assert transfer_fees.amount == 2000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == asset_listed.id
+        assert listing_value.algo_requested == payment.amount
+        
+        itxn.Payment(
+            receiver=listing_name.lister.native,
+            amount=payment.amount,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_listed,
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Fulfilled for Asset: "), asset_listed.id, String("Lister received x amount of Algo: "), payment.amount
+        
+        
+        
+    @abimethod
+    def cancelListingRequest(
+        self,
+        listing_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister.native == Txn.sender
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == listing_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listing_asset.id,
+            asset_amount=1,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Request Cancelled")</code></pre>
+
+      <p>Ensure you have the necessary imports and class definitions for your contract.</p>
+      
+      <h3>Step 5: Create Two Arbitrary Assets for Experimenting</h3>
+      <p>Follow the steps to create and configure two assets for testing purposes.</p>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
+from algosdk.account import address_from_private_key
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+asset_creation_txn = AssetConfigTxn(
+    sender=address,
+    sp=params,
+    total=100,
+    default_frozen=False,
+    asset_name='Test Asset Two',
+    unit_name='TA2',
+    manager=address,
+    reserve=address,
+    strict_empty_address_check=False,
+)
+
+signed_tx = asset_creation_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_tx)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+
+asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
+asset_info = algod_client.asset_info(asset_id)
+print(asset_info)</code></pre>
+      
+      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      
+      <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
+      <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from pathlib import Path
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(atc, call_abi_method='triggerOptIn', asset_to_opt_into=asset_1, fee_payment=wrapped_payment)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <p>Create an asset listing box to manage your asset listings.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+from base64 import b64decode
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='triggerOptIn', 
+    asset_to_opt_into=asset_1, 
+    fee_payment=wrapped_payment)
+
+
+asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_1)
+wrapped_asset_list_transaction = TransactionWithSigner(asset_to_list_transaction, signer)
+
+
+box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=24_900)
+wrapped_box_fee_payment = TransactionWithSigner(box_fee_payment_tx, signer)
+
+
+current_global_listing_counter = algod_client.application_info(app_id)['params']['global-state'][0]['value']['bytes']
+uint64_coder = ABIType.from_string('(uint64)')
+b64_decoded_global_listing_counter = b64decode(current_global_listing_counter)
+encoded_global_listing_counter = uint64_coder.decode(b64_decoded_global_listing_counter)[0]
+
+
+listing_box_counter = encoded_global_listing_counter + 1
+listing_box_coder = ABIType.from_string('(address,uint64)')
+users_listing_box_name = listing_box_coder.encode((address, listing_box_counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='postListingRequest', 
+    asset_to_list=wrapped_asset_list_transaction, 
+    algo_amount_requested=algos_to_microalgos(1), 
+    box_fee_mbr_payment=wrapped_box_fee_payment,
+    transaction_parameters={'boxes': [[app_id, users_listing_box_name]]}
+    )
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)
+</code></pre>
+      
+      <h3>Step 9: Check Respective Listing Information</h3>
+      <p>Retrieve and verify the listing information from the contract.</p>
+      <pre class="overflow-auto shadow-md"><code>import os
+from algosdk.v2client.algod import AlgodClient
+from algosdk.abi import ABIType
+from base64 import b64decode
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+app_id = int(os.getenv('app_id'))
+
+boxes = algod_client.application_boxes(app_id)['boxes']
+
+for box in boxes:
+    box_name_b64encoded = box['name']
+    print(b64decode(box_name_b64encoded))
+    box_value = b64decode(algod_client.application_box_by_name(app_id, b64decode(box_name_b64encoded))['value'])
+    print(box_value)
+
+    #Asset for Algo: '(uint64,uint64)'
+    #Asset for Asset: '(uint64,uint64,bool)'
+    #Asset for Asset Quantity: '(uint64,uint64,uint64,bool)
+    #Asset Quantity for Asset Quantity: '(uint64,uint64,uint64,uint64,bool)'
+    #Universal Listing: '(uint64,uint64,uint64,uint64,bool)'
+    listing_box_value_coder = ABIType.from_string('(uint64,uint64)')
+    print(listing_box_value_coder.decode(box_value))
+</code></pre>
+      
+      <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+      <p>Execute the purchase of the asset using the buyer's private key.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.abi import ABIType
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+atc.add_transaction(wrapped_opt_in_transaction)
+
+asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1_000_000)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='fulfillListingRequest', 
+    asset_listed=asset_1, 
+    listing_name=(lister_address,counter), 
+    payment=wrapped_asset_payment, 
+    transfer_fees=wrapped_fee_payment, 
+    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts':[lister_address]})
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <h3>Step 11: Experiment with Cancelling a Listing Request</h3>
+      <p>If you fulfilled the previous request already, you will need to generate a new listing again with Step 8, and increment the "counter" variable from 1 to 2. For example:</p>
+      <pre><code>counter = 2</code></pre>
+      <p>Create and compile the asset listing contract:</p>
+      <p><code>algokit compile py yourContractFileName.py</code></p>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy.arc4 import abimethod, Address, Struct, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+
+
+class listingName(Struct):
+    lister: Address
+    counter: arc4UInt64
+    
+
+class tradeListingValue(Struct):
+    asset_listed: arc4UInt64
+    asset_requested: arc4UInt64
+    fulfilled: Bool
+
+    
+
+
+class listings(ARC4Contract):
+    def __init__(self) -> None:
+        self.listingCounter = GlobalState(arc4UInt64(0))
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    
+    
+    @abimethod
+    def postTradeRequest(
+        self,
+        asset_to_list: gtxn.AssetTransferTransaction,
+        asset_request: Asset,
+        box_fee_mbr_payment: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert box_fee_mbr_payment.amount == 25_300
+        assert asset_to_list.asset_receiver == Global.current_application_address
+        assert asset_to_list.asset_amount == 1
+        
+        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
+        
+        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
+        
+        listing_box = BoxRef(key=listing_box_name_info.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert not exists
+        
+        listing_box.create(size=17)
+        
+        listing_box_value_info = tradeListingValue(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_request.id), Bool(False))
+    
+        
+        listing_box.put(listing_box_value_info.bytes)
+        
+        return String("Trade Request Posted")
+    
+    
+    @abimethod
+    def fulfillTradeRequest(
+        self,
+        asset_trade_fulfillment: gtxn.AssetTransferTransaction,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_listed: Asset,
+        listing_name: listingName,
+        
+    ) -> String:
+        
+        assert asset_transfer_fee.amount == 1000
+        assert asset_trade_fulfillment.asset_amount == 1
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = tradeListingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == asset_listed.id
+        assert listing_value.asset_requested == asset_trade_fulfillment.xfer_asset.id
+        
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_listed,
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_value.fulfilled = Bool(True)
+        listing_box.put(listing_value.bytes)
+        
+        
+        return String("Trade Request Fulfilled!")        
+        
+        
+    @abimethod
+    def claimFulfilledTradeRequest(
+        self,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_requested: Asset,
+        listing_name: listingName,
+    ) -> String:
+        
+        
+        assert listing_name.lister == Address(Txn.sender)
+        assert asset_transfer_fee.amount == 1000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = tradeListingValue.from_bytes(value)
+        
+        assert asset_requested.id == listing_value.asset_requested
+        assert listing_value.fulfilled == Bool(True)
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_requested.id,
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Trade Request Completed!")
+    
+    
+    @abimethod
+    def cancelTradeRequest(
+        self,
+        listed_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister == Address(Txn.sender)
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = tradeListingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == listed_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listed_asset.id,
+            asset_amount=1,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()    
+        
+        return String("Trade Request Cancelled!")
+    
+    </code></pre>
+    `,
+    initialCode: ``, // You can input your initial code here if applicable
+  },
+
+  {
+    id: 27, // Adjust the ID as necessary
+    language: 'Python',
+    title: 'Marketplace Contract part 3 - Asset for Asset Quantity',
+    content: `
+      <h2>Video Walkthrough</h2>
+      <p>Watch the tutorial video for this chapter:</p> 
+      
+
+<div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+  <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/uKqqhaYpxHU"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+      
+      <h3>Step 1: Generate Two Accounts</h3>
+      <ul class="inText">
+        <li>One for Lister, one for Buyer</li>
+      </ul>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+
+print(private_key, address)
+</code></pre>
+      
+      <h3>Step 2: Load each Account with Funds</h3>
+      <p>Use the following link to load funds into each account:</p>
+      <a href="https://bank.testnet.algorand.network/" target="_blank">https://bank.testnet.algorand.network/</a>
+      
+      <h3>Step 3: Create .env</h3>
+      <pre class="overflow-auto shadow-md"><code>algod_token = 
+algod_server = https://testnet-api.4160.nodely.dev
+private_key = lqPuVOtF4p6QpsaL7iTA6mbHoy7a5+nuAPjzw7HvckiXQWUlnZQVYSCZSvUK8w+MGjh09sNsx7WybOeb0MLD/Q==
+buyer_private_key = jHx+aE6G/5RKAMJK7J7R+j3SyjKhzLsrbYIrzmmhWphJsT7CpTxqdhsjWQx4wDpx2I5B+1FiBSp16O5fXd/Sqg==
+asset_1 = 724395141
+asset_2 = 724449087
+app_id = 724455779
+</code></pre>
+      
+      <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
+      <p>Use the following terminal command to compile your contract:</p>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy.arc4 import abimethod, Address, Struct, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+
+
+class listingName(Struct):
+    lister: Address
+    counter: arc4UInt64
+    
+    
+class listingValue(Struct):
+    asset_listed: arc4UInt64
+    algo_requested: arc4UInt64    
+    
+    
+
+class listings(ARC4Contract):
+    def __init__(self) -> None:
+        self.listingCounter = GlobalState(arc4UInt64(0))
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    @abimethod
+    def postListingRequest(
+        self,
+        asset_to_list: gtxn.AssetTransferTransaction,
+        algo_amount_requested: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction,
+    ) -> tuple[String, UInt64, String, arc4UInt64]:
+        
+        assert box_fee_mbr_payment.amount == 24_900
+        assert asset_to_list.asset_receiver == Global.current_application_address
+        assert asset_to_list.asset_amount == 1
+        
+        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
+        
+        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
+        
+        listing_box = BoxRef(key=listing_box_name_info.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert not exists
+        
+        listing_box.create(size=16)
+        
+        listing_box_value_info = listingValue(arc4UInt64(asset_to_list.xfer_asset.id), algo_amount_requested)
+        
+        listing_box.put(listing_box_value_info.bytes)
+        
+        return String("User Listed Asset Successfully: "), asset_to_list.xfer_asset.id, String("User is requesting x amount of Algo: "), algo_amount_requested
+    
+    
+    @abimethod
+    def fulfillListingRequest(
+        self,
+        asset_listed: Asset,
+        listing_name: listingName,
+        payment: gtxn.PaymentTransaction,
+        transfer_fees: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64, String, UInt64]:
+        
+        assert transfer_fees.amount == 2000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == asset_listed.id
+        assert listing_value.algo_requested == payment.amount
+        
+        itxn.Payment(
+            receiver=listing_name.lister.native,
+            amount=payment.amount,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_listed,
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Fulfilled for Asset: "), asset_listed.id, String("Lister received x amount of Algo: "), payment.amount
+        
+        
+        
+    @abimethod
+    def cancelListingRequest(
+        self,
+        listing_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister.native == Txn.sender
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == listing_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listing_asset.id,
+            asset_amount=1,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Request Cancelled")</code></pre>
+
+      <p>Ensure you have the necessary imports and class definitions for your contract.</p>
+      
+      <h3>Step 5: Create Two Arbitrary Assets for Experimenting</h3>
+      <p>Follow the steps to create and configure two assets for testing purposes.</p>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
+from algosdk.account import address_from_private_key
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+asset_creation_txn = AssetConfigTxn(
+    sender=address,
+    sp=params,
+    total=100,
+    default_frozen=False,
+    asset_name='Test Asset Two',
+    unit_name='TA2',
+    manager=address,
+    reserve=address,
+    strict_empty_address_check=False,
+)
+
+signed_tx = asset_creation_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_tx)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+
+asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
+asset_info = algod_client.asset_info(asset_id)
+print(asset_info)</code></pre>
+      
+      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      
+      <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
+      <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from pathlib import Path
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(atc, call_abi_method='triggerOptIn', asset_to_opt_into=asset_1, fee_payment=wrapped_payment)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <p>Create an asset listing box to manage your asset listings.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+from base64 import b64decode
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='triggerOptIn', 
+    asset_to_opt_into=asset_1, 
+    fee_payment=wrapped_payment)
+
+
+asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_1)
+wrapped_asset_list_transaction = TransactionWithSigner(asset_to_list_transaction, signer)
+
+
+box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=24_900)
+wrapped_box_fee_payment = TransactionWithSigner(box_fee_payment_tx, signer)
+
+
+current_global_listing_counter = algod_client.application_info(app_id)['params']['global-state'][0]['value']['bytes']
+uint64_coder = ABIType.from_string('(uint64)')
+b64_decoded_global_listing_counter = b64decode(current_global_listing_counter)
+encoded_global_listing_counter = uint64_coder.decode(b64_decoded_global_listing_counter)[0]
+
+
+listing_box_counter = encoded_global_listing_counter + 1
+listing_box_coder = ABIType.from_string('(address,uint64)')
+users_listing_box_name = listing_box_coder.encode((address, listing_box_counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='postListingRequest', 
+    asset_to_list=wrapped_asset_list_transaction, 
+    algo_amount_requested=algos_to_microalgos(1), 
+    box_fee_mbr_payment=wrapped_box_fee_payment,
+    transaction_parameters={'boxes': [[app_id, users_listing_box_name]]}
+    )
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)
+</code></pre>
+      
+      <h3>Step 9: Check Respective Listing Information</h3>
+      <p>Retrieve and verify the listing information from the contract.</p>
+      <pre class="overflow-auto shadow-md"><code>import os
+from algosdk.v2client.algod import AlgodClient
+from algosdk.abi import ABIType
+from base64 import b64decode
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+app_id = int(os.getenv('app_id'))
+
+boxes = algod_client.application_boxes(app_id)['boxes']
+
+for box in boxes:
+    box_name_b64encoded = box['name']
+    print(b64decode(box_name_b64encoded))
+    box_value = b64decode(algod_client.application_box_by_name(app_id, b64decode(box_name_b64encoded))['value'])
+    print(box_value)
+
+    #Asset for Algo: '(uint64,uint64)'
+    #Asset for Asset: '(uint64,uint64,bool)'
+    #Asset for Asset Quantity: '(uint64,uint64,uint64,bool)
+    #Asset Quantity for Asset Quantity: '(uint64,uint64,uint64,uint64,bool)'
+    #Universal Listing: '(uint64,uint64,uint64,uint64,bool)'
+    listing_box_value_coder = ABIType.from_string('(uint64,uint64)')
+    print(listing_box_value_coder.decode(box_value))
+</code></pre>
+      
+      <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+      <p>Execute the purchase of the asset using the buyer's private key.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.abi import ABIType
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+atc.add_transaction(wrapped_opt_in_transaction)
+
+asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1_000_000)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='fulfillListingRequest', 
+    asset_listed=asset_1, 
+    listing_name=(lister_address,counter), 
+    payment=wrapped_asset_payment, 
+    transfer_fees=wrapped_fee_payment, 
+    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts':[lister_address]})
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <h3>Step 11: Experiment with Cancelling a Listing Request</h3>
+      <p>If you fulfilled the previous request already, you will need to generate a new listing again with Step 8, and increment the "counter" variable from 1 to 2. For example:</p>
+      <pre><code>counter = 2</code></pre>
+      <p>Create and compile the asset listing contract:</p>
+      <p><code>algokit compile py yourContractFileName.py</code></p>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy.arc4 import abimethod, Address, Struct, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+
+
+class listingName(Struct):
+    lister: Address
+    counter: arc4UInt64
+    
+    
+class tradeListingValueWithAssetQuantity(Struct):
+    asset_listed: arc4UInt64
+    asset_requested: arc4UInt64
+    asset_amount_requested: arc4UInt64
+    fulfilled: Bool
+    
+    
+
+class listings(ARC4Contract):
+    def __init__(self) -> None:
+        self.listingCounter = GlobalState(arc4UInt64(0))
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    
+    
+    @abimethod
+    def postTradeRequestWithQuantity(
+        self,
+        asset_to_list: gtxn.AssetTransferTransaction,
+        asset_request: Asset,
+        asset_request_quantity: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert box_fee_mbr_payment.amount == 28_500
+        assert asset_to_list.asset_receiver == Global.current_application_address
+        assert asset_to_list.asset_amount == 1
+        
+        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
+        
+        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
+        
+        listing_box = BoxRef(key=listing_box_name_info.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert not exists
+        
+        listing_box.create(size=25)
+        
+        listing_box_value_info = tradeListingValueWithAssetQuantity(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_request.id), arc4UInt64(asset_request_quantity.native), Bool(False))
+    
+        
+        listing_box.put(listing_box_value_info.bytes)
+        
+        return String("Trade Request Posted")
+    
+    
+    @abimethod
+    def fulfillTradeRequestWithQuantity(
+        self,
+        asset_trade_fulfillment: gtxn.AssetTransferTransaction,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_listed: Asset,
+        listing_name: listingName,
+        
+    ) -> String:
+        
+        assert asset_transfer_fee.amount == 1000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = tradeListingValueWithAssetQuantity.from_bytes(value)
+        
+        assert listing_value.asset_listed == asset_listed.id
+        assert listing_value.asset_requested == asset_trade_fulfillment.xfer_asset.id
+        assert asset_trade_fulfillment.asset_amount == listing_value.asset_amount_requested
+        
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_listed,
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_value.fulfilled = Bool(True)
+        listing_box.put(listing_value.bytes)
+        
+        return String("Trade Request Fulfilled!")        
+        
+        
+    @abimethod
+    def claimFulfilledTradeRequestWithQuantity(
+        self,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_requested: Asset,
+        listing_name: listingName,
+    ) -> String:
+        
+        
+        assert listing_name.lister == Address(Txn.sender)
+        assert asset_transfer_fee.amount == 1000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = tradeListingValueWithAssetQuantity.from_bytes(value)
+        
+        assert asset_requested.id == listing_value.asset_requested
+        assert listing_value.fulfilled == Bool(True)
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_requested.id,
+            asset_receiver=Txn.sender,
+            asset_amount=listing_value.asset_amount_requested.native,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Trade Request Completed!")
+    
+    
+    @abimethod
+    def cancelTradeRequestWithQuantity(
+        self,
+        listed_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister == Address(Txn.sender)
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        alue, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = tradeListingValueWithAssetQuantity.from_bytes(value)
+        
+        assert listing_value.asset_listed == listed_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listed_asset.id,
+            asset_amount=1,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()    
+        
+        return String("Trade Request Cancelled!")
+    
+    
+    </code></pre>
+    `,
+    initialCode: ``, // You can input your initial code here if applicable
+  },
+
+  {
+    id: 28, // Adjust the ID as necessary
+    language: 'Python',
+    title: 'Marketplace Contract part 4 - Asset Quantity for Asset Quantity',
+    content: `
+      <h2>Video Walkthrough</h2>
+      <p>Watch the tutorial video for this chapter:</p> 
+      
+
+<div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+  <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/iIxgYnfar80"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+      
+      <h3>Step 1: Generate Two Accounts</h3>
+      <ul class="inText">
+        <li>One for Lister, one for Buyer</li>
+      </ul>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+
+print(private_key, address)
+</code></pre>
+      
+      <h3>Step 2: Load each Account with Funds</h3>
+      <p>Use the following link to load funds into each account:</p>
+      <a href="https://bank.testnet.algorand.network/" target="_blank">https://bank.testnet.algorand.network/</a>
+      
+      <h3>Step 3: Create .env</h3>
+      <pre class="overflow-auto shadow-md"><code>algod_token = 
+algod_server = https://testnet-api.4160.nodely.dev
+private_key = lqPuVOtF4p6QpsaL7iTA6mbHoy7a5+nuAPjzw7HvckiXQWUlnZQVYSCZSvUK8w+MGjh09sNsx7WybOeb0MLD/Q==
+buyer_private_key = jHx+aE6G/5RKAMJK7J7R+j3SyjKhzLsrbYIrzmmhWphJsT7CpTxqdhsjWQx4wDpx2I5B+1FiBSp16O5fXd/Sqg==
+asset_1 = 724395141
+asset_2 = 724449087
+app_id = 724455779
+</code></pre>
+      
+      <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
+      <p>Use the following terminal command to compile your contract:</p>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy.arc4 import abimethod, Address, Struct, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+
+
+class listingName(Struct):
+    lister: Address
+    counter: arc4UInt64
+    
+    
+class listingValue(Struct):
+    asset_listed: arc4UInt64
+    algo_requested: arc4UInt64    
+    
+    
+
+class listings(ARC4Contract):
+    def __init__(self) -> None:
+        self.listingCounter = GlobalState(arc4UInt64(0))
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    @abimethod
+    def postListingRequest(
+        self,
+        asset_to_list: gtxn.AssetTransferTransaction,
+        algo_amount_requested: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction,
+    ) -> tuple[String, UInt64, String, arc4UInt64]:
+        
+        assert box_fee_mbr_payment.amount == 24_900
+        assert asset_to_list.asset_receiver == Global.current_application_address
+        assert asset_to_list.asset_amount == 1
+        
+        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
+        
+        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
+        
+        listing_box = BoxRef(key=listing_box_name_info.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert not exists
+        
+        listing_box.create(size=16)
+        
+        listing_box_value_info = listingValue(arc4UInt64(asset_to_list.xfer_asset.id), algo_amount_requested)
+        
+        listing_box.put(listing_box_value_info.bytes)
+        
+        return String("User Listed Asset Successfully: "), asset_to_list.xfer_asset.id, String("User is requesting x amount of Algo: "), algo_amount_requested
+    
+    
+    @abimethod
+    def fulfillListingRequest(
+        self,
+        asset_listed: Asset,
+        listing_name: listingName,
+        payment: gtxn.PaymentTransaction,
+        transfer_fees: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64, String, UInt64]:
+        
+        assert transfer_fees.amount == 2000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == asset_listed.id
+        assert listing_value.algo_requested == payment.amount
+        
+        itxn.Payment(
+            receiver=listing_name.lister.native,
+            amount=payment.amount,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_listed,
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Fulfilled for Asset: "), asset_listed.id, String("Lister received x amount of Algo: "), payment.amount
+        
+        
+        
+    @abimethod
+    def cancelListingRequest(
+        self,
+        listing_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister.native == Txn.sender
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == listing_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listing_asset.id,
+            asset_amount=1,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Request Cancelled")</code></pre>
+
+      <p>Ensure you have the necessary imports and class definitions for your contract.</p>
+      
+      <h3>Step 5: Create Two Arbitrary Assets for Experimenting</h3>
+      <p>Follow the steps to create and configure two assets for testing purposes.</p>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
+from algosdk.account import address_from_private_key
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+asset_creation_txn = AssetConfigTxn(
+    sender=address,
+    sp=params,
+    total=100,
+    default_frozen=False,
+    asset_name='Test Asset Two',
+    unit_name='TA2',
+    manager=address,
+    reserve=address,
+    strict_empty_address_check=False,
+)
+
+signed_tx = asset_creation_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_tx)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+
+asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
+asset_info = algod_client.asset_info(asset_id)
+print(asset_info)</code></pre>
+      
+      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      
+      <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
+      <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from pathlib import Path
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(atc, call_abi_method='triggerOptIn', asset_to_opt_into=asset_1, fee_payment=wrapped_payment)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <p>Create an asset listing box to manage your asset listings.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+from base64 import b64decode
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='triggerOptIn', 
+    asset_to_opt_into=asset_1, 
+    fee_payment=wrapped_payment)
+
+
+asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_1)
+wrapped_asset_list_transaction = TransactionWithSigner(asset_to_list_transaction, signer)
+
+
+box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=24_900)
+wrapped_box_fee_payment = TransactionWithSigner(box_fee_payment_tx, signer)
+
+
+current_global_listing_counter = algod_client.application_info(app_id)['params']['global-state'][0]['value']['bytes']
+uint64_coder = ABIType.from_string('(uint64)')
+b64_decoded_global_listing_counter = b64decode(current_global_listing_counter)
+encoded_global_listing_counter = uint64_coder.decode(b64_decoded_global_listing_counter)[0]
+
+
+listing_box_counter = encoded_global_listing_counter + 1
+listing_box_coder = ABIType.from_string('(address,uint64)')
+users_listing_box_name = listing_box_coder.encode((address, listing_box_counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='postListingRequest', 
+    asset_to_list=wrapped_asset_list_transaction, 
+    algo_amount_requested=algos_to_microalgos(1), 
+    box_fee_mbr_payment=wrapped_box_fee_payment,
+    transaction_parameters={'boxes': [[app_id, users_listing_box_name]]}
+    )
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)
+</code></pre>
+      
+      <h3>Step 9: Check Respective Listing Information</h3>
+      <p>Retrieve and verify the listing information from the contract.</p>
+      <pre class="overflow-auto shadow-md"><code>import os
+from algosdk.v2client.algod import AlgodClient
+from algosdk.abi import ABIType
+from base64 import b64decode
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+app_id = int(os.getenv('app_id'))
+
+boxes = algod_client.application_boxes(app_id)['boxes']
+
+for box in boxes:
+    box_name_b64encoded = box['name']
+    print(b64decode(box_name_b64encoded))
+    box_value = b64decode(algod_client.application_box_by_name(app_id, b64decode(box_name_b64encoded))['value'])
+    print(box_value)
+
+    #Asset for Algo: '(uint64,uint64)'
+    #Asset for Asset: '(uint64,uint64,bool)'
+    #Asset for Asset Quantity: '(uint64,uint64,uint64,bool)
+    #Asset Quantity for Asset Quantity: '(uint64,uint64,uint64,uint64,bool)'
+    #Universal Listing: '(uint64,uint64,uint64,uint64,bool)'
+    listing_box_value_coder = ABIType.from_string('(uint64,uint64)')
+    print(listing_box_value_coder.decode(box_value))
+</code></pre>
+      
+      <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+      <p>Execute the purchase of the asset using the buyer's private key.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.abi import ABIType
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+atc.add_transaction(wrapped_opt_in_transaction)
+
+asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1_000_000)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='fulfillListingRequest', 
+    asset_listed=asset_1, 
+    listing_name=(lister_address,counter), 
+    payment=wrapped_asset_payment, 
+    transfer_fees=wrapped_fee_payment, 
+    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts':[lister_address]})
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <h3>Step 11: Experiment with Cancelling a Listing Request</h3>
+      <p>If you fulfilled the previous request already, you will need to generate a new listing again with Step 8, and increment the "counter" variable from 1 to 2. For example:</p>
+      <pre><code>counter = 2</code></pre>
+      <p>Create and compile the asset listing contract:</p>
+      <p><code>algokit compile py yourContractFileName.py</code></p>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy.arc4 import abimethod, Address, Struct, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+
+
+class listingName(Struct):
+    lister: Address
+    counter: arc4UInt64
+
+    
+class tradeListingValueQuantityWithAssetQuantity(Struct):
+    asset_listed: arc4UInt64
+    asset_listed_quantity: arc4UInt64
+    asset_requested: arc4UInt64
+    asset_amount_requested: arc4UInt64
+    fulfilled: Bool
+    
+
+    
+
+class listings(ARC4Contract):
+    def __init__(self) -> None:
+        self.listingCounter = GlobalState(arc4UInt64(0))
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    @abimethod
+    def postTradeRequestQuantityWithQuantity(
+        self,
+        asset_to_list: gtxn.AssetTransferTransaction,
+        asset_request: Asset,
+        asset_request_quantity: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert box_fee_mbr_payment.amount == 31_700
+        assert asset_to_list.asset_receiver == Global.current_application_address
+        
+        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
+        
+        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
+        
+        listing_box = BoxRef(key=listing_box_name_info.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert not exists
+        
+        listing_box.create(size=33)
+        
+        listing_box_value_info = tradeListingValueQuantityWithAssetQuantity(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_to_list.asset_amount), arc4UInt64(asset_request.id), arc4UInt64(asset_request_quantity.native), Bool(False))
+    
+        
+        listing_box.put(listing_box_value_info.bytes)
+        
+        return String("Trade Request Posted")
+    
+    
+    @abimethod
+    def fulfillTradeRequestQuantityWithQuantity(
+        self,
+        asset_trade_fulfillment: gtxn.AssetTransferTransaction,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_listed: Asset,
+        listing_name: listingName,
+        
+    ) -> String:
+        
+        assert asset_transfer_fee.amount == 1000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = tradeListingValueQuantityWithAssetQuantity.from_bytes(value)
+        
+        assert listing_value.asset_listed == asset_listed.id
+        assert listing_value.asset_requested == asset_trade_fulfillment.xfer_asset.id
+        assert asset_trade_fulfillment.asset_amount == listing_value.asset_amount_requested
+        
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_listed,
+            asset_receiver=Txn.sender,
+            asset_amount=listing_value.asset_listed_quantity.native,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_value.fulfilled = Bool(True)
+        listing_box.put(listing_value.bytes)
+        
+        return String("Trade Request Fulfilled!")        
+        
+        
+    @abimethod
+    def claimFulfilledTradeRequestQuantityWithQuantity(
+        self,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_requested: Asset,
+        listing_name: listingName,
+    ) -> String:
+        
+        
+        assert listing_name.lister == Address(Txn.sender)
+        assert asset_transfer_fee.amount == 1000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = tradeListingValueQuantityWithAssetQuantity.from_bytes(value)
+        
+        assert asset_requested.id == listing_value.asset_requested
+        assert listing_value.fulfilled == Bool(True)
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_requested.id,
+            asset_receiver=Txn.sender,
+            asset_amount=listing_value.asset_amount_requested.native,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Trade Request Completed!")
+    
+    
+    @abimethod
+    def cancelTradeRequestQuantityWithQuantity(
+        self,
+        listed_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister == Address(Txn.sender)
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = tradeListingValueQuantityWithAssetQuantity.from_bytes(value)
+        
+        assert listing_value.asset_listed == listed_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listed_asset.id,
+            asset_amount=listing_value.asset_listed_quantity.native,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()    
+        
+        return String("Trade Request Cancelled!")
+</code></pre>
+    `,
+    initialCode: ``, // You can input your initial code here if applicable
+  },
+
+  {
+    id: 29, // Adjust the ID as necessary
+    language: 'Python',
+    title: 'Marketplace Contract part 5 - Universal Listings',
+    content: `
+      <h2>Video Walkthrough</h2>
+      <p>Watch the tutorial video for this chapter:</p> 
+
+     
+
+<div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+  <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/3TAdil0hNRk"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+      
+      <h3>Step 1: Generate Two Accounts</h3>
+      <ul class="inText">
+        <li>One for Lister, one for Buyer</li>
+      </ul>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+
+print(private_key, address)
+</code></pre>
+      
+      <h3>Step 2: Load each Account with Funds</h3>
+      <p>Use the following link to load funds into each account:</p>
+      <a href="https://bank.testnet.algorand.network/" target="_blank">https://bank.testnet.algorand.network/</a>
+      
+      <h3>Step 3: Create .env</h3>
+      <pre class="overflow-auto shadow-md"><code>algod_token = 
+algod_server = https://testnet-api.4160.nodely.dev
+private_key = lqPuVOtF4p6QpsaL7iTA6mbHoy7a5+nuAPjzw7HvckiXQWUlnZQVYSCZSvUK8w+MGjh09sNsx7WybOeb0MLD/Q==
+buyer_private_key = jHx+aE6G/5RKAMJK7J7R+j3SyjKhzLsrbYIrzmmhWphJsT7CpTxqdhsjWQx4wDpx2I5B+1FiBSp16O5fXd/Sqg==
+asset_1 = 724395141
+asset_2 = 724449087
+app_id = 724455779
+</code></pre>
+      
+      <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
+      <p>Use the following terminal command to compile your contract:</p>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy.arc4 import abimethod, Address, Struct, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+
+
+class listingName(Struct):
+    lister: Address
+    counter: arc4UInt64
+    
+    
+class listingValue(Struct):
+    asset_listed: arc4UInt64
+    algo_requested: arc4UInt64    
+    
+    
+
+class listings(ARC4Contract):
+    def __init__(self) -> None:
+        self.listingCounter = GlobalState(arc4UInt64(0))
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    @abimethod
+    def postListingRequest(
+        self,
+        asset_to_list: gtxn.AssetTransferTransaction,
+        algo_amount_requested: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction,
+    ) -> tuple[String, UInt64, String, arc4UInt64]:
+        
+        assert box_fee_mbr_payment.amount == 24_900
+        assert asset_to_list.asset_receiver == Global.current_application_address
+        assert asset_to_list.asset_amount == 1
+        
+        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
+        
+        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
+        
+        listing_box = BoxRef(key=listing_box_name_info.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert not exists
+        
+        listing_box.create(size=16)
+        
+        listing_box_value_info = listingValue(arc4UInt64(asset_to_list.xfer_asset.id), algo_amount_requested)
+        
+        listing_box.put(listing_box_value_info.bytes)
+        
+        return String("User Listed Asset Successfully: "), asset_to_list.xfer_asset.id, String("User is requesting x amount of Algo: "), algo_amount_requested
+    
+    
+    @abimethod
+    def fulfillListingRequest(
+        self,
+        asset_listed: Asset,
+        listing_name: listingName,
+        payment: gtxn.PaymentTransaction,
+        transfer_fees: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64, String, UInt64]:
+        
+        assert transfer_fees.amount == 2000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == asset_listed.id
+        assert listing_value.algo_requested == payment.amount
+        
+        itxn.Payment(
+            receiver=listing_name.lister.native,
+            amount=payment.amount,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_listed,
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Fulfilled for Asset: "), asset_listed.id, String("Lister received x amount of Algo: "), payment.amount
+        
+        
+        
+    @abimethod
+    def cancelListingRequest(
+        self,
+        listing_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister.native == Txn.sender
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = listingValue.from_bytes(value)
+        
+        assert listing_value.asset_listed == listing_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listing_asset.id,
+            asset_amount=1,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Listing Request Cancelled")</code></pre>
+
+      <p>Ensure you have the necessary imports and class definitions for your contract.</p>
+      
+      <h3>Step 5: Create Two Arbitrary Assets for Experimenting</h3>
+      <p>Follow the steps to create and configure two assets for testing purposes.</p>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
+from algosdk.account import address_from_private_key
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+asset_creation_txn = AssetConfigTxn(
+    sender=address,
+    sp=params,
+    total=100,
+    default_frozen=False,
+    asset_name='Test Asset Two',
+    unit_name='TA2',
+    manager=address,
+    reserve=address,
+    strict_empty_address_check=False,
+)
+
+signed_tx = asset_creation_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_tx)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+
+asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
+asset_info = algod_client.asset_info(asset_id)
+print(asset_info)</code></pre>
+      
+      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      
+      <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
+      <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from pathlib import Path
+import os
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(atc, call_abi_method='triggerOptIn', asset_to_opt_into=asset_1, fee_payment=wrapped_payment)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <p>Create an asset listing box to manage your asset listings.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+from base64 import b64decode
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='triggerOptIn', 
+    asset_to_opt_into=asset_1, 
+    fee_payment=wrapped_payment)
+
+
+asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_1)
+wrapped_asset_list_transaction = TransactionWithSigner(asset_to_list_transaction, signer)
+
+
+box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=24_900)
+wrapped_box_fee_payment = TransactionWithSigner(box_fee_payment_tx, signer)
+
+
+current_global_listing_counter = algod_client.application_info(app_id)['params']['global-state'][0]['value']['bytes']
+uint64_coder = ABIType.from_string('(uint64)')
+b64_decoded_global_listing_counter = b64decode(current_global_listing_counter)
+encoded_global_listing_counter = uint64_coder.decode(b64_decoded_global_listing_counter)[0]
+
+
+listing_box_counter = encoded_global_listing_counter + 1
+listing_box_coder = ABIType.from_string('(address,uint64)')
+users_listing_box_name = listing_box_coder.encode((address, listing_box_counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='postListingRequest', 
+    asset_to_list=wrapped_asset_list_transaction, 
+    algo_amount_requested=algos_to_microalgos(1), 
+    box_fee_mbr_payment=wrapped_box_fee_payment,
+    transaction_parameters={'boxes': [[app_id, users_listing_box_name]]}
+    )
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)
+</code></pre>
+      
+      <h3>Step 9: Check Respective Listing Information</h3>
+      <p>Retrieve and verify the listing information from the contract.</p>
+      <pre class="overflow-auto shadow-md"><code>import os
+from algosdk.v2client.algod import AlgodClient
+from algosdk.abi import ABIType
+from base64 import b64decode
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+app_id = int(os.getenv('app_id'))
+
+boxes = algod_client.application_boxes(app_id)['boxes']
+
+for box in boxes:
+    box_name_b64encoded = box['name']
+    print(b64decode(box_name_b64encoded))
+    box_value = b64decode(algod_client.application_box_by_name(app_id, b64decode(box_name_b64encoded))['value'])
+    print(box_value)
+
+    #Asset for Algo: '(uint64,uint64)'
+    #Asset for Asset: '(uint64,uint64,bool)'
+    #Asset for Asset Quantity: '(uint64,uint64,uint64,bool)
+    #Asset Quantity for Asset Quantity: '(uint64,uint64,uint64,uint64,bool)'
+    #Universal Listing: '(uint64,uint64,uint64,uint64,bool)'
+    listing_box_value_coder = ABIType.from_string('(uint64,uint64)')
+    print(listing_box_value_coder.decode(box_value))
+</code></pre>
+      
+      <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+      <p>Execute the purchase of the asset using the buyer's private key.</p>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.abi import ABIType
+import os
+
+
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('buyer_private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
+
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+atc.add_transaction(wrapped_opt_in_transaction)
+
+asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1_000_000)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='fulfillListingRequest', 
+    asset_listed=asset_1, 
+    listing_name=(lister_address,counter), 
+    payment=wrapped_asset_payment, 
+    transfer_fees=wrapped_fee_payment, 
+    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts':[lister_address]})
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+      
+      <h3>Step 11: Experiment with Cancelling a Listing Request</h3>
+      <p>If you fulfilled the previous request already, you will need to generate a new listing again with Step 8, and increment the "counter" variable from 1 to 2. For example:</p>
+      <pre><code>counter = 2</code></pre>
+      <p>Create and compile the asset listing contract:</p>
+      <p><code>algokit compile py yourContractFileName.py</code></p>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
+from algopy.arc4 import abimethod, Address, Struct, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+
+
+class listingName(Struct):
+    lister: Address
+    counter: arc4UInt64
+    
+
+    
+class universalTradeListing(Struct):
+    asset_listed: arc4UInt64
+    asset_listed_quantity: arc4UInt64
+    asset_requested: arc4UInt64
+    asset_amount_requested: arc4UInt64
+    fulfilled: Bool
+    
+
+class listings(ARC4Contract):
+    def __init__(self) -> None:
+        self.listingCounter = GlobalState(arc4UInt64(0))
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    @abimethod
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+    
+    
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+    
+    
+    
+    
+    @abimethod
+    def postUniversalListing(
+        self,
+        asset_to_list: gtxn.AssetTransferTransaction,
+        asset_request: arc4UInt64,
+        asset_request_quantity: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert box_fee_mbr_payment.amount == 31_700
+        assert asset_to_list.asset_receiver == Global.current_application_address
+        
+        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
+        
+        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
+        
+        listing_box = BoxRef(key=listing_box_name_info.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert not exists
+        
+        listing_box.create(size=33)
+        
+        listing_box_value_info = universalTradeListing(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_to_list.asset_amount), asset_request, arc4UInt64(asset_request_quantity.native), Bool(False))
+    
+        
+        listing_box.put(listing_box_value_info.bytes)
+        
+        return String("Trade Request Posted")
+    
+    
+    @abimethod
+    def fulfillUniversalListing(
+        self,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_listed: Asset,
+        listing_name: listingName,
+        
+    ) -> String:
+        
+        assert asset_transfer_fee.amount == 1000
+
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = universalTradeListing.from_bytes(value)
+
+        if Global.group_size == 3:
+            assert gtxn.Transaction(0).type == TransactionType.Payment
+            payment_fulfillment_tx = gtxn.PaymentTransaction(0)
+            assert payment_fulfillment_tx.receiver == Global.current_application_address
+            assert listing_value.asset_listed == asset_listed.id
+            assert listing_value.asset_requested == 0
+            assert payment_fulfillment_tx.amount == listing_value.asset_amount_requested.native
+
+
+            itxn.AssetTransfer(
+                xfer_asset=asset_listed,
+                asset_receiver=Txn.sender,
+                asset_amount=listing_value.asset_listed_quantity.native,
+                fee=Global.min_txn_fee
+            ).submit()
+            
+            
+            itxn.Payment(
+                receiver=listing_name.lister.native,
+                amount=listing_value.asset_amount_requested.native,
+                fee=Global.min_txn_fee
+            ).submit()
+            
+            listing_box.delete()
+            
+            return String("Buyer paid with Algo, Listing Fulfilled!")
+            
+        elif Global.group_size == 5:
+            assert gtxn.Transaction(2).type == TransactionType.AssetTransfer
+            asset_trade_fulfillment_tx = gtxn.AssetTransferTransaction(2)
+            assert asset_trade_fulfillment_tx.asset_receiver == Global.current_application_address
+            assert listing_value.asset_listed == asset_listed.id
+            assert listing_value.asset_requested == asset_trade_fulfillment_tx.xfer_asset.id
+            assert asset_trade_fulfillment_tx.asset_amount == listing_value.asset_amount_requested
+            
+            
+            itxn.AssetTransfer(
+                xfer_asset=asset_listed,
+                asset_receiver=Txn.sender,
+                asset_amount=listing_value.asset_listed_quantity.native,
+                fee=Global.min_txn_fee
+            ).submit()
+        
+            
+        listing_value.fulfilled = Bool(True)
+        listing_box.put(listing_value.bytes)
+        
+        return String("Trade Request Fulfilled! Lister can now claim")        
+        
+        
+    @abimethod
+    def claimUniversalListing(
+        self,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_requested: Asset,
+        listing_name: listingName,
+    ) -> String:
+        
+        
+        assert listing_name.lister == Address(Txn.sender)
+        assert asset_transfer_fee.amount == 1000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = universalTradeListing.from_bytes(value)
+        
+        assert asset_requested.id == listing_value.asset_requested
+        assert listing_value.fulfilled == Bool(True)
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_requested.id,
+            asset_receiver=Txn.sender,
+            asset_amount=listing_value.asset_amount_requested.native,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()
+        
+        return String("Trade Request Completed!")
+    
+    
+    @abimethod
+    def cancelUniversalListing(
+        self,
+        listed_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister == Address(Txn.sender)
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = universalTradeListing.from_bytes(value)
+        
+        assert listing_value.asset_listed == listed_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listed_asset.id,
+            asset_amount=listing_value.asset_listed_quantity.native,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()    
+        
+        return String("Trade Request Cancelled!")</code></pre>
+    `,
+    initialCode: ``, // You can input your initial code here if applicable
+  },
+  {
+    id: 30,
+    language: 'Python',
+    title: 'ARC69 NFT Metadata and IPFS Integration',
+    content: `
+    <p>This tutorial guides you through creating an ARC69-compliant NFT with metadata stored on the blockchain and the image hosted on IPFS. It complements the video tutorial.</p>
+    
+    <h2>YouTube Tutorial</h2>
+    <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+        <iframe
+            class="absolute top-0 left-0 w-full h-full border-0"
+            src="https://www.youtube.com/embed/EN9IPhTSz34?si=Ibp9sp0jLUpAE9e9"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+    <h2>Generating an Account</h2>
+    <p>Use the following Python code to generate a new account for managing your ARC69 assets:</p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+
+print(private_key, address)
+    </code></pre>
+    
+    <h2>Funding the Account</h2>
+    <p>Once the account is generated, it needs funding to submit transactions. Visit the <a href="https://bank.testnet.algorand.network/" target="_blank">Algorand Testnet Faucet</a> to add funds.</p>
+    
+    <h2>Displaying the NFT Image</h2>
+    <p>For this tutorial, the image used is "Charmander.png". Make sure to place this image in the <code>public/images/</code> directory and reference it appropriately. Here’s the file path:</p>
+    <img src="/images/charmander.png" alt="Charmander NFT Image" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
+
+    <h2>ARC69 Metadata Structure</h2>
+    <p>In an ARC69 NFT, the image is immutable, but metadata (stored in the note field) can be updated. Images are hosted off-chain on IPFS, which ensures efficient and decentralized storage.</p>
+    <p>In this example, we’ll use Pinata as our IPFS service. Generate an API key, secret, and JWT on <a href="https://pinata.cloud/" target="_blank">Pinata</a> and store them in your <code>.env</code> file.</p>
+    
+    <h3>Example Code: Minting an ARC69 NFT</h3>
+    <p>Below is a code snippet for minting an ARC69 NFT, including metadata in the note field. This code uploads the image to IPFS and sets up the NFT on Algorand.</p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algosdk.transaction import wait_for_confirmation, AssetConfigTxn
+from dotenv import load_dotenv
+from pinata import Pinata
+from algosdk.account import address_from_private_key
+import os
+import json
+
+load_dotenv()
+
+pinata_api_key = os.getenv('api_key')
+pinata_api_secret = os.getenv('api_secret')
+pinata_jwt = os.getenv('jwt')
+pinata_client = Pinata(api_key=pinata_api_key, secret_key=pinata_api_secret, access_token=pinata_jwt)
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+# Minting ARC69 NFT
+image_path = './charmander.png'
+response = pinata_client.pin_file(image_path)
+image_ipfs_hash = response['data']['IpfsHash']
+viewable_hash = f'https://gateway.pinata.cloud/ipfs/' + image_ipfs_hash
+
+metadata = {
+    "standard": "arc69",
+    "mime_type": "image/png",
+    "properties": {
+        "Type": "Fire",
+        "Description": "A fire pokemon with a fiery tail",
+        "Level": "1",
+        "Experience": "0",
+    }
+}
+
+params = algod_client.suggested_params()
+
+asset_config_transaction = AssetConfigTxn(
+    sender=address,
+    sp=params,
+    total=1,
+    decimals=0,
+    default_frozen=False,
+    manager=address,
+    reserve=address,
+    asset_name="Test Charmander",
+    unit_name="TC#1",
+    url=viewable_hash,
+    strict_empty_address_check=False,
+    note=json.dumps(metadata).encode()
+)
+
+signed_ac_tx = asset_config_transaction.sign(private_key)
+tx_id = algod_client.send_transaction(signed_ac_tx)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+asset_index = algod_client.pending_transaction_info(tx_id)['asset-index']
+print(asset_index)
+    </code></pre>
+
+    <h3>Example Code: Updating ARC69 Metadata</h3>
+    <p>After minting, you can update specific metadata fields, such as experience or level, by sending an asset configuration transaction with updated metadata in the note field.</p>
+    <pre class="overflow-auto shadow-md"><code>metadata = {
+    "standard": "arc69",
+    "mime_type": "image/png",
+    "properties": {
+        "Type": "Fire",
+        "Description": "A fire pokemon with a fiery tail",
+        "Level": "4",
+        "Experience": "15",
+    }
+}
+
+asset_config_transaction = AssetConfigTxn(
+    index=asset_index,
+    sender=address,
+    sp=params,
+    manager=address,
+    reserve=address,
+    strict_empty_address_check=False,
+    note=json.dumps(metadata).encode()
+)
+
+signed_ac_tx = asset_config_transaction.sign(private_key)
+tx_id = algod_client.send_transaction(signed_ac_tx)
+print(tx_id)
+    </code></pre>
+    `,
+    initialCode: `from algosdk.account import generate_account\nprivate_key, address = generate_account()\nprint(private_key, address)`,
+  },
+
+  {
+    id: 31,
+    language: 'Python',
+    title: 'Creating and Updating ARC19 NFTs with IPFS Metadata',
+    content: `
+    <p>This tutorial demonstrates how to create an ARC19-compliant NFT with mutable metadata hosted on IPFS. The metadata can be updated by changing the reserve address, which points to a new IPFS hash for the metadata. Follow along with the code examples and steps below.</p>
+
+    <h2>Generating an Account</h2>
+    <p>Use the following Python code to generate a new account that will be used for managing the ARC19 NFT:</p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+
+print(private_key, address)
+    </code></pre>
+    
+    <h2>Funding the Account</h2>
+    <p>To submit transactions, you need to fund the generated account. Use the <a href="https://bank.testnet.algorand.network/" target="_blank">Algorand Testnet Faucet</a> to add funds.</p>
+    
+    <h2>ARC19 Overview</h2>
+    <p>With ARC19 NFTs, the metadata is mutable. The reserve address serves as a pointer to metadata stored on IPFS. By updating this address, the NFT’s metadata can change, allowing for mutable properties while the image and other data are hosted on IPFS.</p>
+
+    <h3>Image Display</h3>
+    <p>For this example, the original image "Charmander.png" and the updated image "Charmander2.0.png" are used. Ensure both images are placed in <code>public/images/</code> directory:</p>
+    <img src="/images/charmander.png" alt="Charmander Image" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
+    <img src="/images/charmander2.0.png" alt="Charmander Updated Image" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
+
+    <h2>Minting an ARC19 NFT</h2>
+    <p>The code snippet below uploads an image to IPFS via Pinata, then creates an ARC19-compliant NFT on Algorand, linking to the image metadata:</p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algosdk.transaction import wait_for_confirmation, AssetConfigTxn
+from dotenv import load_dotenv
+from pinata import Pinata
+from algosdk.account import address_from_private_key
+import os
+import json
+from PIL import Image
+from cid import make_cid
+import multihash
+import hashlib
+from algosdk.encoding import encode_address
+
+load_dotenv()
+
+# Set up Pinata client for IPFS
+pinata_api_key = os.getenv('api_key')
+pinata_api_secret = os.getenv('api_secret')
+pinata_jwt = os.getenv('jwt')
+pinata_client = Pinata(api_key=pinata_api_key, secret_key=pinata_api_secret, access_token=pinata_jwt)
+
+# Set up Algorand client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+# Mint ARC19 NFT
+image_path = './charmander.png'
+response = pinata_client.pin_file(image_path)
+image_ipfs_hash = response['data']['IpfsHash']
+viewable_hash = f'https://gateway.pinata.cloud/ipfs/' + image_ipfs_hash
+
+img = Image.open(image_path)
+
+metadata = {
+    "standard": "arc19",
+    "image": viewable_hash,
+    "image_mime_type": "image/png",
+    "image_integrity": "sha256-" + str(hashlib.sha256(img.tobytes()).hexdigest()),
+    "properties": {
+        "Type": "Fire",
+        "Description": "A fire pokemon with a fiery tail",
+        "Level": "1",
+        "Experience": "0",
+    }
+}
+
+file_name = './metadata.json'
+with open(file_name, 'w') as f:
+    json.dump(metadata, f)
+
+json_pin_hash = pinata_client.pin_file(file_name)['data']['IpfsHash']
+digest = multihash.decode(make_cid(json_pin_hash).multihash).digest
+arc19_algorand_address = encode_address(digest)
+print(f'Original ARC19 address: {arc19_algorand_address}')
+
+params = algod_client.suggested_params()
+
+asset_config_transaction = AssetConfigTxn(
+    sender=address,
+    sp=params,
+    total=1,
+    decimals=0,
+    default_frozen=False,
+    manager=address,
+    reserve=arc19_algorand_address,
+    asset_name="Test Charmander",
+    unit_name="TC#1",
+    url="template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}",
+    strict_empty_address_check=False,
+)
+
+signed_ac_tx = asset_config_transaction.sign(private_key)
+tx_id = algod_client.send_transaction(signed_ac_tx)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+asset_index = algod_client.pending_transaction_info(tx_id)['asset-index']
+print(asset_index)
+    </code></pre>
+
+    <h2>Updating ARC19 Metadata</h2>
+    <p>The following code example demonstrates updating the ARC19 metadata by pointing the reserve address to a new IPFS link, representing updated metadata:</p>
+    <pre class="overflow-auto shadow-md"><code>image_path = './charmander2.0.png'
+response = pinata_client.pin_file(image_path)
+image_ipfs_hash = response['data']['IpfsHash']
+viewable_hash = f'https://gateway.pinata.cloud/ipfs/' + image_ipfs_hash
+
+img = Image.open(image_path)
+
+metadata = {
+    "standard": "arc19",
+    "image": viewable_hash,
+    "image_mime_type": "image/png",
+    "image_integrity": "sha256-" + str(hashlib.sha256(img.tobytes()).hexdigest()),
+    "properties": {
+        "Type": "Fire",
+        "Description": "A fire pokemon with a fiery tail",
+        "Level": "4",
+        "Experience": "15",
+    }
+}
+
+file_name = './metadata.json'
+with open(file_name, 'w') as f:
+    json.dump(metadata, f)
+
+json_pin_hash = pinata_client.pin_file(file_name)['data']['IpfsHash']
+digest = multihash.decode(make_cid(json_pin_hash).multihash).digest
+arc19_algorand_address = encode_address(digest)
+print(f'New ARC19 address: {arc19_algorand_address}')
+
+params = algod_client.suggested_params()
+
+asset_config_transaction = AssetConfigTxn(
+    index=asset_index,
+    sender=address,
+    sp=params,
+    default_frozen=False,
+    manager=address,
+    reserve=arc19_algorand_address,
+    url="template-ipfs://{ipfscid:0:dag-pb:reserve:sha2-256}",
+    strict_empty_address_check=False,
+)
+
+signed_ac_tx = asset_config_transaction.sign(private_key)
+tx_id = algod_client.send_transaction(signed_ac_tx)
+print(tx_id)
+    </code></pre>
+    `,
+    initialCode: `from algosdk.account import generate_account\nprivate_key, address = generate_account()\nprint(private_key, address)`,
+  },
+
   {
     id: 6,
     language: 'Javascript',
@@ -1185,12 +5565,11 @@ const chapters: Chapter[] = [
     <p>These data types are essential for storing and manipulating different kinds of information in JavaScript.</p>
     <p>It's good practice to name your variables relevant to their purpose. For example, if I was creating a variable that would represent the cash price of an item, I might name it something like:</p>
     
-    <p class=content>
-    let itemCost = 1; // The cost of an item, which will be 1 dollar<br>
-    let supplyRemaining = 2500000000; // The number of items in inventory that are remaining<br>
-    let nameCTO = "John Woods";<br>
+    <pre class="overflow-auto shadow-md"><code>let itemCost = 1; // The cost of an item, which will be 1 dollar
+    let supplyRemaining = 2500000000; // The number of items in inventory that are remaining
+    let nameCTO = "John Woods";
     let valueOfAQuarter = 0.25;
-    </p>
+</code></pre>
     
     <p>You might notice that I use camelCase for naming my variables. It's important to follow JavaScript naming conventions:</p>
     <ul class=inText>
@@ -1200,63 +5579,62 @@ const chapters: Chapter[] = [
     </ul>
     
     <p>Here are some examples of incorrect variables that will not work in your code, and will cause an error, <strong>DO NOT USE</strong>:</p>
-    <p class=content>
-    let 3variable = 5;     // Starts with a number<br>
-    let my-variable = 6;   // Contains a hyphen<br>
+    <pre class="overflow-auto shadow-md"><code>let 3variable = 5;     // Starts with a number
+    let my-variable = 6;   // Contains a hyphen
     let my variable = 7;   // Contains a space
-    </p>
+</code></pre>
     
     <h2>General Arithmetic for Integers, Floats, and Strings</h2>
     <p>General arithmetic operations are a great place to start! Let's try creating a number variable, and logging it to the console.</p>
     <p>If this is your first time programming, or even if you have programmed before, you'll quickly find out or are already familiar that logging is one of the most commonly used functions for debugging. It's how you "see" what the value is of your variable at a specific point in your code</p>
     
-    <p class=content>let myNumber = 1;<br>
-    let myNumberPlusOne = myNumber + 1;<br>
-    console.log(myNumberPlusOne); // Output will be 2</p>
+    <pre class="overflow-auto shadow-md"><code>let myNumber = 1;
+    let myNumberPlusOne = myNumber + 1;
+    console.log(myNumberPlusOne); // Output will be 2</code></pre>
     
     <p>There are several arithmetic operators available in JavaScript, and they are as follows:</p>
     
-    <p class=content>let a = 10;<br>
-    let b = 3;<br><br>
-    let addition = a + b;          // Addition: 13<br>
-    let subtraction = a - b;       // Subtraction: 7<br>
-    let multiplication = a * b;    // Multiplication: 30<br>
-    let division = a / b;          // Division: 3.3333333333333335<br>
-    let floorDivision = Math.floor(a / b); // Floor Division: 3<br>
-    let modulus = a % b;           // Modulus: 1<br>
-    let exponentiation = a ** b;   // Exponentiation: 1000</p>
+    <pre class="overflow-auto shadow-md"><code>let a = 10;
+    let b = 3;
+    let addition = a + b;          // Addition: 13
+    let subtraction = a - b;       // Subtraction: 7
+    let multiplication = a * b;    // Multiplication: 30
+    let division = a / b;          // Division: 3.3333333333333335
+    let floorDivision = Math.floor(a / b); // Floor Division: 3
+    let modulus = a % b;           // Modulus: 1
+    let exponentiation = a ** b;   // Exponentiation: 1000</code></pre>
     
     <p>For strings, '+' is used for concatenation:</p>
     
-    <p class=content>let greeting = "Hello, " + "World!";<br>
-    console.log(greeting); // Output: "Hello, World!"</p>
+    <pre class="overflow-auto shadow-md"><code>let greeting = "Hello, " + "World!";
+    console.log(greeting); // Output: "Hello, World!"</code></pre>
     
     <p>Unlike Python, JavaScript does not support string multiplication using arithmetic operators; it results in NaN (Not a Number):</p>
-    <p class=content>let string = "Hello";<br>
-    let repeatedString = string * 3;  // This will result in NaN<br>
-    console.log(repeatedString); // Output: NaN</p>
+    <pre class="overflow-auto shadow-md"><code>let string = "Hello";
+    let repeatedString = string * 3;  // This will result in NaN
+    console.log(repeatedString); // Output: NaN</code></pre>
     
     <p>Instead, use the repeat function for repeating strings:</p>
-    <p class=content>let repeatedGreeting = string.repeat(3);<br>
-    console.log(repeatedGreeting); // Output: "HelloHelloHello"</p>
+    <pre class="overflow-auto shadow-md"><code>let repeatedGreeting = string.repeat(3);
+    console.log(repeatedGreeting); // Output: "HelloHelloHello"</code></pre>
     
     <p>We won't dive into Arrays or Objects just yet, but it is important to note that arrays and objects are mutable, whereas strings are immutable in JavaScript.</p>
     <p>When you hear mutable, think "can be changed", where mutable means it can be changed and immutable means it cannot be changed.</p>
     
     <p>Example showing mutability of an array:</p>
-    <p class=content>let myArray = [1, 2];<br>
-    console.log(myArray[0]); // Output: 1<br>
-    myArray[0] = 2;<br>
-    console.log(myArray); // Output: [2, 2]</p>
+    <pre class="overflow-auto shadow-md"><code>let myArray = [1, 2];
+    console.log(myArray[0]); // Output: 1
+    myArray[0] = 2;
+    console.log(myArray); // Output: [2, 2]</code></pre>
     
     <p>Example showing immutability (cannot be changed) of a string:</p>
-    <p class=content>let myString = "Hello";<br>
-    console.log(myString);  // Output: "Hello"<br>
-    myString[0] = "J";  // This does not change the string<br>
-    console.log(myString);  // Output: "Hello"</p>
+    <pre class="overflow-auto shadow-md"><code>let myString = "Hello";
+    console.log(myString);  // Output: "Hello"
+    myString[0] = "J";  // This does not change the string
+    console.log(myString);  // Output: "Hello"</code></pre>
     
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -1283,11 +5661,10 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre>
-  let myNumber = 1;
+          <pre><code>let myNumber = 1;
   let myNumberPlusOne = myNumber + 1;
   console.log(myNumberPlusOne);
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 1</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -1319,7 +5696,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q5d" name="q5" value="d">
           <label for="q5d" class="incorrect">d) let greeting = "Hello, " / "World!";</label><br>
   
-          <br>
+          
       </form>
     
     `,
@@ -1338,64 +5715,64 @@ const chapters: Chapter[] = [
     <p>To define a function, we use the <code>function</code> keyword followed by the function name and parentheses. Inside the parentheses, we can specify parameters that the function can accept. The code block within every function starts with a curly brace ({) and ends with a curly brace (}).</p>
     
     <p>Let's start with calling this simple function above that prints a greeting message:</p>
-    <p class=content>function greet() {<br>
-        console.log("Hello, world!");<br>
-    }<br>
-    greet();<br>
-    // Output: "Hello, world!"</p>
+    <pre class="overflow-auto shadow-md"><code>function greet() {
+        console.log("Hello, world!");
+    }
+    greet();
+    // Output: "Hello, world!"</code></pre>
     
     <p>Functions in JavaScript can accept parameters, which let you pass different values into them. Here's how we use a function called 'greet':</p>
-    <p class=content>function greet(name) {<br>
-        console.log(\`Hello, \${name}!\`);<br>
-    }<br>
-    greet("Alice"); // Outputs: "Hello, Alice!"<br>
-    greet("Bob"); // Outputs: "Hello, Bob!"</p>
+    <pre class="overflow-auto shadow-md"><code>function greet(name) {
+        console.log(\`Hello, \${name}!\`);
+    }
+    greet("Alice"); // Outputs: "Hello, Alice!"
+    greet("Bob"); // Outputs: "Hello, Bob!"</code></pre>
     
     <p>In this example, the <code>greet</code> function takes a parameter named <code>name</code>. When we call this function and give it a name like "Alice" or "Bob", it prints a personalized greeting.</p>
     <p>To create the greeting message, we use something called a template literal. A template literal is a type of string that makes it easy to include variables directly inside the string. You create a template literal by wrapping your text with backtick characters, and you can insert variables like <code>name</code> by wrapping them in \${ } inside the string.</p>
     <p>For instance, <code>Hello, \${name}!</code> combines "Hello," with the name you provide when calling the function, resulting in a complete greeting message.</p>
     
     <p>Functions can return values using the <code>return</code> statement. This allows us to capture the result of a function and use it in our code. Here's an example:</p>
-    <p class=content>function add(a, b) {<br>
-        return a + b;<br>
-    }<br>
-    let result = add(3, 5);<br>
-    console.log(result);  // Output: 8</p>
+    <pre class="overflow-auto shadow-md"><code>function add(a, b) {
+        return a + b;
+    }
+    let result = add(3, 5);
+    console.log(result);  // Output: 8</code></pre>
     
     <p>The <code>add</code> function takes two parameters <code>a</code> and <code>b</code>, adds them together, and returns the result. We can then store the returned value in a variable and print it.</p>
     
     <p>Functions can have default parameter values, which are used if no argument is provided when the function is called. Here's an example:</p>
-    <p class=content>function greet(name = "world") {<br>
-        console.log(\`Hello, \${name}!\`);<br>
-    }<br>
-    greet();  // Output: Hello, world!<br>
-    greet("Alice");  // Output: Hello, Alice!</p>
+    <pre class="overflow-auto shadow-md"><code>function greet(name = "world") {
+        console.log(\`Hello, \${name}!\`);
+    }
+    greet();  // Output: Hello, world!
+    greet("Alice");  // Output: Hello, Alice!</code></pre>
     
     <p>In this example, the <code>greet</code> function has a default parameter value of "world". If no argument is passed when the function is called, it uses the default value.</p>
     
     <p>We can also define functions that accept a variable number of arguments using the <code>...args</code> syntax. Here's an example:</p>
-    <p class=content>function add(...args) {<br>
-        return args.reduce((acc, curr) => acc + curr, 0);<br>
-    }<br>
-    console.log(add(1, 2, 3));  // Output: 6<br>
-    console.log(add(4, 5, 6, 7));  // Output: 22</p>
+    <pre class="overflow-auto shadow-md"><code>function add(...args) {
+        return args.reduce((acc, curr) => acc + curr, 0);
+    }
+    console.log(add(1, 2, 3));  // Output: 6
+    console.log(add(4, 5, 6, 7));  // Output: 22</code></pre>
     
     <p>The <code>add</code> function uses <code>...args</code> to accept a variable number of arguments. Inside the function, <code>args</code> is an array containing all the arguments passed. We use the <code>reduce</code> method to add all the values together and return the result.</p>
     
     <p>The <code>...</code> syntax can also be used to accept a variable number of keyword arguments in an object. Here's an example:</p>
-    <p class=content>function printInfo({ ...kwargs }) {<br>
-        for (let key in kwargs) {<br>
-            console.log(\`\${key}: \${kwargs[key]}\`);<br>
-        }<br>
-    }<br>
-    printInfo({ name: "Alice", age: 30, city: "New York" });</p>
+    <pre class="overflow-auto shadow-md"><code>function printInfo({ ...kwargs }) {
+        for (let key in kwargs) {
+            console.log(\`\${key}: \${kwargs[key]}\`);
+        }
+    }
+    printInfo({ name: "Alice", age: 30, city: "New York" });</code></pre>
     
     <p>In this example, the <code>printInfo</code> function uses <code>...</code> to accept a varying number of keyword arguments. Inside the function, <code>kwargs</code> is an object containing all the keyword arguments passed. We loop through the object and print each key-value pair.</p>
     
     <p>Functions are a fundamental part of JavaScript programming, enabling us to create modular, reusable, and maintainable code. As we progress, we'll explore more advanced concepts and techniques related to functions.</p>
     
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -1422,13 +5799,12 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre>
-  function add(a, b) {
+          <pre><code>function add(a, b) {
       return a + b;
   }
   let result = add(3, 5);
   console.log(result);
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 35</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -1449,7 +5825,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) function add(args...) { return args.reduce((acc, curr) => acc + curr); }</label><br>
   
-          <br>
+          
       </form>
     
     `,
@@ -1467,28 +5843,28 @@ const chapters: Chapter[] = [
     <p>Before we go over objects, which are the most common datatype when sending and receiving information between applications (back-end to front-end, front-end to back-end, or back-end to websites, etc.), and this is especially true when interacting with the Algorand blockchain, I think it's important to have an understanding of how arrays work.</p>
     
     <p>Below is an example of an array:</p>
-    <p class=content>let myArray = [7, "Hello", false, 63.5];</p>
+    <pre class="overflow-auto shadow-md"><code>let myArray = [7, "Hello", false, 63.5];</code></pre>
     
     <p>An array can hold all types of data, and you can have all kinds of data in one array. You use arrays when you need exactly that, a list. Arrays are also mutable, as opposed to tuples—which means we can rearrange, extend, and replace items in an array, meaning they're super flexible!</p>
     
     <p>An array is a collection of data enclosed between square brackets [ ], and separated by commas. An example of common kinds of data you would have in an array on Algorand could be one that has asset IDs.</p>
-    <p class=content>let asset_ids = [1265975021, 1138500612, 400593267];</p>
+    <pre class="overflow-auto shadow-md"><code>let asset_ids = [1265975021, 1138500612, 400593267];</code></pre>
     
     <p>Or perhaps an array of addresses:</p>
-    <p class=content>let addresses = [<br>
-    'WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU',<br>
-    '7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY',<br>
-    'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA'<br>];</p>
+    <pre class="overflow-auto shadow-md"><code>let addresses = [
+    'WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU',
+    '7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY',
+    'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA'];</code></pre>
     
     <p>Although arrays don't have to be organized in any way and are not descriptive, they can be manipulated. For example, if you wanted to remove duplicate entries in an array, you could use the Set object.</p>
-    <p class=content>let myArray = [1, 1, 2, 3, 4, 4];<br>
-    let myArrayWithoutDuplicates = [...new Set(myArray)];<br>
-    console.log(myArrayWithoutDuplicates);</p>
+    <pre class="overflow-auto shadow-md"><code>let myArray = [1, 1, 2, 3, 4, 4];
+    let myArrayWithoutDuplicates = [...new Set(myArray)];
+    console.log(myArrayWithoutDuplicates);</code></pre>
     
-    <p># Output:<br># [1, 2, 3, 4]</p>
+    <p># Output:# [1, 2, 3, 4]</p>
     
     <p>Let's look back at the first example of an array:</p>
-    <p class=content>let myArray = [7, "Hello", false, 63.5];</p>
+    <pre class="overflow-auto shadow-md"><code>let myArray = [7, "Hello", false, 63.5];</code></pre>
     
     <p>In the array above we have an integer at the first spot, 7; a string in the second spot, "Hello"; a boolean (true or false value) in the third spot; a float (decimal value), in the fourth spot.
     I refer to the places these items are in the array as "spots", but the correct term is actually "indexes". We referenced them as the first, second, third, and fourth spot— however, in programming arrays are zero-indexed. This means that we always start from zero, and use an integer to refer to their position in the array. This feels strange, but it is something you should have ingrained into your mind, as this is universal across all programming when indexing for positions in an array.</p>
@@ -1496,27 +5872,27 @@ const chapters: Chapter[] = [
     <p>The correct reference to the positions would be Index 0 for 7, Index 1 for "Hello", Index 2 for false, and Index 3 for 63.5. But, how would we see this utilized in a programming scenario?</p>
     
     <p>To interact with the array, we must first assign it to a variable:</p>
-    <p class=content>let myArray = [7, "Hello", false, 63.5];</p>
+    <pre class="overflow-auto shadow-md"><code>let myArray = [7, "Hello", false, 63.5];</code></pre>
     
     <p>Now, we can use index notation to pick out items of our choice by using their position, let's start with just logging the array to the terminal:</p>
-    <p class=content>console.log(myArray);</p>
+    <pre class="overflow-auto shadow-md"><code>console.log(myArray);</code></pre>
     <p># Output: [7, "Hello", false, 63.5]</p>
     
     <p>... and now let's log the item at index 1 (the second item since the first item is always 0) using index notation:</p>
-    <p class=content>let firstIndexMyArray = myArray[1];<br>
-    console.log(firstIndexMyArray);</p>
+    <pre class="overflow-auto shadow-md"><code>let firstIndexMyArray = myArray[1];
+    console.log(firstIndexMyArray);</code></pre>
     <p># Output: "Hello"</p>
     
     <p>Try logging the third index into the console using index notation. I've already defined the array for you below. Click run when you're ready to run the code! The output should be 63.5.</p>
     
-    <p>IDE WINDOW:<br>
-    let myArray = [7, "Hello", false, 63.5];<br>
-    . . .<br>
+    <p>IDE WINDOW:
+    let myArray = [7, "Hello", false, 63.5];
+    . . .
     CHECK OUTPUT IS 63.5 AND SHOW "SUCCESS"</p>
     <p>Next chapter: Objects</p>
     
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -1543,10 +5919,9 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
-          <pre>
-  let myArray = [7, "Hello", false, 63.5];
+          <pre><code>let myArray = [7, "Hello", false, 63.5];
   console.log(myArray[2]);
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 7</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -1558,11 +5933,10 @@ const chapters: Chapter[] = [
   
           <h3>Question 4</h3>
           <p>How do you remove duplicate entries from an array in JavaScript?</p>
-          <pre>
-  let myArray = [1, 1, 2, 3, 4, 4];
+          <pre><code>let myArray = [1, 1, 2, 3, 4, 4];
   let myArrayWithoutDuplicates = [...new Set(myArray)];
   console.log(myArrayWithoutDuplicates);
-          </pre>
+</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) Using the Set object</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -1572,7 +5946,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) Using the Reduce object</label><br>
   
-          <br>
+          
       </form>
     
     `,
@@ -1595,36 +5969,36 @@ const chapters: Chapter[] = [
     <p>Now we'll dive into a bit more advanced data structures, objects! An object is like an array, except it uses curly brackets { } instead of square brackets [ ]— but most importantly, objects also differ in that they store values with keys, and can accept several data types. An object can be highly versatile, and can not only be used for data storage, but for more complex algorithms like hashmaps, which we'll go over later. Most interestingly, we can have objects with objects within them, and even arrays as well! It's important to mention that keys and values have a colon ' : ' separator between them.</p>
     
     <p>Here's a simple example of an object:</p>
-    <p class=content>let thisIsMyObject = {name: "John", age: 22};</p>
+    <pre class="overflow-auto shadow-md"><code>let thisIsMyObject = {name: "John", age: 22};</code></pre>
     
     <p>In arrays, we used a process called indexing, and the index notation format to access values, eg; myArray[3]. With objects, we use a similar process called key access, and the key notation format to access values.</p>
     
     <p>The main difference is that we use keys, instead of solely integers that refer to position, to select values from an object— and not to confuse you, but a key in an object can also be an integer =).</p>
     
     <p>For example, in thisIsMyObject above, you'll see the value "John" belongs to the key, "name". As well as the value 22, belongs to the key, "age". This is what key notation would look like for accessing a value for a specific key in an object:</p>
-    <p class=content>let nameValue = thisIsMyObject['name'];<br>
-    console.log(nameValue);</p>
+    <pre class="overflow-auto shadow-md"><code>let nameValue = thisIsMyObject['name'];
+    console.log(nameValue);</code></pre>
     <p># Output: "John"</p>
     
     <p>Try printing the "age" value in the code editor below:</p>
-    <p class=content>let ageValue = thisIsMyObject['age'];<br>
-    console.log(ageValue);</p>
+    <pre class="overflow-auto shadow-md"><code>let ageValue = thisIsMyObject['age'];
+    console.log(ageValue);</code></pre>
     <p># Output: 22</p>
     
     <p>Now we'll look over a more intricate object, that's a bit larger and complex.</p>
-    <p class=content>thisIsMyObject = {name: "John", age: 22, likes: ["Exercise", "Cooking", "Coding"]};</p>
+    <pre class="overflow-auto shadow-md"><code>thisIsMyObject = {name: "John", age: 22, likes: ["Exercise", "Cooking", "Coding"]};</code></pre>
     
     <p>We see something in this object that we haven't seen before, an array as the value to a key. Let's try accessing the 1st index of John's likes using a mix of key notation and index notation!</p>
-    <p class=content>let likes = thisIsMyObject['likes'];<br>
-    console.log(likes);</p>
-    <p># Output:<br># ["Exercise", "Cooking", "Coding"]</p>
+    <pre class="overflow-auto shadow-md"><code>let likes = thisIsMyObject['likes'];
+    console.log(likes);</code></pre>
+    <p># Output:# ["Exercise", "Cooking", "Coding"]</p>
     
-    <p class=content>let likesFirstIndex = likes[1];<br>
-    console.log(likesFirstIndex);</p>
-    <p># Output:<br># "Cooking"</p>
+    <pre class="overflow-auto shadow-md"><code>let likesFirstIndex = likes[1];
+    console.log(likesFirstIndex);</code></pre>
+    <p># Output:# "Cooking"</p>
     
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -1651,10 +6025,9 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
-          <pre>
-  let thisIsMyObject = {name: "John", age: 22};
+          <pre><code>let thisIsMyObject = {name: "John", age: 22};
   console.log(thisIsMyObject['age']);
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) "John"</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -1666,11 +6039,10 @@ const chapters: Chapter[] = [
   
           <h3>Question 4</h3>
           <p>What will be the output of the following code?</p>
-          <pre>
-  let thisIsMyObject = {name: "John", age: 22, likes: ["Exercise", "Cooking", "Coding"]};
+          <pre><code>let thisIsMyObject = {name: "John", age: 22, likes: ["Exercise", "Cooking", "Coding"]};
   let likesFirstIndex = thisIsMyObject['likes'][1];
   console.log(likesFirstIndex);
-          </pre>
+</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="incorrect">a) "Exercise"</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -1680,7 +6052,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) ["Exercise", "Cooking", "Coding"]</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: `let thisIsMyObject = {name: "John", age: 22, likes: ["Exercise", "Cooking", "Coding"]};
@@ -1706,40 +6078,40 @@ const chapters: Chapter[] = [
     <p>This code begins with module imports, which is a fancy way of saying— "someone wrote some code that does something, and I want to use that something in my code". It isn't possible to use libraries, which are just collections of code created by someone, without formally importing them at the beginning of your code. Imports must appear before usage of anything within them because like the English language, JavaScript interpreters read from top to bottom.</p>
     
     <p>The module imports the Algodv2 class from the algosdk library. The require statement is used to import the algosdk library in Node.js.</p>
-    <p class=content>const algosdk = require('algosdk');</p>
+    <pre class="overflow-auto shadow-md"><code>const algosdk = require('algosdk');</code></pre>
     
     <p>In this code, the algosdk library is imported using require. Then, the Algodv2 client is instantiated with the API token, server address, and port.</p>
     
     <p>Now let's get the status of the Algod client:</p>
-    <p class=content>const algodToken = 'Your algod API token';<br>
-    const algodServer = 'http://YourAlgodServerAddress';<br>
-    const algodPort = 'YourAlgodServerPort';<br>
-    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);<br>
-    algodClient.status().do()<br>
-        .then(status => {<br>
-            console.log(status);<br>
-        })<br>
-        .catch(err => {<br>
-            console.error(err);<br>
-        });</p>
+    <pre class="overflow-auto shadow-md"><code>const algodToken = 'Your algod API token';
+    const algodServer = 'http://YourAlgodServerAddress';
+    const algodPort = 'YourAlgodServerPort';
+    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
+    algodClient.status().do()
+        .then(status => {
+            console.log(status);
+        })
+        .catch(err => {
+            console.error(err);
+        });</code></pre>
     
     <p>We use the <code>status()</code> method to get the status of the Algod client. This method returns a promise, so we use <code>.then()</code> to handle the successful response and <code>.catch()</code> to handle any errors.</p>
     
     <p>Next, we generate a random number using the random module. In JavaScript, we use <code>Math.random()</code> to generate random numbers.</p>
-    <p class=content>const random_number = Math.floor(Math.random() * 101);<br>
-    console.log(random_number);</p>
+    <pre class="overflow-auto shadow-md"><code>const random_number = Math.floor(Math.random() * 101);
+    console.log(random_number);</code></pre>
     
     <p>To decide on whether or not you want to import a specific file, function, or method, you would need to use your intuition! For example, you may only need a specific function from a module.</p>
-    <p class=content>const { Algodv2 } = require('algosdk');<br>
-    const algodToken = 'Your algod API token';<br>
-    const algodServer = 'http://YourAlgodServerAddress';<br>
-    const algodPort = 'YourAlgodServerPort';<br>
-    const algodClient = new Algodv2(algodToken, algodServer, algodPort);</p>
+    <pre class="overflow-auto shadow-md"><code>const { Algodv2 } = require('algosdk');
+    const algodToken = 'Your algod API token';
+    const algodServer = 'http://YourAlgodServerAddress';
+    const algodPort = 'YourAlgodServerPort';
+    const algodClient = new Algodv2(algodToken, algodServer, algodPort);</code></pre>
     
     <p>Now you can use <code>algodClient</code> for your transactions or other operations</p>
     
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -1786,7 +6158,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) Math.rand(0, 100);</label><br>
   
-          <br>
+          
       </form>
     
     `,
@@ -1816,17 +6188,13 @@ const chapters: Chapter[] = [
     
     <p>Now that we have access to an Algorand testnet node, as well as a basic understanding of how to work with different kinds of variables, functions and imports. It's time to get started! This will reaffirm your ability to use functions, methods, and imports— as well as key notation: eg; accessing the name of a customer in a variable named my_dictionary:</p>
     
-    <p class=content>
-    <code>
-    const myDictionary = {'customer-name': 'Jerry'};<br>
-    const customerName = myDictionary['customer-name'];<br>
-    console.log(customerName);
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>const myDictionary = {'customer-name': 'Jerry'};
+    const customerName = myDictionary['customer-name'];
+    console.log(customerName);</code></pre>
     
     <p>If you are using your own Algorand testnet node on Windows, you will need to access your algod_token and algod_port from your node's data directory:</p>
     <ol class=inText>
-      <li>Enter the data directory from the root folder:<br>
+      <li>Enter the data directory from the root folder:
         <code>cd node/data</code>
       </li>
       <li>Use the following commands to obtain your node token and port:</li>
@@ -1836,49 +6204,37 @@ const chapters: Chapter[] = [
     <p><code>cat algod.net</code> ---Logs the port into the terminal, it should look something like:</p>
     <p><code>127.0.0.1:8080</code></p>
     <p>When programming, you will format this information for variables like so:</p>
-    <p class=content>
-    <code>
-    const algodToken = 'b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd';<br>
-    const algodServer = 'http:127.0.0.1';<br>
-    const algodPort = 8080;
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>const algodToken = 'b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd';
+    const algodServer = 'http:127.0.0.1';
+    const algodPort = 8080;</code></pre>
     <p>If you are not using your own Algorand testnet node, you can use these:</p>
     <p>(Free service does not require token, and the algodToken variable will be an empty string '', whereas the algodServer will be the algonode testnet cloud link)</p>
-    <p class=content>
-    <code>
-    const algodToken = ''; <br>
-    const algodServer = 'https://testnet-api.algonode.cloud'; <br>
-    const algodPort = 443;
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>const algodToken = ''; 
+    const algodServer = 'https://testnet-api.algonode.cloud'; 
+    const algodPort = 443;</code></pre>
     
     <p>Note: If you are attempting to run this code outside of the browser in your own IDE, remember to use npm init -y to create a package.json, and add "type": "module" anywhere in your package. Then make sure you install the algorand sdk by using 'npm install algosdk'. Afterwards, you can run the code in your terminal by using node nameOfYourFile.js.</p>
     <p>If you get an error along the likes of 'node is not a function', this means you haven't installed node.js, you can install it here:</p>
     
-    <p class=content>
-    <code>
-    // Import algosdk<br>
-    import algosdk from 'algosdk';<br><br>
+    <pre class="overflow-auto shadow-md"><code>// Import algosdk
+    import algosdk from 'algosdk';
     
-    // Initialize AlgodClient<br>
-    const algodToken = ''; // Leave '' for public node service, or enter your node token<br>
-    const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port<br>
-    const algodPort = 443;<br><br>
+    // Initialize AlgodClient
+    const algodToken = ''; // Leave '' for public node service, or enter your node token
+    const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port
+    const algodPort = 443;
     
-    // Create an instance of the algod client<br>
-    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);<br><br>
+    // Create an instance of the algod client
+    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
     
-    // Fetch the node status and print it<br>
-    algodClient.status().do()<br>
-        .then(status => {<br>
-            console.log('Node status:', status);<br>
-        })<br>
-        .catch(err => {<br>
-            console.error('Failed to get node status:', err);<br>
-        });
-    </code>
-    </p>
+    // Fetch the node status and print it
+    algodClient.status().do()
+        .then(status => {
+            console.log('Node status:', status);
+        })
+        .catch(err => {
+            console.error('Failed to get node status:', err);
+        });</code></pre>
     
     <p>First, we import the algosdk library, which includes the AlgodClient necessary for interacting with the Algorand network.</p>
     <p>Next, we define variables for our token, server URL, and port number for the node we'll be using. These are set up to handle connections to the Algorand testnet via a public service, but can be adjusted if you are running your own node.</p>
@@ -1919,35 +6275,31 @@ const chapters: Chapter[] = [
       <li>Print your variable!</li>
     </ul>
     
-    <p class=content>
-    <code>
-    // Import algosdk<br>
-    import algosdk from 'algosdk';<br><br>
+    <pre class="overflow-auto shadow-md"><code>// Import algosdk
+    import algosdk from 'algosdk';
     
-    // Initialize AlgodClient<br>
-    const algodToken = ''; // Leave '' for public node service, or enter your node token<br>
-    const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port<br>
-    const algodPort = 443;<br><br>
+    // Initialize AlgodClient
+    const algodToken = ''; // Leave '' for public node service, or enter your node token
+    const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port
+    const algodPort = 443;
     
-    // Create an instance of the algod client<br>
-    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);<br><br>
+    // Create an instance of the algod client
+    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
     
-    // Fetch the node status and print it<br>
-    algodClient.status().do()<br>
-        .then(status => {<br>
-            // Create a variable, and name it lastRound<br>
-            const lastRound = status['last-round'];<br>
-            // Print your variable<br>
-            console.log('Last round:', lastRound);<br>
-        })<br>
-        .catch(err => {<br>
-            console.error('Failed to get node status:', err);<br>
-        });
-    </code>
-    </p>
+    // Fetch the node status and print it
+    algodClient.status().do()
+        .then(status => {
+            // Create a variable, and name it lastRound
+            const lastRound = status['last-round'];
+            // Print your variable
+            console.log('Last round:', lastRound);
+        })
+        .catch(err => {
+            console.error('Failed to get node status:', err);
+        });</code></pre>
     
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -1985,8 +6337,7 @@ const chapters: Chapter[] = [
   
           <h3>Question 4</h3>
           <p>How do you access the value of the 'last-round' key from the Algorand node status object?</p>
-          <pre>
-  algodClient.status().do()
+          <pre><code>algodClient.status().do()
   .then(status => {
       // Create a variable, and name it lastRound
       const lastRound = status['last-round'];
@@ -1996,7 +6347,7 @@ const chapters: Chapter[] = [
   .catch(err => {
       console.error('Failed to get node status:', err);
   });
-          </pre>
+</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) const lastRound = status['last-round'];</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -2006,7 +6357,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) const lastRound = status['round-last'];</label><br>
   
-          <br>
+          
       </form>
     
     `,
@@ -2037,31 +6388,29 @@ const chapters: Chapter[] = [
     language: 'Javascript',
     title: 'Payment Transactions',
     content: `
-    <p class="content">
-    <code>
-    const algosdk = require('algosdk');<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>const algosdk = require('algosdk');
     
-    // TWO WAYS TO IMPORT AN ACCOUNT<br><br>
+    // TWO WAYS TO IMPORT AN ACCOUNT
     
-    // METHOD 1<br>
-    // CREATE A NEW ACCOUNT<br>
-    const account = algosdk.generateAccount();<br>
-    console.log('Private Key:', Buffer.from(account.sk).toString('base64')); // Output Private Key<br>
-    console.log('Address:', account.addr); // Output Address<br><br>
+    // METHOD 1
+    // CREATE A NEW ACCOUNT
+    const account = algosdk.generateAccount();
+    console.log('Private Key:', Buffer.from(account.sk).toString('base64')); // Output Private Key
+    console.log('Address:', account.addr); // Output Address
     
-    // IF NEEDED TO IMPORT TO A WALLET, YOU CAN OBTAIN THE MNEMONIC FROM THE PRIVATE KEY<br>
-    // REDEEM MNEMONIC FROM PRIVATE KEY<br>
-    const mnemonicPhrase = algosdk.secretKeyToMnemonic(account.sk);<br>
-    console.log('Mnemonic Phrase:', mnemonicPhrase); // Output Mnemonic Phrase<br><br>
+    // IF NEEDED TO IMPORT TO A WALLET, YOU CAN OBTAIN THE MNEMONIC FROM THE PRIVATE KEY
+    // REDEEM MNEMONIC FROM PRIVATE KEY
+    const mnemonicPhrase = algosdk.secretKeyToMnemonic(account.sk);
+    console.log('Mnemonic Phrase:', mnemonicPhrase); // Output Mnemonic Phrase
     
-    // METHOD 2<br>
-    // USE MNEMONIC TO OBTAIN PRIVATE KEY<br>
-    // REDEEM PRIVATE KEY FROM MNEMONIC<br>
-    const mnemonic = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual';<br>
-    const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic);<br>
-    console.log('Recovered Private Key:', Buffer.from(recoveredAccount.sk).toString('base64')); // Output Private Key<br>
-    </code>
-    </p>
+    // METHOD 2
+    // USE MNEMONIC TO OBTAIN PRIVATE KEY
+    // REDEEM PRIVATE KEY FROM MNEMONIC
+    const mnemonic = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual';
+    const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic);
+    console.log('Recovered Private Key:', Buffer.from(recoveredAccount.sk).toString('base64')); // Output Private Key</code>
+    </pre>
     
     <p>When developing in JavaScript with the Algorand blockchain, there are two methods to obtain a private key and address for signing transactions you create. The private key is in base64 format and is required for transaction signing.</p>
     
@@ -2069,52 +6418,46 @@ const chapters: Chapter[] = [
     
     <p>In the algosdk's account module, there is a function called generateAccount(), which you can import at the beginning of your code, and is defined here:</p>
     
-    <p class="content">
-    <code>
-    function generateAccount() <br>
-    Generate an account.<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>function generateAccount() 
+    Generate an account.
     
-    Returns:<br>
-    {addr: string, sk: Uint8Array}: An object containing the account address and secret key
-    </code>
-    </p>
+    Returns:
+    {addr: string, sk: Uint8Array}: An object containing the account address and secret key</code>
+    </pre>
     
     <p>This returns an object containing the private key (as a Uint8Array) and the account address as strings. You would assign the output of the function to a variable and then subsequently print them.</p>
     
-    <p>In the testnet, you can now fund the account by inputting the address at <a href="https://bank.testnet.algorand.network/">https://bank.testnet.algorand.network/</a>.<br>
+    <p>In the testnet, you can now fund the account by inputting the address at <a href="https://bank.testnet.algorand.network/">https://bank.testnet.algorand.network/</a>.
     All accounts require a minimum balance of 0.1 Algo to send transactions, and then 0.001 Algorand per transaction fee.</p>
     
     <p>Should you need the mnemonic to import into a wallet application later, you can do so with the secretKeyToMnemonic() function in the algosdk library as well; input your secret key into the function and assign the output variable to something like "mnemonicPhrase". Function is defined below:</p>
     
-    <p class="content">
-    <code>
-    function secretKeyToMnemonic(secretKey: Uint8Array) -> string<br>
-    Return the mnemonic for the secret key.<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>function secretKeyToMnemonic(secretKey: Uint8Array) -> string
+    Return the mnemonic for the secret key.
     
-    Args:<br>
-    secretKey (Uint8Array): The secret key as a Uint8Array<br><br>
+    Args:
+    secretKey (Uint8Array): The secret key as a Uint8Array
     
-    Returns:<br>
-    string: mnemonic phrase
-    </code>
-    </p>
+    Returns:
+    string: mnemonic phrase</code>
+    </pre>
     
     <h4>Method 2: Convert an Existing Mnemonic to a Private Key</h4>
     
     <p>Should you already have a mnemonic and require the private key in base64 format, you can create a variable called "mnemonicPhrase" and use the result of the mnemonicToSecretKey() function in the algosdk library, which is defined below:</p>
     
-    <p class="content">
-    <code>
-    function mnemonicToSecretKey(mnemonic: string) -> {addr: string, sk: Uint8Array}<br>
-    Return the account object for the mnemonic.<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>function mnemonicToSecretKey(mnemonic: string) -> {addr: string, sk: Uint8Array}
+    Return the account object for the mnemonic.
     
-    Args:<br>
-    mnemonic (string): mnemonic of the private key<br><br>
+    Args:
+    mnemonic (string): mnemonic of the private key
     
-    Returns:<br>
-    {addr: string, sk: Uint8Array}: An object containing the account address and secret key
-    </code>
-    </p>
+    Returns:
+    {addr: string, sk: Uint8Array}: An object containing the account address and secret key</code>
+    </pre>
     
     <p>The mnemonic must be a string, meaning it is enclosed in apostrophes or double quotes ('' or ""), and there must be a space between words.</p>
     
@@ -2122,59 +6465,57 @@ const chapters: Chapter[] = [
     
     <p>We will be trying a typical payment transaction with a note field, followed by a rekey transaction (rekey to a new account and back to ourselves from the new account), and an account closing transaction. All three are under the scope of a payment transaction.</p>
     
-    <p class="content">
-    <code>
-    const algosdk = require('algosdk');<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>const algosdk = require('algosdk');
     
-    // Algod client connection parameters<br>
-    const algodToken = '';<br>
-    const algodServer = 'https://testnet-api.algonode.cloud';<br>
-    const algodPort = '443';<br>
-    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);<br><br>
+    // Algod client connection parameters
+    const algodToken = '';
+    const algodServer = 'https://testnet-api.algonode.cloud';
+    const algodPort = '443';
+    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
     
-    // Sender's account details<br>
-    const address = 'I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU';<br>
-    const private_key = '6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg==';<br><br>
+    // Sender's account details
+    const address = 'I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU';
+    const private_key = '6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg==';
     
-    // Convert 1.001 Algos to microalgos<br>
-    const amount = algosdk.algosToMicroalgos(1.001);<br><br>
+    // Convert 1.001 Algos to microalgos
+    const amount = algosdk.algosToMicroalgos(1.001);
     
-    // Get transaction parameters<br>
-    async function submitTransaction() {<br>
-        let params = await algodClient.getTransactionParams().do();<br><br>
+    // Get transaction parameters
+    async function submitTransaction() {
+        let params = await algodClient.getTransactionParams().do();
     
-        // Generate a new account<br>
-        const { addr: newAccountAddress, sk: newAccountPrivateKey } = algosdk.generateAccount();<br>
-        console.log('New Account Address:', newAccountAddress);<br><br>
+        // Generate a new account
+        const { addr: newAccountAddress, sk: newAccountPrivateKey } = algosdk.generateAccount();
+        console.log('New Account Address:', newAccountAddress);
     
-        // Create a payment transaction<br>
-        let txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({<br>
-            from: address,<br>
-            to: newAccountAddress,<br>
-            amount: amount,<br>
-            note: new TextEncoder().encode("Here's your one Algo!"),<br>
-            suggestedParams: params<br>
-        });<br><br>
+        // Create a payment transaction
+        let txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
+            from: address,
+            to: newAccountAddress,
+            amount: amount,
+            note: new TextEncoder().encode("Here's your one Algo!"),
+            suggestedParams: params
+        });
     
-        // Sign the transaction<br>
-        const signedTxn = txn.signTxn(Buffer.from(private_key, 'base64'));<br><br>
+        // Sign the transaction
+        const signedTxn = txn.signTxn(Buffer.from(private_key, 'base64'));
     
-        // Send the transaction<br>
-        try {<br>
-            let { txId } = await algodClient.sendRawTransaction(signedTxn).do();<br>
-            console.log('Transaction ID:', txId);<br><br>
+        // Send the transaction
+        try {
+            let { txId } = await algodClient.sendRawTransaction(signedTxn).do();
+            console.log('Transaction ID:', txId);
     
-            // Wait for confirmation<br>
-            let confirmedTxn = await algosdk.waitForConfirmation(algodClient, txId, 4);<br>
-            console.log('Transaction confirmed in round', confirmedTxn['confirmed-round']);<br>
-        } catch (err) {<br>
-            console.log('Error submitting transaction:', err);<br>
-        }<br>
-    }<br><br>
+            // Wait for confirmation
+            let confirmedTxn = await algosdk.waitForConfirmation(algodClient, txId, 4);
+            console.log('Transaction confirmed in round', confirmedTxn['confirmed-round']);
+        } catch (err) {
+            console.log('Error submitting transaction:', err);
+        }
+    }
     
-    submitTransaction();<br>
-    </code>
-    </p>
+    submitTransaction();</code>
+    </pre>
     
     <h4>Steps:</h4>
     <ol class="inText">
@@ -2209,13 +6550,11 @@ const chapters: Chapter[] = [
     </ul>
     
     <p>PaymentTransaction format:</p>
-    <p class="content">
-    <code>
-    function makePaymentTxnWithSuggestedParams(sender, receiver, amount, closeRemainderTo, note, suggestedParams, rekeyTo) {<br>
-        // Returns a transaction object<br>
-    }
-    </code>
-    </p>
+    <pre class="overflow-auto shadow-md">
+    <code>function makePaymentTxnWithSuggestedParams(sender, receiver, amount, closeRemainderTo, note, suggestedParams, rekeyTo) {
+        // Returns a transaction object
+    }</code>
+    </pre>
     
     <p>After we define our Payment Transaction parameters, we can then use the signTransaction() method that is included within it. This sign function accepts our private key, and outputs a signed transaction object, which is needed to input to the sendRawTransaction() function.</p>
     
@@ -2225,63 +6564,61 @@ const chapters: Chapter[] = [
     
     <p>Below are examples of rekey transactions and close amount to transactions, which are sent in succession (BUT NOT A GROUP TRANSACTION, WHICH WE WILL LEARN ABOUT LATER).</p>
     
-    <p class="content">
-    <code>
-    // Repeat the process for the Rekey Transaction and the Close Remainder to Transaction<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>// Repeat the process for the Rekey Transaction and the Close Remainder to Transaction
     
-    // Rekey Transaction<br>
-    const rekeyToNewAccountPayment = algosdk.makePaymentTxnWithSuggestedParams(<br>
-        senderAddress,<br>
-        newAccountAddress,<br>
-        0,<br>
-        undefined,<br>
-        new TextEncoder().encode("Take care of my account for me! I'll be back in a week"),<br>
-        params,<br>
-        newAccountAddress<br>
-    );<br><br>
+    // Rekey Transaction
+    const rekeyToNewAccountPayment = algosdk.makePaymentTxnWithSuggestedParams(
+        senderAddress,
+        newAccountAddress,
+        0,
+        undefined,
+        new TextEncoder().encode("Take care of my account for me! I'll be back in a week"),
+        params,
+        newAccountAddress
+    );
     
-    const signedRekeyToNewAccountPayment = rekeyToNewAccountPayment.signTxn(senderPrivateKey);<br>
-    const rekeyTransactionID = await algodClient.sendRawTransaction(signedRekeyToNewAccountPayment).do();<br>
-    await algosdk.waitForConfirmation(algodClient, rekeyTransactionID, 4);<br>
-    console.log(rekeyTransactionID);<br><br>
+    const signedRekeyToNewAccountPayment = rekeyToNewAccountPayment.signTxn(senderPrivateKey);
+    const rekeyTransactionID = await algodClient.sendRawTransaction(signedRekeyToNewAccountPayment).do();
+    await algosdk.waitForConfirmation(algodClient, rekeyTransactionID, 4);
+    console.log(rekeyTransactionID);
     
-    // New account rekeys back to the original account<br>
-    const rekeyBackToOldAccountFromNewAccount = algosdk.makePaymentTxnWithSuggestedParams(<br>
-        newAccountAddress,<br>
-        senderAddress,<br>
-        0,<br>
-        undefined,<br>
-        new TextEncoder().encode("Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"),<br>
-        params,<br>
-        senderAddress<br>
-    );<br><br>
+    // New account rekeys back to the original account
+    const rekeyBackToOldAccountFromNewAccount = algosdk.makePaymentTxnWithSuggestedParams(
+        newAccountAddress,
+        senderAddress,
+        0,
+        undefined,
+        new TextEncoder().encode("Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"),
+        params,
+        senderAddress
+    );
     
-    const signedRekeyBackToOldAccountFromNewAccount = rekeyBackToOldAccountFromNewAccount.signTxn(newAccountPrivateKey);<br>
-    const rekeyBackTransactionID = await algodClient.sendRawTransaction(signedRekeyBackToOldAccountFromNewAccount).do();<br>
-    await algosdk.waitForConfirmation(algodClient, rekeyBackTransactionID, 4);<br>
-    console.log(rekeyBackTransactionID);<br><br>
+    const signedRekeyBackToOldAccountFromNewAccount = rekeyBackToOldAccountFromNewAccount.signTxn(newAccountPrivateKey);
+    const rekeyBackTransactionID = await algodClient.sendRawTransaction(signedRekeyBackToOldAccountFromNewAccount).do();
+    await algosdk.waitForConfirmation(algodClient, rekeyBackTransactionID, 4);
+    console.log(rekeyBackTransactionID);
     
-    // Close Remainder to Transaction<br>
-    const closeAccountToNewAccount = algosdk.makePaymentTxnWithSuggestedParams(<br>
-        senderAddress,<br>
-        newAccountAddress,<br>
-        0,<br>
-        newAccountAddress,<br>
-        new TextEncoder().encode('Take care of my precious Algo!'),<br>
-        params<br>
-    );<br><br>
+    // Close Remainder to Transaction
+    const closeAccountToNewAccount = algosdk.makePaymentTxnWithSuggestedParams(
+        senderAddress,
+        newAccountAddress,
+        0,
+        newAccountAddress,
+        new TextEncoder().encode('Take care of my precious Algo!'),
+        params
+    );
     
-    const signedCloseAccountToNewAccount = closeAccountToNewAccount.signTxn(senderPrivateKey);<br>
-    const closeAccountTransactionID = await algodClient.sendRawTransaction(signedCloseAccountToNewAccount).do();<br>
-    await algosdk.waitForConfirmation(algodClient, closeAccountTransactionID, 4);<br>
-    console.log(closeAccountTransactionID);<br>
-    </code>
-    </p>
+    const signedCloseAccountToNewAccount = closeAccountToNewAccount.signTxn(senderPrivateKey);
+    const closeAccountTransactionID = await algodClient.sendRawTransaction(signedCloseAccountToNewAccount).do();
+    await algosdk.waitForConfirmation(algodClient, closeAccountTransactionID, 4);
+    console.log(closeAccountTransactionID);</code>
+    </pre>
     
     <p>DISCLAIMER: When rekeying and closing out accounts, this process is irreversible! If you don't know the person, or feel unsure about doing so, you should never use these transactions outside of testing purposes without ultimate confidence. No platforms currently utilize rekey transactions for users, but do use them internally when generating smart contracts for contract-to-contract calls, which will come later in our learning process.</p>
     
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -2328,7 +6665,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) algodClient.sendSignedTransaction()</label><br>
   
-          <br>
+          
       </form>
     
     `,
@@ -2363,47 +6700,45 @@ const chapters: Chapter[] = [
     <p>It's good practice to name your variable relevant to its purpose, and use camelCase for naming conventions. Variable names cannot start with a number, include special characters other than '_', or contain spaces.</p>
     
     <p>Here are some more variable examples:</p>
-    <p class=content>
-    var (<br>
-        itemCost        int     = 1     // The cost of an item, which will be 1 dollar<br>
-        supplyRemaining int64   = 2500000000 // The number of items in inventory that are remaining<br>
-        nameCTO         string  = "John Woods" // Name of a CTO<br>
-        valueOfAQuarter float64 = 0.25  // The value of a quarter in dollars<br>
-    )<br>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>var (
+        itemCost        int     = 1     // The cost of an item, which will be 1 dollar
+        supplyRemaining int64   = 2500000000 // The number of items in inventory that are remaining
+        nameCTO         string  = "John Woods" // Name of a CTO
+        valueOfAQuarter float64 = 0.25  // The value of a quarter in dollars
+    )
+</code></pre>
     
     <p>There are several arithmetic operators available in Go, and they are as follows:</p>
-    <p class=content>
-    a := 10<br>
-    b := 3<br><br>
-    addition := a + b<br>
-    subtraction := a - b<br>
-    multiplication := a * b<br>
-    division := myFloat / float64(b)<br>
-    floorDivision := a / b<br>
-    modulus := a % b<br>
-    exponentiation := math.Pow(float64(a), float64(b))<br>
-    </p>
+    <pre class="overflow-auto shadow-md"><code>a := 10
+    b := 3
+    addition := a + b
+    subtraction := a - b
+    multiplication := a * b
+    division := myFloat / float64(b)
+    floorDivision := a / b
+    modulus := a % b
+    exponentiation := math.Pow(float64(a), float64(b))
+</code></pre>
     
     <p>Similar to integers and floats, you can also use arithmetic operators on strings:</p>
-    <p class=content>result := myText + " World!"<br>
-    fmt.Println("Concatenated String:", result)<br>
-    repeatedString := strings.Repeat(myText, 3)<br>
-    fmt.Println("Repeated String:", repeatedString)</p>
+    <pre class="overflow-auto shadow-md"><code>result := myText + " World!"
+    fmt.Println("Concatenated String:", result)
+    repeatedString := strings.Repeat(myText, 3)
+    fmt.Println("Repeated String:", repeatedString)</code></pre>
     
     <p>We won't dive into Lists, Dictionaries, or Tuples just yet, but I would like to mention, and this is something you'll see in practice later— that lists and dictionaries are mutable, whereas tuples are immutable.
     When you hear mutable, think "can be changed", where mutable means it can be changed and immutable means it cannot be changed.</p>
     
     <p>Example:</p>
-    <p class=content>my_tuple = (1, 2)<br>
-    print(my_tuple[0])<br>
-    my_tuple[0] = 2<br>
-    print(my_tuple)<br><br>
-    # ERROR<br>
-    #    my_tuple[0] = 2<br>
-    #    ~~~~~~~~^^^<br>
+    <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
+    print(my_tuple[0])
+    my_tuple[0] = 2
+    print(my_tuple)
+    # ERROR
+    #    my_tuple[0] = 2
+    #    ~~~~~~~~^^^
     # TypeError: 'tuple' object does not support item assignment
-    </p>
+</code></pre>
     
     <p>A more advanced concept to start early with, but another thing we will review later:</p>
     <h2>Examples of mutable and immutable parameters on an asset on Algorand</h2>
@@ -2429,7 +6764,7 @@ const chapters: Chapter[] = [
     </ul>
     <em>*Note: Exception for various ARC types like ARC19 and ARC69 that use the reserve address and/or note field to point to metadata*</em>
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -2456,12 +6791,11 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre>
-  a := 10
+          <pre><code>a := 10
   b := 3
   addition := a + b
   fmt.Println(addition)
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 13</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -2482,7 +6816,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) pow(a, b)</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: `package main
@@ -2550,59 +6884,59 @@ const chapters: Chapter[] = [
     <p>To define a function, we use the <code>func</code> keyword followed by the function name and parentheses. Inside the parentheses, we can specify parameters that the function can accept. The code block within every function starts with a curly brace ({) and ends with a curly brace (}).</p>
     
     <p>Let's start with a simple function that prints a greeting message:</p>
-    <p class=content>func greet() {<br>
-        fmt.Println("Hello, world!");<br>
-    }<br>
-    func main() {<br>
-        greet();<br>
+    <pre class="overflow-auto shadow-md"><code>func greet() {
+        fmt.Println("Hello, world!");
+    }
+    func main() {
+        greet();
         // Output: "Hello, world!"</p>
     
     <p>Functions can also accept parameters, which allow us to pass values into the function for processing. Here's an example:</p>
-    <p class=content>func greetWithName(name string) {<br>
-        fmt.Printf("Hello, %s!\n", name);<br>
-    }<br>
-    greetWithName("Alice"); // Output: "Hello, Alice!"<br>
-    greetWithName("Bob");   // Output: "Hello, Bob!"</p>
+    <pre class="overflow-auto shadow-md">func greetWithName(name string) {
+        fmt.Printf("Hello, %s!\n", name);
+    }
+    greetWithName("Alice"); // Output: "Hello, Alice!"
+    greetWithName("Bob");   // Output: "Hello, Bob!"</code></pre>
     
     <p>Functions can return values using the <code>return</code> statement. This allows us to capture the result of a function and use it in our code. Here's an example:</p>
-    <p class=content>func add(a, b int) int {<br>
-        return a + b;<br>
-    }<br>
-    let result = add(3, 5);<br>
-    fmt.Println(result); // Output: 8</p>
+    <pre class="overflow-auto shadow-md"><code>func add(a, b int) int {
+        return a + b;
+    }
+    let result = add(3, 5);
+    fmt.Println(result); // Output: 8</code></pre>
     
     <p>Functions can have default parameter values, which are used if no argument is provided when the function is called. Here's an example:</p>
-    <p class=content>func greetWithDefaultName(name string) {<br>
-        if name == "" {<br>
-            name = "world";<br>
-        }<br>
-        fmt.Printf("Hello, %s!\n", name);<br>
-    }<br>
-    greetWithDefaultName("");  // Output: Hello, world!<br>
-    greetWithDefaultName("Alice");  // Output: Hello, Alice!</p>
+    <pre class="overflow-auto shadow-md"><code>func greetWithDefaultName(name string) {
+        if name == "" {
+            name = "world";
+        }
+        fmt.Printf("Hello, %s!\n", name);
+    }
+    greetWithDefaultName("");  // Output: Hello, world!
+    greetWithDefaultName("Alice");  // Output: Hello, Alice!</code></pre>
     
     <p>We can also define functions that accept a variable number of arguments using the <code>...</code> syntax. Here's an example:</p>
-    <p class=content>func addMultiple(nums ...int) int {<br>
-        sum := 0;<br>
-        for _, num := range nums {<br>
-            sum += num;<br>
-        }<br>
-        return sum;<br>
-    }<br>
-    fmt.Println(addMultiple(1, 2, 3)); // Output: 6<br>
-    fmt.Println(addMultiple(4, 5, 6, 7)); // Output: 22</p>
+    <pre class="overflow-auto shadow-md"><code>func addMultiple(nums ...int) int {
+        sum := 0;
+        for _, num := range nums {
+            sum += num;
+        }
+        return sum;
+    }
+    fmt.Println(addMultiple(1, 2, 3)); // Output: 6
+    fmt.Println(addMultiple(4, 5, 6, 7)); // Output: 22</code></pre>
     
     <p>The <code>...</code> syntax allows us to accept a variable number of arguments. Here's an example using a map for keyword arguments:</p>
-    <p class=content>func printInfo(info map[string]interface{}) {<br>
-        for key, value := range info {<br>
-            fmt.Printf("%s: %v\n", key, value);<br>
-        }<br>
-    }<br>
+    <pre class="overflow-auto shadow-md"><code>func printInfo(info map[string]interface{}) {
+        for key, value := range info {
+            fmt.Printf("%s: %v\n", key, value);
+        }
+    }
     printInfo(map[string]interface{}{"name": "Alice", "age": 30, "city": "New York"});</p>
     
     <p>Functions are a fundamental part of Go programming, enabling us to create modular, reusable, and maintainable code. As we progress, we'll explore more advanced concepts and techniques related to functions.</p>
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -2635,7 +6969,7 @@ const chapters: Chapter[] = [
   }
   result := add(3, 5)
   fmt.Println(result)
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="correct">a) 8</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -2656,7 +6990,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) func addMultiple(nums: int...) { ... }</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: ``,
@@ -2669,38 +7003,38 @@ const chapters: Chapter[] = [
     <p>Before we go over structs, which are the most common data type when sending and receiving information between applications (back-end to front-end, front-end to back-end, or back-end to websites, etc.), and this is especially true when interacting with the Algorand blockchain, I think it's important to have an understanding of how slices work.</p>
     
     <p>Below is an example of a slice:</p>
-    <p class=content>var mySlice = []interface{}{7, "Hello", false, 63.5}</p>
+    <pre class="overflow-auto shadow-md"><code>var mySlice = []interface{}{7, "Hello", false, 63.5}</p>
     
     <p>A slice can hold all types of data, and you can have all kinds of data in one slice. You use slices when you need exactly that, a list. Slices are also mutable, which means we can rearrange, extend, and replace items in a slice, meaning they're super flexible!</p>
     
     <p>A slice is a collection of data enclosed between square brackets [ ], and separated by commas. An example of common kinds of data you would have in a slice on Algorand could be one that has asset IDs.</p>
-    <p class=content>var assetIDs = []int{1265975021, 1138500612, 400593267}</p>
+    <pre class="overflow-auto shadow-md">var assetIDs = []int{1265975021, 1138500612, 400593267}</code></pre>
     
     <p>Or perhaps a slice of addresses:</p>
-    <p class=content>var addresses = [<br>
-        "WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU",<br>
-        "7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY",<br>
-        "HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA"<br>];</p>
+    <pre class="overflow-auto shadow-md"><code>var addresses = [
+        "WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU",
+        "7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY",
+        "HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA"];</code></pre>
     
     <p>Although slices don't have to be organized in any way and are not descriptive, they can be manipulated. For example, if you wanted to remove duplicate entries in a slice, you could use a map to achieve this.</p>
-    <p class=content>func removeDuplicates(elements []int) []int {<br>
-        encountered := map[int]bool{};<br>
-        result := []int{};<br>
-        for v := range elements {<br>
-            if encountered[elements[v]] != true {<br>
-                encountered[elements[v]] = true;<br>
-                result = append(result, elements[v]);<br>
-            }<br>
-        }<br>
-        return result;<br>
-    }<br>
-    mySlice := []int{1, 1, 2, 3, 4, 4};<br>
-    mySliceWithoutDuplicates := removeDuplicates(mySlice);<br>
-    fmt.Println(mySliceWithoutDuplicates);<br>
-    # Output: [1, 2, 3, 4]</p>
+    <pre class="overflow-auto shadow-md"><code>func removeDuplicates(elements []int) []int {
+        encountered := map[int]bool{};
+        result := []int{};
+        for v := range elements {
+            if encountered[elements[v]] != true {
+                encountered[elements[v]] = true;
+                result = append(result, elements[v]);
+            }
+        }
+        return result;
+    }
+    mySlice := []int{1, 1, 2, 3, 4, 4};
+    mySliceWithoutDuplicates := removeDuplicates(mySlice);
+    fmt.Println(mySliceWithoutDuplicates);
+    # Output: [1, 2, 3, 4]</code></pre>
     
     <p>Let's look back at the first example of a slice:</p>
-    <p class=content>mySlice = []interface{}{7, "Hello", false, 63.5}</p>
+    <pre class="overflow-auto shadow-md"><code>mySlice = []interface{}{7, "Hello", false, 63.5}</p>
     
     <p>In the slice above we have an integer at the first spot, 7; a string in the second spot, "Hello"; a boolean (true or false value) in the third spot; a float (decimal value), in the fourth spot.
     I refer to the places these items are in the slice as "spots", but the correct term is actually "indexes". We referenced them as the first, second, third, and fourth spot— however, in programming slices are zero-indexed. This means that we always start from zero, and use an integer to refer to their position in the slice. This feels strange, but it is something you should have ingrained into your mind, as this is universal across all programming when indexing for positions in a slice.</p>
@@ -2708,25 +7042,25 @@ const chapters: Chapter[] = [
     <p>The correct reference to the positions would be Index 0 for 7, Index 1 for "Hello", Index 2 for false, and Index 3 for 63.5. But, how would we see this utilized in a programming scenario?</p>
     
     <p>To interact with the slice, we must first assign it to a variable:</p>
-    <p class=content>mySlice2 := []interface{}{7, "Hello", false, 63.5};<br>
+    <pre class="overflow-auto shadow-md">mySlice2 := []interface{}{7, "Hello", false, 63.5};
     fmt.Println(mySlice2);</p>
     <p># Output: [7, "Hello", false, 63.5]</p>
     
     <p>... and now let's log the item at index 1 (the second item since the first item is always 0) using index notation:</p>
-    <p class=content>let firstIndexMySlice = mySlice2[1];<br>
-    console.log(firstIndexMySlice);</p>
+    <pre class="overflow-auto shadow-md">let firstIndexMySlice = mySlice2[1];
+    console.log(firstIndexMySlice);</code></pre>
     <p># Output: "Hello"</p>
     
     <p>Try logging the third index into the console using index notation. I've already defined the slice for you below. Click run when you're ready to run the code! The output should be 63.5.</p>
     
-    <p>IDE WINDOW:<br>
-    mySlice3 := []interface{}{7, "Hello", false, 63.5};<br>
-    thirdIndexMySlice := mySlice3[3];<br>
-    fmt.Println(thirdIndexMySlice);<br>
+    <p>IDE WINDOW:
+    mySlice3 := []interface{}{7, "Hello", false, 63.5};
+    thirdIndexMySlice := mySlice3[3];
+    fmt.Println(thirdIndexMySlice);
     # Output: 63.5</p>
     <p>Next chapter: Structs</p>
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -2753,10 +7087,9 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre>
-  mySlice := []interface{}{7, "Hello", false, 63.5}
+          <pre><code>mySlice := []interface{}{7, "Hello", false, 63.5}
   fmt.Println(mySlice[1])
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 7</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -2768,8 +7101,7 @@ const chapters: Chapter[] = [
   
           <h3>Question 4</h3>
           <p>How do you remove duplicate entries from a slice in Go?</p>
-          <pre>
-  func removeDuplicates(elements []int) []int {
+          <pre><code>func removeDuplicates(elements []int) []int {
       encountered := map[int]bool{}
       result := []int{}
       for v := range elements {
@@ -2783,7 +7115,7 @@ const chapters: Chapter[] = [
   mySlice := []int{1, 1, 2, 3, 4, 4}
   mySliceWithoutDuplicates := removeDuplicates(mySlice)
   fmt.Println(mySliceWithoutDuplicates)
-          </pre>
+</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) Using a map to track encountered elements</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -2793,7 +7125,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) Using a dictionary to track encountered elements</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: ``,
@@ -2806,48 +7138,48 @@ const chapters: Chapter[] = [
     <p>Now we'll dive into a bit more advanced data structures, structs! A struct is like a slice, except it uses curly brackets { } instead of square brackets [ ]— but most importantly, structs also differ in that they store values with keys (called fields), and can accept several data types. A struct can be highly versatile and can not only be used for data storage, but for more complex algorithms like hashmaps, which we'll go over later. Most interestingly, we can have structs with nested structs within them, and even slices as well! It's important to mention that fields and values have a colon ' : ' separator between them.</p>
     
     <p>Here's a simple example of a struct:</p>
-    <p class=content>type Person struct {<br>
-        Name string<br>
-        Age  int<br>
-    }<br>
-    thisIsMyStruct := Person{Name: "John", Age: 22}</p>
+    <pre class="overflow-auto shadow-md"><code>type Person struct {
+        Name string
+        Age  int
+    }
+    thisIsMyStruct := Person{Name: "John", Age: 22}</code></pre>
     
     <p>In slices, we used a process called indexing, and the index notation format to access values, e.g.; mySlice[3]. With structs, we use a similar process called field access, and the field notation format to access values.</p>
     
     <p>The main difference is that we use fields, instead of solely integers that refer to position, to select values from a struct— and not to confuse you, but a field in a struct can also be an integer =).</p>
     
     <p>For example, in thisIsMyStruct above, you'll see the value "John" belongs to the field, "Name". As well as the value 22, belongs to the field, "Age". This is what field notation would look like for accessing a value for a specific field in a struct:</p>
-    <p class=content>nameValue := thisIsMyStruct.Name<br>
-    fmt.Println(nameValue)</p>
+    <pre class="overflow-auto shadow-md"><code>nameValue := thisIsMyStruct.Name
+    fmt.Println(nameValue)</code></pre>
     <p># Output: "John"</p>
     
     <p>Try printing the "Age" value in the code editor below:</p>
-    <p class=content>ageValue := thisIsMyStruct.Age<br>
-    fmt.Println(ageValue)</p>
+    <pre class="overflow-auto shadow-md"><code>ageValue := thisIsMyStruct.Age
+    fmt.Println(ageValue)</code></pre>
     <p># Output: 22</p>
     
     <p>Now we'll look over a more intricate struct, that's a bit larger and complex.</p>
-    <p class=content>type PersonWithLikes struct {<br>
-        Name  string<br>
-        Age   int<br>
-        Likes []string<br>
-    }<br>
-    thisIsMyStructWithLikes := PersonWithLikes{<br>
-        Name:  "John",<br>
-        Age:   22,<br>
-        Likes: []string{"Exercise", "Cooking", "Coding"},<br>
-    }</p>
+    <pre class="overflow-auto shadow-md"><code>type PersonWithLikes struct {
+        Name  string
+        Age   int
+        Likes []string
+    }
+    thisIsMyStructWithLikes := PersonWithLikes{
+        Name:  "John",
+        Age:   22,
+        Likes: []string{"Exercise", "Cooking", "Coding"},
+    }</code></pre>
     
     <p>We see something in this struct that we haven't seen before, a slice as the value to a field. Let's try accessing the 1st index of John's likes using a mix of field notation and index notation!</p>
-    <p class=content>likes := thisIsMyStructWithLikes.Likes<br>
-    fmt.Println(likes)</p>
-    <p># Output:<br># ["Exercise", "Cooking", "Coding"]</p>
+    <pre class="overflow-auto shadow-md"><code>likes := thisIsMyStructWithLikes.Likes
+    fmt.Println(likes)</code></pre>
+    <p># Output:# ["Exercise", "Cooking", "Coding"]</p>
     
-    <p class=content>likesFirstIndex := likes[1]<br>
-    fmt.Println(likesFirstIndex)</p>
-    <p># Output:<br># "Cooking"</p>
+    <pre class="overflow-auto shadow-md"><code>likesFirstIndex := likes[1]
+    fmt.Println(likesFirstIndex)</code></pre>
+    <p># Output:# "Cooking"</p>
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -2874,14 +7206,13 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre>
-  type Person struct {
+          <pre><code>type Person struct {
       Name string
       Age  int
   }
   thisIsMyStruct := Person{Name: "John", Age: 22}
   fmt.Println(thisIsMyStruct.Name)
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="correct">a) "John"</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -2893,8 +7224,7 @@ const chapters: Chapter[] = [
   
           <h3>Question 4</h3>
           <p>How do you access the first element of the "Likes" slice in the following struct?</p>
-          <pre>
-  type PersonWithLikes struct {
+          <pre><code>type PersonWithLikes struct {
       Name  string
       Age   int
       Likes []string
@@ -2905,7 +7235,7 @@ const chapters: Chapter[] = [
       Likes: []string{"Exercise", "Cooking", "Coding"},
   }
   fmt.Println(thisIsMyStructWithLikes.Likes[0])
-          </pre>
+</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) "Exercise"</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -2915,7 +7245,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) "Likes"</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: ``,
@@ -2930,31 +7260,31 @@ const chapters: Chapter[] = [
     <p>The package imports are from the Go Algorand SDK library and the standard library.</p>
     
     <p>Now let's get the status of the Algod client:</p>
-    <p class=content>import (<br>
-        "fmt"<br>
-        "log"<br>
-        "math/rand"<br>
-        "strings"<br>
-        "time"<br>
-        "github.com/algorand/go-algorand-sdk/client/v2/algod"<br>
-        "github.com/algorand/go-algorand-sdk/client/v2/common"<br>
-    )<br>
-    func main() {<br>
-        var algodAddress = "http://localhost:4001";<br>
-        var algodToken = strings.Repeat("a", 64);<br>
-        algodClient, err := algod.MakeClient(algodAddress, algodToken);<br>
-        if err != nil {<br>
-            log.Fatalf("failed to make algod client: %v", err);<br>
-        }<br>
-        status, err := algodClient.Status().Do();<br>
-        if err != nil {<br>
-            log.Fatalf("failed to get status: %v", err);<br>
-        }<br>
-        fmt.Printf("Status: %+v\n", status);<br>
-        rand.Seed(time.Now().UnixNano());<br>
-        randomNumber := rand.Intn(101);<br>
-        fmt.Println(randomNumber);<br>
-    }</p>
+    <pre class="overflow-auto shadow-md"><code>import (
+        "fmt"
+        "log"
+        "math/rand"
+        "strings"
+        "time"
+        "github.com/algorand/go-algorand-sdk/client/v2/algod"
+        "github.com/algorand/go-algorand-sdk/client/v2/common"
+    )
+    func main() {
+        var algodAddress = "http://localhost:4001";
+        var algodToken = strings.Repeat("a", 64);
+        algodClient, err := algod.MakeClient(algodAddress, algodToken);
+        if err != nil {
+            log.Fatalf("failed to make algod client: %v", err);
+        }
+        status, err := algodClient.Status().Do();
+        if err != nil {
+            log.Fatalf("failed to get status: %v", err);
+        }
+        fmt.Printf("Status: %+v\n", status);
+        rand.Seed(time.Now().UnixNano());
+        randomNumber := rand.Intn(101);
+        fmt.Println(randomNumber);
+    }</code></pre>
     
     <p>The imports are:</p>
     <ul class=inText>
@@ -2970,7 +7300,7 @@ const chapters: Chapter[] = [
     <p>The Go Algorand SDK library is imported with specific paths to the required packages. This is similar to how we imported specific modules in Python.</p>
     
     <p>To install the Algorand Go SDK, you can use the following command:</p>
-    <p class=content>go get -u github.com/algorand/go-algorand-sdk/...</p>
+    <pre class="overflow-auto shadow-md"><code>go get -u github.com/algorand/go-algorand-sdk/...</code></pre>
     
     <p>If you don't have Go installed, it must be installed manually, which is detailed in the Go installation guide on their website.</p>
     
@@ -2983,64 +7313,62 @@ const chapters: Chapter[] = [
     language: 'GO',
     title: 'Getting Started with Algorand',
     content: `
-    <p class="content">
-    <code>
-    // Guide for setting up your own node<br>
-    /*<br>
-    To set up your own node, visit this GitHub repository for a previous tutorial series:<br>
-    <a href="https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/tree/main/Episode%201%20-%20Algorand%20Node%2C%20Python%2C%20Visual%20Studio%20Code%2C%20Ubuntu%2C%20and%20Module%20Installations">https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/tree/main/Episode%201%20-%20Algorand%20Node%2C%20Python%2C%20Visual%20Studio%20Code%2C%20Ubuntu%2C%20and%20Module%20Installations</a><br>
-    Scroll down to the section called "Algorand Node Installation" — and make sure to run these commands in an Ubuntu LTS Shell (Download link in bottom resources section)<br>
-    If you chose to run a node, that's wonderful! If not, I will be including sections for those programming without a node.<br>
-    */<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>// Guide for setting up your own node
+    /*
+    To set up your own node, visit this GitHub repository for a previous tutorial series:
+    <a href="https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/tree/main/Episode%201%20-%20Algorand%20Node%2C%20Python%2C%20Visual%20Studio%20Code%2C%20Ubuntu%2C%20and%20Module%20Installations">https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/tree/main/Episode%201%20-%20Algorand%20Node%2C%20Python%2C%20Visual%20Studio%20Code%2C%20Ubuntu%2C%20and%20Module%20Installations</a>
+    Scroll down to the section called "Algorand Node Installation" — and make sure to run these commands in an Ubuntu LTS Shell (Download link in bottom resources section)
+    If you chose to run a node, that's wonderful! If not, I will be including sections for those programming without a node.
+    */
     
-    /*<br>
-    If you are trying to run this code natively on your computer, and not in this browser:<br><br>
-    Make sure you have GO installed: <br>
-    <a href="https://go.dev/dl/">https://go.dev/dl/</a><br><br>
+    /*
+    If you are trying to run this code natively on your computer, and not in this browser:
+    Make sure you have GO installed: 
+    <a href="https://go.dev/dl/">https://go.dev/dl/</a>
     
-    Initialize your project by using the following command in the terminal:<br>
-    'go mod init algolearn'<br><br>
+    Initialize your project by using the following command in the terminal:
+    'go mod init algolearn'
     
-    Ensure that the name of the file ends with '.go', and that you've installed the go algorand SDK afterwards using the following command in the IDE terminal:<br><br>
+    Ensure that the name of the file ends with '.go', and that you've installed the go algorand SDK afterwards using the following command in the IDE terminal:
     
-    go get github.com/algorand/go-algorand-sdk/...<br><br>
+    go get github.com/algorand/go-algorand-sdk/...
     
-    You can copy and paste the code below into your yourFileName.go file, and use 'go run yourFileName.go' in the terminal to run it!<br>
-    */<br><br>
+    You can copy and paste the code below into your yourFileName.go file, and use 'go run yourFileName.go' in the terminal to run it!
+    */
     
-    package main<br><br>
+    package main
     
-    import (<br>
-        "context"<br>
-        "fmt"<br>
-        "os"<br><br>
+    import (
+        "context"
+        "fmt"
+        "os"
     
-        "github.com/algorand/go-algorand-sdk/client/v2/algod"<br>
-    )<br><br>
+        "github.com/algorand/go-algorand-sdk/client/v2/algod"
+    )
     
-    func main() {<br>
-        // Variables for Algorand testnet node access<br>
-        algodToken := "" // Leave empty for public node service, or enter your node token<br>
-        algodServer := "https://testnet-api.algonode.cloud"<br><br>
+    func main() {
+        // Variables for Algorand testnet node access
+        algodToken := "" // Leave empty for public node service, or enter your node token
+        algodServer := "https://testnet-api.algonode.cloud"
     
-        // Create an algod client<br>
-        algodClient, err := algod.MakeClient(algodServer, algodToken)<br>
-        if err != nil {<br>
-            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Create an algod client
+        algodClient, err := algod.MakeClient(algodServer, algodToken)
+        if err != nil {
+            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
+            return
+        }
     
-        // Fetch the node status and print it<br>
-        status, err := algodClient.Status().Do(context.Background())<br>
-        if err != nil {<br>
-            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Fetch the node status and print it
+        status, err := algodClient.Status().Do(context.Background())
+        if err != nil {
+            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
+            return
+        }
     
-        fmt.Printf("Node status: %+v\\n", status)<br>
-    }<br>
-    </code>
-    </p>
+        fmt.Printf("Node status: %+v\\n", status)
+    }</code>
+    </pre>
     
     <p>First, we import the necessary Go packages, including <code>context</code> for API call management, <code>fmt</code> for formatted output, and <code>os</code> for system-level operations. We also import <code>algod</code> from the Algorand SDK, which allows us to interact with the Algorand blockchain.</p>
     
@@ -3092,84 +7420,80 @@ const chapters: Chapter[] = [
       <li>Print your variable!</li>
     </ul>
     
-    <p class="content">
-    <code>
-    package main<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>package main
     
-    import (<br>
-        "context"<br>
-        "fmt"<br>
-        "os"<br><br>
+    import (
+        "context"
+        "fmt"
+        "os"
     
-        "github.com/algorand/go-algorand-sdk/client/v2/algod"<br>
-    )<br><br>
+        "github.com/algorand/go-algorand-sdk/client/v2/algod"
+    )
     
-    func main() {<br>
-        // Variables for Algorand testnet node access<br>
-        algodToken := "" // Leave empty for public node service, or enter your node token<br>
-        algodServer := "https://testnet-api.algonode.cloud"<br><br>
+    func main() {
+        // Variables for Algorand testnet node access
+        algodToken := "" // Leave empty for public node service, or enter your node token
+        algodServer := "https://testnet-api.algonode.cloud"
     
-        // Create an algod client<br>
-        algodClient, err := algod.MakeClient(algodServer, algodToken)<br>
-        if err != nil {<br>
-            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Create an algod client
+        algodClient, err := algod.MakeClient(algodServer, algodToken)
+        if err != nil {
+            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
+            return
+        }
     
-        // Fetch the node status and print it<br>
-        status, err := algodClient.Status().Do(context.Background())<br>
-        if err != nil {<br>
-            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Fetch the node status and print it
+        status, err := algodClient.Status().Do(context.Background())
+        if err != nil {
+            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
+            return
+        }
     
-        // CREATE LAST ROUND VARIABLE AND PRINT THE LAST ROUND HERE<br>
+        // CREATE LAST ROUND VARIABLE AND PRINT THE LAST ROUND HERE
     
-    }<br>
-    </code>
-    </p>
+    }</code>
+    </pre>
     
     <p><strong>Reveal Answer:</strong></p>
     
-    <p class="content">
-    <code>
-    package main<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>package main
     
-    import (<br>
-        "context"<br>
-        "fmt"<br>
-        "os"<br><br>
+    import (
+        "context"
+        "fmt"
+        "os"
     
-        "github.com/algorand/go-algorand-sdk/client/v2/algod"<br>
-    )<br><br>
+        "github.com/algorand/go-algorand-sdk/client/v2/algod"
+    )
     
-    func main() {<br>
-        // Variables for Algorand testnet node access<br>
-        algodToken := "" // Leave empty for public node service, or enter your node token<br>
-        algodServer := "https://testnet-api.algonode.cloud"<br><br>
+    func main() {
+        // Variables for Algorand testnet node access
+        algodToken := "" // Leave empty for public node service, or enter your node token
+        algodServer := "https://testnet-api.algonode.cloud"
     
-        // Create an algod client<br>
-        algodClient, err := algod.MakeClient(algodServer, algodToken)<br>
-        if err != nil {<br>
-            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Create an algod client
+        algodClient, err := algod.MakeClient(algodServer, algodToken)
+        if err != nil {
+            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
+            return
+        }
     
-        // Fetch the node status and print it<br>
-        status, err := algodClient.Status().Do(context.Background())<br>
-        if err != nil {<br>
-            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Fetch the node status and print it
+        status, err := algodClient.Status().Do(context.Background())
+        if err != nil {
+            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
+            return
+        }
     
-        // Access last round status information<br>
-        lastRound := status.LastRound<br>
-        fmt.Printf("Last round: %d\\n", lastRound)<br>
-    }<br>
-    </code>
-    </p>
+        // Access last round status information
+        lastRound := status.LastRound
+        fmt.Printf("Last round: %d\\n", lastRound)
+    }</code>
+    </pre>
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -3196,13 +7520,12 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>How do you fetch the status of an Algorand node in Go?</p>
-          <pre>
-  algodClient, err := algod.MakeClient(algodServer, algodToken)
+          <pre><code>algodClient, err := algod.MakeClient(algodServer, algodToken)
   if err != nil {
       fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\n", err)
       return
   }
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) status, err := algodClient.NodeStatus().Do(context.Background())</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -3214,13 +7537,12 @@ const chapters: Chapter[] = [
   
           <h3>Question 4</h3>
           <p>How do you access the last round from the status response in Go?</p>
-          <pre>
-  status, err := algodClient.Status().Do(context.Background())
+          <pre><code>status, err := algodClient.Status().Do(context.Background())
   if err != nil {
       fmt.Fprintf(os.Stderr, "Failed to get node status: %s\n", err)
       return
   }
-          </pre>
+</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) lastRound := status.LastRound</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -3230,7 +7552,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) lastRound := status.GetLastRound()</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: `
@@ -3274,42 +7596,40 @@ const chapters: Chapter[] = [
     language: 'GO',
     title: 'Payment Transactions',
     content: `
-    <p class="content">
-    <code>
-    package main<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>package main
     
-    import (<br>
-        "fmt"<br>
-        "github.com/algorand/go-algorand-sdk/crypto"<br>
-        "github.com/algorand/go-algorand-sdk/mnemonic"<br>
-    )<br><br>
+    import (
+        "fmt"
+        "github.com/algorand/go-algorand-sdk/crypto"
+        "github.com/algorand/go-algorand-sdk/mnemonic"
+    )
     
-    func main() {<br>
-        // METHOD 1: Create a New Account<br>
-        newAccount := crypto.GenerateAccount()<br>
-        fmt.Printf("Private Key: %s\\n", newAccount.PrivateKey)<br>
-        fmt.Printf("Address: %s\\n", newAccount.Address.String())<br><br>
+    func main() {
+        // METHOD 1: Create a New Account
+        newAccount := crypto.GenerateAccount()
+        fmt.Printf("Private Key: %s\\n", newAccount.PrivateKey)
+        fmt.Printf("Address: %s\\n", newAccount.Address.String())
     
-        // Convert Private Key to Mnemonic<br>
-        mnemo, err := mnemonic.FromPrivateKey(newAccount.PrivateKey)<br>
-        if err != nil {<br>
-            fmt.Printf("Error converting private key to mnemonic: %s\\n", err)<br>
-            return<br>
-        }<br>
-        fmt.Println("Mnemonic:", mnemo)<br><br>
+        // Convert Private Key to Mnemonic
+        mnemo, err := mnemonic.FromPrivateKey(newAccount.PrivateKey)
+        if err != nil {
+            fmt.Printf("Error converting private key to mnemonic: %s\\n", err)
+            return
+        }
+        fmt.Println("Mnemonic:", mnemo)
     
-        // METHOD 2: Use Mnemonic to Obtain Private Key<br>
-        // Assuming mnemonicPhrase is obtained securely and already exists<br>
-        mnemonicPhrase := "brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual"<br>
-        privKey, err := mnemonic.ToPrivateKey(mnemonicPhrase)<br>
-        if err != nil {<br>
-            fmt.Printf("Error retrieving private key from mnemonic: %s\\n", err)<br>
-            return<br>
-        }<br>
-        fmt.Printf("Private Key from Mnemonic: %s\\n", privKey)<br>
-    }<br>
-    </code>
-    </p>
+        // METHOD 2: Use Mnemonic to Obtain Private Key
+        // Assuming mnemonicPhrase is obtained securely and already exists
+        mnemonicPhrase := "brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual"
+        privKey, err := mnemonic.ToPrivateKey(mnemonicPhrase)
+        if err != nil {
+            fmt.Printf("Error retrieving private key from mnemonic: %s\\n", err)
+            return
+        }
+        fmt.Printf("Private Key from Mnemonic: %s\\n", privKey)
+    }</code>
+    </pre>
     
     <p>When developing in Go with the Algorand SDK, there are two primary methods for obtaining a private key and address which are necessary for signing transactions. The private key is typically managed in byte slice format and is essential for the creation and signing of transactions.</p>
     
@@ -3328,83 +7648,81 @@ const chapters: Chapter[] = [
     
     <p>This text should provide a clear, non-code explanation of the key processes involved in using the Algorand Go SDK for creating and managing accounts, as well as performing transactions.</p>
     
-    <p class="content">
-    <code>
-    package main<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>package main
     
-    import (<br>
-        "context"<br>
-        "fmt"<br>
-        "github.com/algorand/go-algorand-sdk/client/algod"<br>
-        "github.com/algorand/go-algorand-sdk/crypto"<br>
-        "github.com/algorand/go-algorand-sdk/future"<br>
-        "github.com/algorand/go-algorand-sdk/types"<br>
-    )<br><br>
+    import (
+        "context"
+        "fmt"
+        "github.com/algorand/go-algorand-sdk/client/algod"
+        "github.com/algorand/go-algorand-sdk/crypto"
+        "github.com/algorand/go-algorand-sdk/future"
+        "github.com/algorand/go-algorand-sdk/types"
+    )
     
-    func main() {<br>
-        // Define the Algod client<br>
-        algodToken := ""<br>
-        algodAddress := "https://testnet-api.algonode.cloud"<br>
-        headers := []*algod.Header{{Key: "X-API-Key", Value: algodToken}}<br>
-        algodClient, err := algod.MakeClientWithHeaders(algodAddress, algodToken, headers)<br>
-        if err != nil {<br>
-            fmt.Printf("Failed to make algod client: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+    func main() {
+        // Define the Algod client
+        algodToken := ""
+        algodAddress := "https://testnet-api.algonode.cloud"
+        headers := []*algod.Header{{Key: "X-API-Key", Value: algodToken}}
+        algodClient, err := algod.MakeClientWithHeaders(algodAddress, algodToken, headers)
+        if err != nil {
+            fmt.Printf("Failed to make algod client: %s\\n", err)
+            return
+        }
     
-        // Existing account details<br>
-        address := "I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU"<br>
-        privateKey := "6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=="<br><br>
+        // Existing account details
+        address := "I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU"
+        privateKey := "6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=="
     
-        // Convert 1.001 Algo to microAlgos for transaction amount<br>
-        amount := uint64(1.001 * 1e6) // Algos are expressed in microAlgos in the SDK<br><br>
+        // Convert 1.001 Algo to microAlgos for transaction amount
+        amount := uint64(1.001 * 1e6) // Algos are expressed in microAlgos in the SDK
     
-        // Fetch the suggested transaction parameters<br>
-        txParams, err := algodClient.SuggestedParams().Do(context.Background())<br>
-        if err != nil {<br>
-            fmt.Printf("Error getting suggested tx params: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Fetch the suggested transaction parameters
+        txParams, err := algodClient.SuggestedParams().Do(context.Background())
+        if err != nil {
+            fmt.Printf("Error getting suggested tx params: %s\\n", err)
+            return
+        }
     
-        // Generate a new account<br>
-        newAccount := crypto.GenerateAccount()<br>
-        newAccountAddress := newAccount.Address.String()<br>
-        newAccountPrivateKey := newAccount.PrivateKey<br><br>
+        // Generate a new account
+        newAccount := crypto.GenerateAccount()
+        newAccountAddress := newAccount.Address.String()
+        newAccountPrivateKey := newAccount.PrivateKey
     
-        // Create a payment transaction<br>
-        note := []byte("Here's your one Algo!")<br>
-        tx, err := future.MakePaymentTxn(address, newAccountAddress, amount, note, "", txParams)<br>
-        if err != nil {<br>
-            fmt.Printf("Failed to make transaction: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Create a payment transaction
+        note := []byte("Here's your one Algo!")
+        tx, err := future.MakePaymentTxn(address, newAccountAddress, amount, note, "", txParams)
+        if err != nil {
+            fmt.Printf("Failed to make transaction: %s\\n", err)
+            return
+        }
     
-        // Sign the transaction<br>
-        signTx, err := crypto.SignTransaction(privateKey, tx)<br>
-        if err != nil {<br>
-            fmt.Printf("Failed to sign transaction: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Sign the transaction
+        signTx, err := crypto.SignTransaction(privateKey, tx)
+        if err != nil {
+            fmt.Printf("Failed to sign transaction: %s\\n", err)
+            return
+        }
     
-        // Send the transaction<br>
-        sendResponse, err := algodClient.SendRawTransaction(signTx).Do(context.Background())<br>
-        if err != nil {<br>
-            fmt.Printf("Failed to send transaction: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Send the transaction
+        sendResponse, err := algodClient.SendRawTransaction(signTx).Do(context.Background())
+        if err != nil {
+            fmt.Printf("Failed to send transaction: %s\\n", err)
+            return
+        }
     
-        // Wait for confirmation<br>
-        confirmedTxn, err := future.WaitForConfirmation(algodClient, sendResponse.TxID, 4, context.Background())<br>
-        if err != nil {<br>
-            fmt.Printf("Error waiting for confirmation: %s\\n", err)<br>
-            return<br>
-        }<br><br>
+        // Wait for confirmation
+        confirmedTxn, err := future.WaitForConfirmation(algodClient, sendResponse.TxID, 4, context.Background())
+        if err != nil {
+            fmt.Printf("Error waiting for confirmation: %s\\n", err)
+            return
+        }
     
-        // Print the transaction ID<br>
-        fmt.Printf("Transaction confirmed with ID: %s\\n", confirmedTxn.Txn.Txn.ID)<br>
-    }<br>
-    </code>
-    </p>
+        // Print the transaction ID
+        fmt.Printf("Transaction confirmed with ID: %s\\n", confirmedTxn.Txn.Txn.ID)
+    }</code>
+    </pre>
     
     <p>Steps:</p>
     <ol class="inText">
@@ -3438,118 +7756,114 @@ const chapters: Chapter[] = [
         <li>closing your account (send all of your remaining Algo to them)</li>
     </ul>
     
-    <p class="content">
-    <code>
-    PaymentTransaction format:<br><br>
+    <pre class="overflow-auto shadow-md">
+    <code>PaymentTransaction format:
     
-    class PaymentTxn(<br>
-        sender: str,<br>
-        sp: SuggestedParams,<br>
-        receiver: Any,<br>
-        amt: Any,<br>
-        close_remainder_to: Any | None = None,<br>
-        note: Any | None = None,<br>
-        lease: Any | None = None,<br>
-        rekey_to: Any | None = None<br>
-    )<br>
-    Represents a payment transaction.<br><br>
+    class PaymentTxn(
+        sender: str,
+        sp: SuggestedParams,
+        receiver: Any,
+        amt: Any,
+        close_remainder_to: Any | None = None,
+        note: Any | None = None,
+        lease: Any | None = None,
+        rekey_to: Any | None = None
+    )
+    Represents a payment transaction.
     
-    Args:<br>
-        sender (str): address of the sender<br>
-        sp (SuggestedParams): suggested params from algod<br>
-        receiver (str): address of the receiver<br>
-        amt (int): amount in microAlgos to be sent<br>
-        close_remainder_to (str, optional): if nonempty, account will be closed and remaining algos will be sent to this address<br>
-        note (bytes, optional): arbitrary optional bytes<br>
-        lease (byte[32], optional): specifies a lease, and no other transaction with the same sender and lease can be confirmed in this transaction's valid rounds<br>
-        rekey_to (str, optional): additionally rekey the sender to this address<br><br>
+    Args:
+        sender (str): address of the sender
+        sp (SuggestedParams): suggested params from algod
+        receiver (str): address of the receiver
+        amt (int): amount in microAlgos to be sent
+        close_remainder_to (str, optional): if nonempty, account will be closed and remaining algos will be sent to this address
+        note (bytes, optional): arbitrary optional bytes
+        lease (byte[32], optional): specifies a lease, and no other transaction with the same sender and lease can be confirmed in this transaction's valid rounds
+        rekey_to (str, optional): additionally rekey the sender to this address
     
-    After we define our <code>Payment Transaction</code> class parameters, we can then use the <code>sign()</code> method that is included within it. This sign function accepts our private key, and outputs a signed transaction object, which is needed to input to the <code>send_transaction()</code> function:<br><br>
+    After we define our <code>Payment Transaction</code> class parameters, we can then use the <code>sign()</code> method that is included within it. This sign function accepts our private key, and outputs a signed transaction object, which is needed to input to the <code>send_transaction()</code> function:
     
-    (method) def sign(private_key: Any) -> SignedTransaction<br>
-    Sign the transaction with a private key.<br><br>
+    (method) def sign(private_key: Any) -> SignedTransaction
+    Sign the transaction with a private key.
     
-    Args:<br>
-        private_key (str): the private key of the signing account<br><br>
+    Args:
+        private_key (str): the private key of the signing account
     
-    Returns:<br>
-        SignedTransaction: signed transaction with the signature<br><br>
+    Returns:
+        SignedTransaction: signed transaction with the signature
     
-    The <code>wait_for_confirmation()</code> function requires the <code>AlgodClient</code> class variable we created, as well as the transaction ID to wait for:<br><br>
+    The <code>wait_for_confirmation()</code> function requires the <code>AlgodClient</code> class variable we created, as well as the transaction ID to wait for:
     
-    (function) def wait_for_confirmation(<br>
-        algod_client: AlgodClient,<br>
-        txid: str,<br>
-    )<br><br>
+    (function) def wait_for_confirmation(
+        algod_client: AlgodClient,
+        txid: str,
+    )
     
-    Lastly, the <code>send_transaction()</code> function, which accepts signed transaction objects<br><br>
+    Lastly, the <code>send_transaction()</code> function, which accepts signed transaction objects
     
-    (method) def send_transaction(<br>
-        txn: GenericSignedTransaction,<br>
-    ) -> Outputs transaction ID<br><br>
-    </code>
-    </p>
+    (method) def send_transaction(
+        txn: GenericSignedTransaction,
+    ) -> Outputs transaction ID</code>
+    </pre>
     
     <p>Below are examples of rekey transactions and close amount to transactions, which are sent in succession (BUT NOT A GROUP TRANSACTION, WHICH WE WILL LEARN ABOUT LATER)</p>
     
-    <p class="content">
-    <code>
-    # Repeat the process for the Rekey Transaction and the close remainder to transaction<br><br><br>
+    <pre class="overflow-auto shadow-md">
+    <code># Repeat the process for the Rekey Transaction and the close remainder to transaction
     
-    // Rekey Transaction<br>
-    rekey_to_new_account_payment = PaymentTxn(<br>
-        sender = address,<br>
-        receiver = new_account_address,<br>
-        sp = params,<br>
-        amt = 0,<br>
-        rekey_to = new_account_address,<br>
-        note = "Take care of my account for me! I'll be back in a week"<br>
-    )<br><br>
+    // Rekey Transaction
+    rekey_to_new_account_payment = PaymentTxn(
+        sender = address,
+        receiver = new_account_address,
+        sp = params,
+        amt = 0,
+        rekey_to = new_account_address,
+        note = "Take care of my account for me! I'll be back in a week"
+    )
     
-    signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)<br>
-    transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)<br>
-    wait_for_confirmation(algod_client, transaction_id)<br>
-    print(transaction_id)<br><br>
+    signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)
+    transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)
+    wait_for_confirmation(algod_client, transaction_id)
+    print(transaction_id)
     
-    // New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key<br><br>
+    // New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key
     
-    rekey_back_to_old_account_from_new_account = PaymentTxn(<br>
-        sender = address,<br>
-        receiver = address,<br>
-        sp = params,<br>
-        rekey_to = address,<br>
-        amt = 0,<br>
-        note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"<br>
-    )<br><br>
+    rekey_back_to_old_account_from_new_account = PaymentTxn(
+        sender = address,
+        receiver = address,
+        sp = params,
+        rekey_to = address,
+        amt = 0,
+        note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"
+    )
     
-    signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)<br>
-    transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)<br>
-    wait_for_confirmation(algod_client, transaction_id)<br>
-    print(transaction_id)<br><br>
+    signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)
+    transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)
+    wait_for_confirmation(algod_client, transaction_id)
+    print(transaction_id)
     
-    // Close remainder to transaction<br><br>
+    // Close remainder to transaction
     
-    close_account_to_new_account = PaymentTxn(<br>
-        sender = address,<br>
-        receiver = new_account_address,<br>
-        sp = params,<br>
-        amt = 0,<br>
-        close_remainder_to = new_account_address,<br>
-        note = 'Take care of my precious Algo!'<br>
-    )<br><br>
+    close_account_to_new_account = PaymentTxn(
+        sender = address,
+        receiver = new_account_address,
+        sp = params,
+        amt = 0,
+        close_remainder_to = new_account_address,
+        note = 'Take care of my precious Algo!'
+    )
     
-    signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)<br>
-    transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)<br>
-    wait_for_confirmation(algod_client, transaction_id)<br>
-    print(transaction_id)<br>
-    </code>
-    </p>
+    signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)
+    transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)
+    wait_for_confirmation(algod_client, transaction_id)
+    print(transaction_id)</code>
+    </pre>
     
     <p>Although the <code>Payment Transaction</code> has many possible inputs, the bare minimum is using the sender, sp, receiver, and amt field. Anything else is at your discretion!</p>
     
     <p>DISCLAIMER: that when rekeying and closing out accounts, this process is irreversible! If you don't know the person, or feel unsure about doing so, you should never use these transactions outside of testing purposes without ultimate confidence. No platforms currently utilize rekey transactions for users, but do use them internally when generating smart contracts for contract to contract calls, which will come later in our learning process.</p>
   
-      <form>
+      <hr><form>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -3576,10 +7890,9 @@ const chapters: Chapter[] = [
   
           <h3>Question 3</h3>
           <p>How do you convert an amount in Algos to microAlgos in the Algorand Go SDK?</p>
-          <pre>
-  amount := 1.001
+          <pre><code>amount := 1.001
   microAlgos := uint64(amount * 1e6)
-          </pre>
+</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="correct">a) uint64(amount * 1e6)</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -3600,7 +7913,7 @@ const chapters: Chapter[] = [
           <input type="radio" id="q4d" name="q4" value="d">
           <label for="q4d" class="incorrect">d) crypto.MakeSignedTransaction()</label><br>
   
-          <br>
+          
       </form>
     `,
     initialCode: `

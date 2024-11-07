@@ -27,6 +27,8 @@ export default function Layout({ children }: { children: ReactNode }) {
     return acc;
   }, {} as Record<string, Chapter[]>);
 
+  // const logoSrc = darkMode ? '/images/AlgolearnWhite.png' : '/images/AlgolearnBlack.png';
+
   return (
     <html lang='en' className={darkMode ? 'dark' : ''}>
       <head>
@@ -41,10 +43,11 @@ export default function Layout({ children }: { children: ReactNode }) {
               <Link href='/' className='flex-shrink-0'>
                 <Image
                   // className='h-8 w-auto'
-                  src='/placeholder.svg'
+                  // src='/images/AlgolearnBlack.png'
+                  src={darkMode ? '/images/AlgolearnWhite.png' : '/images/AlgolearnBlack.png'} // Conditionally set src based on darkMode
                   alt='AlgoLearn Logo'
-                  width={32}
-                  height={32}
+                  width={150}
+                  height={150}
                   priority
                 />
               </Link>
@@ -74,8 +77,10 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       {Object.keys(groupedChapters).map((language) => (
-                        <DropdownMenuItem key={language}>
-                          <Link href={`/${language.toLowerCase()}`}>{language}</Link>
+                        <DropdownMenuItem asChild key={language}>
+                          <Link href={`/${language.toLowerCase()}`} className='block w-full h-full cursor-pointer'>
+                            {language}
+                          </Link>
                         </DropdownMenuItem>
                       ))}
                     </DropdownMenuContent>
