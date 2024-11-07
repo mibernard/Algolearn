@@ -9,7 +9,7 @@ export async function executeJavaScript(code: string): Promise<string> {
         timeout: 5000, // 5 seconds timeout
         sandbox: {
           console: {
-            log: (...args: any[]) => {
+            log: (...args: unknown[]) => {
               // Capture each console.log output in consoleOutput
               consoleOutput += args.join(' ') + '\n';
             },
@@ -27,9 +27,14 @@ export async function executeJavaScript(code: string): Promise<string> {
       } else {
         resolve('Result is undefined');
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('JavaScript execution error:', err);
-      reject(new Error(`JavaScript execution failed: ${err.message}`));
+
+      if (err instanceof Error) {
+        reject(new Error(`JavaScript execution failed: ${err.message}`));
+      } else {
+        reject(new Error('JavaScript execution failed with an unknown error'));
+      }
     }
   });
 }

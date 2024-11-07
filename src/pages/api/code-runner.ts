@@ -40,11 +40,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     }
 
     return res.status(200).json({ output });
-  } catch (error: any) {
+  } catch (error: unknown) {
     // Log the error for internal debugging (ensure sensitive info isn't exposed)
-    console.error(`Code execution error: ${error.message}`);
+    if (error instanceof Error) {
+      console.error(`Code execution error: ${error.message}`);
 
-    // Return a sanitized error message to the user
-    return res.status(400).json({ error: error.message });
+      // Return a sanitized error message to the user
+      return res.status(400).json({ error: error.message });
+    } else {
+      console.error('Code execution error: Unknown error');
+
+      // Return a generic error message if the error is not an instance of Error
+      return res.status(400).json({ error: 'An unknown error occurred.' });
+    }
   }
 }
