@@ -3,7 +3,7 @@
 
 import React, { ReactNode, useState } from 'react';
 import Link from 'next/link';
-import { Moon, Sun, ChevronDown, Search } from 'lucide-react';
+import { Moon, Sun, ChevronDown, Search, BookCheck, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -37,14 +37,12 @@ export default function Layout({ children }: { children: ReactNode }) {
       </head>
       <body className='min-h-screen bg-background text-foreground'>
         {/* Make navbar sticky */}
-        <nav className='sticky top-0 z-10 bg-background border-b'>
+        <nav className='sticky top-0 z-50 bg-background border-b'>
           <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex items-center justify-between h-16'>
               <Link href='/' className='flex-shrink-0'>
                 <Image
-                  // className='h-8 w-auto'
-                  // src='/images/AlgolearnBlack.png'
-                  src={darkMode ? '/images/AlgolearnWhite.png' : '/images/AlgolearnBlack.png'} // Conditionally set src based on darkMode
+                  src={darkMode ? '/images/AlgolearnWhite.png' : '/images/AlgolearnBlack.png'}
                   alt='AlgoLearn Logo'
                   width={150}
                   height={150}
@@ -87,15 +85,52 @@ export default function Layout({ children }: { children: ReactNode }) {
                   </DropdownMenu>
                 </div>
               </div>
-              <Button
-                variant='ghost'
-                size='icon'
-                onClick={() => setDarkMode(!darkMode)}
-                aria-label='Toggle dark mode'
-                aria-pressed={darkMode}
-              >
-                {darkMode ? <Sun className='h-5 w-5' /> : <Moon className='h-5 w-5' />}
-              </Button>
+              {/* Icons for smaller screens */}
+
+              <div className='space-x-0 flex'>
+                <div className='md:hidden'>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant='ghost' size='icon' aria-label='Docs'>
+                        <FileText size={10} strokeWidth={2.5} />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>Getting Started</DropdownMenuItem>
+                      <DropdownMenuItem>API Reference</DropdownMenuItem>
+                      <DropdownMenuItem>SDKs</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant='ghost' size='icon' aria-label='Tutorials'>
+                        <BookCheck size={1} strokeWidth={2.5} />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      {Object.keys(groupedChapters).map((language) => (
+                        <DropdownMenuItem asChild key={language}>
+                          <Link href={`/${language.toLowerCase()}`} className='block w-full h-full cursor-pointer'>
+                            {language}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+
+                {/* Dark mode toggle button */}
+
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  onClick={() => setDarkMode(!darkMode)}
+                  aria-label='Toggle dark mode'
+                  aria-pressed={darkMode}
+                >
+                  {darkMode ? <Sun size={10} strokeWidth={2.5} /> : <Moon size={10} strokeWidth={2.5} />}
+                </Button>
+              </div>
             </div>
           </div>
         </nav>

@@ -83,17 +83,19 @@ export default function ChapterPage() {
           </h2>
 
           <ScrollArea className='h-[calc(100vh-8rem)]'>
-            {languageChapters.map((ch, index) => (
-              <Link
-                href={`/${language.toLowerCase()}/${ch.title.toLowerCase().replace(/\s+/g, '-')}`}
-                key={ch.id}
-                className={`block py-2 px-4 rounded-md transition-colors ${
-                  index === chapterIndex ? 'bg-primary/10 text-primary' : 'hover:bg-muted'
-                }`}
-              >
-                {ch.title}
-              </Link>
-            ))}
+            <div className='pr-4'>
+              {languageChapters.map((ch, index) => (
+                <Link
+                  href={`/${language.toLowerCase()}/${ch.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  key={ch.id}
+                  className={`block py-2 px-4 rounded-md transition-colors ${
+                    index === chapterIndex ? 'bg-primary/10 text-primary' : 'hover:bg-muted'
+                  }`}
+                >
+                  {ch.title}
+                </Link>
+              ))}
+            </div>
           </ScrollArea>
         </div>
       </aside>

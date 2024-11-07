@@ -150,7 +150,9 @@ print(my_tuple)
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code snippet?</p>
-          <pre><code>string = "Hello"\nresult = string * 3\nprint(result)</code></pre>
+          <pre><code>string = "Hello" 
+result = string * 3
+print(result)</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="correct">a) HelloHelloHello</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -239,7 +241,8 @@ print(likes_first_index)
   
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>this_is_my_dictionary = {"name": "John", "age": 22}\nprint(this_is_my_dictionary['age'])</code></pre>
+          <pre><code>this_is_my_dictionary = {"name": "John", "age": 22}
+print(this_is_my_dictionary['age'])</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) "John"</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -251,7 +254,8 @@ print(likes_first_index)
   
           <h3>Question 4</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}\nprint(this_is_my_dictionary['likes'][1])</code></pre>
+          <pre><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}
+print(this_is_my_dictionary['likes'][1])</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="incorrect">a) "Exercise"</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -290,9 +294,8 @@ print(likes_first_index)
     <p>Although lists don't have to be organized in anyway and are not descriptive, they can be manipulated. For example, if you wanted to remove duplicate entries in a list, you could use the set() function.</p>
     <pre class="overflow-auto shadow-md"><code>my_list = [1, 1, 2, 3, 4, 4]
 my_list_without_duplicates = set(my_list)
-print(my_list_without_duplicates)</code></pre>
-    
-    <p># Output:# [1, 2, 3, 4]</p>
+print(my_list_without_duplicates)
+# Output:# [1, 2, 3, 4]</code></pre>
     
     <p>Let's look back at the first example of a list:</p>
     <pre class="overflow-auto shadow-md"><code>my_list = [7, "Hello", False, 63.5]</code></pre>
@@ -314,13 +317,9 @@ print(my_list_without_duplicates)</code></pre>
 print(first_index_my_list)
 # Output: "Hello"</code></pre>
     
-    <p>Try printing the third index into the console using index notation, I've already defined the list for you below, click run when you're ready to run the code! The output should be 63.5</p>
+    <p>Try printing the third index into the using index notation into the code editor down below, I've already defined the list for you below, click run when you're ready to run the code! The output should be 63.5</p>
     
-    <p>IDE WINDOW:
-    my_list = [7, "Hello", False, 63.5]
-    . . .
-    CHECK OUTPUT IS 63.5 AND SHOW "SUCCESS"</p>
-    <p>Next chapter: Dictionaries</p>
+    <pre class="overflow-auto shadow-md"><code>my_list = [7, "Hello", False, 63.5]"</code></pre>
   
       <hr><form>
     <h1>Quiz</h1>
@@ -349,8 +348,7 @@ print(first_index_my_list)
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
           <pre><code>my_list = [7, "Hello", False, 63.5]
-print(my_list[2])
-</code></pre>
+print(my_list[2])</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 7</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -364,8 +362,7 @@ print(my_list[2])
           <p>What is the correct way to remove duplicate entries in a list?</p>
           <pre><code>my_list = [1, 1, 2, 3, 4, 4]
 my_list_without_duplicates = set(my_list)
-print(my_list_without_duplicates)
-</code></pre>
+print(my_list_without_duplicates)</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) Using the set() function</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -454,8 +451,7 @@ print_info(name="Alice", age=30, city="New York")</code></pre>
           <p>What will be the output of the following code?</p>
           <pre><code>def greet(name):
     print(f"Hello, {name}!")  
-greet("Alice")
-</code></pre>
+greet("Alice")</code></pre>
           <input type="radio" id="q2a" name="q2" value="a">
           <label for="q2a" class="incorrect">a) Hello, world!</label><br>
           <input type="radio" id="q2b" name="q2" value="b">
@@ -470,8 +466,7 @@ greet("Alice")
           <pre><code>def add(a, b):
     return a + b  
 result = add(3, 5)
-print(result)
-</code></pre>
+print(result)</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 35</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -485,8 +480,7 @@ print(result)
           <p>What will be the output of the following code?</p>
           <pre><code>def greet(name="world"):
     print(f"Hello, {name}!")  
-greet()
-</code></pre>
+greet()</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) Hello, world!</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -583,7 +577,7 @@ algod_client = v2client.algod.AlgodClient(node_token, node_port)</code></pre>
       </form>
     
     `,
-    initialCode: `# Import the entire random module\nimport random\n# Generate a random integer between 1 and 10\nrandom_number = random.randint(1, 10)\nprint(f"Random number (full random import): {random_number}")
+    initialCode: `# Import the entire random module\nimport random\n\n# Generate a random integer between 1 and 10\nrandom_number = random.randint(1, 10)\nprint(f"Random number (full random import): {random_number}")
   `,
   },
   {
@@ -606,15 +600,18 @@ print(customer_name)</code>
     <p>If you are using your own algorand testnet node on Windows, you will need to access your algod_token and algod_port from your node's data directory:</p>
     
     <p><strong>Obtaining your Algorand Node Token and Port</strong></p>
-    <p><strong>#Enter the data directory from the root folder</strong></p>
-    <p>cd node/data</p>
-    <p><strong>#Use the following commands to obtain your node token and port</strong></p>
-    <p>cat algod.token</p>
-    <p>Logs the token into the terminal, it should look something like:</p>
-    <p>b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd</p>
-    <p>cat algod.net</p>
-    <p>Logs the port into the terminal, it should look something like:</p>
-    <p>127.0.0.1:8080</p>
+    <pre class="overflow-auto shadow-md"><code>#Enter the data directory from the root folder
+cd node/data
+
+#Use the following commands to obtain your node token and port
+cat algod.token
+
+#Log the token into the terminal, it should look something like:
+b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd
+cat algod.net
+
+#Logs the port into the terminal, it should look something like:
+127.0.0.1:8080</code></pre>
     
     <p>When programming, you will format this information for variables like so:</p>
     
@@ -683,10 +680,9 @@ print(status)</code></pre>
 'last-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95', 
 'next-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95',
 'next-version-round': 41422523, 'next-version-supported': True, 'stopped-at-unsupported-round': False, 
-'time-since-last-round': 1687057197}
-#Enter code below to get the 'last-round' value printed to the console!</code></pre>
-    
-    <p>Reveal Answer?</p>
+'time-since-last-round': 1687057197}</code></pre>
+
+    <p>Enter this code below to get the 'last-round' value printed to the console:</p>
     <pre class="overflow-auto shadow-md"><code>last_round = status['last-round']
 print(last_round)</code></pre>
   
@@ -719,8 +715,8 @@ print(last_round)</code></pre>
           <h3>Question 3</h3>
           <p>What will be the value of 'last_round' if the key 'last-round' in the status dictionary is 1000?</p>
           <pre><code>status = {'last-round': 1000}
-  last_round = status['last-round']
-  print(last_round)
+last_round = status['last-round']
+print(last_round)
 </code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) '1000'</label><br>
@@ -768,6 +764,7 @@ except Exception as e:
     language: 'Python',
     title: 'Payment Transactions',
     content: `
+    <p>In this chapter we are creating and managing Algorand accounts in Python, including generating addresses, converting mnemonics, and executing secure payment transactions.</p>
     <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 from algosdk.transaction import PaymentTxn, wait_for_confirmation
 from algosdk import account
@@ -780,28 +777,26 @@ from algosdk.util import algos_to_microalgos
     <p><strong>METHOD 1</strong>
     CREATE A NEW ACCOUNT</p>
     <pre class="overflow-auto shadow-md"><code>private_key, address = account.generate_account()
-print(private_key)
-print(address)</code></pre>
-    <p>Output:
-    6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg== <== Private Key
-    I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU <== Address</p>
+print("Private Key: ", private_key)
+print("Address: ", address)
+#Output
+#Private Key: 6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg== 
+#Address: I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU</code></pre>
     
     <p>IF NEEDED TO IMPORT TO A WALLET, YOU CAN OBTAIN THE MNEMONIC FROM THE PRIVATE KEY
     REDEEM MNEMONIC FROM PRIVATE KEY</p>
     <pre class="overflow-auto shadow-md"><code>mnemonic_phrase = mnemonic.from_private_key(private_key)
 print(mnemonic_phrase)
+#Output: brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual <== Mnemonic
 </code></pre>
-    <p>Output:
-    brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual <== Mnemonic</p>
     
     <p><strong>METHOD 2</strong>
     USE MNEMONIC TO OBTAIN PRIVATE KEY
     REDEEM PRIVATE KEY FROM MNEMONIC</p>
     <pre class="overflow-auto shadow-md"><code>mnemonic_phrase = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual'
 private_key = mnemonic.to_private_key(mnemonic_phrase)
-print(private_key)</code></pre>
-    <p>Output:
-    6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg== <== Private Key</p>
+print(private_key)
+#Output: 6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg== <== Private Key</code></pre>
     
     <p>When developing in Python, there are two methods to obtain a private key and address to use for signing transactions you create. The private key is in base64 format and required for transaction signing.</p>
     
@@ -842,14 +837,19 @@ print(private_key)</code></pre>
 from algosdk.account import generate_account
 from algosdk.util import algos_to_microalgos
 from algosdk.transaction import PaymentTxn, wait_for_confirmation
+
 algod_token = ''
 algod_server = 'https://testnet-api.algonode.cloud'
 algod_client = AlgodClient(algod_token, algod_server)
+
 address = 'I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU'
 private_key = '6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=='
+
 amount = algos_to_microalgos(1.001)
 params = algod_client.suggested_params()
+
 new_account_private_key, new_account_address = generate_account()
+
 basic_payment_transaction = PaymentTxn(
     sender = address,
     receiver = new_account_address,
@@ -857,6 +857,7 @@ basic_payment_transaction = PaymentTxn(
     amt = amount,
     note = "Here's your one Algo!"
 )
+
 signed_basic_payment_transaction = basic_payment_transaction.sign(private_key)
 transaction_id = algod_client.send_transaction(signed_basic_payment_transaction)
 wait_for_confirmation(algod_client, transaction_id)
@@ -944,6 +945,7 @@ print(transaction_id)</code></pre>
     <p>Below are examples of rekey transactions and close amount to transactions, which are sent in succession (BUT NOT A GROUP TRANSACTION, WHICH WE WILL LEARN ABOUT LATER)</p>
     
     <pre class="overflow-auto shadow-md"><code># Rekey Transaction
+
     rekey_to_new_account_payment = PaymentTxn(
         sender = address,
         receiver = new_account_address,
@@ -952,11 +954,14 @@ print(transaction_id)</code></pre>
         rekey_to = new_account_address,
         note = "Take care of my account for me! I'll be back in a week"
     )
+
     signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)
     transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)
     wait_for_confirmation(algod_client, transaction_id)
     print(transaction_id)
+
     # New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key
+
     rekey_back_to_old_account_from_new_account = PaymentTxn(
         sender = address,
         receiver = address,
@@ -965,10 +970,12 @@ print(transaction_id)</code></pre>
         amt = 0,
         note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"
     )
+
     signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)
     transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)
     wait_for_confirmation(algod_client, transaction_id)
     print(transaction_id)
+
     # Close remainder to transaction
     close_account_to_new_account = PaymentTxn(
         sender = address,
@@ -978,6 +985,7 @@ print(transaction_id)</code></pre>
         close_remainder_to = new_account_address,
         note = 'Take care of my precious Algo!'
     )
+
     signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)
     transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)
     wait_for_confirmation(algod_client, transaction_id)
@@ -992,64 +1000,64 @@ print(transaction_id)</code></pre>
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
-          <p>What function is used to create a new Algorand account in the algosdk library?</p>
-          <input type="radio" id="q1a" name="q1" value="a">
-          <label for="q1a" class="incorrect">a) algosdk.createAccount()</label><br>
-          <input type="radio" id="q1b" name="q1" value="b">
-          <label for="q1b" class="correct">b) algosdk.generateAccount()</label><br>
-          <input type="radio" id="q1c" name="q1" value="c">
-          <label for="q1c" class="incorrect">c) algosdk.newAccount()</label><br>
-          <input type="radio" id="q1d" name="q1" value="d">
-          <label for="q1d" class="incorrect">d) algosdk.accountCreate()</label><br>
-  
-          <h3>Question 2</h3>
-          <p>How can you obtain the mnemonic phrase from a private key in the algosdk library?</p>
-          <input type="radio" id="q2a" name="q2" value="a">
-          <label for="q2a" class="incorrect">a) algosdk.privateKeyToMnemonic()</label><br>
-          <input type="radio" id="q2b" name="q2" value="b">
-          <label for="q2b" class="correct">b) algosdk.secretKeyToMnemonic()</label><br>
-          <input type="radio" id="q2c" name="q2" value="c">
-          <label for="q2c" class="incorrect">c) algosdk.mnemonicFromPrivateKey()</label><br>
-          <input type="radio" id="q2d" name="q2" value="d">
-          <label for="q2d" class="incorrect">d) algosdk.mnemonicConvert()</label><br>
-  
-          <h3>Question 3</h3>
-  <p>What is the correct way to initialize an AlgodClient instance to connect to the Algorand testnet?</p>
-  <pre><code>algod_token = ''
-  algod_server = 'https://testnet-api.algonode.cloud'
-  algod_client = algod.AlgodClient(algod_token, algod_server)
+<p>What function is used to create a new Algorand account in the algosdk library?</p>
+<input type="radio" id="q1a" name="q1" value="a">
+<label for="q1a" class="incorrect">a) algosdk.create_account()</label><br>
+<input type="radio" id="q1b" name="q1" value="b">
+<label for="q1b" class="correct">b) algosdk.generate_account()</label><br>
+<input type="radio" id="q1c" name="q1" value="c">
+<label for="q1c" class="incorrect">c) algosdk.new_account()</label><br>
+<input type="radio" id="q1d" name="q1" value="d">
+<label for="q1d" class="incorrect">d) algosdk.account_create()</label><br>
+
+<h3>Question 2</h3>
+<p>How can you obtain the mnemonic phrase from a private key in the algosdk library?</p>
+<input type="radio" id="q2a" name="q2" value="a">
+<label for="q2a" class="incorrect">a) algosdk.private_key_to_mnemonic()</label><br>
+<input type="radio" id="q2b" name="q2" value="b">
+<label for="q2b" class="correct">b) algosdk.secret_key_to_mnemonic()</label><br>
+<input type="radio" id="q2c" name="q2" value="c">
+<label for="q2c" class="incorrect">c) algosdk.mnemonic_from_private_key()</label><br>
+<input type="radio" id="q2d" name="q2" value="d">
+<label for="q2d" class="incorrect">d) algosdk.mnemonic_convert()</label><br>
+
+<h3>Question 3</h3>
+<p>What is the correct way to initialize an AlgodClient instance to connect to the Algorand testnet?</p>
+<pre><code>algod_token = ''
+algod_server = 'https://testnet-api.algonode.cloud'
+algod_client = algod.AlgodClient(algod_token, algod_server)
 </code></pre>
-  <input type="radio" id="q3a" name="q3" value="a">
-  <label for="q3a" class="correct">a) algod.AlgodClient()</label><br>
-  <input type="radio" id="q3b" name="q3" value="b">
-  <label for="q3b" class="incorrect">b) algod.AlgodNode()</label><br>
-  <input type="radio" id="q3c" name="q3" value="c">
-  <label for="q3c" class="incorrect">c) algod.Algodv2()</label><br>
-  <input type="radio" id="q3d" name="q3" value="d">
-  <label for="q3d" class="incorrect">d) algod.Client()</label><br>
-  
-  
-          <h3>Question 4</h3>
-          <p>What function is used to convert an amount of Algo to MicroAlgo?</p>
-          <input type="radio" id="q4a" name="q4" value="a">
-          <label for="q4a" class="incorrect">a) algosdk.convertAlgoToMicro()</label><br>
-          <input type="radio" id="q4b" name="q4" value="b">
-          <label for="q4b" class="correct">b) algosdk.algosToMicroalgos()</label><br>
-          <input type="radio" id="q4c" name="q4" value="c">
-          <label for="q4c" class="incorrect">c) algosdk.algoToMicro()</label><br>
-          <input type="radio" id="q4d" name="q4" value="d">
-          <label for="q4d" class="incorrect">d) algosdk.toMicroalgos()</label><br>
-  
-          <h3>Question 5</h3>
-          <p>Which function is used to send a signed transaction in the Algorand SDK?</p>
-          <input type="radio" id="q5a" name="q5" value="a">
-          <label for="q5a" class="incorrect">a) algodClient.sendTransaction()</label><br>
-          <input type="radio" id="q5b" name="q5" value="b">
-          <label for="q5b" class="correct">b) algodClient.sendRawTransaction()</label><br>
-          <input type="radio" id="q5c" name="q5" value="c">
-          <label for="q5c" class="incorrect">c) algodClient.submitTransaction()</label><br>
-          <input type="radio" id="q5d" name="q5" value="d">
-          <label for="q5d" class="incorrect">d) algodClient.sendSignedTransaction()</label><br>
+<input type="radio" id="q3a" name="q3" value="a">
+<label for="q3a" class="correct">a) algod.AlgodClient()</label><br>
+<input type="radio" id="q3b" name="q3" value="b">
+<label for="q3b" class="incorrect">b) algod.AlgodNode()</label><br>
+<input type="radio" id="q3c" name="q3" value="c">
+<label for="q3c" class="incorrect">c) algod.Algodv2()</label><br>
+<input type="radio" id="q3d" name="q3" value="d">
+<label for="q3d" class="incorrect">d) algod.Client()</label><br>
+
+<h3>Question 4</h3>
+<p>What function is used to convert an amount of Algo to MicroAlgo?</p>
+<input type="radio" id="q4a" name="q4" value="a">
+<label for="q4a" class="incorrect">a) algosdk.convert_algo_to_micro()</label><br>
+<input type="radio" id="q4b" name="q4" value="b">
+<label for="q4b" class="correct">b) algosdk.algos_to_microalgos()</label><br>
+<input type="radio" id="q4c" name="q4" value="c">
+<label for="q4c" class="incorrect">c) algosdk.algo_to_micro()</label><br>
+<input type="radio" id="q4d" name="q4" value="d">
+<label for="q4d" class="incorrect">d) algosdk.to_microalgos()</label><br>
+
+<h3>Question 5</h3>
+<p>Which function is used to send a signed transaction in the Algorand SDK?</p>
+<input type="radio" id="q5a" name="q5" value="a">
+<label for="q5a" class="incorrect">a) algod_client.send_transaction()</label><br>
+<input type="radio" id="q5b" name="q5" value="b">
+<label for="q5b" class="correct">b) algod_client.send_raw_transaction()</label><br>
+<input type="radio" id="q5c" name="q5" value="c">
+<label for="q5c" class="incorrect">c) algod_client.submit_transaction()</label><br>
+<input type="radio" id="q5d" name="q5" value="d">
+<label for="q5d" class="incorrect">d) algod_client.send_signed_transaction()</label><br>
+
   
           
       </form>
@@ -1073,8 +1081,57 @@ print("Mnemonic Phrase:", mnemonic_phrase)
   {
     id: 20,
     language: 'Python',
-    title: 'Python Installation',
-    content: `
+    title: 'Installation and Setup',
+    content: `<h2>Getting Started with Discord Bot Development on the Algorand Blockchain</h2>
+    <p>This tutorial will walk you through the installation and setup needed to start building a Discord bot for the Algorand blockchain. The steps outlined below cover essential tools, libraries, and additional resources to ensure a smooth start.</p>
+    
+    <h2>Resources</h2>
+    <ul class="inText">
+      <li>YouTube Tutorial: <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/z9lZ_ypTZzA "
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div></li>
+      <li>Download Python at <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a> 
+      <ul><li>(Ensure 'Add Python to PATH' is selected during installation)</li></li></ul>
+      <li>Install Visual Studio Code at <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></li>
+      <li>Python IntelliSense Extension for VS Code: Install within VS Code for enhanced Python support</li>
+    </ul>
+
+    <h2>Installing Essential Libraries</h2>
+    <p>Install the following libraries in your terminal:</p>
+    <pre class="overflow-auto shadow-md"><code>pip install aiohttp</code>
+<code>pip install algokit</code>
+<code>pip install py-algorand-sdk</code>
+<code>pip install algorand-python</code>
+<code>pip install python-dotenv</code></pre>
+    <p><strong>Note:</strong> If you encounter errors during Algokit installation regarding missing C++ tools, please follow the instructions in the video and install the <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/" target="_blank">Microsoft Visual C++ Build Tools</a>.</p>
+
+    <h2>Test Contract Example</h2>
+    <p>Create a new Python file called <code>testcontract.py</code> and add the following code to define a simple contract:</p>
+    <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract
+from algopy.arc4 import abimethod
+
+class TestContract(ARC4Contract):
+    def __init__(self) -> None:
+        pass
+
+    @abimethod
+    def test(self) -> None:
+        pass</code></pre>
+    <p>Compile the contract with the following terminal command:</p>
+    <pre class="overflow-auto shadow-md"><code>algokit compile py testcontract.py</code></pre>
+    <p>If the approval and clear TEAL files are generated successfully, your setup is complete, and you can proceed with the tutorial series.</p>
+
+    <h2>Running Your Own Node</h2>
+    <p>If you wish to run your own Algorand node rather than using Algonode, refer to the tutorial playlist. Note: Based on community feedback, we've shifted from a Discord bot-focused series to a PUYA-focused series. Only two videos were released for the Discord bot series before this shift. Start with <a href="https://www.youtube.com/watch?v=JjmH-KA7UcQ&list=PL5aELASDGbIAw8QqqdGoc9y2zqwsr_J4L&index=1" target="_blank">the first video in the new series</a>, which includes node installation for Windows.</p>
+    
+    <h2>Visual Studio Code - Code Editing. Redefined</h2>
+    <p>Download Visual Studio Code to edit your code efficiently, and install the Python IntelliSense extension to help with code completion and suggestions.</p>
     <p>This tutorial guides you through developing Discord bots for the Algorand blockchain. It’s designed to complement the YouTube tutorial series.</p>
     <h2>YouTube Tutorial</h2>
     <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
@@ -1100,42 +1157,36 @@ print("Mnemonic Phrase:", mnemonic_phrase)
         <li><strong>AIOHTTP (required before installing Discord.py):</strong></li>
     </ul>
     <pre class="overflow-auto shadow-md">
-    <code>pip install aiohttp>=3.9.0b0</code>
-    </pre>
+<code>pip install aiohttp>=3.9.0b0</code></pre>
     <ul class="inText">
         <li><strong>Discord.py:</strong></li>
     </ul>
     <pre class="overflow-auto shadow-md">
-    <code>pip install discord.py</code>
-    </pre>
+<code>pip install discord.py</code></pre>
     <ul class="inText">
         <li><strong>Python AlgoSDK:</strong></li>
     </ul>
     <pre class="overflow-auto shadow-md">
-    <code>pip3 install py-algorand-sdk</code>
-    </pre>
+<code>pip3 install py-algorand-sdk</code></pre>
     
     <h3>Using Ubuntu Terminal</h3>
     <h4>Algorand Node Installation</h4>
     <pre class="overflow-auto shadow-md">
-    <code>sudo apt-get update</code>
-    <code>sudo apt-get install -y gnupg2 curl software-properties-common</code>
-    <code>curl -o - https://releases.algorand.com/key.pub | sudo tee /etc/apt/trusted.gpg.d/algorand.asc</code>
-    <code>sudo add-apt-repository "deb [arch=amd64] https://releases.algorand.com/deb/ stable main"</code>
-    <code>sudo apt-get update</code>
-    <code>sudo apt-get install -y algorand-devtools</code>
-    </pre>
+<code>sudo apt-get update
+sudo apt-get install -y gnupg2 curl software-properties-common
+curl -o - https://releases.algorand.com/key.pub | sudo tee /etc/apt/trusted.gpg.d/algorand.asc
+sudo add-apt-repository "deb [arch=amd64] https://releases.algorand.com/deb/ stable main"
+sudo apt-get update
+sudo apt-get install -y algorand-devtools</code></pre>
     
     <h4>Preparing & Running Algorand Node</h4>
-    <pre class="overflow-auto shadow-md">
-    <code>mkdir ~/node</code>
-    <code>cd ~/node</code>
-    <code>curl https://raw.githubusercontent.com/algorand/go-algorand/rel/stable/cmd/updater/update.sh -O</code>
-    <code>chmod 744 update.sh</code>
-    <code>./update.sh -i -c stable -p ~/node -d ~/node/data -n</code>
-    <code>goal node start -d data</code>
-    <code>goal node catchup <a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Get Catchpoint from Mainnet</a> -d data</code>
-    </pre>
+    <pre class="overflow-auto shadow-md"><code>mkdir ~/node 
+cd ~/node 
+curl https://raw.githubusercontent.com/algorand/go-algorand/rel/stable/cmd/updater/update.sh -O 
+chmod 744 update.sh 
+./update.sh -i -c stable -p ~/node -d ~/node/data -n 
+goal node start -d data 
+goal node catchup <a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Get Catchpoint from Mainnet</a> -d data</code></pre>
     
     <h4>Algorand Node Commands</h4>
     <ul class="inText">
@@ -1146,11 +1197,9 @@ print("Mnemonic Phrase:", mnemonic_phrase)
     </ul>
     
     <h4>Obtain Algorand Node Token & Port</h4>
-    <pre class="overflow-auto shadow-md">
-    <code>cd node/data</code>
-    <code>cat algod.token</code> (Displays token)
-    <code>cat algod.net</code> (Displays port)
-    </pre>
+    <pre class="overflow-auto shadow-md"><code>cd node/data
+cat algod.token (Displays token)
+cat algod.net</code> (Displays port)</pre>
     
     <h4>Basic Terminal Commands</h4>
     <ul class="inText">
@@ -1198,7 +1247,7 @@ print("Mnemonic Phrase:", mnemonic_phrase)
         <label for="q2d" class="incorrect">d) apt-get update</label><br>
     </form>
     `,
-    initialCode: `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py\npython get-pip.py\npip install aiohttp>=3.9.0b0\npip install discord.py\npip3 install py-algorand-sdk`,
+    initialCode: ``,
   },
   {
     id: 21,
@@ -1245,7 +1294,17 @@ print(private_key, address)</code></pre>
     <p>Then, place your private key and the public testnet API and URL provided by nodely.io (as indicated in the tutorial) into your <code>.env</code> file.</p>
 
     <p><strong>Note:</strong> Feel free to reuse this template when launching future contracts, but remember to adjust <code>approval_teal_file_name</code> and <code>clear_teal_file_name</code> variables, as well as the <code>global</code> and <code>local</code> state <code>num_uints</code> and <code>num_bytes</code> values for future contracts.</p>
-
+<h2>Setting Environment Variables (.env)</h2>
+      <p>Set up environment variables in a <code>.env</code> file. This includes the Algod token and server details, your private key, and the application ID of your contract:</p>
+      <pre class="overflow-auto shadow-md"><code># Algod Token is blank when using Nodely API
+  algod_token=
+  algod_server=https://testnet-api.4160.nodely.dev
+  
+  # Private key for generated account
+  private_key=ENTER PRIVATE KEY FOR ACCOUNT HERE
+  
+  # Application ID from contract generated by LaunchSmartContract.py
+  app_id=ENTER GENERATED APP ID HERE</code></pre>
     <h2>Launching the Contract</h2>
     <pre class="overflow-auto shadow-md"><code>import os
 from algosdk.account import address_from_private_key
@@ -1284,12 +1343,7 @@ print(result.abi_results[0].return_value)</code></pre>
     
     <p>Once your contract is launched, place your new <code>app_id</code> into your <code>.env</code> file, and try interacting with it using the application client methods above!</p>
   `,
-    initialCode: `from algosdk.v2client.algod import AlgodClient
-algod_token = ''  # Enter node token
-algod_server = 'https://testnet-api.algonode.cloud' # Algorand testnet
-algod_client = AlgodClient(algod_token, algod_server)
-status = algod_client.status()
-print(status)`,
+    initialCode: ``,
   },
   {
     id: 22,
@@ -1456,9 +1510,7 @@ print(status)`,
   print(result.abi_results[0].tx_id)
   print(result.abi_results[0].return_value)</code></pre>
     `,
-    initialCode: `from algosdk.account import generate_account
-  private_key, address = generate_account()
-  print(private_key, address)`,
+    initialCode: ``,
   },
 
   {
@@ -1701,9 +1753,7 @@ print(status)`,
       print(abi_results[i])
       print('\\n')</code></pre>
     `,
-    initialCode: `from algosdk.account import generate_account
-  private_key, address = generate_account()
-  print(private_key, address)`,
+    initialCode: ``,
   },
 
   {
@@ -1974,9 +2024,7 @@ print(status)`,
   print(result.tx_ids[0])
   print(result.abi_results[0].return_value)</code></pre>
     `,
-    initialCode: `from algosdk.account import generate_account
-  private_key, address = generate_account()
-  print(private_key, address)`,
+    initialCode: ``,
   },
   {
     id: 25,
@@ -2458,55 +2506,6 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 
 print(tx_ids)
 print(abi_results)</code></pre>
-      
-      <hr>
-      <form>
-        <h1>Quiz</h1>
-        <h3>Question 1</h3>
-        <p>What data type is used to store whole numbers in Python?</p>
-        <input type="radio" id="q1a" name="q1" value="a">
-        <label for="q1a" class="incorrect">a) String</label><br>
-        <input type="radio" id="q1b" name="q1" value="b">
-        <label for="q1b" class="incorrect">b) Float</label><br>
-        <input type="radio" id="q1c" name="q1" value="c">
-        <label for="q1c" class="correct">c) Integer</label><br>
-        <input type="radio" id="q1d" name="q1" value="d">
-        <label for="q1d" class="incorrect">d) Boolean</label><br>
-    
-        <h3>Question 2</h3>
-        <p>Which of the following is an example of a correct variable name in Python?</p>
-        <input type="radio" id="q2a" name="q2" value="a">
-        <label for="q2a" class="incorrect">a) 3variable</label><br>
-        <input type="radio" id="q2b" name="q2" value="b">
-        <label for="q2b" class="incorrect">b) my-variable</label><br>
-        <input type="radio" id="q2c" name="q2" value="c">
-        <label for="q2c" class="incorrect">c) my variable</label><br>
-        <input type="radio" id="q2d" name="q2" value="d">
-        <label for="q2d" class="correct">d) my_variable</label><br>
-    
-        <h3>Question 3</h3>
-        <p>What will be the result of the following code snippet?</p>
-        <pre><code>string = "Hello"\nresult = string * 3\nprint(result)</code></pre>
-        <input type="radio" id="q3a" name="q3" value="a">
-        <label for="q3a" class="correct">a) HelloHelloHello</label><br>
-        <input type="radio" id="q3b" name="q3" value="b">
-        <label for="q3b" class="incorrect">b) Hello, Hello, Hello</label><br>
-        <input type="radio" id="q3c" name="q3" value="c">
-        <label for="q3c" class="incorrect">c) Hello*3</label><br>
-        <input type="radio" id="q3d" name="q3" value="d">
-        <label for="q3d" class="incorrect">d) Error</label><br>
-    
-        <h3>Question 4</h3>
-        <p>Which Python data type is immutable?</p>
-        <input type="radio" id="q4a" name="q4" value="a">
-        <label for="q4a" class="incorrect">a) Tuple</label><br>
-        <input type="radio" id="q4b" name="q4" value="b">
-        <label for="q4b" class="incorrect">b) String</label><br>
-        <input type="radio" id="q4c" name="q4" value="c">
-        <label for="q4c" class="correct">c) List</label><br>
-        <input type="radio" id="q4d" name="q4" value="d">
-        <label for="q4d" class="incorrect">d) Integer</label><br>
-      </form>
     `,
     initialCode: ``, // You can input your initial code here
   },
@@ -5379,7 +5378,7 @@ tx_id = algod_client.send_transaction(signed_ac_tx)
 print(tx_id)
     </code></pre>
     `,
-    initialCode: `from algosdk.account import generate_account\nprivate_key, address = generate_account()\nprint(private_key, address)`,
+    initialCode: ``,
   },
 
   {
@@ -5405,7 +5404,6 @@ print(private_key, address)
     <p>With ARC19 NFTs, the metadata is mutable. The reserve address serves as a pointer to metadata stored on IPFS. By updating this address, the NFT’s metadata can change, allowing for mutable properties while the image and other data are hosted on IPFS.</p>
 
     <h3>Image Display</h3>
-    <p>For this example, the original image "Charmander.png" and the updated image "Charmander2.0.png" are used. Ensure both images are placed in <code>public/images/</code> directory:</p>
     <img src="/images/charmander.png" alt="Charmander Image" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
     <img src="/images/charmander2.0.png" alt="Charmander Updated Image" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
 
@@ -5544,7 +5542,7 @@ tx_id = algod_client.send_transaction(signed_ac_tx)
 print(tx_id)
     </code></pre>
     `,
-    initialCode: `from algosdk.account import generate_account\nprivate_key, address = generate_account()\nprint(private_key, address)`,
+    initialCode: ``,
   },
 
   {

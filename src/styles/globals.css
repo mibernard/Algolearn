@@ -74,6 +74,9 @@
     padding: 1rem;
     border-radius: 0.375rem; /* Optional: add rounded corners */
   }
+  .prose :first-child {
+    margin-top: 0;
+  }
 }
 
 @layer base {
