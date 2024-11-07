@@ -6,8 +6,8 @@ import React from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation'; // For dynamic routing in Next.js 13
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { ChevronRight } from 'lucide-react';
+// import { Badge } from '@/components/ui/badge';
+// import { ChevronRight } from 'lucide-react';
 
 // Import the chapters array
 import chapters from '@/data/chapters';
