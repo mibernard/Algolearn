@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { ChevronRight, ChevronLeft, Menu } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Menu, X } from 'lucide-react';
 
 export default function ChapterPage() {
   const params = useParams();
@@ -69,10 +69,19 @@ export default function ChapterPage() {
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } md:relative md:translate-x-0 md:w-64 md:block`}
       >
-        <div className='p-4'>
+        <div className='p-0'>
+          <Button
+            variant='ghost'
+            className='md:hidden p-0'
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            aria-label='Toggle sidebar'
+          >
+            <X className='' />
+          </Button>
           <h2 className='text-lg font-semibold mb-4'>
             {language.charAt(0).toUpperCase() + language.slice(1)} Chapters
           </h2>
+
           <ScrollArea className='h-[calc(100vh-8rem)]'>
             {languageChapters.map((ch, index) => (
               <Link
@@ -96,19 +105,19 @@ export default function ChapterPage() {
 
       {/* Main content */}
       <div className='flex-grow overflow-auto'>
-        <div className='container mx-auto px-4 py-8 max-w-4xl'>
+        <div className='container mx-auto px-0 sm:px-8 py-0 max-w-4xl'>
           <Button
             variant='ghost'
-            className='md:hidden mb-4'
+            className='md:hidden p-0'
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             aria-label='Toggle sidebar'
           >
-            <Menu className='h-6 w-6' />
+            <Menu className='' />
           </Button>
 
           <h1 className='text-4xl font-bold mb-6'>{chapter.title}</h1>
-          <Card className='mb-8'>
-            <CardContent className='prose dark:prose-invert max-w-none pt-6 text-foreground dark:text-foreground'>
+          <Card className='mb-8 border-0 sm:border'>
+            <CardContent className='prose dark:prose-invert max-w-none pt-6 text-foreground dark:text-foreground p-0 sm:p-8'>
               <div dangerouslySetInnerHTML={{ __html: chapter.content }}></div>
             </CardContent>
           </Card>

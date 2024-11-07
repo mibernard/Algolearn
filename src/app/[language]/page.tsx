@@ -46,15 +46,15 @@ export default function LanguageTableOfContents() {
               <CardHeader>
                 <CardTitle className='flex items-center justify-between'>
                   {chapter.title}
-                  <Badge variant='secondary'>{chapter.id}</Badge>
+                  {/* <Badge variant='secondary'>{chapter.id}</Badge> */}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription>{getExcerpt(chapter.content)}</CardDescription>
               </CardContent>
-              <div className='absolute bottom-4 right-4'>
+              {/* <div className='absolute bottom-4 right-4'>
                 <ChevronRight className='h-6 w-6 text-muted-foreground' />
-              </div>
+              </div> */}
             </Card>
           </Link>
         ))}

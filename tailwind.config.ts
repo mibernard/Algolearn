@@ -50,6 +50,7 @@ const config: Config = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
+        'dark-navy': '#021532',
       },
       borderRadius: {
         lg: 'var(--radius)',

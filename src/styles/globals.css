@@ -68,6 +68,12 @@
 
     --radius: 0.5rem;
   }
+  .dark pre {
+    background-color: theme('colors.dark-navy');
+    color: #f8f8f2; /* Light text color for readability */
+    padding: 1rem;
+    border-radius: 0.375rem; /* Optional: add rounded corners */
+  }
 }
 
 @layer base {
