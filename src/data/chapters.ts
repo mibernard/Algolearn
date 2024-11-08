@@ -150,7 +150,7 @@ print(my_tuple)
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code snippet?</p>
-          <pre><code>string = "Hello" 
+          <pre class="overflow-auto shadow-md"><code>string = "Hello" 
 result = string * 3
 print(result)</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
@@ -241,7 +241,7 @@ print(likes_first_index)
   
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>this_is_my_dictionary = {"name": "John", "age": 22}
+          <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22}
 print(this_is_my_dictionary['age'])</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) "John"</label><br>
@@ -254,7 +254,7 @@ print(this_is_my_dictionary['age'])</code></pre>
   
           <h3>Question 4</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}
+          <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}
 print(this_is_my_dictionary['likes'][1])</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="incorrect">a) "Exercise"</label><br>
@@ -347,7 +347,7 @@ print(first_index_my_list)
   
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>my_list = [7, "Hello", False, 63.5]
+          <pre class="overflow-auto shadow-md"><code>my_list = [7, "Hello", False, 63.5]
 print(my_list[2])</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 7</label><br>
@@ -360,7 +360,7 @@ print(my_list[2])</code></pre>
   
           <h3>Question 4</h3>
           <p>What is the correct way to remove duplicate entries in a list?</p>
-          <pre><code>my_list = [1, 1, 2, 3, 4, 4]
+          <pre class="overflow-auto shadow-md"><code>my_list = [1, 1, 2, 3, 4, 4]
 my_list_without_duplicates = set(my_list)
 print(my_list_without_duplicates)</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
@@ -449,7 +449,7 @@ print_info(name="Alice", age=30, city="New York")</code></pre>
   
           <h3>Question 2</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>def greet(name):
+           <pre class="overflow-auto shadow-md"><code>def greet(name):
     print(f"Hello, {name}!")  
 greet("Alice")</code></pre>
           <input type="radio" id="q2a" name="q2" value="a">
@@ -463,7 +463,7 @@ greet("Alice")</code></pre>
   
           <h3>Question 3</h3>
           <p>What does the following function return?</p>
-          <pre><code>def add(a, b):
+           <pre class="overflow-auto shadow-md"><code>def add(a, b):
     return a + b  
 result = add(3, 5)
 print(result)</code></pre>
@@ -478,7 +478,7 @@ print(result)</code></pre>
   
           <h3>Question 4</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>def greet(name="world"):
+           <pre class="overflow-auto shadow-md"><code>def greet(name="world"):
     print(f"Hello, {name}!")  
 greet()</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
@@ -714,7 +714,7 @@ print(last_round)</code></pre>
   
           <h3>Question 3</h3>
           <p>What will be the value of 'last_round' if the key 'last-round' in the status dictionary is 1000?</p>
-          <pre><code>status = {'last-round': 1000}
+           <pre class="overflow-auto shadow-md"><code>status = {'last-round': 1000}
 last_round = status['last-round']
 print(last_round)
 </code></pre>
@@ -944,52 +944,45 @@ print(transaction_id)</code></pre>
     
     <p>Below are examples of rekey transactions and close amount to transactions, which are sent in succession (BUT NOT A GROUP TRANSACTION, WHICH WE WILL LEARN ABOUT LATER)</p>
     
-    <pre class="overflow-auto shadow-md"><code># Rekey Transaction
-
-    rekey_to_new_account_payment = PaymentTxn(
-        sender = address,
-        receiver = new_account_address,
-        sp = params,
-        amt = 0,
-        rekey_to = new_account_address,
-        note = "Take care of my account for me! I'll be back in a week"
-    )
-
-    signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)
-    transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)
-    wait_for_confirmation(algod_client, transaction_id)
-    print(transaction_id)
-
-    # New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key
-
-    rekey_back_to_old_account_from_new_account = PaymentTxn(
-        sender = address,
-        receiver = address,
-        sp = params,
-        rekey_to = address,
-        amt = 0,
-        note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"
-    )
-
-    signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)
-    transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)
-    wait_for_confirmation(algod_client, transaction_id)
-    print(transaction_id)
-
-    # Close remainder to transaction
-    close_account_to_new_account = PaymentTxn(
-        sender = address,
-        receiver = new_account_address,
-        sp = params,
-        amt = 0,
-        close_remainder_to = new_account_address,
-        note = 'Take care of my precious Algo!'
-    )
-
-    signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)
-    transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)
-    wait_for_confirmation(algod_client, transaction_id)
-    print(transaction_id)</code></pre>
+<pre class="overflow-auto shadow-md"><code># Rekey Transaction
+rekey_to_new_account_payment = PaymentTxn(
+    sender = address,
+    receiver = new_account_address,
+    sp = params,
+    amt = 0,
+    rekey_to = new_account_address,
+    note = "Take care of my account for me! I'll be back in a week"
+)
+signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)
+transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)
+wait_for_confirmation(algod_client, transaction_id)
+print(transaction_id)
+# New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key
+rekey_back_to_old_account_from_new_account = PaymentTxn(
+    sender = address,
+    receiver = address,
+    sp = params,
+    rekey_to = address,
+    amt = 0,
+    note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"
+)
+signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)
+transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)
+wait_for_confirmation(algod_client, transaction_id)
+print(transaction_id)
+# Close remainder to transaction
+close_account_to_new_account = PaymentTxn(
+    sender = address,
+    receiver = new_account_address,
+    sp = params,
+    amt = 0,
+    close_remainder_to = new_account_address,
+    note = 'Take care of my precious Algo!'
+)
+signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)
+transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)
+wait_for_confirmation(algod_client, transaction_id)
+print(transaction_id)</code></pre>
     
     <p>Although the Payment Transaction has many possible inputs, the bare minimum is using the sender, sp, receiver, and amt field. Anything else is at your discretion!</p>
     
@@ -1023,7 +1016,7 @@ print(transaction_id)</code></pre>
 
 <h3>Question 3</h3>
 <p>What is the correct way to initialize an AlgodClient instance to connect to the Algorand testnet?</p>
-<pre><code>algod_token = ''
+ <pre class="overflow-auto shadow-md"><code>algod_token = ''
 algod_server = 'https://testnet-api.algonode.cloud'
 algod_client = algod.AlgodClient(algod_token, algod_server)
 </code></pre>
@@ -2029,7 +2022,7 @@ print(result.abi_results[0].return_value)</code></pre>
   {
     id: 25,
     language: 'Python',
-    title: 'Marketplace Contract part 1 - Asset for Algo',
+    title: 'Marketplace Contract Part 1 - Asset for Algo',
     content: `
       <h2>Video Walkthrough</h2>
       <p>Watch the tutorial video for this chapter:</p> 
@@ -2071,6 +2064,8 @@ app_id = 724455779
 </code></pre>
       
       <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
+      <p>Create and compile the asset listing contract:</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
       <p>Use the following terminal command to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
@@ -2512,7 +2507,7 @@ print(abi_results)</code></pre>
   {
     id: 26, // Adjust the ID as necessary
     language: 'Python',
-    title: 'Marketplace Contract part 2 - Asset for Asset',
+    title: 'Marketplace Contract Part 2 - Asset for Asset',
     content: `
       <h2>Video Walkthrough</h2>
       <p>Watch the tutorial video for this chapter:</p> 
@@ -2554,30 +2549,27 @@ asset_2 = 724449087
 app_id = 724455779
 </code></pre>
       
-      <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
-      <p>Use the following terminal command to compile your contract:</p>
+      <h3>Step 4: Compile Asset for Asset Listing Contract</h3>
+      <p>Create and compile the asset listing contract:</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
+      <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
-from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
-
 
 class listingName(Struct):
     lister: Address
     counter: arc4UInt64
     
-    
-class listingValue(Struct):
+class tradeListingValue(Struct):
     asset_listed: arc4UInt64
-    algo_requested: arc4UInt64    
-    
-    
+    asset_requested: arc4UInt64
+    fulfilled: Bool
 
 class listings(ARC4Contract):
     def __init__(self) -> None:
         self.listingCounter = GlobalState(arc4UInt64(0))
-    
-    
+        
     @abimethod
     def triggerOptIn(
         self,
@@ -2596,17 +2588,16 @@ class listings(ARC4Contract):
     
     
         return String("Successfully opted in to asset: "), asset_to_opt_into.id
-    
-    
+        
     @abimethod
-    def postListingRequest(
+    def postTradeRequest(
         self,
         asset_to_list: gtxn.AssetTransferTransaction,
-        algo_amount_requested: arc4UInt64,
-        box_fee_mbr_payment: gtxn.PaymentTransaction,
-    ) -> tuple[String, UInt64, String, arc4UInt64]:
+        asset_request: Asset,
+        box_fee_mbr_payment: gtxn.PaymentTransaction
+    ) -> String:
         
-        assert box_fee_mbr_payment.amount == 24_900
+        assert box_fee_mbr_payment.amount == 25_300
         assert asset_to_list.asset_receiver == Global.current_application_address
         assert asset_to_list.asset_amount == 1
         
@@ -2619,43 +2610,38 @@ class listings(ARC4Contract):
         value, exists = listing_box.maybe()
         assert not exists
         
-        listing_box.create(size=16)
+        listing_box.create(size=17)
         
-        listing_box_value_info = listingValue(arc4UInt64(asset_to_list.xfer_asset.id), algo_amount_requested)
+        listing_box_value_info = tradeListingValue(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_request.id), Bool(False))
+    
         
         listing_box.put(listing_box_value_info.bytes)
         
-        return String("User Listed Asset Successfully: "), asset_to_list.xfer_asset.id, String("User is requesting x amount of Algo: "), algo_amount_requested
-    
-    
+        return String("Trade Request Posted")
+        
     @abimethod
-    def fulfillListingRequest(
+    def fulfillTradeRequest(
         self,
+        asset_trade_fulfillment: gtxn.AssetTransferTransaction,
+        asset_transfer_fee: gtxn.PaymentTransaction,
         asset_listed: Asset,
         listing_name: listingName,
-        payment: gtxn.PaymentTransaction,
-        transfer_fees: gtxn.PaymentTransaction
-    ) -> tuple[String, UInt64, String, UInt64]:
         
-        assert transfer_fees.amount == 2000
+    ) -> String:
+        
+        assert asset_transfer_fee.amount == 1000
+        assert asset_trade_fulfillment.asset_amount == 1
         
         listing_box = BoxRef(key=listing_name.bytes)
         
         value, exists = listing_box.maybe()
-        
         assert exists
         
-        listing_value = listingValue.from_bytes(value)
+        listing_value = tradeListingValue.from_bytes(value)
         
         assert listing_value.asset_listed == asset_listed.id
-        assert listing_value.algo_requested == payment.amount
-        
-        itxn.Payment(
-            receiver=listing_name.lister.native,
-            amount=payment.amount,
-            fee=Global.min_txn_fee
-        ).submit()
-        
+        assert listing_value.asset_requested == asset_trade_fulfillment.xfer_asset.id
+                
         itxn.AssetTransfer(
             xfer_asset=asset_listed,
             asset_receiver=Txn.sender,
@@ -2663,22 +2649,53 @@ class listings(ARC4Contract):
             fee=Global.min_txn_fee
         ).submit()
         
+        listing_value.fulfilled = Bool(True)
+        listing_box.put(listing_value.bytes)
+                
+        return String("Trade Request Fulfilled!")        
+             
+    @abimethod
+    def claimFulfilledTradeRequest(
+        self,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_requested: Asset,
+        listing_name: listingName,
+    ) -> String:
+                
+        assert listing_name.lister == Address(Txn.sender)
+        assert asset_transfer_fee.amount == 1000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = tradeListingValue.from_bytes(value)
+        
+        assert asset_requested.id == listing_value.asset_requested
+        assert listing_value.fulfilled == Bool(True)
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_requested.id,
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            fee=Global.min_txn_fee
+        ).submit()
+        
         listing_box.delete()
         
-        return String("Listing Fulfilled for Asset: "), asset_listed.id, String("Lister received x amount of Algo: "), payment.amount
-        
-        
+        return String("Trade Request Completed!")
         
     @abimethod
-    def cancelListingRequest(
+    def cancelTradeRequest(
         self,
-        listing_asset: Asset,
+        listed_asset: Asset,
         listing_name: listingName,
         transfer_fee: gtxn.PaymentTransaction
     ) -> String:
         
         assert transfer_fee.amount == 1000
-        assert listing_name.lister.native == Txn.sender
+        assert listing_name.lister == Address(Txn.sender)
         
         listing_box = BoxRef(key=listing_name.bytes)
         
@@ -2686,20 +2703,20 @@ class listings(ARC4Contract):
         
         assert exists
         
-        listing_value = listingValue.from_bytes(value)
+        listing_value = tradeListingValue.from_bytes(value)
         
-        assert listing_value.asset_listed == listing_asset.id
+        assert listing_value.asset_listed == listed_asset.id
         
         itxn.AssetTransfer(
-            xfer_asset=listing_asset.id,
+            xfer_asset=listed_asset.id,
             asset_amount=1,
             asset_receiver=Txn.sender,
             fee=Global.min_txn_fee
         ).submit()
         
-        listing_box.delete()
+        listing_box.delete()    
         
-        return String("Listing Request Cancelled")</code></pre>
+        return String("Trade Request Cancelled!")</code></pre>
 
       <p>Ensure you have the necessary imports and class definitions for your contract.</p>
       
@@ -2803,12 +2820,9 @@ from algosdk.account import address_from_private_key
 from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from pathlib import Path
-from algosdk.util import algos_to_microalgos
 from algosdk.abi import ABIType
-from base64 import b64decode
 import os
-
-
+from base64 import b64decode
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2822,7 +2836,6 @@ app_id = int(os.getenv('app_id'))
 signer = AccountTransactionSigner(private_key)
 params = algod_client.suggested_params()
 
-
 app_client = ApplicationClient(
     algod_client=algod_client,
     app_spec=app_spec,
@@ -2831,7 +2844,6 @@ app_client = ApplicationClient(
     sender=address,
     suggested_params=params,
 )
-
 
 atc = AtomicTransactionComposer()
 
@@ -2846,35 +2858,31 @@ app_client.compose_call(
     asset_to_opt_into=asset_1, 
     fee_payment=wrapped_payment)
 
-
 asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_1)
 wrapped_asset_list_transaction = TransactionWithSigner(asset_to_list_transaction, signer)
 
-
-box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=24_900)
+box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=25_300)
 wrapped_box_fee_payment = TransactionWithSigner(box_fee_payment_tx, signer)
-
 
 current_global_listing_counter = algod_client.application_info(app_id)['params']['global-state'][0]['value']['bytes']
 uint64_coder = ABIType.from_string('(uint64)')
 b64_decoded_global_listing_counter = b64decode(current_global_listing_counter)
 encoded_global_listing_counter = uint64_coder.decode(b64_decoded_global_listing_counter)[0]
 
-
 listing_box_counter = encoded_global_listing_counter + 1
 listing_box_coder = ABIType.from_string('(address,uint64)')
 users_listing_box_name = listing_box_coder.encode((address, listing_box_counter))
 
+asset_2 = int(os.getenv('asset_2'))
 
 app_client.compose_call(
     atc, 
-    call_abi_method='postListingRequest', 
+    call_abi_method='postTradeRequest', 
     asset_to_list=wrapped_asset_list_transaction, 
-    algo_amount_requested=algos_to_microalgos(1), 
+    asset_request=asset_2, 
     box_fee_mbr_payment=wrapped_box_fee_payment,
     transaction_parameters={'boxes': [[app_id, users_listing_box_name]]}
     )
-
 
 results = atc.execute(algod_client, 2)
 
@@ -2882,8 +2890,7 @@ tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
 abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
 
 print(tx_ids)
-print(abi_results)
-</code></pre>
+print(abi_results)</code></pre>
       
       <h3>Step 9: Check Respective Listing Information</h3>
       <p>Retrieve and verify the listing information from the contract.</p>
@@ -2922,11 +2929,9 @@ from algosdk.v2client.algod import AlgodClient
 from algosdk.account import address_from_private_key
 from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
-from pathlib import Path
 from algosdk.abi import ABIType
+from pathlib import Path
 import os
-
-
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2940,6 +2945,85 @@ app_id = int(os.getenv('app_id'))
 signer = AccountTransactionSigner(private_key)
 params = algod_client.suggested_params()
 
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+asset_2 = int(os.getenv('asset_2'))
+
+'''
+User should Optin to the asset if they are not prepared to receive it
+'''
+#asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+#wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+#atc.add_transaction(wrapped_opt_in_transaction)
+
+optin_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_optin_payment = TransactionWithSigner(optin_fee_payment_tx, signer)
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='triggerOptIn', 
+    asset_to_opt_into=asset_2, 
+    fee_payment=wrapped_optin_payment)
+
+asset_payment_tx = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_2)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='fulfillTradeRequest', 
+    asset_trade_fulfillment=wrapped_asset_payment,
+    asset_transfer_fee=wrapped_fee_payment,
+    asset_listed=asset_1, 
+    listing_name=(lister_address,counter), 
+    transaction_parameters={'boxes': [[app_id, box_name]]})
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+
+      <h3>Step 11: Complete Listing Request and Redeem Buyers Asset</h3>
+<pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from algosdk.abi import ABIType
+from pathlib import Path
+import os
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
 
 app_client = ApplicationClient(
     algod_client=algod_client,
@@ -2950,38 +3034,30 @@ app_client = ApplicationClient(
     suggested_params=params,
 )
 
-
 atc = AtomicTransactionComposer()
 
 asset_1 = int(os.getenv('asset_1'))
+asset_2 = int(os.getenv('asset_2'))
 
-asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_2)
 wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
 atc.add_transaction(wrapped_opt_in_transaction)
 
-asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1_000_000)
-wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
-
-
-fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2000)
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
 wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
-
 
 lister_address = address_from_private_key(os.getenv('private_key'))
 counter = 1 #Remember to increment counter for additional listings
 listing_box_coder = ABIType.from_string('(address,uint64)')
 box_name = listing_box_coder.encode((lister_address, counter))
 
-
 app_client.compose_call(
     atc, 
-    call_abi_method='fulfillListingRequest', 
-    asset_listed=asset_1, 
+    call_abi_method='claimFulfilledTradeRequest', 
+    asset_transfer_fee=wrapped_fee_payment,
+    asset_requested=asset_2,
     listing_name=(lister_address,counter), 
-    payment=wrapped_asset_payment, 
-    transfer_fees=wrapped_fee_payment, 
-    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts':[lister_address]})
-
+    transaction_parameters={'boxes': [[app_id, box_name]]})
 
 results = atc.execute(algod_client, 2)
 
@@ -2990,193 +3066,69 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 
 print(tx_ids)
 print(abi_results)</code></pre>
+
       
-      <h3>Step 11: Experiment with Cancelling a Listing Request</h3>
+      <h3>Step 12: Experiment with Cancelling a Listing Request</h3>
       <p>If you fulfilled the previous request already, you will need to generate a new listing again with Step 8, and increment the "counter" variable from 1 to 2. For example:</p>
-      <pre><code>counter = 2</code></pre>
-      <p>Create and compile the asset listing contract:</p>
-      <p><code>algokit compile py yourContractFileName.py</code></p>
-      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
-from algopy.arc4 import abimethod, Address, Struct, Bool
-from algopy.arc4 import UInt64 as arc4UInt64
+      <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from algosdk.abi import ABIType
+from pathlib import Path
+import os
 
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
 
-class listingName(Struct):
-    lister: Address
-    counter: arc4UInt64
-    
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
 
-class tradeListingValue(Struct):
-    asset_listed: arc4UInt64
-    asset_requested: arc4UInt64
-    fulfilled: Bool
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
 
-    
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
 
+atc = AtomicTransactionComposer()
 
-class listings(ARC4Contract):
-    def __init__(self) -> None:
-        self.listingCounter = GlobalState(arc4UInt64(0))
-    
-    
-    @abimethod
-    def triggerOptIn(
-        self,
-        asset_to_opt_into: Asset,
-        fee_payment: gtxn.PaymentTransaction
-    ) -> tuple[String, UInt64]:
+asset_1 = int(os.getenv('asset_1'))
 
-        assert fee_payment.amount >= 101_000
-        assert fee_payment.receiver == Global.current_application_address
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_to_opt_into,
-            asset_receiver=Global.current_application_address,
-            fee=Global.min_txn_fee
-        ).submit()
-    
-    
-        return String("Successfully opted in to asset: "), asset_to_opt_into.id
-    
-    
-    
-    
-    @abimethod
-    def postTradeRequest(
-        self,
-        asset_to_list: gtxn.AssetTransferTransaction,
-        asset_request: Asset,
-        box_fee_mbr_payment: gtxn.PaymentTransaction
-    ) -> String:
-        
-        assert box_fee_mbr_payment.amount == 25_300
-        assert asset_to_list.asset_receiver == Global.current_application_address
-        assert asset_to_list.asset_amount == 1
-        
-        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
-        
-        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
-        
-        listing_box = BoxRef(key=listing_box_name_info.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert not exists
-        
-        listing_box.create(size=17)
-        
-        listing_box_value_info = tradeListingValue(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_request.id), Bool(False))
-    
-        
-        listing_box.put(listing_box_value_info.bytes)
-        
-        return String("Trade Request Posted")
-    
-    
-    @abimethod
-    def fulfillTradeRequest(
-        self,
-        asset_trade_fulfillment: gtxn.AssetTransferTransaction,
-        asset_transfer_fee: gtxn.PaymentTransaction,
-        asset_listed: Asset,
-        listing_name: listingName,
-        
-    ) -> String:
-        
-        assert asset_transfer_fee.amount == 1000
-        assert asset_trade_fulfillment.asset_amount == 1
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert exists
-        
-        listing_value = tradeListingValue.from_bytes(value)
-        
-        assert listing_value.asset_listed == asset_listed.id
-        assert listing_value.asset_requested == asset_trade_fulfillment.xfer_asset.id
-        
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_listed,
-            asset_receiver=Txn.sender,
-            asset_amount=1,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_value.fulfilled = Bool(True)
-        listing_box.put(listing_value.bytes)
-        
-        
-        return String("Trade Request Fulfilled!")        
-        
-        
-    @abimethod
-    def claimFulfilledTradeRequest(
-        self,
-        asset_transfer_fee: gtxn.PaymentTransaction,
-        asset_requested: Asset,
-        listing_name: listingName,
-    ) -> String:
-        
-        
-        assert listing_name.lister == Address(Txn.sender)
-        assert asset_transfer_fee.amount == 1000
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert exists
-        
-        listing_value = tradeListingValue.from_bytes(value)
-        
-        assert asset_requested.id == listing_value.asset_requested
-        assert listing_value.fulfilled == Bool(True)
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_requested.id,
-            asset_receiver=Txn.sender,
-            asset_amount=1,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_box.delete()
-        
-        return String("Trade Request Completed!")
-    
-    
-    @abimethod
-    def cancelTradeRequest(
-        self,
-        listed_asset: Asset,
-        listing_name: listingName,
-        transfer_fee: gtxn.PaymentTransaction
-    ) -> String:
-        
-        assert transfer_fee.amount == 1000
-        assert listing_name.lister == Address(Txn.sender)
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        
-        assert exists
-        
-        listing_value = tradeListingValue.from_bytes(value)
-        
-        assert listing_value.asset_listed == listed_asset.id
-        
-        itxn.AssetTransfer(
-            xfer_asset=listed_asset.id,
-            asset_amount=1,
-            asset_receiver=Txn.sender,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_box.delete()    
-        
-        return String("Trade Request Cancelled!")
-    
-    </code></pre>
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='cancelTradeRequest', 
+    listed_asset=asset_1, 
+    listing_name=(lister_address,counter), 
+    transfer_fee=wrapped_fee_payment, 
+    transaction_parameters={'boxes': [[app_id, box_name]]})
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
     `,
     initialCode: ``, // You can input your initial code here if applicable
   },
@@ -3184,7 +3136,7 @@ class listings(ARC4Contract):
   {
     id: 27, // Adjust the ID as necessary
     language: 'Python',
-    title: 'Marketplace Contract part 3 - Asset for Asset Quantity',
+    title: 'Marketplace Contract Part 3 - Asset for Asset Quantity',
     content: `
       <h2>Video Walkthrough</h2>
       <p>Watch the tutorial video for this chapter:</p> 
@@ -3226,30 +3178,28 @@ asset_2 = 724449087
 app_id = 724455779
 </code></pre>
       
-      <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
+      <h3>Step 4: Compile Asset for Asset Quantity Listing Contract</h3>
+      <p>Create and compile the asset listing contract:</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
       <p>Use the following terminal command to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
-from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
-
 
 class listingName(Struct):
     lister: Address
     counter: arc4UInt64
-    
-    
-class listingValue(Struct):
+        
+class tradeListingValueWithAssetQuantity(Struct):
     asset_listed: arc4UInt64
-    algo_requested: arc4UInt64    
-    
-    
-
+    asset_requested: arc4UInt64
+    asset_amount_requested: arc4UInt64
+    fulfilled: Bool
+        
 class listings(ARC4Contract):
     def __init__(self) -> None:
         self.listingCounter = GlobalState(arc4UInt64(0))
-    
-    
+        
     @abimethod
     def triggerOptIn(
         self,
@@ -3269,16 +3219,17 @@ class listings(ARC4Contract):
     
         return String("Successfully opted in to asset: "), asset_to_opt_into.id
     
-    
+        
     @abimethod
-    def postListingRequest(
+    def postTradeRequestWithQuantity(
         self,
         asset_to_list: gtxn.AssetTransferTransaction,
-        algo_amount_requested: arc4UInt64,
-        box_fee_mbr_payment: gtxn.PaymentTransaction,
-    ) -> tuple[String, UInt64, String, arc4UInt64]:
+        asset_request: Asset,
+        asset_request_quantity: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction
+    ) -> String:
         
-        assert box_fee_mbr_payment.amount == 24_900
+        assert box_fee_mbr_payment.amount == 28_500
         assert asset_to_list.asset_receiver == Global.current_application_address
         assert asset_to_list.asset_amount == 1
         
@@ -3291,43 +3242,38 @@ class listings(ARC4Contract):
         value, exists = listing_box.maybe()
         assert not exists
         
-        listing_box.create(size=16)
+        listing_box.create(size=25)
         
-        listing_box_value_info = listingValue(arc4UInt64(asset_to_list.xfer_asset.id), algo_amount_requested)
+        listing_box_value_info = tradeListingValueWithAssetQuantity(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_request.id), arc4UInt64(asset_request_quantity.native), Bool(False))
+    
         
         listing_box.put(listing_box_value_info.bytes)
         
-        return String("User Listed Asset Successfully: "), asset_to_list.xfer_asset.id, String("User is requesting x amount of Algo: "), algo_amount_requested
-    
-    
+        return String("Trade Request Posted")
+        
     @abimethod
-    def fulfillListingRequest(
+    def fulfillTradeRequestWithQuantity(
         self,
+        asset_trade_fulfillment: gtxn.AssetTransferTransaction,
+        asset_transfer_fee: gtxn.PaymentTransaction,
         asset_listed: Asset,
         listing_name: listingName,
-        payment: gtxn.PaymentTransaction,
-        transfer_fees: gtxn.PaymentTransaction
-    ) -> tuple[String, UInt64, String, UInt64]:
         
-        assert transfer_fees.amount == 2000
+    ) -> String:
+        
+        assert asset_transfer_fee.amount == 1000
         
         listing_box = BoxRef(key=listing_name.bytes)
         
         value, exists = listing_box.maybe()
-        
         assert exists
         
-        listing_value = listingValue.from_bytes(value)
+        listing_value = tradeListingValueWithAssetQuantity.from_bytes(value)
         
         assert listing_value.asset_listed == asset_listed.id
-        assert listing_value.algo_requested == payment.amount
-        
-        itxn.Payment(
-            receiver=listing_name.lister.native,
-            amount=payment.amount,
-            fee=Global.min_txn_fee
-        ).submit()
-        
+        assert listing_value.asset_requested == asset_trade_fulfillment.xfer_asset.id
+        assert asset_trade_fulfillment.asset_amount == listing_value.asset_amount_requested
+                
         itxn.AssetTransfer(
             xfer_asset=asset_listed,
             asset_receiver=Txn.sender,
@@ -3335,43 +3281,74 @@ class listings(ARC4Contract):
             fee=Global.min_txn_fee
         ).submit()
         
-        listing_box.delete()
+        listing_value.fulfilled = Bool(True)
+        listing_box.put(listing_value.bytes)
         
-        return String("Listing Fulfilled for Asset: "), asset_listed.id, String("Lister received x amount of Algo: "), payment.amount
-        
-        
-        
+        return String("Trade Request Fulfilled!")        
+                
     @abimethod
-    def cancelListingRequest(
+    def claimFulfilledTradeRequestWithQuantity(
         self,
-        listing_asset: Asset,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_requested: Asset,
         listing_name: listingName,
-        transfer_fee: gtxn.PaymentTransaction
     ) -> String:
-        
-        assert transfer_fee.amount == 1000
-        assert listing_name.lister.native == Txn.sender
+                
+        assert listing_name.lister == Address(Txn.sender)
+        assert asset_transfer_fee.amount == 1000
         
         listing_box = BoxRef(key=listing_name.bytes)
         
         value, exists = listing_box.maybe()
-        
         assert exists
         
-        listing_value = listingValue.from_bytes(value)
+        listing_value = tradeListingValueWithAssetQuantity.from_bytes(value)
         
-        assert listing_value.asset_listed == listing_asset.id
+        assert asset_requested.id == listing_value.asset_requested
+        assert listing_value.fulfilled == Bool(True)
         
         itxn.AssetTransfer(
-            xfer_asset=listing_asset.id,
-            asset_amount=1,
+            xfer_asset=asset_requested.id,
             asset_receiver=Txn.sender,
+            asset_amount=listing_value.asset_amount_requested.native,
             fee=Global.min_txn_fee
         ).submit()
         
         listing_box.delete()
         
-        return String("Listing Request Cancelled")</code></pre>
+        return String("Trade Request Completed!")
+        
+    @abimethod
+    def cancelTradeRequestWithQuantity(
+        self,
+        listed_asset: Asset,
+        listing_name: listingName,
+        transfer_fee: gtxn.PaymentTransaction
+    ) -> String:
+        
+        assert transfer_fee.amount == 1000
+        assert listing_name.lister == Address(Txn.sender)
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        alue, exists = listing_box.maybe()
+        
+        assert exists
+        
+        listing_value = tradeListingValueWithAssetQuantity.from_bytes(value)
+        
+        assert listing_value.asset_listed == listed_asset.id
+        
+        itxn.AssetTransfer(
+            xfer_asset=listed_asset.id,
+            asset_amount=1,
+            asset_receiver=Txn.sender,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_box.delete()    
+        
+        return String("Trade Request Cancelled!")</code></pre>
 
       <p>Ensure you have the necessary imports and class definitions for your contract.</p>
       
@@ -3475,12 +3452,9 @@ from algosdk.account import address_from_private_key
 from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from pathlib import Path
-from algosdk.util import algos_to_microalgos
 from algosdk.abi import ABIType
 from base64 import b64decode
 import os
-
-
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3494,7 +3468,6 @@ app_id = int(os.getenv('app_id'))
 signer = AccountTransactionSigner(private_key)
 params = algod_client.suggested_params()
 
-
 app_client = ApplicationClient(
     algod_client=algod_client,
     app_spec=app_spec,
@@ -3503,7 +3476,6 @@ app_client = ApplicationClient(
     sender=address,
     suggested_params=params,
 )
-
 
 atc = AtomicTransactionComposer()
 
@@ -3518,35 +3490,32 @@ app_client.compose_call(
     asset_to_opt_into=asset_1, 
     fee_payment=wrapped_payment)
 
-
 asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_1)
 wrapped_asset_list_transaction = TransactionWithSigner(asset_to_list_transaction, signer)
 
-
-box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=24_900)
+box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=28_500)
 wrapped_box_fee_payment = TransactionWithSigner(box_fee_payment_tx, signer)
-
 
 current_global_listing_counter = algod_client.application_info(app_id)['params']['global-state'][0]['value']['bytes']
 uint64_coder = ABIType.from_string('(uint64)')
 b64_decoded_global_listing_counter = b64decode(current_global_listing_counter)
 encoded_global_listing_counter = uint64_coder.decode(b64_decoded_global_listing_counter)[0]
 
-
 listing_box_counter = encoded_global_listing_counter + 1
 listing_box_coder = ABIType.from_string('(address,uint64)')
 users_listing_box_name = listing_box_coder.encode((address, listing_box_counter))
 
+asset_2 = int(os.getenv('asset_2'))
 
 app_client.compose_call(
     atc, 
-    call_abi_method='postListingRequest', 
+    call_abi_method='postTradeRequestWithQuantity', 
     asset_to_list=wrapped_asset_list_transaction, 
-    algo_amount_requested=algos_to_microalgos(1), 
+    asset_request=asset_2, 
+    asset_request_quantity=5,
     box_fee_mbr_payment=wrapped_box_fee_payment,
     transaction_parameters={'boxes': [[app_id, users_listing_box_name]]}
     )
-
 
 results = atc.execute(algod_client, 2)
 
@@ -3554,8 +3523,7 @@ tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
 abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
 
 print(tx_ids)
-print(abi_results)
-</code></pre>
+print(abi_results)</code></pre>
       
       <h3>Step 9: Check Respective Listing Information</h3>
       <p>Retrieve and verify the listing information from the contract.</p>
@@ -3594,11 +3562,9 @@ from algosdk.v2client.algod import AlgodClient
 from algosdk.account import address_from_private_key
 from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
-from pathlib import Path
 from algosdk.abi import ABIType
+from pathlib import Path
 import os
-
-
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3612,6 +3578,85 @@ app_id = int(os.getenv('app_id'))
 signer = AccountTransactionSigner(private_key)
 params = algod_client.suggested_params()
 
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+asset_2 = int(os.getenv('asset_2'))
+
+'''
+User should opt-in to the asset purchased if they are not prepared to receive it
+'''
+#asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+#wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+#atc.add_transaction(wrapped_opt_in_transaction)
+
+optin_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_optin_payment = TransactionWithSigner(optin_fee_payment_tx, signer)
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='triggerOptIn', 
+    asset_to_opt_into=asset_2, 
+    fee_payment=wrapped_optin_payment)
+
+asset_payment_tx = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=5, index=asset_2)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='fulfillTradeRequestWithQuantity', 
+    asset_trade_fulfillment=wrapped_asset_payment,
+    asset_transfer_fee=wrapped_fee_payment,
+    asset_listed=asset_1, 
+    listing_name=(lister_address,counter), 
+    transaction_parameters={'boxes': [[app_id, box_name]]})
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+
+<h3>Step 11: Complete Listing Request and Redeem Buyers Asset</h3>
+<pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from pathlib import Path
+from algosdk.abi import ABIType
+import os
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
 
 app_client = ApplicationClient(
     algod_client=algod_client,
@@ -3622,38 +3667,33 @@ app_client = ApplicationClient(
     suggested_params=params,
 )
 
-
 atc = AtomicTransactionComposer()
 
 asset_1 = int(os.getenv('asset_1'))
+asset_2 = int(os.getenv('asset_2'))
 
-asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
-wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
-atc.add_transaction(wrapped_opt_in_transaction)
+'''
+User should opt into the asset if they are not prepared to receive it
+'''
+#asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_2)
+#wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+#atc.add_transaction(wrapped_opt_in_transaction)
 
-asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1_000_000)
-wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
-
-
-fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2000)
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
 wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
-
 
 lister_address = address_from_private_key(os.getenv('private_key'))
 counter = 1 #Remember to increment counter for additional listings
 listing_box_coder = ABIType.from_string('(address,uint64)')
 box_name = listing_box_coder.encode((lister_address, counter))
 
-
 app_client.compose_call(
     atc, 
-    call_abi_method='fulfillListingRequest', 
-    asset_listed=asset_1, 
+    call_abi_method='claimFulfilledTradeRequestWithQuantity', 
+    asset_transfer_fee=wrapped_fee_payment,
+    asset_requested=asset_2,
     listing_name=(lister_address,counter), 
-    payment=wrapped_asset_payment, 
-    transfer_fees=wrapped_fee_payment, 
-    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts':[lister_address]})
-
+    transaction_parameters={'boxes': [[app_id, box_name]]})
 
 results = atc.execute(algod_client, 2)
 
@@ -3663,193 +3703,66 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
       
-      <h3>Step 11: Experiment with Cancelling a Listing Request</h3>
+      <h3>Step 12: Experiment with Cancelling a Listing Request</h3>
       <p>If you fulfilled the previous request already, you will need to generate a new listing again with Step 8, and increment the "counter" variable from 1 to 2. For example:</p>
-      <pre><code>counter = 2</code></pre>
-      <p>Create and compile the asset listing contract:</p>
-      <p><code>algokit compile py yourContractFileName.py</code></p>
-      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
-from algopy.arc4 import abimethod, Address, Struct, Bool
-from algopy.arc4 import UInt64 as arc4UInt64
+      <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from algosdk.abi import ABIType
+from pathlib import Path
+import os
 
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
 
-class listingName(Struct):
-    lister: Address
-    counter: arc4UInt64
-    
-    
-class tradeListingValueWithAssetQuantity(Struct):
-    asset_listed: arc4UInt64
-    asset_requested: arc4UInt64
-    asset_amount_requested: arc4UInt64
-    fulfilled: Bool
-    
-    
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
 
-class listings(ARC4Contract):
-    def __init__(self) -> None:
-        self.listingCounter = GlobalState(arc4UInt64(0))
-    
-    
-    @abimethod
-    def triggerOptIn(
-        self,
-        asset_to_opt_into: Asset,
-        fee_payment: gtxn.PaymentTransaction
-    ) -> tuple[String, UInt64]:
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
 
-        assert fee_payment.amount >= 101_000
-        assert fee_payment.receiver == Global.current_application_address
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_to_opt_into,
-            asset_receiver=Global.current_application_address,
-            fee=Global.min_txn_fee
-        ).submit()
-    
-    
-        return String("Successfully opted in to asset: "), asset_to_opt_into.id
-    
-    
-    
-    
-    @abimethod
-    def postTradeRequestWithQuantity(
-        self,
-        asset_to_list: gtxn.AssetTransferTransaction,
-        asset_request: Asset,
-        asset_request_quantity: arc4UInt64,
-        box_fee_mbr_payment: gtxn.PaymentTransaction
-    ) -> String:
-        
-        assert box_fee_mbr_payment.amount == 28_500
-        assert asset_to_list.asset_receiver == Global.current_application_address
-        assert asset_to_list.asset_amount == 1
-        
-        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
-        
-        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
-        
-        listing_box = BoxRef(key=listing_box_name_info.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert not exists
-        
-        listing_box.create(size=25)
-        
-        listing_box_value_info = tradeListingValueWithAssetQuantity(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_request.id), arc4UInt64(asset_request_quantity.native), Bool(False))
-    
-        
-        listing_box.put(listing_box_value_info.bytes)
-        
-        return String("Trade Request Posted")
-    
-    
-    @abimethod
-    def fulfillTradeRequestWithQuantity(
-        self,
-        asset_trade_fulfillment: gtxn.AssetTransferTransaction,
-        asset_transfer_fee: gtxn.PaymentTransaction,
-        asset_listed: Asset,
-        listing_name: listingName,
-        
-    ) -> String:
-        
-        assert asset_transfer_fee.amount == 1000
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert exists
-        
-        listing_value = tradeListingValueWithAssetQuantity.from_bytes(value)
-        
-        assert listing_value.asset_listed == asset_listed.id
-        assert listing_value.asset_requested == asset_trade_fulfillment.xfer_asset.id
-        assert asset_trade_fulfillment.asset_amount == listing_value.asset_amount_requested
-        
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_listed,
-            asset_receiver=Txn.sender,
-            asset_amount=1,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_value.fulfilled = Bool(True)
-        listing_box.put(listing_value.bytes)
-        
-        return String("Trade Request Fulfilled!")        
-        
-        
-    @abimethod
-    def claimFulfilledTradeRequestWithQuantity(
-        self,
-        asset_transfer_fee: gtxn.PaymentTransaction,
-        asset_requested: Asset,
-        listing_name: listingName,
-    ) -> String:
-        
-        
-        assert listing_name.lister == Address(Txn.sender)
-        assert asset_transfer_fee.amount == 1000
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert exists
-        
-        listing_value = tradeListingValueWithAssetQuantity.from_bytes(value)
-        
-        assert asset_requested.id == listing_value.asset_requested
-        assert listing_value.fulfilled == Bool(True)
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_requested.id,
-            asset_receiver=Txn.sender,
-            asset_amount=listing_value.asset_amount_requested.native,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_box.delete()
-        
-        return String("Trade Request Completed!")
-    
-    
-    @abimethod
-    def cancelTradeRequestWithQuantity(
-        self,
-        listed_asset: Asset,
-        listing_name: listingName,
-        transfer_fee: gtxn.PaymentTransaction
-    ) -> String:
-        
-        assert transfer_fee.amount == 1000
-        assert listing_name.lister == Address(Txn.sender)
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        alue, exists = listing_box.maybe()
-        
-        assert exists
-        
-        listing_value = tradeListingValueWithAssetQuantity.from_bytes(value)
-        
-        assert listing_value.asset_listed == listed_asset.id
-        
-        itxn.AssetTransfer(
-            xfer_asset=listed_asset.id,
-            asset_amount=1,
-            asset_receiver=Txn.sender,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_box.delete()    
-        
-        return String("Trade Request Cancelled!")
-    
-    
-    </code></pre>
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='cancelTradeRequestWithQuantity', 
+    listed_asset=asset_1, 
+    listing_name=(lister_address,counter), 
+    transfer_fee=wrapped_fee_payment, 
+    transaction_parameters={'boxes': [[app_id, box_name]]})
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
     `,
     initialCode: ``, // You can input your initial code here if applicable
   },
@@ -3857,7 +3770,7 @@ class listings(ARC4Contract):
   {
     id: 28, // Adjust the ID as necessary
     language: 'Python',
-    title: 'Marketplace Contract part 4 - Asset Quantity for Asset Quantity',
+    title: 'Marketplace Contract Part 4 - Asset Quantity for Asset Quantity',
     content: `
       <h2>Video Walkthrough</h2>
       <p>Watch the tutorial video for this chapter:</p> 
@@ -3899,30 +3812,29 @@ asset_2 = 724449087
 app_id = 724455779
 </code></pre>
       
-      <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
+      <h3>Step 4: Compile Asset Quantity for Asset Quantity Listing Contract</h3>
+      <p>Create and compile the asset listing contract:</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
       <p>Use the following terminal command to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
-from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
-
 
 class listingName(Struct):
     lister: Address
     counter: arc4UInt64
     
-    
-class listingValue(Struct):
+class tradeListingValueQuantityWithAssetQuantity(Struct):
     asset_listed: arc4UInt64
-    algo_requested: arc4UInt64    
+    asset_listed_quantity: arc4UInt64
+    asset_requested: arc4UInt64
+    asset_amount_requested: arc4UInt64
+    fulfilled: Bool
     
-    
-
 class listings(ARC4Contract):
     def __init__(self) -> None:
         self.listingCounter = GlobalState(arc4UInt64(0))
-    
-    
+        
     @abimethod
     def triggerOptIn(
         self,
@@ -3938,22 +3850,20 @@ class listings(ARC4Contract):
             asset_receiver=Global.current_application_address,
             fee=Global.min_txn_fee
         ).submit()
-    
-    
+        
         return String("Successfully opted in to asset: "), asset_to_opt_into.id
-    
-    
+        
     @abimethod
-    def postListingRequest(
+    def postTradeRequestQuantityWithQuantity(
         self,
         asset_to_list: gtxn.AssetTransferTransaction,
-        algo_amount_requested: arc4UInt64,
-        box_fee_mbr_payment: gtxn.PaymentTransaction,
-    ) -> tuple[String, UInt64, String, arc4UInt64]:
+        asset_request: Asset,
+        asset_request_quantity: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction
+    ) -> String:
         
-        assert box_fee_mbr_payment.amount == 24_900
+        assert box_fee_mbr_payment.amount == 31_700
         assert asset_to_list.asset_receiver == Global.current_application_address
-        assert asset_to_list.asset_amount == 1
         
         self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
         
@@ -3964,66 +3874,91 @@ class listings(ARC4Contract):
         value, exists = listing_box.maybe()
         assert not exists
         
-        listing_box.create(size=16)
+        listing_box.create(size=33)
         
-        listing_box_value_info = listingValue(arc4UInt64(asset_to_list.xfer_asset.id), algo_amount_requested)
-        
+        listing_box_value_info = tradeListingValueQuantityWithAssetQuantity(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_to_list.asset_amount), arc4UInt64(asset_request.id), arc4UInt64(asset_request_quantity.native), Bool(False))
+            
         listing_box.put(listing_box_value_info.bytes)
         
-        return String("User Listed Asset Successfully: "), asset_to_list.xfer_asset.id, String("User is requesting x amount of Algo: "), algo_amount_requested
-    
-    
+        return String("Trade Request Posted")
+        
     @abimethod
-    def fulfillListingRequest(
+    def fulfillTradeRequestQuantityWithQuantity(
         self,
+        asset_trade_fulfillment: gtxn.AssetTransferTransaction,
+        asset_transfer_fee: gtxn.PaymentTransaction,
         asset_listed: Asset,
         listing_name: listingName,
-        payment: gtxn.PaymentTransaction,
-        transfer_fees: gtxn.PaymentTransaction
-    ) -> tuple[String, UInt64, String, UInt64]:
         
-        assert transfer_fees.amount == 2000
+    ) -> String:
+        
+        assert asset_transfer_fee.amount == 1000
         
         listing_box = BoxRef(key=listing_name.bytes)
         
         value, exists = listing_box.maybe()
-        
         assert exists
         
-        listing_value = listingValue.from_bytes(value)
+        listing_value = tradeListingValueQuantityWithAssetQuantity.from_bytes(value)
         
         assert listing_value.asset_listed == asset_listed.id
-        assert listing_value.algo_requested == payment.amount
-        
-        itxn.Payment(
-            receiver=listing_name.lister.native,
-            amount=payment.amount,
-            fee=Global.min_txn_fee
-        ).submit()
-        
+        assert listing_value.asset_requested == asset_trade_fulfillment.xfer_asset.id
+        assert asset_trade_fulfillment.asset_amount == listing_value.asset_amount_requested
+                
         itxn.AssetTransfer(
             xfer_asset=asset_listed,
             asset_receiver=Txn.sender,
-            asset_amount=1,
+            asset_amount=listing_value.asset_listed_quantity.native,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        listing_value.fulfilled = Bool(True)
+        listing_box.put(listing_value.bytes)
+        
+        return String("Trade Request Fulfilled!")        
+                
+    @abimethod
+    def claimFulfilledTradeRequestQuantityWithQuantity(
+        self,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_requested: Asset,
+        listing_name: listingName,
+    ) -> String:
+                
+        assert listing_name.lister == Address(Txn.sender)
+        assert asset_transfer_fee.amount == 1000
+        
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = tradeListingValueQuantityWithAssetQuantity.from_bytes(value)
+        
+        assert asset_requested.id == listing_value.asset_requested
+        assert listing_value.fulfilled == Bool(True)
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_requested.id,
+            asset_receiver=Txn.sender,
+            asset_amount=listing_value.asset_amount_requested.native,
             fee=Global.min_txn_fee
         ).submit()
         
         listing_box.delete()
         
-        return String("Listing Fulfilled for Asset: "), asset_listed.id, String("Lister received x amount of Algo: "), payment.amount
-        
-        
+        return String("Trade Request Completed!")
         
     @abimethod
-    def cancelListingRequest(
+    def cancelTradeRequestQuantityWithQuantity(
         self,
-        listing_asset: Asset,
+        listed_asset: Asset,
         listing_name: listingName,
         transfer_fee: gtxn.PaymentTransaction
     ) -> String:
         
         assert transfer_fee.amount == 1000
-        assert listing_name.lister.native == Txn.sender
+        assert listing_name.lister == Address(Txn.sender)
         
         listing_box = BoxRef(key=listing_name.bytes)
         
@@ -4031,20 +3966,20 @@ class listings(ARC4Contract):
         
         assert exists
         
-        listing_value = listingValue.from_bytes(value)
+        listing_value = tradeListingValueQuantityWithAssetQuantity.from_bytes(value)
         
-        assert listing_value.asset_listed == listing_asset.id
+        assert listing_value.asset_listed == listed_asset.id
         
         itxn.AssetTransfer(
-            xfer_asset=listing_asset.id,
-            asset_amount=1,
+            xfer_asset=listed_asset.id,
+            asset_amount=listing_value.asset_listed_quantity.native,
             asset_receiver=Txn.sender,
             fee=Global.min_txn_fee
         ).submit()
         
-        listing_box.delete()
+        listing_box.delete()    
         
-        return String("Listing Request Cancelled")</code></pre>
+        return String("Trade Request Cancelled!")</code></pre>
 
       <p>Ensure you have the necessary imports and class definitions for your contract.</p>
       
@@ -4147,13 +4082,10 @@ from algosdk.v2client.algod import AlgodClient
 from algosdk.account import address_from_private_key
 from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
-from pathlib import Path
-from algosdk.util import algos_to_microalgos
 from algosdk.abi import ABIType
-from base64 import b64decode
+from pathlib import Path
 import os
-
-
+from base64 import b64decode
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4167,7 +4099,6 @@ app_id = int(os.getenv('app_id'))
 signer = AccountTransactionSigner(private_key)
 params = algod_client.suggested_params()
 
-
 app_client = ApplicationClient(
     algod_client=algod_client,
     app_spec=app_spec,
@@ -4176,7 +4107,6 @@ app_client = ApplicationClient(
     sender=address,
     suggested_params=params,
 )
-
 
 atc = AtomicTransactionComposer()
 
@@ -4191,35 +4121,32 @@ app_client.compose_call(
     asset_to_opt_into=asset_1, 
     fee_payment=wrapped_payment)
 
-
-asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_1)
+asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=7, index=asset_1)
 wrapped_asset_list_transaction = TransactionWithSigner(asset_to_list_transaction, signer)
 
-
-box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=24_900)
+box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=31_700)
 wrapped_box_fee_payment = TransactionWithSigner(box_fee_payment_tx, signer)
-
 
 current_global_listing_counter = algod_client.application_info(app_id)['params']['global-state'][0]['value']['bytes']
 uint64_coder = ABIType.from_string('(uint64)')
 b64_decoded_global_listing_counter = b64decode(current_global_listing_counter)
 encoded_global_listing_counter = uint64_coder.decode(b64_decoded_global_listing_counter)[0]
 
-
 listing_box_counter = encoded_global_listing_counter + 1
 listing_box_coder = ABIType.from_string('(address,uint64)')
 users_listing_box_name = listing_box_coder.encode((address, listing_box_counter))
 
+asset_2 = int(os.getenv('asset_2'))
 
 app_client.compose_call(
     atc, 
-    call_abi_method='postListingRequest', 
+    call_abi_method='postTradeRequestQuantityWithQuantity', 
     asset_to_list=wrapped_asset_list_transaction, 
-    algo_amount_requested=algos_to_microalgos(1), 
+    asset_request=asset_2, 
+    asset_request_quantity=5,
     box_fee_mbr_payment=wrapped_box_fee_payment,
     transaction_parameters={'boxes': [[app_id, users_listing_box_name]]}
     )
-
 
 results = atc.execute(algod_client, 2)
 
@@ -4227,8 +4154,7 @@ tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
 abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
 
 print(tx_ids)
-print(abi_results)
-</code></pre>
+print(abi_results)</code></pre>
       
       <h3>Step 9: Check Respective Listing Information</h3>
       <p>Retrieve and verify the listing information from the contract.</p>
@@ -4267,11 +4193,9 @@ from algosdk.v2client.algod import AlgodClient
 from algosdk.account import address_from_private_key
 from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
-from pathlib import Path
 from algosdk.abi import ABIType
+from pathlib import Path
 import os
-
-
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4285,6 +4209,85 @@ app_id = int(os.getenv('app_id'))
 signer = AccountTransactionSigner(private_key)
 params = algod_client.suggested_params()
 
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+asset_2 = int(os.getenv('asset_2'))
+
+'''
+User should optin to the asset if they are not prepared to receive it
+'''
+#asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+#wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+#atc.add_transaction(wrapped_opt_in_transaction)
+
+optin_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_optin_payment = TransactionWithSigner(optin_fee_payment_tx, signer)
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='triggerOptIn', 
+    asset_to_opt_into=asset_2, 
+    fee_payment=wrapped_optin_payment)
+
+asset_payment_tx = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=5, index=asset_2)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='fulfillTradeRequestQuantityWithQuantity', 
+    asset_trade_fulfillment=wrapped_asset_payment,
+    asset_transfer_fee=wrapped_fee_payment,
+    asset_listed=asset_1, 
+    listing_name=(lister_address,counter), 
+    transaction_parameters={'boxes': [[app_id, box_name]]})
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+
+<h3>Step 11: Complete Listing Request and Redeem Buyers Asset</h3>
+<pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from pathlib import Path
+from algosdk.abi import ABIType
+import os
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
 
 app_client = ApplicationClient(
     algod_client=algod_client,
@@ -4295,38 +4298,33 @@ app_client = ApplicationClient(
     suggested_params=params,
 )
 
-
 atc = AtomicTransactionComposer()
 
 asset_1 = int(os.getenv('asset_1'))
+asset_2 = int(os.getenv('asset_2'))
 
-asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
-wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
-atc.add_transaction(wrapped_opt_in_transaction)
+'''
+User should opt into the asset if they are not prepared to receive it
+'''
+#asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_2)
+#wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+#atc.add_transaction(wrapped_opt_in_transaction)
 
-asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1_000_000)
-wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
-
-
-fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2000)
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
 wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
-
 
 lister_address = address_from_private_key(os.getenv('private_key'))
 counter = 1 #Remember to increment counter for additional listings
 listing_box_coder = ABIType.from_string('(address,uint64)')
 box_name = listing_box_coder.encode((lister_address, counter))
 
-
 app_client.compose_call(
     atc, 
-    call_abi_method='fulfillListingRequest', 
-    asset_listed=asset_1, 
+    call_abi_method='claimFulfilledTradeRequestQuantityWithQuantity', 
+    asset_transfer_fee=wrapped_fee_payment,
+    asset_requested=asset_2,
     listing_name=(lister_address,counter), 
-    payment=wrapped_asset_payment, 
-    transfer_fees=wrapped_fee_payment, 
-    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts':[lister_address]})
-
+    transaction_parameters={'boxes': [[app_id, box_name]]})
 
 results = atc.execute(algod_client, 2)
 
@@ -4336,190 +4334,66 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
       
-      <h3>Step 11: Experiment with Cancelling a Listing Request</h3>
+      <h3>Step 12: Experiment with Cancelling a Listing Request</h3>
       <p>If you fulfilled the previous request already, you will need to generate a new listing again with Step 8, and increment the "counter" variable from 1 to 2. For example:</p>
-      <pre><code>counter = 2</code></pre>
-      <p>Create and compile the asset listing contract:</p>
-      <p><code>algokit compile py yourContractFileName.py</code></p>
-      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
-from algopy.arc4 import abimethod, Address, Struct, Bool
-from algopy.arc4 import UInt64 as arc4UInt64
+      <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from pathlib import Path
+from algosdk.abi import ABIType
+import os
 
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
 
-class listingName(Struct):
-    lister: Address
-    counter: arc4UInt64
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
 
-    
-class tradeListingValueQuantityWithAssetQuantity(Struct):
-    asset_listed: arc4UInt64
-    asset_listed_quantity: arc4UInt64
-    asset_requested: arc4UInt64
-    asset_amount_requested: arc4UInt64
-    fulfilled: Bool
-    
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
 
-    
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
 
-class listings(ARC4Contract):
-    def __init__(self) -> None:
-        self.listingCounter = GlobalState(arc4UInt64(0))
-    
-    
-    @abimethod
-    def triggerOptIn(
-        self,
-        asset_to_opt_into: Asset,
-        fee_payment: gtxn.PaymentTransaction
-    ) -> tuple[String, UInt64]:
+atc = AtomicTransactionComposer()
 
-        assert fee_payment.amount >= 101_000
-        assert fee_payment.receiver == Global.current_application_address
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_to_opt_into,
-            asset_receiver=Global.current_application_address,
-            fee=Global.min_txn_fee
-        ).submit()
-    
-    
-        return String("Successfully opted in to asset: "), asset_to_opt_into.id
-    
-    
-    @abimethod
-    def postTradeRequestQuantityWithQuantity(
-        self,
-        asset_to_list: gtxn.AssetTransferTransaction,
-        asset_request: Asset,
-        asset_request_quantity: arc4UInt64,
-        box_fee_mbr_payment: gtxn.PaymentTransaction
-    ) -> String:
-        
-        assert box_fee_mbr_payment.amount == 31_700
-        assert asset_to_list.asset_receiver == Global.current_application_address
-        
-        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
-        
-        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
-        
-        listing_box = BoxRef(key=listing_box_name_info.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert not exists
-        
-        listing_box.create(size=33)
-        
-        listing_box_value_info = tradeListingValueQuantityWithAssetQuantity(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_to_list.asset_amount), arc4UInt64(asset_request.id), arc4UInt64(asset_request_quantity.native), Bool(False))
-    
-        
-        listing_box.put(listing_box_value_info.bytes)
-        
-        return String("Trade Request Posted")
-    
-    
-    @abimethod
-    def fulfillTradeRequestQuantityWithQuantity(
-        self,
-        asset_trade_fulfillment: gtxn.AssetTransferTransaction,
-        asset_transfer_fee: gtxn.PaymentTransaction,
-        asset_listed: Asset,
-        listing_name: listingName,
-        
-    ) -> String:
-        
-        assert asset_transfer_fee.amount == 1000
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert exists
-        
-        listing_value = tradeListingValueQuantityWithAssetQuantity.from_bytes(value)
-        
-        assert listing_value.asset_listed == asset_listed.id
-        assert listing_value.asset_requested == asset_trade_fulfillment.xfer_asset.id
-        assert asset_trade_fulfillment.asset_amount == listing_value.asset_amount_requested
-        
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_listed,
-            asset_receiver=Txn.sender,
-            asset_amount=listing_value.asset_listed_quantity.native,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_value.fulfilled = Bool(True)
-        listing_box.put(listing_value.bytes)
-        
-        return String("Trade Request Fulfilled!")        
-        
-        
-    @abimethod
-    def claimFulfilledTradeRequestQuantityWithQuantity(
-        self,
-        asset_transfer_fee: gtxn.PaymentTransaction,
-        asset_requested: Asset,
-        listing_name: listingName,
-    ) -> String:
-        
-        
-        assert listing_name.lister == Address(Txn.sender)
-        assert asset_transfer_fee.amount == 1000
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert exists
-        
-        listing_value = tradeListingValueQuantityWithAssetQuantity.from_bytes(value)
-        
-        assert asset_requested.id == listing_value.asset_requested
-        assert listing_value.fulfilled == Bool(True)
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_requested.id,
-            asset_receiver=Txn.sender,
-            asset_amount=listing_value.asset_amount_requested.native,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_box.delete()
-        
-        return String("Trade Request Completed!")
-    
-    
-    @abimethod
-    def cancelTradeRequestQuantityWithQuantity(
-        self,
-        listed_asset: Asset,
-        listing_name: listingName,
-        transfer_fee: gtxn.PaymentTransaction
-    ) -> String:
-        
-        assert transfer_fee.amount == 1000
-        assert listing_name.lister == Address(Txn.sender)
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        
-        assert exists
-        
-        listing_value = tradeListingValueQuantityWithAssetQuantity.from_bytes(value)
-        
-        assert listing_value.asset_listed == listed_asset.id
-        
-        itxn.AssetTransfer(
-            xfer_asset=listed_asset.id,
-            asset_amount=listing_value.asset_listed_quantity.native,
-            asset_receiver=Txn.sender,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_box.delete()    
-        
-        return String("Trade Request Cancelled!")
-</code></pre>
+asset_1 = int(os.getenv('asset_1'))
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='cancelTradeRequestQuantityWithQuantity', 
+    listed_asset=asset_1, 
+    listing_name=(lister_address,counter), 
+    transfer_fee=wrapped_fee_payment, 
+    transaction_parameters={'boxes': [[app_id, box_name]]})
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
     `,
     initialCode: ``, // You can input your initial code here if applicable
   },
@@ -4527,7 +4401,7 @@ class listings(ARC4Contract):
   {
     id: 29, // Adjust the ID as necessary
     language: 'Python',
-    title: 'Marketplace Contract part 5 - Universal Listings',
+    title: 'Marketplace Contract Part 5 - Universal Listings',
     content: `
       <h2>Video Walkthrough</h2>
       <p>Watch the tutorial video for this chapter:</p> 
@@ -4570,30 +4444,29 @@ asset_2 = 724449087
 app_id = 724455779
 </code></pre>
       
-      <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
+      <h3>Step 4: Compile Universal Listing Contract</h3>
+      <p>Create and compile the asset listing contract:</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
       <p>Use the following terminal command to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
-from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
-
 
 class listingName(Struct):
     lister: Address
     counter: arc4UInt64
     
-    
-class listingValue(Struct):
+class universalTradeListing(Struct):
     asset_listed: arc4UInt64
-    algo_requested: arc4UInt64    
+    asset_listed_quantity: arc4UInt64
+    asset_requested: arc4UInt64
+    asset_amount_requested: arc4UInt64
+    fulfilled: Bool
     
-    
-
 class listings(ARC4Contract):
     def __init__(self) -> None:
         self.listingCounter = GlobalState(arc4UInt64(0))
-    
-    
+        
     @abimethod
     def triggerOptIn(
         self,
@@ -4609,22 +4482,38 @@ class listings(ARC4Contract):
             asset_receiver=Global.current_application_address,
             fee=Global.min_txn_fee
         ).submit()
-    
-    
+        
         return String("Successfully opted in to asset: "), asset_to_opt_into.id
-    
-    
+        
     @abimethod
-    def postListingRequest(
+    def triggerOptIn(
+        self,
+        asset_to_opt_into: Asset,
+        fee_payment: gtxn.PaymentTransaction
+    ) -> tuple[String, UInt64]:
+
+        assert fee_payment.amount >= 101_000
+        assert fee_payment.receiver == Global.current_application_address
+        
+        itxn.AssetTransfer(
+            xfer_asset=asset_to_opt_into,
+            asset_receiver=Global.current_application_address,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        return String("Successfully opted in to asset: "), asset_to_opt_into.id
+            
+    @abimethod
+    def postUniversalListing(
         self,
         asset_to_list: gtxn.AssetTransferTransaction,
-        algo_amount_requested: arc4UInt64,
-        box_fee_mbr_payment: gtxn.PaymentTransaction,
-    ) -> tuple[String, UInt64, String, arc4UInt64]:
+        asset_request: arc4UInt64,
+        asset_request_quantity: arc4UInt64,
+        box_fee_mbr_payment: gtxn.PaymentTransaction
+    ) -> String:
         
-        assert box_fee_mbr_payment.amount == 24_900
+        assert box_fee_mbr_payment.amount == 31_700
         assert asset_to_list.asset_receiver == Global.current_application_address
-        assert asset_to_list.asset_amount == 1
         
         self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
         
@@ -4635,66 +4524,120 @@ class listings(ARC4Contract):
         value, exists = listing_box.maybe()
         assert not exists
         
-        listing_box.create(size=16)
+        listing_box.create(size=33)
         
-        listing_box_value_info = listingValue(arc4UInt64(asset_to_list.xfer_asset.id), algo_amount_requested)
-        
+        listing_box_value_info = universalTradeListing(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_to_list.asset_amount), asset_request, arc4UInt64(asset_request_quantity.native), Bool(False))
+            
         listing_box.put(listing_box_value_info.bytes)
         
-        return String("User Listed Asset Successfully: "), asset_to_list.xfer_asset.id, String("User is requesting x amount of Algo: "), algo_amount_requested
-    
-    
+        return String("Trade Request Posted")
+        
     @abimethod
-    def fulfillListingRequest(
+    def fulfillUniversalListing(
         self,
+        asset_transfer_fee: gtxn.PaymentTransaction,
         asset_listed: Asset,
         listing_name: listingName,
-        payment: gtxn.PaymentTransaction,
-        transfer_fees: gtxn.PaymentTransaction
-    ) -> tuple[String, UInt64, String, UInt64]:
         
-        assert transfer_fees.amount == 2000
+    ) -> String:
+        
+        assert asset_transfer_fee.amount == 1000
+
+        listing_box = BoxRef(key=listing_name.bytes)
+        
+        value, exists = listing_box.maybe()
+        assert exists
+        
+        listing_value = universalTradeListing.from_bytes(value)
+
+        if Global.group_size == 3:
+            assert gtxn.Transaction(0).type == TransactionType.Payment
+            payment_fulfillment_tx = gtxn.PaymentTransaction(0)
+            assert payment_fulfillment_tx.receiver == Global.current_application_address
+            assert listing_value.asset_listed == asset_listed.id
+            assert listing_value.asset_requested == 0
+            assert payment_fulfillment_tx.amount == listing_value.asset_amount_requested.native
+
+            itxn.AssetTransfer(
+                xfer_asset=asset_listed,
+                asset_receiver=Txn.sender,
+                asset_amount=listing_value.asset_listed_quantity.native,
+                fee=Global.min_txn_fee
+            ).submit()
+            
+            
+            itxn.Payment(
+                receiver=listing_name.lister.native,
+                amount=listing_value.asset_amount_requested.native,
+                fee=Global.min_txn_fee
+            ).submit()
+            
+            listing_box.delete()
+            
+            return String("Buyer paid with Algo, Listing Fulfilled!")
+            
+        elif Global.group_size == 5:
+            assert gtxn.Transaction(2).type == TransactionType.AssetTransfer
+            asset_trade_fulfillment_tx = gtxn.AssetTransferTransaction(2)
+            assert asset_trade_fulfillment_tx.asset_receiver == Global.current_application_address
+            assert listing_value.asset_listed == asset_listed.id
+            assert listing_value.asset_requested == asset_trade_fulfillment_tx.xfer_asset.id
+            assert asset_trade_fulfillment_tx.asset_amount == listing_value.asset_amount_requested
+                        
+            itxn.AssetTransfer(
+                xfer_asset=asset_listed,
+                asset_receiver=Txn.sender,
+                asset_amount=listing_value.asset_listed_quantity.native,
+                fee=Global.min_txn_fee
+            ).submit()
+                    
+        listing_value.fulfilled = Bool(True)
+        listing_box.put(listing_value.bytes)
+        
+        return String("Trade Request Fulfilled! Lister can now claim")        
+                
+    @abimethod
+    def claimUniversalListing(
+        self,
+        asset_transfer_fee: gtxn.PaymentTransaction,
+        asset_requested: Asset,
+        listing_name: listingName,
+    ) -> String:
+                
+        assert listing_name.lister == Address(Txn.sender)
+        assert asset_transfer_fee.amount == 1000
         
         listing_box = BoxRef(key=listing_name.bytes)
         
         value, exists = listing_box.maybe()
-        
         assert exists
         
-        listing_value = listingValue.from_bytes(value)
+        listing_value = universalTradeListing.from_bytes(value)
         
-        assert listing_value.asset_listed == asset_listed.id
-        assert listing_value.algo_requested == payment.amount
-        
-        itxn.Payment(
-            receiver=listing_name.lister.native,
-            amount=payment.amount,
-            fee=Global.min_txn_fee
-        ).submit()
+        assert asset_requested.id == listing_value.asset_requested
+        assert listing_value.fulfilled == Bool(True)
         
         itxn.AssetTransfer(
-            xfer_asset=asset_listed,
+            xfer_asset=asset_requested.id,
             asset_receiver=Txn.sender,
-            asset_amount=1,
+            asset_amount=listing_value.asset_amount_requested.native,
             fee=Global.min_txn_fee
         ).submit()
         
         listing_box.delete()
         
-        return String("Listing Fulfilled for Asset: "), asset_listed.id, String("Lister received x amount of Algo: "), payment.amount
-        
-        
+        return String("Trade Request Completed!")
         
     @abimethod
-    def cancelListingRequest(
+    def cancelUniversalListing(
         self,
-        listing_asset: Asset,
+        listed_asset: Asset,
         listing_name: listingName,
         transfer_fee: gtxn.PaymentTransaction
     ) -> String:
         
         assert transfer_fee.amount == 1000
-        assert listing_name.lister.native == Txn.sender
+        assert listing_name.lister == Address(Txn.sender)
         
         listing_box = BoxRef(key=listing_name.bytes)
         
@@ -4702,20 +4645,20 @@ class listings(ARC4Contract):
         
         assert exists
         
-        listing_value = listingValue.from_bytes(value)
+        listing_value = universalTradeListing.from_bytes(value)
         
-        assert listing_value.asset_listed == listing_asset.id
+        assert listing_value.asset_listed == listed_asset.id
         
         itxn.AssetTransfer(
-            xfer_asset=listing_asset.id,
-            asset_amount=1,
+            xfer_asset=listed_asset.id,
+            asset_amount=listing_value.asset_listed_quantity.native,
             asset_receiver=Txn.sender,
             fee=Global.min_txn_fee
         ).submit()
         
-        listing_box.delete()
+        listing_box.delete()    
         
-        return String("Listing Request Cancelled")</code></pre>
+        return String("Trade Request Cancelled!")</code></pre>
 
       <p>Ensure you have the necessary imports and class definitions for your contract.</p>
       
@@ -4819,12 +4762,9 @@ from algosdk.account import address_from_private_key
 from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from pathlib import Path
-from algosdk.util import algos_to_microalgos
 from algosdk.abi import ABIType
-from base64 import b64decode
 import os
-
-
+from base64 import b64decode
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4838,7 +4778,6 @@ app_id = int(os.getenv('app_id'))
 signer = AccountTransactionSigner(private_key)
 params = algod_client.suggested_params()
 
-
 app_client = ApplicationClient(
     algod_client=algod_client,
     app_spec=app_spec,
@@ -4847,7 +4786,6 @@ app_client = ApplicationClient(
     sender=address,
     suggested_params=params,
 )
-
 
 atc = AtomicTransactionComposer()
 
@@ -4862,35 +4800,32 @@ app_client.compose_call(
     asset_to_opt_into=asset_1, 
     fee_payment=wrapped_payment)
 
-
 asset_to_list_transaction = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1, index=asset_1)
 wrapped_asset_list_transaction = TransactionWithSigner(asset_to_list_transaction, signer)
 
-
-box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=24_900)
+box_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=31_700)
 wrapped_box_fee_payment = TransactionWithSigner(box_fee_payment_tx, signer)
-
 
 current_global_listing_counter = algod_client.application_info(app_id)['params']['global-state'][0]['value']['bytes']
 uint64_coder = ABIType.from_string('(uint64)')
 b64_decoded_global_listing_counter = b64decode(current_global_listing_counter)
 encoded_global_listing_counter = uint64_coder.decode(b64_decoded_global_listing_counter)[0]
 
-
 listing_box_counter = encoded_global_listing_counter + 1
 listing_box_coder = ABIType.from_string('(address,uint64)')
 users_listing_box_name = listing_box_coder.encode((address, listing_box_counter))
 
+asset_2 = int(os.getenv('asset_2'))
 
 app_client.compose_call(
     atc, 
-    call_abi_method='postListingRequest', 
+    call_abi_method='postUniversalListing', 
     asset_to_list=wrapped_asset_list_transaction, 
-    algo_amount_requested=algos_to_microalgos(1), 
+    asset_request=0, 
+    asset_request_quantity=2_000_000,
     box_fee_mbr_payment=wrapped_box_fee_payment,
     transaction_parameters={'boxes': [[app_id, users_listing_box_name]]}
     )
-
 
 results = atc.execute(algod_client, 2)
 
@@ -4898,8 +4833,7 @@ tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
 abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
 
 print(tx_ids)
-print(abi_results)
-</code></pre>
+print(abi_results)</code></pre>
       
       <h3>Step 9: Check Respective Listing Information</h3>
       <p>Retrieve and verify the listing information from the contract.</p>
@@ -4938,11 +4872,9 @@ from algosdk.v2client.algod import AlgodClient
 from algosdk.account import address_from_private_key
 from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
-from pathlib import Path
 from algosdk.abi import ABIType
+from pathlib import Path
 import os
-
-
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4956,6 +4888,93 @@ app_id = int(os.getenv('app_id'))
 signer = AccountTransactionSigner(private_key)
 params = algod_client.suggested_params()
 
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+asset_1 = int(os.getenv('asset_1'))
+asset_2 = int(os.getenv('asset_2'))
+
+'''
+User should opt into the asset if they are not prepared to receive it
+'''
+#asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
+#wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+#atc.add_transaction(wrapped_opt_in_transaction)
+
+#5 tx for asset to asset payments
+
+optin_fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=101_000)
+wrapped_optin_payment = TransactionWithSigner(optin_fee_payment_tx, signer)
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='triggerOptIn', 
+    asset_to_opt_into=asset_2, 
+    fee_payment=wrapped_optin_payment)
+
+asset_payment_tx = AssetTransferTxn(sender=address, sp=params, receiver=app_client.app_address, amt=3, index=asset_2)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2_000_000)
+wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
+
+atc.add_transaction(wrapped_asset_payment)
+
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
+
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='fulfillUniversalListing', 
+    asset_transfer_fee=wrapped_fee_payment,
+    asset_listed=asset_1, 
+    listing_name=(lister_address,counter), 
+    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts': [lister_address]})
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
+
+<h3>Step 11: Complete Listing Request and Redeem Buyers Asset</h3>
+<pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from pathlib import Path
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+import os
+from base64 import b64decode
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
 
 app_client = ApplicationClient(
     algod_client=algod_client,
@@ -4966,38 +4985,33 @@ app_client = ApplicationClient(
     suggested_params=params,
 )
 
-
 atc = AtomicTransactionComposer()
 
 asset_1 = int(os.getenv('asset_1'))
+asset_2 = int(os.getenv('asset_2'))
 
-asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_1)
-wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
-atc.add_transaction(wrapped_opt_in_transaction)
+'''
+User should opt into the asset if they are not prepared to receive it
+'''
+#asset_opt_in_transaction = AssetTransferTxn(sender=address, sp=params, receiver=address, amt=0, index=asset_2)
+#wrapped_opt_in_transaction = TransactionWithSigner(asset_opt_in_transaction, signer)
+#atc.add_transaction(wrapped_opt_in_transaction)
 
-asset_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1_000_000)
-wrapped_asset_payment = TransactionWithSigner(asset_payment_tx, signer)
-
-
-fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=2000)
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
 wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
-
 
 lister_address = address_from_private_key(os.getenv('private_key'))
 counter = 1 #Remember to increment counter for additional listings
 listing_box_coder = ABIType.from_string('(address,uint64)')
 box_name = listing_box_coder.encode((lister_address, counter))
 
-
 app_client.compose_call(
     atc, 
-    call_abi_method='fulfillListingRequest', 
-    asset_listed=asset_1, 
+    call_abi_method='claimUniversalListing', 
+    asset_transfer_fee=wrapped_fee_payment,
+    asset_requested=asset_2,
     listing_name=(lister_address,counter), 
-    payment=wrapped_asset_payment, 
-    transfer_fees=wrapped_fee_payment, 
-    transaction_parameters={'boxes': [[app_id, box_name]], 'accounts':[lister_address]})
-
+    transaction_parameters={'boxes': [[app_id, box_name]]})
 
 results = atc.execute(algod_client, 2)
 
@@ -5007,241 +5021,67 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
       
-      <h3>Step 11: Experiment with Cancelling a Listing Request</h3>
+      <h3>Step 12: Experiment with Cancelling a Listing Request</h3>
       <p>If you fulfilled the previous request already, you will need to generate a new listing again with Step 8, and increment the "counter" variable from 1 to 2. For example:</p>
-      <pre><code>counter = 2</code></pre>
-      <p>Create and compile the asset listing contract:</p>
-      <p><code>algokit compile py yourContractFileName.py</code></p>
-      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
-from algopy.arc4 import abimethod, Address, Struct, Bool
-from algopy.arc4 import UInt64 as arc4UInt64
+      <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
+      <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, TransactionWithSigner, AtomicTransactionComposer
+from algosdk.transaction import PaymentTxn
+from algosdk.abi import ABIType
+from pathlib import Path
+import os
 
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
 
-class listingName(Struct):
-    lister: Address
-    counter: arc4UInt64
-    
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
 
-    
-class universalTradeListing(Struct):
-    asset_listed: arc4UInt64
-    asset_listed_quantity: arc4UInt64
-    asset_requested: arc4UInt64
-    asset_amount_requested: arc4UInt64
-    fulfilled: Bool
-    
+app_spec = Path(__file__).parent / './listings.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+params = algod_client.suggested_params()
 
-class listings(ARC4Contract):
-    def __init__(self) -> None:
-        self.listingCounter = GlobalState(arc4UInt64(0))
-    
-    
-    @abimethod
-    def triggerOptIn(
-        self,
-        asset_to_opt_into: Asset,
-        fee_payment: gtxn.PaymentTransaction
-    ) -> tuple[String, UInt64]:
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
 
-        assert fee_payment.amount >= 101_000
-        assert fee_payment.receiver == Global.current_application_address
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_to_opt_into,
-            asset_receiver=Global.current_application_address,
-            fee=Global.min_txn_fee
-        ).submit()
-    
-    
-        return String("Successfully opted in to asset: "), asset_to_opt_into.id
-    
-    
-    @abimethod
-    def triggerOptIn(
-        self,
-        asset_to_opt_into: Asset,
-        fee_payment: gtxn.PaymentTransaction
-    ) -> tuple[String, UInt64]:
+atc = AtomicTransactionComposer()
 
-        assert fee_payment.amount >= 101_000
-        assert fee_payment.receiver == Global.current_application_address
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_to_opt_into,
-            asset_receiver=Global.current_application_address,
-            fee=Global.min_txn_fee
-        ).submit()
-    
-    
-        return String("Successfully opted in to asset: "), asset_to_opt_into.id
-    
-    
-    
-    
-    @abimethod
-    def postUniversalListing(
-        self,
-        asset_to_list: gtxn.AssetTransferTransaction,
-        asset_request: arc4UInt64,
-        asset_request_quantity: arc4UInt64,
-        box_fee_mbr_payment: gtxn.PaymentTransaction
-    ) -> String:
-        
-        assert box_fee_mbr_payment.amount == 31_700
-        assert asset_to_list.asset_receiver == Global.current_application_address
-        
-        self.listingCounter.value = arc4UInt64(self.listingCounter.value.native + 1)
-        
-        listing_box_name_info = listingName(Address(Txn.sender), self.listingCounter.value)
-        
-        listing_box = BoxRef(key=listing_box_name_info.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert not exists
-        
-        listing_box.create(size=33)
-        
-        listing_box_value_info = universalTradeListing(arc4UInt64(asset_to_list.xfer_asset.id), arc4UInt64(asset_to_list.asset_amount), asset_request, arc4UInt64(asset_request_quantity.native), Bool(False))
-    
-        
-        listing_box.put(listing_box_value_info.bytes)
-        
-        return String("Trade Request Posted")
-    
-    
-    @abimethod
-    def fulfillUniversalListing(
-        self,
-        asset_transfer_fee: gtxn.PaymentTransaction,
-        asset_listed: Asset,
-        listing_name: listingName,
-        
-    ) -> String:
-        
-        assert asset_transfer_fee.amount == 1000
+asset_1 = int(os.getenv('asset_1'))
 
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert exists
-        
-        listing_value = universalTradeListing.from_bytes(value)
+fee_payment_tx = PaymentTxn(sender=address, sp=params, receiver=app_client.app_address, amt=1000)
+wrapped_fee_payment = TransactionWithSigner(fee_payment_tx, signer)
 
-        if Global.group_size == 3:
-            assert gtxn.Transaction(0).type == TransactionType.Payment
-            payment_fulfillment_tx = gtxn.PaymentTransaction(0)
-            assert payment_fulfillment_tx.receiver == Global.current_application_address
-            assert listing_value.asset_listed == asset_listed.id
-            assert listing_value.asset_requested == 0
-            assert payment_fulfillment_tx.amount == listing_value.asset_amount_requested.native
+lister_address = address_from_private_key(os.getenv('private_key'))
+counter = 1 #Remember to increment counter for additional listings
 
+listing_box_coder = ABIType.from_string('(address,uint64)')
+box_name = listing_box_coder.encode((lister_address, counter))
 
-            itxn.AssetTransfer(
-                xfer_asset=asset_listed,
-                asset_receiver=Txn.sender,
-                asset_amount=listing_value.asset_listed_quantity.native,
-                fee=Global.min_txn_fee
-            ).submit()
-            
-            
-            itxn.Payment(
-                receiver=listing_name.lister.native,
-                amount=listing_value.asset_amount_requested.native,
-                fee=Global.min_txn_fee
-            ).submit()
-            
-            listing_box.delete()
-            
-            return String("Buyer paid with Algo, Listing Fulfilled!")
-            
-        elif Global.group_size == 5:
-            assert gtxn.Transaction(2).type == TransactionType.AssetTransfer
-            asset_trade_fulfillment_tx = gtxn.AssetTransferTransaction(2)
-            assert asset_trade_fulfillment_tx.asset_receiver == Global.current_application_address
-            assert listing_value.asset_listed == asset_listed.id
-            assert listing_value.asset_requested == asset_trade_fulfillment_tx.xfer_asset.id
-            assert asset_trade_fulfillment_tx.asset_amount == listing_value.asset_amount_requested
-            
-            
-            itxn.AssetTransfer(
-                xfer_asset=asset_listed,
-                asset_receiver=Txn.sender,
-                asset_amount=listing_value.asset_listed_quantity.native,
-                fee=Global.min_txn_fee
-            ).submit()
-        
-            
-        listing_value.fulfilled = Bool(True)
-        listing_box.put(listing_value.bytes)
-        
-        return String("Trade Request Fulfilled! Lister can now claim")        
-        
-        
-    @abimethod
-    def claimUniversalListing(
-        self,
-        asset_transfer_fee: gtxn.PaymentTransaction,
-        asset_requested: Asset,
-        listing_name: listingName,
-    ) -> String:
-        
-        
-        assert listing_name.lister == Address(Txn.sender)
-        assert asset_transfer_fee.amount == 1000
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        assert exists
-        
-        listing_value = universalTradeListing.from_bytes(value)
-        
-        assert asset_requested.id == listing_value.asset_requested
-        assert listing_value.fulfilled == Bool(True)
-        
-        itxn.AssetTransfer(
-            xfer_asset=asset_requested.id,
-            asset_receiver=Txn.sender,
-            asset_amount=listing_value.asset_amount_requested.native,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_box.delete()
-        
-        return String("Trade Request Completed!")
-    
-    
-    @abimethod
-    def cancelUniversalListing(
-        self,
-        listed_asset: Asset,
-        listing_name: listingName,
-        transfer_fee: gtxn.PaymentTransaction
-    ) -> String:
-        
-        assert transfer_fee.amount == 1000
-        assert listing_name.lister == Address(Txn.sender)
-        
-        listing_box = BoxRef(key=listing_name.bytes)
-        
-        value, exists = listing_box.maybe()
-        
-        assert exists
-        
-        listing_value = universalTradeListing.from_bytes(value)
-        
-        assert listing_value.asset_listed == listed_asset.id
-        
-        itxn.AssetTransfer(
-            xfer_asset=listed_asset.id,
-            asset_amount=listing_value.asset_listed_quantity.native,
-            asset_receiver=Txn.sender,
-            fee=Global.min_txn_fee
-        ).submit()
-        
-        listing_box.delete()    
-        
-        return String("Trade Request Cancelled!")</code></pre>
+app_client.compose_call(
+    atc, 
+    call_abi_method='cancelUniversalListing', 
+    listed_asset=asset_1, 
+    listing_name=(lister_address,counter), 
+    transfer_fee=wrapped_fee_payment, 
+    transaction_parameters={'boxes': [[app_id, box_name]]})
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+
+print(tx_ids)
+print(abi_results)</code></pre>
     `,
     initialCode: ``, // You can input your initial code here if applicable
   },
@@ -5546,6 +5386,1791 @@ print(tx_id)
   },
 
   {
+    id: 32,
+    language: 'Python',
+    title: 'ARC69 Minter and Modifier Part 1',
+    content: `
+        <h2>Video Tutorial</h2>
+<div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/kwMR_0300Og"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+        <h2>Contract - Registering and Determining the User's Pokemon</h2>
+        <p>Compile the contract using:</p>
+        <pre class="overflow-auto shadow-md"><code>algokit compile arc69NFTmodifier.py</code></pre>
+
+        <h3>Python Code</h3>
+        <pre class="overflow-auto shadow-md"><code>
+from algopy import ARC4Contract, Global, GlobalState, gtxn, BoxRef, Txn, op
+from algopy.arc4 import abimethod, Struct
+from algopy.arc4 import UInt64 as arc4UInt64
+from algopy.arc4 import String as arc4String
+
+class availablePokemon(Struct):
+    pokemon_name: arc4String
+    pokemon_type: arc4String
+    pokemon_description: arc4String
+    pokemon_ipfs_hash: arc4String
+
+class arc69NFTmodifier(ARC4Contract):
+    def __init__(self) -> None:
+        self.pokemonUnitCounter = GlobalState(arc4UInt64(0))
+    
+    @abimethod
+    def registerNewPokemonData(
+        self,
+        pokemon_name: arc4String,
+        pokemon_type: arc4String,
+        pokemon_description: arc4String,
+        pokemon_ipfs_hash: arc4String,
+        payment_txn: gtxn.PaymentTransaction,
+    ) -> arc4String:
+        
+        assert payment_txn.receiver == Global.current_application_address
+        self.pokemonUnitCounter.value = arc4UInt64(self.pokemonUnitCounter.value.native + 1)
+        
+        box_ref = BoxRef(key=self.pokemonUnitCounter.value.bytes)
+        value, exists = box_ref.maybe()
+        assert not exists
+        
+        new_pokemon_info = availablePokemon(
+            pokemon_name=pokemon_name,
+            pokemon_type=pokemon_type,
+            pokemon_description=pokemon_description,
+            pokemon_ipfs_hash=pokemon_ipfs_hash
+        )
+        
+        box_ref.create(size=new_pokemon_info.bytes.length)
+        box_ref.put(new_pokemon_info.bytes)
+        
+        return arc4String('Pokemon Registered to Contract: ') + pokemon_name
+
+    @abimethod
+    def determineUserPokemon(
+        self,
+        payment_txn: gtxn.PaymentTransaction
+    ) -> tuple[arc4String, arc4UInt64]:
+        
+        assert payment_txn.amount == 18_500
+        assert payment_txn.receiver == Global.current_application_address
+        
+        randomizer = arc4UInt64(
+            Global.latest_timestamp + Global.round + arc4UInt64.from_bytes(Txn.tx_id[0:8]).native % arc4UInt64.from_bytes(Txn.tx_id[-8:]).native
+        )
+        
+        hashed_randomizer = op.sha256(randomizer.bytes)
+        
+        pokemon_selection = arc4UInt64((arc4UInt64.from_bytes(hashed_randomizer[0:8]).native % self.pokemonUnitCounter.value.native) + 1)
+        
+        users_claim_box = BoxRef(key=Txn.sender.bytes)
+        value, exists = users_claim_box.maybe()
+        assert not exists
+        
+        users_claim_box.create(size=8)
+        users_claim_box.put(pokemon_selection.bytes)
+        
+        return arc4String('Users Pokemon # Selected:'), pokemon_selection
+        </code></pre>
+
+        <h2>Setting Up Environment Variables (.env)</h2>
+        <pre class="overflow-auto shadow-md"><code>
+private_key = ENTER PRIVATE KEY
+address = ENTER ADDRESS (OPTIONAL)
+api_key = ENTER API KEY
+api_secret = ENTER API SECRET
+jwt = ENTER JWT
+algod_token = 
+algod_server = https://testnet-api.4160.nodely.dev
+app_id = ENTER APP ID GENERATED
+        </code></pre>
+
+        <h2>Upload Pokemon Images to IPFS</h2>
+        <div class="flex justify-center space-x-4">
+    <img src="/images/charmander.png" alt="Charmander Image" class="w-10 h-auto rounded-lg shadow-md" />
+    <img src="/images/bulba.png" alt="Bulbasaur Image" class="w-10 h-auto rounded-lg shadow-md" />
+    <img src="/images/squirtle.png" alt="Squirtle Image" class="w-10 h-auto rounded-lg shadow-md" />
+</div>
+        <pre class="overflow-auto shadow-md"><code>
+from pinata import Pinata
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+api_key = os.getenv('api_key')
+api_secret = os.getenv('api_secret')
+jwt = os.getenv('jwt')
+
+pinata = Pinata(api_key=api_key, secret_key=api_secret, access_token=jwt)
+
+file_names = ['./pokeimages/bulba.png','./pokeimages/charmander.png','./pokeimages/squirtle.png']
+for name in file_names:
+    response = pinata.pin_file(name)
+    image_ipfs_hash = response['data']['IpfsHash']
+    viewable_hash = f'https://gateway.pinata.cloud/ipfs/' + image_ipfs_hash
+    print(image_ipfs_hash, viewable_hash)
+        </code></pre>
+
+        <h2>Registering Pokemon for Minting to the Contract</h2>
+        <pre class="overflow-auto shadow-md"><code>
+from algosdk.v2client.algod import AlgodClient
+from algokit_utils import ApplicationClient
+from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
+from algosdk.transaction import PaymentTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+from algosdk.abi import ABIType
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+
+private_key = os.getenv('private_key')
+
+# The rest of the code for registering the Pokemon...
+        </code></pre>
+
+        <h2>Confirming Existence of Pokemon Info in Contract</h2>
+        <pre class="overflow-auto shadow-md"><code>
+from algosdk.v2client.algod import AlgodClient
+import os
+from base64 import b64decode
+from algosdk.abi import ABIType
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+app_id = int(os.getenv('app_id'))
+app_boxes = algod_client.application_boxes(app_id)['boxes']
+
+pokemon_info_coder = ABIType.from_string('(string,string,string,string)')
+
+for box in app_boxes:
+    box_name = b64decode(box['name'])
+    if len(box_name) == 8: #This is a pokemon info box 
+        box_value = algod_client.application_box_by_name(app_id, box_name)['value']
+        decoded_box_value = pokemon_info_coder.decode(b64decode(box_value))
+        print(decoded_box_value)
+        </code></pre>
+
+        <h2>Confirming Pokemon Selected for the User</h2>
+        <pre class="overflow-auto shadow-md"><code>
+from algosdk.v2client.algod import AlgodClient
+import os
+from base64 import b64decode
+from algosdk.abi import ABIType
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+app_id = int(os.getenv('app_id'))
+app_boxes = algod_client.application_boxes(app_id)['boxes']
+
+pokemon_info_coder = ABIType.from_string('(uint64)')
+
+for box in app_boxes:
+    box_name = b64decode(box['name'])
+    if len(box_name) == 32: #This is the users selected pokemon ready to claim
+                            #contains only the pokemon #, eg; pokemon #1, pokemon #2, or pokemon #3 
+        box_value = algod_client.application_box_by_name(app_id, box_name)['value']
+        decoded_box_value = pokemon_info_coder.decode(b64decode(box_value))
+        print(decoded_box_value)
+        </code></pre>
+    `,
+    initialCode: ``,
+  },
+
+  {
+    id: 33,
+    language: 'Python',
+    title: 'ARC69 Minter and Modifier Part 2',
+    content: `
+        <h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/kwMR_0300Og"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2>Contract - User Mints and Claims Pokemon</h2>
+        <p>Compile the contract using:</p>
+        <pre class="overflow-auto shadow-md"><code>algokit compile arc69NFTmodifier.py</code></pre>
+
+        <h3>Python Code</h3>
+        <pre class="overflow-auto shadow-md"><code>
+from algopy import ARC4Contract, itxn, Global, GlobalState, UInt64, gtxn, Bytes, subroutine, String, BoxRef, Txn, op, LocalState, Account
+from algopy.arc4 import abimethod, Struct, Address, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+from algopy.arc4 import String as arc4String
+
+class availablePokemon(Struct):
+    pokemon_name: arc4String
+    pokemon_type: arc4String
+    pokemon_description: arc4String
+    pokemon_ipfs_hash: arc4String
+
+class userPokemonInfo(Struct):
+    uid: arc4UInt64
+    owner: Address
+    asset_id: arc4UInt64
+    pokemon_id: arc4UInt64
+    level: arc4UInt64
+    exp: arc4UInt64
+    training: Bool
+    training_start_time: arc4UInt64
+
+class arc69NFTmodifier(ARC4Contract):
+    def __init__(self) -> None:
+        self.pokemonUnitCounter = GlobalState(arc4UInt64(0))
+        self.pokemonCreated = GlobalState(arc4UInt64(0))
+        
+    @subroutine
+    def itoa(self, i: UInt64) -> Bytes:
+        digits = Bytes(b"0123456789")
+        radix = digits.length
+        if i < radix:
+            return digits[i]
+        return self.itoa(i // radix) + digits[i % radix]
+        
+    @abimethod
+    def registerNewPokemonData(
+        self,
+        pokemon_name: arc4String,
+        pokemon_type: arc4String,
+        pokemon_description: arc4String,
+        pokemon_ipfs_hash: arc4String,
+        payment_txn: gtxn.PaymentTransaction,
+    ) -> arc4String:
+        
+        assert payment_txn.receiver == Global.current_application_address
+        self.pokemonUnitCounter.value = arc4UInt64(self.pokemonUnitCounter.value.native + 1)
+        
+        box_ref = BoxRef(key=self.pokemonUnitCounter.value.bytes)
+        value, exists = box_ref.maybe()
+        assert not exists
+        
+        new_pokemon_info = availablePokemon(
+            pokemon_name=pokemon_name,
+            pokemon_type=pokemon_type,
+            pokemon_description=pokemon_description,
+            pokemon_ipfs_hash=pokemon_ipfs_hash
+        )
+        
+        box_ref.create(size=new_pokemon_info.bytes.length)
+        box_ref.put(new_pokemon_info.bytes)
+        
+        return arc4String('Pokemon Registered to Contract: ') + pokemon_name
+    </code></pre>
+
+        <h3>Confirming User Mint</h3>
+        <pre class="overflow-auto shadow-md"><code>
+from algosdk.v2client.algod import AlgodClient
+from algokit_utils import ApplicationClient
+from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
+from algosdk.transaction import PaymentTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+from algosdk.abi import ABIType
+from algosdk.encoding import decode_address
+from dotenv import load_dotenv
+from base64 import b64decode
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+private_key = os.getenv('private_key')
+
+algod_client = AlgodClient(node_token, node_server)
+app_spec = Path(__file__).parent / './arc69NFTmodifier.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key=private_key)
+address = address_from_private_key(private_key=private_key)
+params = algod_client.suggested_params()
+
+application_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params
+)
+
+atc = AtomicTransactionComposer()
+
+decoded_address = decode_address(address)
+pokemon_selected_box_name = decoded_address
+
+uint64_coder = ABIType.from_string('(uint64)')
+user_pokemon_selected = algod_client.application_box_by_name(app_id, pokemon_selected_box_name)['value']
+b64_decoded_value = b64decode(user_pokemon_selected)
+
+global_states = algod_client.application_info(app_id)['params']['global-state']
+for key in global_states:
+    if b64decode(key['key']) == b'pokemonCreated':
+        current_uid = b64decode(key['value']['bytes'])
+
+total_bytes = (7 * 8) + (32 * 2) + 1
+box_cost = (total_bytes * 400) + 2500 + 102_000
+
+mbr_fee_payment_tx_1 = PaymentTxn(
+    sender=address,
+    sp=params,
+    receiver=application_client.app_address,
+    amt=box_cost,
+    note='#1'
+)
+wrapped_payment_tx_1 = TransactionWithSigner(mbr_fee_payment_tx_1, signer)
+
+box_ref_1 = b64_decoded_value              # The pokemon selected #1 , #2, or #3
+box_ref_2 = decoded_address                # The users address decoded
+box_ref_3 = current_uid + decoded_address  # The next unique ID counter + the users address
+
+application_client.compose_call(
+    atc, 
+    call_abi_method='mintUserPokemon', 
+    payment_txn=wrapped_payment_tx_1,
+    transaction_parameters={
+        'boxes':[[app_id, box_ref_1], [app_id, box_ref_2], [app_id, box_ref_3]]
+    }
+)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+print(tx_ids)
+print(abi_results)</code></pre>
+
+        <h3>Confirming User Claim</h3>
+        <pre class="overflow-auto shadow-md"><code>
+from algosdk.v2client.algod import AlgodClient
+from algokit_utils import ApplicationClient
+from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+from algosdk.abi import ABIType
+from algosdk.encoding import decode_address
+from dotenv import load_dotenv
+from base64 import b64decode
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+
+private_key = os.getenv('private_key')
+
+algod_client = AlgodClient(node_token, node_server)
+app_spec = Path(__file__).parent / './arc69NFTmodifier.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key=private_key)
+address = address_from_private_key(private_key=private_key)
+params = algod_client.suggested_params()
+
+application_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params
+)
+
+atc = AtomicTransactionComposer()
+
+decoded_address = decode_address(address)
+
+mbr_fee_payment_tx_1 = PaymentTxn(
+    sender=address,
+    sp=params,
+    receiver=application_client.app_address,
+    amt=2000,
+    note='#1'
+)
+wrapped_payment_tx_1 = TransactionWithSigner(mbr_fee_payment_tx_1, signer)
+atc.add_transaction(wrapped_payment_tx_1)
+
+users_pokemon = 728462064
+
+user_optin_tx = AssetTransferTxn(
+    sender=address,
+    receiver=address,
+    sp=params,
+    amt=0,
+    index=users_pokemon
+)
+
+wrapped_user_optin_tx = TransactionWithSigner(user_optin_tx, signer)
+
+current_uid = (0).to_bytes(8, 'big')
+box_ref_1 = current_uid + decoded_address
+
+application_client.compose_call(
+    atc, 
+    call_abi_method='claimPokemon', 
+    opt_in_txn=wrapped_user_optin_tx,
+    uid=0,
+    transaction_parameters={
+        'boxes':[[app_id, box_ref_1]],
+        'foreign_assets': [users_pokemon]
+    }
+)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+print(tx_ids)
+print(abi_results)
+
+        </code></pre>
+    `,
+    initialCode: ``,
+  },
+
+  {
+    id: 34,
+    language: 'Python',
+    title: 'ARC69 Minter and Modifier Part 3',
+    content: `
+        <h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/kwMR_0300Og"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2>Contract - User Sends Pokemon To Training (Stakes) and Removes from Training (Unstakes)</h2>
+        <p>Compile the contract using:</p>
+        <pre class="overflow-auto shadow-md"><code>algokit compile arc69NFTmodifier.py</code></pre>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, itxn, Global, GlobalState, UInt64, gtxn, Bytes, subroutine, String, BoxRef, Txn, op, LocalState, Account
+from algopy.arc4 import abimethod, Struct, Address, Bool
+from algopy.arc4 import UInt64 as arc4UInt64
+from algopy.arc4 import String as arc4String
+
+class availablePokemon(Struct):
+    pokemon_name: arc4String
+    pokemon_type: arc4String
+    pokemon_description: arc4String
+    pokemon_ipfs_hash: arc4String
+    
+class userPokemonInfo(Struct):
+    uid: arc4UInt64
+    owner: Address
+    asset_id: arc4UInt64
+    pokemon_id: arc4UInt64
+    level: arc4UInt64
+    exp: arc4UInt64
+    training: Bool
+    training_start_time: arc4UInt64
+
+class arc69NFTmodifier(ARC4Contract):
+    def __init__(self) -> None:
+        self.pokemonUnitCounter = GlobalState(arc4UInt64(0))
+        self.pokemonCreated = GlobalState(arc4UInt64(0))
+        
+    @subroutine
+    def itoa(self, i: UInt64) -> Bytes:
+        digits = Bytes(b"0123456789")
+        radix = digits.length
+        if i < radix:
+            return digits[i]
+        return self.itoa(i // radix) + digits[i % radix]      
+    
+    @abimethod
+    def registerNewPokemonData(
+        self,
+        pokemon_name: arc4String,
+        pokemon_type: arc4String,
+        pokemon_description: arc4String,
+        pokemon_ipfs_hash: arc4String,
+        payment_txn: gtxn.PaymentTransaction,
+    ) -> arc4String:        
+        
+       # assert payment_txn.amount
+        assert payment_txn.receiver == Global.current_application_address
+        
+        self.pokemonUnitCounter.value = arc4UInt64(self.pokemonUnitCounter.value.native + 1)
+        
+        box_ref = BoxRef(key=self.pokemonUnitCounter.value.bytes)
+        value, exists = box_ref.maybe()
+        assert not exists
+        
+        new_pokemon_info = availablePokemon(
+            pokemon_name=pokemon_name,
+            pokemon_type=pokemon_type,
+            pokemon_description=pokemon_description,
+            pokemon_ipfs_hash=pokemon_ipfs_hash
+        )
+        
+        box_ref.create(size=new_pokemon_info.bytes.length)
+        box_ref.put(new_pokemon_info.bytes)
+        
+        
+        return arc4String('Pokemon Registered to Contract: ') + pokemon_name    
+    
+    @abimethod
+    def determineUserPokemon(
+        self,
+        payment_txn: gtxn.PaymentTransaction
+    ) -> tuple[arc4String, arc4UInt64]:
+        
+        assert payment_txn.amount == 18_500
+        assert payment_txn.receiver == Global.current_application_address
+        
+        randomizer = arc4UInt64(
+            Global.latest_timestamp + Global.round + arc4UInt64.from_bytes(Txn.tx_id[0:8]).native % arc4UInt64.from_bytes(Txn.tx_id[-8:]).native
+        )
+        
+        hashed_randomizer = op.sha256(randomizer.bytes)
+        
+        pokemon_selection = arc4UInt64((arc4UInt64.from_bytes(hashed_randomizer[0:8]).native % self.pokemonUnitCounter.value.native) + 1)
+        
+        users_claim_box = BoxRef(key=Txn.sender.bytes)
+        value, exists = users_claim_box.maybe()
+        assert not exists
+        
+        users_claim_box.create(size=8)
+        users_claim_box.put(pokemon_selection.bytes)
+        
+        return arc4String('Users Pokemon # Selected:'), pokemon_selection
+        
+    @abimethod()
+    def mintUserPokemon(
+        self,
+        payment_txn: gtxn.PaymentTransaction
+    ) -> tuple[arc4String, UInt64]:
+
+        assert payment_txn.amount >= 152900
+        assert payment_txn.receiver == Global.current_application_address
+        
+        users_claim_box = BoxRef(key=Txn.sender.bytes)
+        claim_box_value, exists = users_claim_box.maybe()
+        assert exists
+        
+        pokemon_selection = arc4UInt64.from_bytes(claim_box_value)
+        
+        pokemon_info_bytes = BoxRef(key=pokemon_selection.bytes)
+        pokemon_info_value, exists = pokemon_info_bytes.maybe()
+        assert exists
+        
+        available_pokemon_info = availablePokemon.from_bytes(pokemon_info_value)
+        unit_name_int_as_string = String.from_bytes(self.itoa(pokemon_selection.native))
+        
+        uid_as_string = String.from_bytes(self.itoa(self.pokemonCreated.value.native))        
+        
+        pokemon_creation_tx = itxn.AssetConfig(
+            total=1,
+            manager=Global.current_application_address,
+            asset_name=available_pokemon_info.pokemon_name.native,
+            unit_name='PK#' + unit_name_int_as_string,
+            decimals=0,
+            url= 'https://gateway.pinata.cloud/ipfs/' + available_pokemon_info.pokemon_ipfs_hash.native,
+            note = (
+                '{"standard": "arc69", "mime_type": "image/png", "properties": {'
+                '"Type": "' + available_pokemon_info.pokemon_type.native + '", '
+                '"Description": "' + available_pokemon_info.pokemon_description.native + '", '
+                '"Level": "1", '
+                '"Experience": "0", '
+                '"Pokemon Number": "' + unit_name_int_as_string + '", '
+                '"UID": "' + uid_as_string + '" }}' 
+            ),
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        
+        user_pokemon_box = BoxRef(key=self.pokemonCreated.value.bytes + Txn.sender.bytes)
+        user_pokemon_box_value, exists = user_pokemon_box.maybe()
+        assert not exists
+        
+        new_user_pokemon_info = userPokemonInfo(
+            uid=self.pokemonCreated.value,
+            owner=Address(Txn.sender),
+            asset_id=arc4UInt64(pokemon_creation_tx.created_asset.id),
+            pokemon_id=pokemon_selection,
+            level=arc4UInt64(1),
+            exp=arc4UInt64(0),
+            training=Bool(False),
+            training_start_time=arc4UInt64(0),
+        )
+        
+        
+        user_pokemon_box.create(size=new_user_pokemon_info.bytes.length)
+        user_pokemon_box.put(new_user_pokemon_info.bytes)
+        
+        users_claim_box.delete()
+        
+        self.pokemonCreated.value = arc4UInt64(self.pokemonCreated.value.native + 1)
+        
+        return arc4String('User pokemon generated, asset ID: '), pokemon_creation_tx.created_asset.id
+        
+        
+    @abimethod
+    def claimPokemon(
+        self,
+        opt_in_txn: gtxn.AssetTransferTransaction,
+        uid: arc4UInt64
+    ) -> String:
+        
+        user_pokemon_box = BoxRef(key=uid.bytes + Txn.sender.bytes)
+        user_pokemon_box_value, exists = user_pokemon_box.maybe()
+        
+        assert exists
+        
+        users_pokemon_info = userPokemonInfo.from_bytes(user_pokemon_box_value)
+        
+        #assert users_pokemon_info.owner == Address(Txn.sender)
+        #assert opt_in_txn.xfer_asset.id == users_pokemon_info.asset_id
+        
+        itxn.AssetTransfer(
+            asset_receiver=Txn.sender,
+            xfer_asset=users_pokemon_info.asset_id.native,
+            fee=Global.min_txn_fee,
+            asset_amount=1
+        ).submit()        
+        
+        return String('User received their pokemon')       
+                
+    @abimethod
+    def trainPokemon(
+        self,
+        stake_pokemon_tx: gtxn.AssetTransferTransaction,
+        uid: arc4UInt64
+    ) -> String:
+        
+        assert stake_pokemon_tx.asset_amount == 1
+        assert stake_pokemon_tx.asset_receiver == Global.current_application_address
+        
+        pokemon_to_train = stake_pokemon_tx.xfer_asset.id
+        
+        users_pokemon_info = BoxRef(key=uid.bytes + Txn.sender.bytes)
+        value, exists = users_pokemon_info.maybe()
+        assert exists
+        
+        current_pokemon_info = userPokemonInfo.from_bytes(value)
+        assert pokemon_to_train == current_pokemon_info.asset_id
+        
+        current_pokemon_info.training_start_time = arc4UInt64(Global.latest_timestamp)
+        current_pokemon_info.training = Bool(True)
+        
+        users_pokemon_info.put(current_pokemon_info.bytes)
+    
+        return String("Pokemon Staked")
+        
+        
+    @abimethod
+    def removePokemonFromTraining(
+        self,
+        pokemon_requested_uid: arc4UInt64
+    ) -> String:
+        
+        users_pokemon_info_box = BoxRef(key=pokemon_requested_uid.bytes + Txn.sender.bytes)
+        users_pokemon_info_value, exists = users_pokemon_info_box.maybe()
+        assert exists
+        
+        current_users_pokemon_info = userPokemonInfo.from_bytes(users_pokemon_info_value)
+        
+        general_pokemon_info_box = BoxRef(key=current_users_pokemon_info.pokemon_id.bytes)
+        general_pokemon_info_value, exists = general_pokemon_info_box.maybe()
+        
+        general_pokemon_info = availablePokemon.from_bytes(general_pokemon_info_value)
+
+
+        unit_name_as_string = String.from_bytes(self.itoa(current_users_pokemon_info.pokemon_id.native))
+        
+        initial_training_time = current_users_pokemon_info.training_start_time.native
+        current_time = Global.latest_timestamp
+        time_difference = current_time - initial_training_time
+        
+        current_level = current_users_pokemon_info.level.native
+        current_experience = current_users_pokemon_info.exp.native
+        
+        base_experience = UInt64(200)
+        cumulative_experience = current_level * base_experience
+        
+        total_experience = current_experience + time_difference
+        
+        if total_experience >= cumulative_experience:
+            levels_gained = (total_experience + base_experience - cumulative_experience) // base_experience
+            
+            new_level = current_level + levels_gained
+            new_experience = total_experience - ((new_level - 1) * base_experience)
+            
+        else:
+            new_level = current_level
+            new_experience = total_experience
+            
+            
+        new_level_string = String.from_bytes(self.itoa(new_level))
+        new_experience_string = String.from_bytes(self.itoa(new_experience))
+
+        uid_as_string = String.from_bytes(self.itoa(current_users_pokemon_info.uid.native))
+        
+        itxn.AssetConfig(
+            sender=Global.current_application_address,
+            manager=Global.current_application_address,
+            config_asset=current_users_pokemon_info.asset_id.native,
+            note = (
+                '{"standard": "arc69", "mime_type": "image/png", "properties": {'
+                '"Type": "' + general_pokemon_info.pokemon_type.native + '", '
+                '"Description": "' + general_pokemon_info.pokemon_description.native + '", '
+                '"Level": "' + new_level_string + '", '
+                '"Experience": "' + new_experience_string + '", '
+                '"Pokemon Number": "' + unit_name_as_string + '", '
+                '"UID": "' + uid_as_string + '" }}' 
+            ),
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        itxn.AssetTransfer(
+            asset_receiver=Txn.sender,
+            asset_amount=1,
+            xfer_asset=current_users_pokemon_info.asset_id.native,
+            fee=Global.min_txn_fee
+        ).submit()
+        
+        
+        new_users_pokemon_info = current_users_pokemon_info.copy()
+        new_users_pokemon_info.level = arc4UInt64(new_level)
+        new_users_pokemon_info.exp = arc4UInt64(new_experience)
+        new_users_pokemon_info.training = Bool(False)
+
+        users_pokemon_info_box.put(new_users_pokemon_info.bytes)
+        
+        return String('Pokemon Removed from Stake')</code></pre>
+
+        <h3>Seeing the Current Status of the User's Pokemon</h3>
+        <p>Note: The UID in the metadata and the user's address is the box name</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+import os
+from base64 import b64decode
+from algosdk.abi import ABIType
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+app_id = int(os.getenv('app_id'))
+app_boxes = algod_client.application_boxes(app_id)['boxes']
+
+pokemon_info_coder = ABIType.from_string('(uint64,address,uint64,uint64,uint64,uint64,bool,uint64)')
+
+for box in app_boxes:
+    box_name = b64decode(box['name'])
+    if len(box_name) == 40: #This is user specific pokemon information (box name is uid for pokemon [8 bytes] + user address [32 bytes])
+        box_value = algod_client.application_box_by_name(app_id, )['value']
+        decoded_box_value = pokemon_info_coder.decode(b64decode(box_value))
+        print(decoded_box_value)</code></pre>
+
+        <h2>Executing in Python</h2>
+
+        <h2>The Pokemon Level-up System</h2>
+        <p>Note: Experience and level gain are calculated based on time staked, with each second providing an additional experience point.</p>
+        <pre class="overflow-auto shadow-md"><code>
+initial_training_time = current_users_pokemon_info.training_start_time.native
+current_time = Global.latest_timestamp
+time_difference = current_time - initial_training_time
+
+current_level = current_users_pokemon_info.level.native
+current_experience = current_users_pokemon_info.exp.native
+
+base_experience = UInt64(200)
+cumulative_experience = current_level * base_experience
+
+total_experience = current_experience + time_difference
+
+if total_experience >= cumulative_experience:
+    levels_gained = (total_experience + base_experience - cumulative_experience) // base_experience
+    
+    new_level = current_level + levels_gained
+    new_experience = total_experience - ((new_level - 1) * base_experience)
+    
+else:
+    new_level = current_level
+    new_experience = total_experience
+        </code></pre>
+
+        <h3>Staking the Pokemon</h3>
+       
+        <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algokit_utils import ApplicationClient
+from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+from algosdk.abi import ABIType
+from algosdk.encoding import decode_address
+from dotenv import load_dotenv
+from base64 import b64decode
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+
+private_key = os.getenv('private_key')
+
+algod_client = AlgodClient(node_token, node_server)
+app_spec = Path(__file__).parent / './arc69NFTmodifier.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key=private_key)
+address = address_from_private_key(private_key=private_key)
+params = algod_client.suggested_params()
+
+application_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params
+)
+
+atc = AtomicTransactionComposer()
+
+decoded_address = decode_address(address)
+
+users_pokemon = 728462064
+
+stake_pokemon_tx = AssetTransferTxn(
+    sender=address,
+    receiver=application_client.app_address,
+    sp=params,
+    amt=1,
+    index=users_pokemon
+)
+
+wrapped_stake_tx = TransactionWithSigner(stake_pokemon_tx, signer)
+
+current_uid = (0).to_bytes(8, 'big')
+box_ref_1 = current_uid + decoded_address
+
+application_client.compose_call(
+    atc, 
+    call_abi_method='trainPokemon', 
+    stake_pokemon_tx=wrapped_stake_tx,
+    uid=0,
+    transaction_parameters={
+        'boxes':[[app_id, box_ref_1]],
+        'foreign_assets': [users_pokemon]
+    }
+)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+print(tx_ids)
+print(abi_results)
+
+</code></pre>
+
+        <h3>Unstaking the Pokemon</h3>
+      
+        <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algokit_utils import ApplicationClient
+from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+from algosdk.abi import ABIType
+from algosdk.encoding import decode_address
+from dotenv import load_dotenv
+from base64 import b64decode
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+
+private_key = os.getenv('private_key')
+
+algod_client = AlgodClient(node_token, node_server)
+app_spec = Path(__file__).parent / './arc69NFTmodifier.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key=private_key)
+address = address_from_private_key(private_key=private_key)
+params = algod_client.suggested_params()
+
+application_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params
+)
+
+atc = AtomicTransactionComposer()
+
+decoded_address = decode_address(address)
+
+mbr_fee_payment_tx_1 = PaymentTxn(
+    sender=address,
+    sp=params,
+    receiver=application_client.app_address,
+    amt=3000,
+    note='#1'
+)
+wrapped_payment_tx_1 = TransactionWithSigner(mbr_fee_payment_tx_1, signer)
+atc.add_transaction(wrapped_payment_tx_1)
+
+users_pokemon = 728462064
+
+stake_pokemon_tx = AssetTransferTxn(
+    sender=address,
+    receiver=application_client.app_address,
+    sp=params,
+    amt=1,
+    index=users_pokemon
+)
+
+wrapped_stake_tx = TransactionWithSigner(stake_pokemon_tx, signer)
+
+current_uid = (0).to_bytes(8, 'big')
+box_ref_1 = current_uid + decoded_address
+box_ref_2 = (3).to_bytes(8, 'big')
+
+application_client.compose_call(
+    atc, 
+    call_abi_method='removePokemonFromTraining', 
+    pokemon_requested_uid=0,
+    transaction_parameters={
+        'boxes':[[app_id, box_ref_1], [app_id, box_ref_2]],
+        'foreign_assets': [users_pokemon]
+    }
+)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+print(tx_ids)
+print(abi_results)
+
+</code></pre>
+    `,
+    initialCode: ``,
+  },
+
+  {
+    id: 35,
+    language: 'Python',
+    title: 'Transaction Comprehension',
+    content: `
+        <h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/jeHALmgfB7w"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2>Compiling Contracts</h2>
+        <p>Compile contracts with:</p>
+        <pre class="overflow-auto shadow-md"><code>algokit compile py filename.py</code></pre>
+
+        <h3>Generate Two Accounts</h3>
+        <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+print(address)</code></pre>
+
+        <h3>Generate One Asset</h3>
+        <p>Create one asset and place its ID in your <code>.env</code> file.</p>
+        <p><em>Note: Remember the account that owns the asset, as it will be used for asset transfers later.</em></p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+import os
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+asset_create_txn = AssetCreateTxn(
+    sender=address,
+    sp=params,
+    total=10,
+    decimals=0,
+    default_frozen=False,
+    manager=address,
+    reserve=address,
+    asset_name = 'Test Asset One',
+    unit_name= 'TEST#1',
+)
+
+signed_asset_create_txn = asset_create_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_asset_create_txn)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+tx_info = algod_client.pending_transaction_info(tx_id)
+print(tx_info)</code></pre>
+
+        <h2>Launching Contracts</h2>
+        <p><em>Note: Adjust approval and clear teal filenames, as well as global/local states, as needed.</em></p>
+        <p>In this tutorial, we use a second contract, <code>SecondApp</code>, which has 1 local state <code>uint</code>.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
+from algosdk.account import address_from_private_key
+from algosdk.v2client.algod import AlgodClient
+from algosdk import logic
+from dotenv import load_dotenv
+import base64
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+algod_client = AlgodClient(node_token, node_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+approval_teal_file_name = 'TransactionComp.approval.teal'
+clear_teal_file_name = 'TransactionComp.clear.teal'
+
+with open(f'./{approval_teal_file_name}', 'r') as f:
+    approval_teal_source = f.read()
+
+with open(f'{clear_teal_file_name}', 'r') as f:
+    clear_teal_source = f.read()
+
+approval_result = algod_client.compile(approval_teal_source)
+approval_program = base64.b64decode(approval_result['result'])
+
+clear_result = algod_client.compile(clear_teal_source)
+clear_program = base64.b64decode(clear_result['result'])
+
+global_schema = StateSchema(num_uints=0, num_byte_slices=0)
+local_schema = StateSchema(num_uints=0, num_byte_slices=0)
+
+txn = ApplicationCreateTxn(
+    sender = address,
+    sp = params,
+    on_complete=OnComplete.NoOpOC,
+    approval_program=approval_program,
+    clear_program=clear_program,
+    global_schema=global_schema,
+    local_schema=local_schema,
+)
+signed_txn = txn.sign(private_key)
+
+try:
+    txid = algod_client.send_transaction(signed_txn)
+except Exception as e:
+    print(e)
+    
+print(f'Tx ID: {txid}')
+wait_for_confirmation(algod_client, txid)
+tx_info = algod_client.pending_transaction_info(txid)
+print(f'App ID: {tx_info['application-index']}')
+
+app_address = logic.get_application_address(tx_info['application-index'])
+print(f'Application Address: {app_address}')
+
+
+activate_contract = PaymentTxn(
+    sender = address,
+    sp = params,
+    receiver = app_address,
+    amt = 100_000
+)
+
+signed_activation = activate_contract.sign(private_key)
+activation_tx = algod_client.send_transaction(signed_activation)
+print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
+</code></pre>
+
+        <h3>Transaction Comprehension (TXN)</h3>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, Txn, Bytes, String
+from algopy.arc4 import abimethod, Address
+from algopy.arc4 import UInt64 as arc4UInt64
+
+class TransactionComp(ARC4Contract):
+    def __init__(self) -> None:
+        pass
+    
+    @abimethod
+    def txn_comprehension(self) -> tuple[Address, Address, Bytes, arc4UInt64, arc4UInt64, String, String, arc4UInt64, Address, arc4UInt64, String, Address]:
+        sender = Address(Txn.sender)
+        foreign_accounts = Address(Txn.accounts(1))
+        app_arg_1 = Txn.application_args(0)
+        txn_foreign_applications = Txn.applications(0)
+        txn_foreign_application_id = arc4UInt64(txn_foreign_applications.id)
+        foreign_asset_1 = Txn.assets(0)
+        foreign_asset_id = arc4UInt64(foreign_asset_1.id)
+        foreign_asset_name = String.from_bytes(foreign_asset_1.name)
+        foreign_asset_unit_name = String.from_bytes(foreign_asset_1.unit_name)
+        sender_foreign_asset_balance = arc4UInt64(foreign_asset_1.balance(Txn.sender))
+        foreign_asset_creator_address = Address(foreign_asset_1.creator)
+        fee_for_this_transaction = arc4UInt64(Txn.fee)
+        transaction_type = String.from_bytes(Txn.type)
+        transaction_id = Address(Txn.tx_id)
+        return sender, foreign_accounts, app_arg_1, txn_foreign_application_id, foreign_asset_id, foreign_asset_name, foreign_asset_unit_name, sender_foreign_asset_balance, foreign_asset_creator_address, fee_for_this_transaction, transaction_type, transaction_id
+        
+</code></pre>
+        <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer, TransactionWithSigner
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+import os
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+path = Path(__file__).parent / './TransactionComp.arc32.json'
+app_id = int(os.getenv('app_id'))
+private_key = os.getenv('private_key')
+signer = AccountTransactionSigner(private_key)
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=path,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+asset_id = 723609532
+
+arbitrary_account = 'MXOT5NO6DVCGIS22AWEP7N5WD72RSV6QJG4OWGDOTEH3DQKCG4R4WLLMR4'
+
+app_client.compose_call(atc, call_abi_method='txn_comprehension', transaction_parameters={'accounts': [arbitrary_account], 'foreign_assets': [asset_id]})
+
+result = atc.execute(algod_client, 2)
+
+all_tx_ids = [result.abi_results[i].tx_id for i in range(len(result.abi_results))]
+all_abi_results = [result.abi_results[i].return_value for i in range(len(result.abi_results))]
+
+print(all_tx_ids)
+print(all_abi_results)
+</code></pre>
+    `,
+    initialCode: ``,
+  },
+
+  {
+    id: 36,
+    language: 'Python',
+    title: 'Inner Transaction Comprehension',
+    content: `
+        <h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/IRhE9E53Qhc"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2>Compiling Contracts</h2>
+        <p>Compile contracts with:</p>
+        <pre class="overflow-auto shadow-md"><code>algokit compile py filename.py</code></pre>
+
+        <h3>Generate Two Accounts</h3>
+        <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+print(address)</code></pre>
+
+        <h3>Generate One Asset</h3>
+        <p>Create one asset and place its ID in your <code>.env</code> file.</p>
+        <p><em>Note: Remember the account that owns the asset, as it will be used for asset transfers later.</em></p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+import os
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+asset_create_txn = AssetCreateTxn(
+    sender=address,
+    sp=params,
+    total=10,
+    decimals=0,
+    default_frozen=False,
+    manager=address,
+    reserve=address,
+    asset_name = 'Test Asset One',
+    unit_name= 'TEST#1',
+)
+
+signed_asset_create_txn = asset_create_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_asset_create_txn)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+tx_info = algod_client.pending_transaction_info(tx_id)
+print(tx_info)</code></pre>
+
+        <h2>Launching Contracts</h2>
+        <p><em>Note: Adjust approval and clear teal filenames, as well as global/local states, as needed.</em></p>
+        <p>In this tutorial, we use a second contract, <code>SecondApp</code>, which has 1 local state <code>uint</code>.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
+from algosdk.account import address_from_private_key
+from algosdk.v2client.algod import AlgodClient
+from algosdk import logic
+from dotenv import load_dotenv
+import base64
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+algod_client = AlgodClient(node_token, node_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+approval_teal_file_name = 'TransactionComp.approval.teal'
+clear_teal_file_name = 'TransactionComp.clear.teal'
+
+with open(f'./{approval_teal_file_name}', 'r') as f:
+    approval_teal_source = f.read()
+
+with open(f'{clear_teal_file_name}', 'r') as f:
+    clear_teal_source = f.read()
+
+approval_result = algod_client.compile(approval_teal_source)
+approval_program = base64.b64decode(approval_result['result'])
+
+clear_result = algod_client.compile(clear_teal_source)
+clear_program = base64.b64decode(clear_result['result'])
+
+global_schema = StateSchema(num_uints=0, num_byte_slices=0)
+local_schema = StateSchema(num_uints=0, num_byte_slices=0)
+
+txn = ApplicationCreateTxn(
+    sender = address,
+    sp = params,
+    on_complete=OnComplete.NoOpOC,
+    approval_program=approval_program,
+    clear_program=clear_program,
+    global_schema=global_schema,
+    local_schema=local_schema,
+)
+signed_txn = txn.sign(private_key)
+
+try:
+    txid = algod_client.send_transaction(signed_txn)
+except Exception as e:
+    print(e)
+    
+print(f'Tx ID: {txid}')
+wait_for_confirmation(algod_client, txid)
+tx_info = algod_client.pending_transaction_info(txid)
+print(f'App ID: {tx_info['application-index']}')
+
+app_address = logic.get_application_address(tx_info['application-index'])
+print(f'Application Address: {app_address}')
+
+
+activate_contract = PaymentTxn(
+    sender = address,
+    sp = params,
+    receiver = app_address,
+    amt = 100_000
+)
+
+signed_activation = activate_contract.sign(private_key)
+activation_tx = algod_client.send_transaction(signed_activation)
+print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
+</code></pre>
+
+        <h3>Inner Transaction Comprehension (ITXN and abi_calls)</h3>
+        
+        <h4>Inner Txn with itxn Class</h4>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, UInt64, itxn, Global
+from algopy.arc4 import abimethod
+
+class TransactionComp(ARC4Contract):
+    def __init__(self) -> None:
+        pass   
+
+    @abimethod
+    def inner_txn_comprehension(self) -> tuple[UInt64, UInt64, UInt64]:
+        asset_config_txn = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#1",
+            asset_name="TEST ASSET ONE",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            ).submit()        
+        
+        asset_config_txn_2 = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#2",
+            asset_name="TEST ASSET TWO",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            )        
+        
+        asset_config_txn_3 = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#3",
+            asset_name="TEST ASSET THREE",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            )
+        
+        submit_tx_1, submit_tx_2 = itxn.submit_txns(asset_config_txn_2, asset_config_txn_3)        
+            
+        return asset_config_txn.created_asset.id, submit_tx_1.created_asset.id, submit_tx_2.created_asset.id   
+    
+    </code></pre>
+        <pre class="overflow-auto shadow-md"><code>interact_with_contract_2.py</code></pre>
+
+        <h4>Inner Txn with abi_call Class</h4>
+        <p><em>Note: Deploy a second application and place the generated app ID in the new inner transaction method, <code>inner_txn_two</code>.</em></p>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, LocalState, Txn, UInt64, gtxn
+from algopy.arc4 import abimethod
+
+class MySecondContract(ARC4Contract):
+    def __init__(self) -> None:
+        self.opted_in = LocalState(UInt64)        
+        
+    @abimethod()
+    def return_nothing(self) -> None:
+        pass        
+        
+    @abimethod(allow_actions=['OptIn'])
+    def local_state_return_something(self,
+                                     payment_txn: gtxn.PaymentTransaction) -> UInt64:
+        self.opted_in[Txn.sender] = UInt64(1)
+        return UInt64(1)</code></pre>
+        
+        <p>Replace the second App ID in the contract below, compile the contract, and include the new app in the <em>Foreign Assets Array</em>.</p>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, UInt64, itxn, Global, OnCompleteAction
+from algopy.arc4 import abimethod, arc4_signature, abi_call
+
+class TransactionComp(ARC4Contract):
+    def __init__(self) -> None:
+        pass    
+
+    @abimethod
+    def inner_txn_two(self) -> UInt64:
+        
+        method_signature = arc4_signature('return_nothing()void')
+        
+        itxn.ApplicationCall(
+            app_id=727594507,
+            app_args=(method_signature,),
+            on_completion=OnCompleteAction.NoOp,
+            fee=Global.min_txn_fee
+        ).submit()        
+        
+        result, txn = abi_call[UInt64](
+            'local_state_return_something',
+            app_id=727594507,
+            on_completion=OnCompleteAction.OptIn,
+            fee=Global.min_txn_fee
+        )
+        
+        txn = abi_call(
+            'return_nothing',
+            app_id=727594507,
+            fee=Global.min_txn_fee
+        )
+        
+        return result
+        
+</code></pre>
+        <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer, TransactionWithSigner
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+import os
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+path = Path(__file__).parent / './TransactionComp.arc32.json'
+app_id = int(os.getenv('app_id'))
+private_key = os.getenv('private_key')
+signer = AccountTransactionSigner(private_key)
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=path,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+#asset_id = 723609532
+
+#arbitrary_account = 'MXOT5NO6DVCGIS22AWEP7N5WD72RSV6QJG4OWGDOTEH3DQKCG4R4WLLMR4'
+
+#app_client.compose_call(atc, call_abi_method='txn_comprehension', transaction_parameters={'accounts': [arbitrary_account], 'foreign_assets': [asset_id]})
+
+#app_client.compose_call(
+#    atc, 
+#    call_abi_method='inner_txn_comprehension',
+#)
+
+second_app = int(os.getenv('second_app_id'))
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='inner_txn_two',
+        transaction_parameters={
+        'foreign_apps': [second_app]
+    }
+)
+
+result = atc.execute(algod_client, 2)
+
+all_tx_ids = [result.abi_results[i].tx_id for i in range(len(result.abi_results))]
+all_abi_results = [result.abi_results[i].return_value for i in range(len(result.abi_results))]
+
+print(all_tx_ids)
+print(all_abi_results)
+</code></pre>
+    `,
+    initialCode: ``,
+  },
+
+  {
+    id: 37,
+    language: 'Python',
+    title: 'Group Transaction',
+    content: `
+        <h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/E8DAtyrW4Rw"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h3>Generate Two Accounts</h3>
+        <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
+        <p>Display <code>generate_account.py</code></p>
+
+        <h3>Generate One Asset</h3>
+        <p>Create one asset and place its ID in your <code>.env</code> file.</p>
+        <p><em>Note: Remember the account that owns the asset, as it will be used for asset transfers later.</em></p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+import os
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+asset_create_txn = AssetCreateTxn(
+    sender=address,
+    sp=params,
+    total=10,
+    decimals=0,
+    default_frozen=False,
+    manager=address,
+    reserve=address,
+    asset_name = 'Test Asset One',
+    unit_name= 'TEST#1',
+)
+
+signed_asset_create_txn = asset_create_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_asset_create_txn)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+tx_info = algod_client.pending_transaction_info(tx_id)
+print(tx_info)</code></pre>
+
+        <h2>Launching Contracts</h2>
+        <p><em>Note: Adjust approval and clear teal filenames, as well as global/local states, as needed.</em></p>
+        <p>In this tutorial, we use a second contract, <code>SecondApp</code>, which has 1 local state <code>uint</code>.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
+from algosdk.account import address_from_private_key
+from algosdk.v2client.algod import AlgodClient
+from algosdk import logic
+from dotenv import load_dotenv
+import base64
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+algod_client = AlgodClient(node_token, node_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+approval_teal_file_name = 'TransactionComp.approval.teal'
+clear_teal_file_name = 'TransactionComp.clear.teal'
+
+with open(f'./{approval_teal_file_name}', 'r') as f:
+    approval_teal_source = f.read()
+
+with open(f'{clear_teal_file_name}', 'r') as f:
+    clear_teal_source = f.read()
+
+approval_result = algod_client.compile(approval_teal_source)
+approval_program = base64.b64decode(approval_result['result'])
+
+clear_result = algod_client.compile(clear_teal_source)
+clear_program = base64.b64decode(clear_result['result'])
+
+global_schema = StateSchema(num_uints=0, num_byte_slices=0)
+local_schema = StateSchema(num_uints=0, num_byte_slices=0)
+
+txn = ApplicationCreateTxn(
+    sender = address,
+    sp = params,
+    on_complete=OnComplete.NoOpOC,
+    approval_program=approval_program,
+    clear_program=clear_program,
+    global_schema=global_schema,
+    local_schema=local_schema,
+)
+signed_txn = txn.sign(private_key)
+
+try:
+    txid = algod_client.send_transaction(signed_txn)
+except Exception as e:
+    print(e)
+    
+print(f'Tx ID: {txid}')
+wait_for_confirmation(algod_client, txid)
+tx_info = algod_client.pending_transaction_info(txid)
+print(f'App ID: {tx_info['application-index']}')
+
+app_address = logic.get_application_address(tx_info['application-index'])
+print(f'Application Address: {app_address}')
+
+
+activate_contract = PaymentTxn(
+    sender = address,
+    sp = params,
+    receiver = app_address,
+    amt = 100_000
+)
+
+signed_activation = activate_contract.sign(private_key)
+activation_tx = algod_client.send_transaction(signed_activation)
+print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
+</code></pre>
+
+        <h3>Group Transaction Comprehension (GTXN)</h3>
+        <p>In this section, we put it all together and use relative indexing in our group transaction method to enhance scalability.</p>
+        <pre class="overflow-auto shadow-md"><code>TransactionComprehension_4.py</code></pre>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, Txn, Bytes, UInt64, String, itxn, Global, OnCompleteAction, gtxn, TransactionType
+from algopy.arc4 import abimethod, Address, arc4_signature, abi_call
+from algopy.arc4 import UInt64 as arc4UInt64
+
+class TransactionComp(ARC4Contract):
+    def __init__(self) -> None:
+        pass
+    
+    @abimethod
+    def txn_comprehension(self) -> tuple[Address, Address, Bytes, arc4UInt64, arc4UInt64, String, String, arc4UInt64, Address, arc4UInt64, String, Address]:
+        sender = Address(Txn.sender)
+        foreign_accounts = Address(Txn.accounts(1))
+        app_arg_1 = Txn.application_args(0)
+        txn_foreign_applications = Txn.applications(0)
+        txn_foreign_application_id = arc4UInt64(txn_foreign_applications.id)
+        foreign_asset_1 = Txn.assets(0)
+        foreign_asset_id = arc4UInt64(foreign_asset_1.id)
+        foreign_asset_name = String.from_bytes(foreign_asset_1.name)
+        foreign_asset_unit_name = String.from_bytes(foreign_asset_1.unit_name)
+        sender_foreign_asset_balance = arc4UInt64(foreign_asset_1.balance(Txn.sender))
+        foreign_asset_creator_address = Address(foreign_asset_1.creator)
+        fee_for_this_transaction = arc4UInt64(Txn.fee)
+        transaction_type = String.from_bytes(Txn.type)
+        transaction_id = Address(Txn.tx_id)
+        return sender, foreign_accounts, app_arg_1, txn_foreign_application_id, foreign_asset_id, foreign_asset_name, foreign_asset_unit_name, sender_foreign_asset_balance, foreign_asset_creator_address, fee_for_this_transaction, transaction_type, transaction_id        
+
+    @abimethod
+    def inner_txn_comprehension(self) -> tuple[UInt64, UInt64, UInt64]:
+        asset_config_txn = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#1",
+            asset_name="TEST ASSET ONE",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            ).submit()        
+        
+        asset_config_txn_2 = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#2",
+            asset_name="TEST ASSET TWO",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            )        
+        
+        asset_config_txn_3 = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#3",
+            asset_name="TEST ASSET THREE",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            )
+        
+        submit_tx_1, submit_tx_2 = itxn.submit_txns(asset_config_txn_2, asset_config_txn_3)        
+            
+        return asset_config_txn.created_asset.id, submit_tx_1.created_asset.id, submit_tx_2.created_asset.id    
+    
+    
+    @abimethod
+    def inner_txn_two(self) -> UInt64:
+        
+        method_signature = arc4_signature('return_nothing()void')
+        
+        itxn.ApplicationCall(
+            app_id=727594507,
+            app_args=(method_signature,),
+            on_completion=OnCompleteAction.NoOp,
+            fee=Global.min_txn_fee
+        ).submit()        
+        
+        result, txn = abi_call[UInt64](
+            'local_state_return_something',
+            app_id=727594507,
+            on_completion=OnCompleteAction.OptIn,
+            fee=Global.min_txn_fee
+        )
+        
+        txn = abi_call(
+            'return_nothing',
+            app_id=727594507,
+            fee=Global.min_txn_fee
+        )
+        
+        return result        
+
+    @abimethod
+    def group_txn_comprehension(
+        self,
+        first_transaction: gtxn.PaymentTransaction
+    ) -> tuple[UInt64, UInt64, UInt64]:
+        
+        assert first_transaction.amount == 1000
+        
+        second_transaction = gtxn.Transaction(Txn.group_index + 1)
+        
+        if second_transaction.type == TransactionType.Payment:
+            second_transaction_amount = second_transaction.amount
+            assert second_transaction_amount == 2000
+            
+        elif second_transaction.type == TransactionType.AssetTransfer:
+            second_transaction_amount = second_transaction.asset_amount
+            assert second_transaction_amount == 1
+            
+        third_transaction = gtxn.Transaction(Txn.group_index + 2)
+
+        if third_transaction.type == TransactionType.Payment:
+            third_transaction_amount = third_transaction.amount
+            assert third_transaction_amount == 2000
+
+        elif third_transaction.type == TransactionType.AssetTransfer:
+            third_transaction_amount = third_transaction.asset_amount
+            assert third_transaction_amount == 1            
+                    
+        return first_transaction.amount, second_transaction_amount, third_transaction_amount</code></pre>
+    `,
+    initialCode: ``,
+  },
+
+  {
     id: 6,
     language: 'Javascript',
     title: 'Variables',
@@ -5659,7 +7284,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre><code>let myNumber = 1;
+          <pre class="overflow-auto shadow-md"><code>let myNumber = 1;
   let myNumberPlusOne = myNumber + 1;
   console.log(myNumberPlusOne);
 </code></pre>
@@ -5797,7 +7422,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre><code>function add(a, b) {
+           <pre class="overflow-auto shadow-md"><code>function add(a, b) {
       return a + b;
   }
   let result = add(3, 5);
@@ -5917,7 +7542,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>let myArray = [7, "Hello", false, 63.5];
+           <pre class="overflow-auto shadow-md"><code>let myArray = [7, "Hello", false, 63.5];
   console.log(myArray[2]);
 </code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
@@ -5931,7 +7556,7 @@ print(tx_id)
   
           <h3>Question 4</h3>
           <p>How do you remove duplicate entries from an array in JavaScript?</p>
-          <pre><code>let myArray = [1, 1, 2, 3, 4, 4];
+           <pre class="overflow-auto shadow-md"><code>let myArray = [1, 1, 2, 3, 4, 4];
   let myArrayWithoutDuplicates = [...new Set(myArray)];
   console.log(myArrayWithoutDuplicates);
 </code></pre>
@@ -6023,7 +7648,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>let thisIsMyObject = {name: "John", age: 22};
+           <pre class="overflow-auto shadow-md"><code>let thisIsMyObject = {name: "John", age: 22};
   console.log(thisIsMyObject['age']);
 </code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
@@ -6037,7 +7662,7 @@ print(tx_id)
   
           <h3>Question 4</h3>
           <p>What will be the output of the following code?</p>
-          <pre><code>let thisIsMyObject = {name: "John", age: 22, likes: ["Exercise", "Cooking", "Coding"]};
+           <pre class="overflow-auto shadow-md"><code>let thisIsMyObject = {name: "John", age: 22, likes: ["Exercise", "Cooking", "Coding"]};
   let likesFirstIndex = thisIsMyObject['likes'][1];
   console.log(likesFirstIndex);
 </code></pre>
@@ -6335,7 +7960,7 @@ print(tx_id)
   
           <h3>Question 4</h3>
           <p>How do you access the value of the 'last-round' key from the Algorand node status object?</p>
-          <pre><code>algodClient.status().do()
+           <pre class="overflow-auto shadow-md"><code>algodClient.status().do()
   .then(status => {
       // Create a variable, and name it lastRound
       const lastRound = status['last-round'];
@@ -6789,7 +8414,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre><code>a := 10
+           <pre class="overflow-auto shadow-md"><code>a := 10
   b := 3
   addition := a + b
   fmt.Println(addition)
@@ -6961,7 +8586,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre>
+           <pre class="overflow-auto shadow-md">
   func add(a, b int) int {
       return a + b
   }
@@ -7085,7 +8710,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre><code>mySlice := []interface{}{7, "Hello", false, 63.5}
+           <pre class="overflow-auto shadow-md"><code>mySlice := []interface{}{7, "Hello", false, 63.5}
   fmt.Println(mySlice[1])
 </code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
@@ -7099,7 +8724,7 @@ print(tx_id)
   
           <h3>Question 4</h3>
           <p>How do you remove duplicate entries from a slice in Go?</p>
-          <pre><code>func removeDuplicates(elements []int) []int {
+           <pre class="overflow-auto shadow-md"><code>func removeDuplicates(elements []int) []int {
       encountered := map[int]bool{}
       result := []int{}
       for v := range elements {
@@ -7204,7 +8829,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
-          <pre><code>type Person struct {
+           <pre class="overflow-auto shadow-md"><code>type Person struct {
       Name string
       Age  int
   }
@@ -7222,7 +8847,7 @@ print(tx_id)
   
           <h3>Question 4</h3>
           <p>How do you access the first element of the "Likes" slice in the following struct?</p>
-          <pre><code>type PersonWithLikes struct {
+           <pre class="overflow-auto shadow-md"><code>type PersonWithLikes struct {
       Name  string
       Age   int
       Likes []string
@@ -7518,7 +9143,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>How do you fetch the status of an Algorand node in Go?</p>
-          <pre><code>algodClient, err := algod.MakeClient(algodServer, algodToken)
+           <pre class="overflow-auto shadow-md"><code>algodClient, err := algod.MakeClient(algodServer, algodToken)
   if err != nil {
       fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\n", err)
       return
@@ -7535,7 +9160,7 @@ print(tx_id)
   
           <h3>Question 4</h3>
           <p>How do you access the last round from the status response in Go?</p>
-          <pre><code>status, err := algodClient.Status().Do(context.Background())
+           <pre class="overflow-auto shadow-md"><code>status, err := algodClient.Status().Do(context.Background())
   if err != nil {
       fmt.Fprintf(os.Stderr, "Failed to get node status: %s\n", err)
       return
@@ -7888,7 +9513,7 @@ print(tx_id)
   
           <h3>Question 3</h3>
           <p>How do you convert an amount in Algos to microAlgos in the Algorand Go SDK?</p>
-          <pre><code>amount := 1.001
+           <pre class="overflow-auto shadow-md"><code>amount := 1.001
   microAlgos := uint64(amount * 1e6)
 </code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
