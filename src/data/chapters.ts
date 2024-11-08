@@ -773,10 +773,10 @@ from algosdk import mnemonic
 from algosdk.util import algos_to_microalgos    
 </code></pre>
     
-    <p><strong>TWO WAYS TO IMPORT AN ACCOUNT</strong></p>
+    <p><strong>Two Ways to Import an Account</strong></p>
     
-    <p><strong>METHOD 1</strong>
-    CREATE A NEW ACCOUNT</p>
+    <p><strong>Method 1</strong>
+    Create a New Account</p>
     <pre class="overflow-auto shadow-md"><code>private_key, address = account.generate_account()
 print("Private Key: ", private_key)
 print("Address: ", address)
@@ -784,16 +784,13 @@ print("Address: ", address)
 #Private Key: 6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg== 
 #Address: I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU</code></pre>
     
-    <p>IF NEEDED TO IMPORT TO A WALLET, YOU CAN OBTAIN THE MNEMONIC FROM THE PRIVATE KEY
-    REDEEM MNEMONIC FROM PRIVATE KEY</p>
+    <p>If needed to import to a wallet, you can obtain the mnemonic from the private key</p>
     <pre class="overflow-auto shadow-md"><code>mnemonic_phrase = mnemonic.from_private_key(private_key)
 print(mnemonic_phrase)
 #Output: brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual <== Mnemonic
 </code></pre>
     
-    <p><strong>METHOD 2</strong>
-    USE MNEMONIC TO OBTAIN PRIVATE KEY
-    REDEEM PRIVATE KEY FROM MNEMONIC</p>
+    <p><strong>Method 2</strong> Use mnemonic to obtain/redeem private key</p>
     <pre class="overflow-auto shadow-md"><code>mnemonic_phrase = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual'
 private_key = mnemonic.to_private_key(mnemonic_phrase)
 print(private_key)
@@ -803,8 +800,10 @@ print(private_key)
     
     <p><strong>Method 1: Create a brand new account and obtain the private key and address directly</strong></p>
     <p>In the algosdk's account module, there is a function called generate_account(), which you can import at the beginning of your code, and is defined here:</p>
-    <p><code>(function) def generate_account() -> tuple[str, Any]
-    Generate an account.</code></p>
+
+    <pre><code>(function) def generate_account() -> tuple[str, Any]</code></pre>
+
+
     <p>Returns:
     (str, str): private key, account address</p>
     
@@ -813,8 +812,8 @@ print(private_key)
     All accounts require a minimum balance of 0.1 Algo to send transactions, and then 0.001 Algorand per transaction fee.</p>
     
     <p>Should you need the mnemonic to import into a wallet application later, you can do so with the from_private_key() function in the mnemonic library as well; input your private key into the function and assign the output variable to something like "mnemonic_phrase". Function is defined below:</p>
-    <p><code>(function) def from_private_key(private_key: Any) -> str
-    Return the mnemonic for the private key.</code></p>
+    <pre><code>(function) def from_private_key(private_key: Any) -> str
+#Returns the mnemonic for the private key.</code></pre>
     <p>Args:
     private_key (str): private key in base64</p>
     <p>Returns:
@@ -822,8 +821,8 @@ print(private_key)
     
     <p><strong>Method 2: Convert an Existing Mnemonic to a Private Key</strong></p>
     <p>Should you already have a mnemonic and require the private key in base64 format, you can create a variable called "mnemonic_phrase" and use the result of the to_private_key() function in the mnemonic library, which is defined below:</p>
-    <p><code>(function) def to_private_key(mnemonic: Any) -> str
-    Return the private key for the mnemonic.</code></p>
+    <pre><code>(function) def to_private_key(mnemonic: Any) -> str
+#Returns the private key for the mnemonic.</code></pre>
     <p>Args:
     mnemonic (str): mnemonic of the private key</p>
     <p>Returns:
@@ -889,8 +888,8 @@ print(transaction_id)</code></pre>
     <p>In the algorand SDK's, when we want to reference an amount of algo, that amount needs to be in a format called "Microalgo"; Microalgo is essentially an amount of algo times 1,000,000. Meaning that 1 Algo would be 1,000,000 Microalgo, and the transaction fee of 0.001 Algo is 1,000 Microalgo.</p>
     
     <p>Instead of manually calculating the microalgo amount each time, what we can do is use the algos_to_microalgos() function, and pass in the amount of algo as an argument, defined below:</p>
-    <p><code>(function) def algos_to_microalgos(algos: Any) -> Any
-    Convert algos to microalgos.</code></p>
+    <pre><code>(function) def algos_to_microalgos(algos: Any) -> Any
+#Converts algos to microalgos.</code></pre>
     <p>Args:
     algos (int or decimal): how many algos</p>
     <p>Returns:
@@ -903,17 +902,17 @@ print(transaction_id)</code></pre>
     </ul>
     
     <p><strong>PaymentTransaction format:</strong></p>
-    <p><code>class PaymentTxn(
-        sender: str,
-        sp: SuggestedParams,
-        receiver: Any,
-        amt: Any,
-        close_remainder_to: Any | None = None,
-        note: Any | None = None,
-        lease: Any | None = None,
-        rekey_to: Any | None = None
-    )
-    Represents a payment transaction.</code></p>
+    <pre><code>class PaymentTxn (
+    sender: str,
+    sp: SuggestedParams,
+    receiver: Any,
+    amt: Any,
+    close_remainder_to: Any | None = None,
+    note: Any | None = None,
+    lease: Any | None = None,
+    rekey_to: Any | None = None
+)
+#Represents a payment transaction.</code></pre>
     <p>Args:
     sender (str): address of the sender
     sp (SuggestedParams): suggested params from algod
@@ -925,23 +924,23 @@ print(transaction_id)</code></pre>
     rekey_to (str, optional): additionally rekey the sender to this address</p>
     
     <p>After we define our Payment Transaction class parameters, we can then use the sign() method that is included within it. This sign function accepts our private key, and outputs a signed transaction object, which is needed to input to the send_transaction() function:</p>
-    <p><code>(method) def sign(private_key: Any) -> SignedTransaction
-    Sign the transaction with a private key.</code></p>
+    <pre><code>(method) def sign(private_key: Any) -> SignedTransaction
+#Sign the transaction with a private key.</code></pre>
     <p>Args:
     private_key (str): the private key of the signing account</p>
     <p>Returns:
     SignedTransaction: signed transaction with the signature</p>
     
     <p>The wait_for_confirmation() function requires the AlgodClient class variable we created, as well as the transaction ID to wait for:</p>
-    <p><code>(function) def wait_for_confirmation(
-        algod_client: AlgodClient,
-        txid: str
-    )</code></p>
+    <pre><code>(function) def wait_for_confirmation (
+    algod_client: AlgodClient,
+    txid: str
+)</code></pre>
     
     <p>Lastly, the send_transaction() function, which accepts signed transaction objects:</p>
-    <p><code>(method) def send_transaction(
+    <pre><code>(method) def send_transaction (
         txn: GenericSignedTransaction
-    ) -> Outputs transaction ID</code></p>
+) -> Outputs transaction ID</code></pre>
     
     <p>Below are examples of rekey transactions and close amount to transactions, which are sent in succession (BUT NOT A GROUP TRANSACTION, WHICH WE WILL LEARN ABOUT LATER)</p>
     
@@ -7828,10 +7827,10 @@ class TransactionComp(ARC4Contract):
       </li>
       <li>Use the following commands to obtain your node token and port:</li>
     </ol>
-    <p><code>cat algod.token</code> ---Logs the token into the terminal, it should look something like:</p>
-    <p><code>b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd</code></p>
-    <p><code>cat algod.net</code> ---Logs the port into the terminal, it should look something like:</p>
-    <p><code>127.0.0.1:8080</code></p>
+    <pre><code>cat algod.token</code> ---Logs the token into the terminal, it should look something like:</pre>
+    <pre><code>b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd</code></pre>
+    <pre><code>cat algod.net</code> ---Logs the port into the terminal, it should look something like:</pre>
+    <pre><code>127.0.0.1:8080</code></pre>
     <p>When programming, you will format this information for variables like so:</p>
     <pre class="overflow-auto shadow-md"><code>const algodToken = 'b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd';
     const algodServer = 'http:127.0.0.1';
