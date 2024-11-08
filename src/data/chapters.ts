@@ -178,98 +178,7 @@ print(result)</code></pre>
     `,
     initialCode: `a = 10\nb = 3.5\nprint(a+b)`,
   },
-  {
-    id: 4,
-    language: 'Python',
-    title: 'Dictionaries',
-    content: `
-    <p>Now we'll dive into a bit more advanced data structures, dictionaries! A dictionary is like a list, except it uses curly brackets { } instead of square brackets [ ]— but most importantly, dictionaries also differ in that they store values with keys, and can accept several data types. A dictionary can be highly versatile, and can not only be used for data storage, but for more complex algorithms like hashmaps, which we'll go over later. Most interestingly, we can have dictionaries with dictionaries within them, and even lists as well! It's important to mention that keys and values have a colon ' : ' separator between them.</p>
-    
-    <p>Here's a simple example of a dictionary:</p>
-    <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22}</code></pre>
-    
-    <p>In lists, we used a process called indexing, and the index notation format to access values, eg; my_list[3]. With dictionaries, we use a similar process called key access, and the key notation format to access values.</p>
-    
-    <p>The main difference is that we use keys, instead of solely integers that refer to position, to select values from a dictionary— and not to confuse you, but a key in a dictionary can also be an integer =).</p>
-    
-    <p>For example, in this_is_my_dictionary above, you'll see the value "John" belongs to the key, "name". As well as the value 22, belongs to the key, "age". This is what key notation would look like for accessing a value for a specific key in a dictionary:</p>
-    <pre class="overflow-auto shadow-md"><code>name_value = this_is_my_dictionary['name']
-print(name_value)
-# Output: "John"</code></pre>
-    
-    <p>Try printing the "age" value in the code editor below:</p>
-    <pre class="overflow-auto shadow-md"><code>age_value = this_is_my_dictionary['age']
-print(age_value)
-# Output: 22</code></pre>
-    
-    <p>Now we'll look over a more intricate dictionary, that's a bit larger and complex.</p>
-    <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}</code></pre>
-    
-    <p>We see something in this dictionary that we haven't seen before, a list as the value to a key. Let's try accessing the 1st index of John's likes using a mix of key notation and index notation!</p>
-    <pre class="overflow-auto shadow-md"><code>likes = this_is_my_dictionary['likes']
-print(likes)
-# Output:# ["Exercise", "Cooking", "Coding"]</code></pre>
-    
-    
-    <pre class="overflow-auto shadow-md"><code>likes_first_index = likes[1]
-print(likes_first_index)
-# Output:# "Cooking"</code></pre>
-  
-      <hr><form>
-      <h1>Quiz</h1>
-          <h3>Question 1</h3>
-          <p>What is the correct way to define a dictionary in Python?</p>
-          <input type="radio" id="q1a" name="q1" value="a">
-          <label for="q1a" class="incorrect">a) my_dict = [1: "one", 2: "two"]</label><br>
-          <input type="radio" id="q1b" name="q1" value="b">
-          <label for="q1b" class="incorrect">b) my_dict = (1: "one", 2: "two")</label><br>
-          <input type="radio" id="q1c" name="q1" value="c">
-          <label for="q1c" class="correct">c) my_dict = {1: "one", 2: "two"}</label><br>
-          <input type="radio" id="q1d" name="q1" value="d">
-          <label for="q1d" class="incorrect">d) my_dict = 1: "one", 2: "two"</label><br>
-  
-          <h3>Question 2</h3>
-          <p>How do you access the value associated with a key in a dictionary?</p>
-          <input type="radio" id="q2a" name="q2" value="a">
-          <label for="q2a" class="correct">a) Using key notation</label><br>
-          <input type="radio" id="q2b" name="q2" value="b">
-          <label for="q2b" class="incorrect">b) Using index notation</label><br>
-          <input type="radio" id="q2c" name="q2" value="c">
-          <label for="q2c" class="incorrect">c) Using both key and index notation</label><br>
-          <input type="radio" id="q2d" name="q2" value="d">
-          <label for="q2d" class="incorrect">d) Using value notation</label><br>
-  
-          <h3>Question 3</h3>
-          <p>What will be the output of the following code?</p>
-          <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22}
-print(this_is_my_dictionary['age'])</code></pre>
-          <input type="radio" id="q3a" name="q3" value="a">
-          <label for="q3a" class="incorrect">a) "John"</label><br>
-          <input type="radio" id="q3b" name="q3" value="b">
-          <label for="q3b" class="correct">b) 22</label><br>
-          <input type="radio" id="q3c" name="q3" value="c">
-          <label for="q3c" class="incorrect">c) "age"</label><br>
-          <input type="radio" id="q3d" name="q3" value="d">
-          <label for="q3d" class="incorrect">d) "name"</label><br>
-  
-          <h3>Question 4</h3>
-          <p>What will be the output of the following code?</p>
-          <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}
-print(this_is_my_dictionary['likes'][1])</code></pre>
-          <input type="radio" id="q4a" name="q4" value="a">
-          <label for="q4a" class="incorrect">a) "Exercise"</label><br>
-          <input type="radio" id="q4b" name="q4" value="b">
-          <label for="q4b" class="correct">b) "Cooking"</label><br>
-          <input type="radio" id="q4c" name="q4" value="c">
-          <label for="q4c" class="incorrect">c) "Coding"</label><br>
-          <input type="radio" id="q4d" name="q4" value="d">
-          <label for="q4d" class="incorrect">d) ["Exercise", "Cooking", "Coding"]</label><br>
-  
-          
-      </form>
-    `,
-    initialCode: `this_is_my_dictionary = {"name": "John", "age": 22}\nprint(this_is_my_dictionary)`,
-  },
+
   {
     id: 3,
     language: 'Python',
@@ -376,6 +285,98 @@ print(my_list_without_duplicates)</code></pre>
       </form>
     `,
     initialCode: `my_list = [7, "Hello", False, 63.5]\nprint(my_list)`,
+  },
+  {
+    id: 4,
+    language: 'Python',
+    title: 'Dictionaries',
+    content: `
+    <p>Now we'll dive into a bit more advanced data structures, dictionaries! A dictionary is like a list, except it uses curly brackets { } instead of square brackets [ ]— but most importantly, dictionaries also differ in that they store values with keys, and can accept several data types. A dictionary can be highly versatile, and can not only be used for data storage, but for more complex algorithms like hashmaps, which we'll go over later. Most interestingly, we can have dictionaries with dictionaries within them, and even lists as well! It's important to mention that keys and values have a colon ' : ' separator between them.</p>
+    
+    <p>Here's a simple example of a dictionary:</p>
+    <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22}</code></pre>
+    
+    <p>In lists, we used a process called indexing, and the index notation format to access values, eg; my_list[3]. With dictionaries, we use a similar process called key access, and the key notation format to access values.</p>
+    
+    <p>The main difference is that we use keys, instead of solely integers that refer to position, to select values from a dictionary— and not to confuse you, but a key in a dictionary can also be an integer =).</p>
+    
+    <p>For example, in this_is_my_dictionary above, you'll see the value "John" belongs to the key, "name". As well as the value 22, belongs to the key, "age". This is what key notation would look like for accessing a value for a specific key in a dictionary:</p>
+    <pre class="overflow-auto shadow-md"><code>name_value = this_is_my_dictionary['name']
+print(name_value)
+# Output: "John"</code></pre>
+    
+    <p>Try printing the "age" value in the code editor below:</p>
+    <pre class="overflow-auto shadow-md"><code>age_value = this_is_my_dictionary['age']
+print(age_value)
+# Output: 22</code></pre>
+    
+    <p>Now we'll look over a more intricate dictionary, that's a bit larger and complex.</p>
+    <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}</code></pre>
+    
+    <p>We see something in this dictionary that we haven't seen before, a list as the value to a key. Let's try accessing the 1st index of John's likes using a mix of key notation and index notation!</p>
+    <pre class="overflow-auto shadow-md"><code>likes = this_is_my_dictionary['likes']
+print(likes)
+# Output:# ["Exercise", "Cooking", "Coding"]</code></pre>
+    
+    
+    <pre class="overflow-auto shadow-md"><code>likes_first_index = likes[1]
+print(likes_first_index)
+# Output:# "Cooking"</code></pre>
+  
+      <hr><form>
+      <h1>Quiz</h1>
+          <h3>Question 1</h3>
+          <p>What is the correct way to define a dictionary in Python?</p>
+          <input type="radio" id="q1a" name="q1" value="a">
+          <label for="q1a" class="incorrect">a) my_dict = [1: "one", 2: "two"]</label><br>
+          <input type="radio" id="q1b" name="q1" value="b">
+          <label for="q1b" class="incorrect">b) my_dict = (1: "one", 2: "two")</label><br>
+          <input type="radio" id="q1c" name="q1" value="c">
+          <label for="q1c" class="correct">c) my_dict = {1: "one", 2: "two"}</label><br>
+          <input type="radio" id="q1d" name="q1" value="d">
+          <label for="q1d" class="incorrect">d) my_dict = 1: "one", 2: "two"</label><br>
+  
+          <h3>Question 2</h3>
+          <p>How do you access the value associated with a key in a dictionary?</p>
+          <input type="radio" id="q2a" name="q2" value="a">
+          <label for="q2a" class="correct">a) Using key notation</label><br>
+          <input type="radio" id="q2b" name="q2" value="b">
+          <label for="q2b" class="incorrect">b) Using index notation</label><br>
+          <input type="radio" id="q2c" name="q2" value="c">
+          <label for="q2c" class="incorrect">c) Using both key and index notation</label><br>
+          <input type="radio" id="q2d" name="q2" value="d">
+          <label for="q2d" class="incorrect">d) Using value notation</label><br>
+  
+          <h3>Question 3</h3>
+          <p>What will be the output of the following code?</p>
+          <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22}
+print(this_is_my_dictionary['age'])</code></pre>
+          <input type="radio" id="q3a" name="q3" value="a">
+          <label for="q3a" class="incorrect">a) "John"</label><br>
+          <input type="radio" id="q3b" name="q3" value="b">
+          <label for="q3b" class="correct">b) 22</label><br>
+          <input type="radio" id="q3c" name="q3" value="c">
+          <label for="q3c" class="incorrect">c) "age"</label><br>
+          <input type="radio" id="q3d" name="q3" value="d">
+          <label for="q3d" class="incorrect">d) "name"</label><br>
+  
+          <h3>Question 4</h3>
+          <p>What will be the output of the following code?</p>
+          <pre class="overflow-auto shadow-md"><code>this_is_my_dictionary = {"name": "John", "age": 22, "likes": ["Exercise", "Cooking", "Coding"]}
+print(this_is_my_dictionary['likes'][1])</code></pre>
+          <input type="radio" id="q4a" name="q4" value="a">
+          <label for="q4a" class="incorrect">a) "Exercise"</label><br>
+          <input type="radio" id="q4b" name="q4" value="b">
+          <label for="q4b" class="correct">b) "Cooking"</label><br>
+          <input type="radio" id="q4c" name="q4" value="c">
+          <label for="q4c" class="incorrect">c) "Coding"</label><br>
+          <input type="radio" id="q4d" name="q4" value="d">
+          <label for="q4d" class="incorrect">d) ["Exercise", "Cooking", "Coding"]</label><br>
+  
+          
+      </form>
+    `,
+    initialCode: `this_is_my_dictionary = {"name": "John", "age": 22}\nprint(this_is_my_dictionary)`,
   },
   {
     id: 2,
@@ -2065,8 +2066,8 @@ app_id = 724455779
       
       <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
-      <p>Use the following terminal command to compile your contract:</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+      <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
@@ -2253,7 +2254,8 @@ asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
 asset_info = algod_client.asset_info(asset_id)
 print(asset_info)</code></pre>
       
-      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      <h3>Step 6: Store Generated Asset IDs in .env</h3><pre><code>asset_1 = 123456
+asset_2 = 654321</code></pre>
       
       <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
       <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
@@ -2551,7 +2553,7 @@ app_id = 724455779
       
       <h3>Step 4: Compile Asset for Asset Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
       <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
@@ -2759,7 +2761,8 @@ asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
 asset_info = algod_client.asset_info(asset_id)
 print(asset_info)</code></pre>
       
-      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      <h3>Step 6: Store Generated Asset IDs in .env</h3><pre><code>asset_1 = 123456
+asset_2 = 654321</code></pre>
       
       <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
       <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
@@ -3180,8 +3183,8 @@ app_id = 724455779
       
       <h3>Step 4: Compile Asset for Asset Quantity Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
-      <p>Use the following terminal command to compile your contract:</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+      <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
@@ -3391,7 +3394,8 @@ asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
 asset_info = algod_client.asset_info(asset_id)
 print(asset_info)</code></pre>
       
-      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      <h3>Step 6: Store Generated Asset IDs in .env</h3><pre><code>asset_1 = 123456
+asset_2 = 654321</code></pre>
       
       <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
       <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
@@ -3814,8 +3818,8 @@ app_id = 724455779
       
       <h3>Step 4: Compile Asset Quantity for Asset Quantity Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
-      <p>Use the following terminal command to compile your contract:</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+      <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
@@ -4022,7 +4026,8 @@ asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
 asset_info = algod_client.asset_info(asset_id)
 print(asset_info)</code></pre>
       
-      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      <h3>Step 6: Store Generated Asset IDs in .env</h3><pre><code>asset_1 = 123456
+asset_2 = 654321</code></pre>
       
       <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
       <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
@@ -4446,8 +4451,8 @@ app_id = 724455779
       
       <h3>Step 4: Compile Universal Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 2</code></pre>
-      <p>Use the following terminal command to compile your contract:</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+      <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
@@ -4701,7 +4706,8 @@ asset_id = algod_client.pending_transaction_info(tx_id)['asset-index']
 asset_info = algod_client.asset_info(asset_id)
 print(asset_info)</code></pre>
       
-      <h3>Step 6: Store Generated Asset IDs in .env</h3>
+      <h3>Step 6: Store Generated Asset IDs in .env</h3><pre><code>asset_1 = 123456
+asset_2 = 654321</code></pre>
       
       <h3>Step 7: Experiment with Opting the Contract into an Asset</h3>
       <p>If you're creating multiple listings, you need to opt the contract into each asset the first time.</p>
