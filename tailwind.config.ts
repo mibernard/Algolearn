@@ -61,12 +61,21 @@ const config: Config = {
         DEFAULT: {
           css: {
             pre: {
-              backgroundColor: 'transparent', // Remove the black background
-              color: 'inherit', // Use the default text color
-              boxShadow: 'none', // Remove any box shadow if present
-              padding: '1rem', // Optional padding for spacing
-              border: '1px solid hsl(var(--border))', // Optional light border
-              borderRadius: '0.5rem', // Optional rounded corners
+              backgroundColor: 'hsl(var(--code-background))', // Darker than the main background
+              color: 'hsl(var(--code-foreground))', // Match the code foreground color
+              boxShadow: 'none', // Ensure no box shadow
+              padding: '1rem', // Add spacing for better readability
+              border: '1px solid hsl(var(--border))', // Optional border
+              borderRadius: '0.5rem', // Rounded corners
+            },
+          },
+        },
+        dark: {
+          css: {
+            pre: {
+              backgroundColor: 'hsl(224, 71%, 2%)', // Specific darker background for dark mode
+              color: 'hsl(213, 31%, 91%)', // Light text for readability
+              border: '1px solid hsl(var(--border))', // Light border for contrast
             },
           },
         },

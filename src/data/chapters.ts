@@ -124,7 +124,7 @@ print(my_tuple)
     </ul>
     <em>*Note: Exception for various ARC types like ARC19 and ARC69 that use the reserve address and/or note field to point to metadata*</em>
   
-      <hr><form>
+      <hr><form class="quiz-form">
       <h1>Quiz</h1>
           <h3>Question 1</h3>
           <p>What data type is used to store whole numbers in Python?</p>
@@ -230,7 +230,7 @@ print(first_index_my_list)
     
     <pre class="overflow-auto shadow-md"><code>my_list = [7, "Hello", False, 63.5]"</code></pre>
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
           <h3>Question 1</h3>
           <p>What is the correct way to define a list in Python?</p>
@@ -323,7 +323,7 @@ print(likes)
 print(likes_first_index)
 # Output:# "Cooking"</code></pre>
   
-      <hr><form>
+      <hr><form class="quiz-form">
       <h1>Quiz</h1>
           <h3>Question 1</h3>
           <p>What is the correct way to define a dictionary in Python?</p>
@@ -434,7 +434,7 @@ print_info(name="Alice", age=30, city="New York")</code></pre>
     <p>In this example, the <code>print_info</code> function uses <code>**kwargs</code> to accept a varying number of keyword arguments. Inside the function, <code>kwargs</code> is a dictionary containing all the keyword arguments passed. We loop through the dictionary and print each key-value pair.</p>
     <p>Functions are a fundamental part of Python programming, enabling us to create modular, reusable, and maintainable code. As we progress, we'll explore more advanced concepts and techniques related to functions.</p>
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -527,7 +527,7 @@ algod_client = v2client.algod.AlgodClient(node_token, node_port)</code></pre>
     <p>For the sake of understanding, lets just say perhaps the person writing the code unsure of whether or not the code will need other functions from the random library. Perhaps I plan to also use randrange from the random library with randint, so for now I'll import the entire random library.</p>
     
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -688,7 +688,7 @@ print(status)</code></pre>
 print(last_round)</code></pre>
   
   
-      <hr><form>
+      <hr><form class="quiz-form">
      <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -989,7 +989,7 @@ print(transaction_id)</code></pre>
     <p><strong>DISCLAIMER:</strong> that when rekeying and closing out accounts, this process is irreversible! If you don't know the person, or feel unsure about doing so, you should never use these transactions outside of testing purposes without ultimate confidence. No platforms currently utilize rekey transactions for users, but do use them internally when generating smart contracts for contract to contract calls, which will come later in our learning process.</p>
     
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -1215,7 +1215,7 @@ cat algod.net</code> (Displays port)</pre>
         <li><a href="https://discord.com/developers" target="_blank">Discord Developer Portal</a></li>
     </ul>
     
-    <hr><form>
+    <hr><form class="quiz-form">
         <h1>Quiz</h1>
         <h3>Question 1</h3>
         <p>Which package should be installed before installing discord.py?</p>
@@ -1305,6 +1305,9 @@ from algosdk.v2client.algod import AlgodClient
 from base64 import b64decode
 from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
 from algosdk.logic import get_application_address
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -1474,6 +1477,9 @@ from algosdk.v2client.algod import AlgodClient
 from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner
 from algokit_utils import ApplicationClient
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -1707,6 +1713,9 @@ from algosdk.account import address_from_private_key
 from algosdk.transaction import OnComplete
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 node_token = os.getenv('algod_token')
 node_server = os.getenv('algod_server')
@@ -1939,6 +1948,9 @@ from pathlib import Path
 import os
 from algosdk.util import algos_to_microalgos
 from algosdk.abi import ABIType
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -1985,6 +1997,9 @@ from algosdk.account import address_from_private_key
 from algosdk.abi import ABIType
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2209,6 +2224,9 @@ class listings(ARC4Contract):
 from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
 from algosdk.account import address_from_private_key
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2253,6 +2271,9 @@ from algosdk.atomic_transaction_composer import AccountTransactionSigner, Transa
 from algosdk.transaction import PaymentTxn
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2304,6 +2325,9 @@ from algosdk.util import algos_to_microalgos
 from algosdk.abi import ABIType
 from base64 import b64decode
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2379,6 +2403,9 @@ print(abi_results)
 from algosdk.v2client.algod import AlgodClient
 from algosdk.abi import ABIType
 from base64 import b64decode
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2413,6 +2440,9 @@ from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from pathlib import Path
 from algosdk.abi import ABIType
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2692,6 +2722,9 @@ class listings(ARC4Contract):
 from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
 from algosdk.account import address_from_private_key
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2736,6 +2769,9 @@ from algosdk.atomic_transaction_composer import AccountTransactionSigner, Transa
 from algosdk.transaction import PaymentTxn
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2786,6 +2822,9 @@ from pathlib import Path
 from algosdk.abi import ABIType
 import os
 from base64 import b64decode
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2861,6 +2900,9 @@ print(abi_results)</code></pre>
 from algosdk.v2client.algod import AlgodClient
 from algosdk.abi import ABIType
 from base64 import b64decode
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2895,6 +2937,9 @@ from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from algosdk.abi import ABIType
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -2975,6 +3020,9 @@ from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from algosdk.abi import ABIType
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3042,6 +3090,9 @@ from algosdk.transaction import PaymentTxn
 from algosdk.abi import ABIType
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3317,6 +3368,9 @@ class listings(ARC4Contract):
 from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
 from algosdk.account import address_from_private_key
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3361,6 +3415,9 @@ from algosdk.atomic_transaction_composer import AccountTransactionSigner, Transa
 from algosdk.transaction import PaymentTxn
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3411,6 +3468,9 @@ from pathlib import Path
 from algosdk.abi import ABIType
 from base64 import b64decode
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3484,6 +3544,9 @@ print(abi_results)</code></pre>
       <h3>Step 9: Check Respective Listing Information</h3>
       <p>Retrieve and verify the listing information from the contract.</p>
       <pre class="overflow-auto shadow-md"><code>import os
+from dotenv import load_dotenv
+
+load_dotenv()
 from algosdk.v2client.algod import AlgodClient
 from algosdk.abi import ABIType
 from base64 import b64decode
@@ -3521,6 +3584,9 @@ from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from algosdk.abi import ABIType
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3601,6 +3667,9 @@ from algosdk.transaction import PaymentTxn
 from pathlib import Path
 from algosdk.abi import ABIType
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3670,6 +3739,9 @@ from algosdk.transaction import PaymentTxn
 from algosdk.abi import ABIType
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3944,6 +4016,9 @@ class listings(ARC4Contract):
 from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
 from algosdk.account import address_from_private_key
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -3988,6 +4063,9 @@ from algosdk.atomic_transaction_composer import AccountTransactionSigner, Transa
 from algosdk.transaction import PaymentTxn
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4036,8 +4114,12 @@ from algosdk.atomic_transaction_composer import AccountTransactionSigner, Transa
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from algosdk.abi import ABIType
 from pathlib import Path
-import os
 from base64 import b64decode
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4114,6 +4196,9 @@ print(abi_results)</code></pre>
 from algosdk.v2client.algod import AlgodClient
 from algosdk.abi import ABIType
 from base64 import b64decode
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4148,6 +4233,9 @@ from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from algosdk.abi import ABIType
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4228,6 +4316,9 @@ from algosdk.transaction import PaymentTxn
 from pathlib import Path
 from algosdk.abi import ABIType
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4297,6 +4388,9 @@ from algosdk.transaction import PaymentTxn
 from pathlib import Path
 from algosdk.abi import ABIType
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4616,6 +4710,9 @@ class listings(ARC4Contract):
 from algosdk.transaction import AssetConfigTxn, wait_for_confirmation
 from algosdk.account import address_from_private_key
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4660,6 +4757,9 @@ from algosdk.atomic_transaction_composer import AccountTransactionSigner, Transa
 from algosdk.transaction import PaymentTxn
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4710,6 +4810,9 @@ from pathlib import Path
 from algosdk.abi import ABIType
 import os
 from base64 import b64decode
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4786,6 +4889,9 @@ print(abi_results)</code></pre>
 from algosdk.v2client.algod import AlgodClient
 from algosdk.abi import ABIType
 from base64 import b64decode
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4820,6 +4926,9 @@ from algosdk.transaction import PaymentTxn, AssetTransferTxn
 from algosdk.abi import ABIType
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4908,6 +5017,9 @@ from algosdk.util import algos_to_microalgos
 from algosdk.abi import ABIType
 import os
 from base64 import b64decode
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -4977,6 +5089,9 @@ from algosdk.transaction import PaymentTxn
 from algosdk.abi import ABIType
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -5467,15 +5582,203 @@ node_server = os.getenv('algod_server')
 
 private_key = os.getenv('private_key')
 
-# The rest of the code for registering the Pokemon...
-        </code></pre>
+algod_client = AlgodClient(node_token, node_server)
+app_spec = Path(__file__).parent / './arc69NFTmodifier.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key=private_key)
+address = address_from_private_key(private_key=private_key)
+params = algod_client.suggested_params()
+
+application_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params
+)
+
+pokemon_name_1 = 'Bulbasaur'
+pokemon_name_2 = 'Charmander'
+pokemon_name_3 = 'Squirtle'
+
+pokemon_type_1 = 'Grass'
+pokemon_type_2 = 'Fire'
+pokemon_type_3 = 'Water'
+
+pokemon_description_1 = 'A grass pokemon'
+pokemon_description_2 = 'A fire pokemon'
+pokemon_description_3 = 'A water pokemon'
+
+pokemon_ipfs_hash_1 = 'Qmc75zNUFoFFX3uPcjnUMqhvuzezHF9tTpgbf5pph2XegF'
+pokemon_ipfs_hash_2 = 'QmP2M7nPDjhU9hPr8ManjzyFzBVEJDT3LKAAKC2o5f639q'
+pokemon_ipfs_hash_3 = 'QmRbPCwbQ7vps64kPUHygCkSmW36FkCLbET9X7cEjtPHJV'
+
+atc = AtomicTransactionComposer()
+
+pokemon_info_coder = ABIType.from_string('(string,string,string,string,uint64)')
+total_bytes_1 = len(pokemon_info_coder.encode((pokemon_name_1, pokemon_type_1, pokemon_description_1, pokemon_ipfs_hash_1, 0)))
+total_bytes_2 = len(pokemon_info_coder.encode((pokemon_name_2, pokemon_type_2, pokemon_description_2, pokemon_ipfs_hash_2, 0)))
+total_bytes_3 = len(pokemon_info_coder.encode((pokemon_name_3, pokemon_type_3, pokemon_description_3, pokemon_ipfs_hash_3, 0)))
+
+box_cost_1 = 2500 + (400 * total_bytes_1)
+box_cost_2 = 2500 + (400 * total_bytes_2)
+box_cost_3 = 2500 + (400 * total_bytes_3)
+
+mbr_fee_payment_tx_1 = PaymentTxn(
+    sender=address,
+    sp=params,
+    receiver=application_client.app_address,
+    amt=box_cost_1,
+    note='#1'
+)
+wrapped_payment_tx_1 = TransactionWithSigner(mbr_fee_payment_tx_1, signer)
+
+mbr_fee_payment_tx_2 = PaymentTxn(
+    sender=address,
+    sp=params,
+    receiver=application_client.app_address,
+    amt=box_cost_2,
+    note='#2'
+)
+wrapped_payment_tx_2 = TransactionWithSigner(mbr_fee_payment_tx_2, signer)
+
+mbr_fee_payment_tx_3 = PaymentTxn(
+    sender=address,
+    sp=params,
+    receiver=application_client.app_address,
+    amt=box_cost_3,
+    note='#3'
+)
+wrapped_payment_tx_3 = TransactionWithSigner(mbr_fee_payment_tx_3, signer)
+
+box_ref_1 = (1).to_bytes(8, 'big')
+box_ref_2 = (2).to_bytes(8, 'big')
+box_ref_3 = (3).to_bytes(8, 'big')
+
+application_client.compose_call(
+    atc, 
+    call_abi_method='registerNewPokemonData', 
+    pokemon_name=pokemon_name_1, 
+    pokemon_type=pokemon_type_1,
+    pokemon_description=pokemon_description_1,
+    pokemon_ipfs_hash=pokemon_ipfs_hash_1,
+    payment_txn=wrapped_payment_tx_1,
+    transaction_parameters={
+        'boxes':[[app_id, box_ref_1]]
+    }
+)
+
+application_client.compose_call(
+    atc, 
+    call_abi_method='registerNewPokemonData', 
+    pokemon_name=pokemon_name_2, 
+    pokemon_type=pokemon_type_2,
+    pokemon_description=pokemon_description_2,
+    pokemon_ipfs_hash=pokemon_ipfs_hash_2,
+    payment_txn=wrapped_payment_tx_2,
+    transaction_parameters={
+        'boxes':[[app_id, box_ref_2]]
+    }
+)
+
+application_client.compose_call(
+    atc, 
+    call_abi_method='registerNewPokemonData', 
+    pokemon_name=pokemon_name_3, 
+    pokemon_type=pokemon_type_3,
+    pokemon_description=pokemon_description_3,
+    pokemon_ipfs_hash=pokemon_ipfs_hash_3,
+    payment_txn=wrapped_payment_tx_3,
+    transaction_parameters={
+        'boxes':[[app_id, box_ref_3]]
+    }
+)
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+print(tx_ids)
+print(abi_results)</code></pre>
+
+<h2>Determining the User's Pokemon</h2>
+<pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algokit_utils import ApplicationClient
+from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
+from algosdk.transaction import PaymentTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+from algosdk.abi import ABIType
+from algosdk.encoding import decode_address
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+
+private_key = os.getenv('private_key')
+
+algod_client = AlgodClient(node_token, node_server)
+app_spec = Path(__file__).parent / './arc69NFTmodifier.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key=private_key)
+address = address_from_private_key(private_key=private_key)
+params = algod_client.suggested_params()
+
+application_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=app_spec,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params
+)
+
+
+atc = AtomicTransactionComposer()
+
+mbr_fee_payment_tx_1 = PaymentTxn(
+    sender=address,
+    sp=params,
+    receiver=application_client.app_address,
+    amt=18_500,
+    note='#1'
+)
+wrapped_payment_tx_1 = TransactionWithSigner(mbr_fee_payment_tx_1, signer)
+
+
+box_ref_1 = decode_address(address)
+
+
+application_client.compose_call(
+    atc, 
+    call_abi_method='determineUserPokemon', 
+    payment_txn=wrapped_payment_tx_1,
+    transaction_parameters={
+        'boxes':[[app_id, box_ref_1]]
+    }
+)
+
+
+results = atc.execute(algod_client, 2)
+
+tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
+abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
+print(tx_ids)
+print(abi_results)</pre></code>
+
 
         <h2>Confirming Existence of Pokemon Info in Contract</h2>
-        <pre class="overflow-auto shadow-md"><code>
-from algosdk.v2client.algod import AlgodClient
+        <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 import os
 from base64 import b64decode
 from algosdk.abi import ABIType
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -5495,11 +5798,13 @@ for box in app_boxes:
         </code></pre>
 
         <h2>Confirming Pokemon Selected for the User</h2>
-        <pre class="overflow-auto shadow-md"><code>
-from algosdk.v2client.algod import AlgodClient
+        <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 import os
 from base64 import b64decode
 from algosdk.abi import ABIType
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -5543,8 +5848,7 @@ for box in app_boxes:
         <pre class="overflow-auto shadow-md"><code>algokit compile arc69NFTmodifier.py</code></pre>
 
         <h3>Python Code</h3>
-        <pre class="overflow-auto shadow-md"><code>
-from algopy import ARC4Contract, itxn, Global, GlobalState, UInt64, gtxn, Bytes, subroutine, String, BoxRef, Txn, op, LocalState, Account
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, itxn, Global, GlobalState, UInt64, gtxn, Bytes, subroutine, String, BoxRef, Txn, op, LocalState, Account
 from algopy.arc4 import abimethod, Struct, Address, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
 from algopy.arc4 import String as arc4String
@@ -5609,8 +5913,7 @@ class arc69NFTmodifier(ARC4Contract):
     </code></pre>
 
         <h3>Confirming User Mint</h3>
-        <pre class="overflow-auto shadow-md"><code>
-from algosdk.v2client.algod import AlgodClient
+        <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 from algokit_utils import ApplicationClient
 from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
 from algosdk.transaction import PaymentTxn
@@ -5691,8 +5994,7 @@ print(tx_ids)
 print(abi_results)</code></pre>
 
         <h3>Confirming User Claim</h3>
-        <pre class="overflow-auto shadow-md"><code>
-from algosdk.v2client.algod import AlgodClient
+        <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 from algokit_utils import ApplicationClient
 from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
 from algosdk.transaction import PaymentTxn, AssetTransferTxn
@@ -5772,9 +6074,7 @@ results = atc.execute(algod_client, 2)
 tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
 abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
 print(tx_ids)
-print(abi_results)
-
-        </code></pre>
+print(abi_results)</code></pre>
     `,
     initialCode: ``,
   },
@@ -6100,6 +6400,9 @@ class arc69NFTmodifier(ARC4Contract):
 import os
 from base64 import b64decode
 from algosdk.abi import ABIType
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -6121,8 +6424,7 @@ for box in app_boxes:
 
         <h2>The Pokemon Level-up System</h2>
         <p>Note: Experience and level gain are calculated based on time staked, with each second providing an additional experience point.</p>
-        <pre class="overflow-auto shadow-md"><code>
-initial_training_time = current_users_pokemon_info.training_start_time.native
+        <pre class="overflow-auto shadow-md"><code>initial_training_time = current_users_pokemon_info.training_start_time.native
 current_time = Global.latest_timestamp
 time_difference = current_time - initial_training_time
 
@@ -6142,8 +6444,7 @@ if total_experience >= cumulative_experience:
     
 else:
     new_level = current_level
-    new_experience = total_experience
-        </code></pre>
+    new_experience = total_experience</code></pre>
 
         <h3>Staking the Pokemon</h3>
        
@@ -6217,9 +6518,7 @@ results = atc.execute(algod_client, 2)
 tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
 abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
 print(tx_ids)
-print(abi_results)
-
-</code></pre>
+print(abi_results)</code></pre>
 
         <h3>Unstaking the Pokemon</h3>
       
@@ -6303,9 +6602,7 @@ results = atc.execute(algod_client, 2)
 tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
 abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
 print(tx_ids)
-print(abi_results)
-
-</code></pre>
+print(abi_results)</code></pre>
     `,
     initialCode: ``,
   },
@@ -6344,6 +6641,9 @@ print(address)</code></pre>
 from algosdk.v2client.algod import AlgodClient
 from algosdk.account import address_from_private_key
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -6487,6 +6787,9 @@ from pathlib import Path
 import os
 from algosdk.util import algos_to_microalgos
 from algosdk.abi import ABIType
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -6562,6 +6865,9 @@ print(address)</code></pre>
 from algosdk.v2client.algod import AlgodClient
 from algosdk.account import address_from_private_key
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -6715,9 +7021,7 @@ class TransactionComp(ARC4Contract):
         
         submit_tx_1, submit_tx_2 = itxn.submit_txns(asset_config_txn_2, asset_config_txn_3)        
             
-        return asset_config_txn.created_asset.id, submit_tx_1.created_asset.id, submit_tx_2.created_asset.id   
-    
-    </code></pre>
+        return asset_config_txn.created_asset.id, submit_tx_1.created_asset.id, submit_tx_2.created_asset.id</code></pre>
         <pre class="overflow-auto shadow-md"><code>interact_with_contract_2.py</code></pre>
 
         <h4>Inner Txn with abi_call Class</h4>
@@ -6784,6 +7088,9 @@ from pathlib import Path
 import os
 from algosdk.util import algos_to_microalgos
 from algosdk.abi import ABIType
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -6858,7 +7165,11 @@ print(all_abi_results)
 
         <h3>Generate Two Accounts</h3>
         <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
-        <p>Display <code>generate_account.py</code></p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+
+private_key, address = generate_account()
+print(private_key, address)</code></pre>
 
         <h3>Generate One Asset</h3>
         <p>Create one asset and place its ID in your <code>.env</code> file.</p>
@@ -6867,6 +7178,9 @@ print(all_abi_results)
 from algosdk.v2client.algod import AlgodClient
 from algosdk.account import address_from_private_key
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 algod_token = os.getenv('algod_token')
 algod_server = os.getenv('algod_server')
@@ -7121,10 +7435,9 @@ class TransactionComp(ARC4Contract):
     <p>It's good practice to name your variables relevant to their purpose. For example, if I was creating a variable that would represent the cash price of an item, I might name it something like:</p>
     
     <pre class="overflow-auto shadow-md"><code>let itemCost = 1; // The cost of an item, which will be 1 dollar
-    let supplyRemaining = 2500000000; // The number of items in inventory that are remaining
-    let nameCTO = "John Woods";
-    let valueOfAQuarter = 0.25;
-</code></pre>
+let supplyRemaining = 2500000000; // The number of items in inventory that are remaining
+let nameCTO = "John Woods";
+let valueOfAQuarter = 0.25;</code></pre>
     
     <p>You might notice that I use camelCase for naming my variables. It's important to follow JavaScript naming conventions:</p>
     <ul class=inText>
@@ -7135,8 +7448,8 @@ class TransactionComp(ARC4Contract):
     
     <p>Here are some examples of incorrect variables that will not work in your code, and will cause an error, <strong>DO NOT USE</strong>:</p>
     <pre class="overflow-auto shadow-md"><code>let 3variable = 5;     // Starts with a number
-    let my-variable = 6;   // Contains a hyphen
-    let my variable = 7;   // Contains a space
+let my-variable = 6;   // Contains a hyphen
+let my variable = 7;   // Contains a space
 </code></pre>
     
     <h2>General Arithmetic for Integers, Floats, and Strings</h2>
@@ -7144,52 +7457,52 @@ class TransactionComp(ARC4Contract):
     <p>If this is your first time programming, or even if you have programmed before, you'll quickly find out or are already familiar that logging is one of the most commonly used functions for debugging. It's how you "see" what the value is of your variable at a specific point in your code</p>
     
     <pre class="overflow-auto shadow-md"><code>let myNumber = 1;
-    let myNumberPlusOne = myNumber + 1;
-    console.log(myNumberPlusOne); // Output will be 2</code></pre>
+let myNumberPlusOne = myNumber + 1;
+console.log(myNumberPlusOne); // Output will be 2</code></pre>
     
     <p>There are several arithmetic operators available in JavaScript, and they are as follows:</p>
     
     <pre class="overflow-auto shadow-md"><code>let a = 10;
-    let b = 3;
-    let addition = a + b;          // Addition: 13
-    let subtraction = a - b;       // Subtraction: 7
-    let multiplication = a * b;    // Multiplication: 30
-    let division = a / b;          // Division: 3.3333333333333335
-    let floorDivision = Math.floor(a / b); // Floor Division: 3
-    let modulus = a % b;           // Modulus: 1
-    let exponentiation = a ** b;   // Exponentiation: 1000</code></pre>
+let b = 3;
+let addition = a + b;          // Addition: 13
+let subtraction = a - b;       // Subtraction: 7
+let multiplication = a * b;    // Multiplication: 30
+let division = a / b;          // Division: 3.3333333333333335
+let floorDivision = Math.floor(a / b); // Floor Division: 3
+let modulus = a % b;           // Modulus: 1
+let exponentiation = a ** b;   // Exponentiation: 1000</code></pre>
     
     <p>For strings, '+' is used for concatenation:</p>
     
     <pre class="overflow-auto shadow-md"><code>let greeting = "Hello, " + "World!";
-    console.log(greeting); // Output: "Hello, World!"</code></pre>
+console.log(greeting); // Output: "Hello, World!"</code></pre>
     
     <p>Unlike Python, JavaScript does not support string multiplication using arithmetic operators; it results in NaN (Not a Number):</p>
     <pre class="overflow-auto shadow-md"><code>let string = "Hello";
-    let repeatedString = string * 3;  // This will result in NaN
-    console.log(repeatedString); // Output: NaN</code></pre>
+let repeatedString = string * 3;  // This will result in NaN
+console.log(repeatedString); // Output: NaN</code></pre>
     
     <p>Instead, use the repeat function for repeating strings:</p>
     <pre class="overflow-auto shadow-md"><code>let repeatedGreeting = string.repeat(3);
-    console.log(repeatedGreeting); // Output: "HelloHelloHello"</code></pre>
+console.log(repeatedGreeting); // Output: "HelloHelloHello"</code></pre>
     
     <p>We won't dive into Arrays or Objects just yet, but it is important to note that arrays and objects are mutable, whereas strings are immutable in JavaScript.</p>
     <p>When you hear mutable, think "can be changed", where mutable means it can be changed and immutable means it cannot be changed.</p>
     
     <p>Example showing mutability of an array:</p>
     <pre class="overflow-auto shadow-md"><code>let myArray = [1, 2];
-    console.log(myArray[0]); // Output: 1
-    myArray[0] = 2;
-    console.log(myArray); // Output: [2, 2]</code></pre>
+console.log(myArray[0]); // Output: 1
+myArray[0] = 2;
+console.log(myArray); // Output: [2, 2]</code></pre>
     
     <p>Example showing immutability (cannot be changed) of a string:</p>
     <pre class="overflow-auto shadow-md"><code>let myString = "Hello";
-    console.log(myString);  // Output: "Hello"
-    myString[0] = "J";  // This does not change the string
-    console.log(myString);  // Output: "Hello"</code></pre>
+console.log(myString);  // Output: "Hello"
+myString[0] = "J";  // This does not change the string
+console.log(myString);  // Output: "Hello"</code></pre>
     
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -7217,8 +7530,8 @@ class TransactionComp(ARC4Contract):
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
           <pre class="overflow-auto shadow-md"><code>let myNumber = 1;
-  let myNumberPlusOne = myNumber + 1;
-  console.log(myNumberPlusOne);
+let myNumberPlusOne = myNumber + 1;
+console.log(myNumberPlusOne);
 </code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 1</label><br>
@@ -7271,17 +7584,17 @@ class TransactionComp(ARC4Contract):
     
     <p>Let's start with calling this simple function above that prints a greeting message:</p>
     <pre class="overflow-auto shadow-md"><code>function greet() {
-        console.log("Hello, world!");
-    }
-    greet();
-    // Output: "Hello, world!"</code></pre>
+    console.log("Hello, world!");
+}
+greet();
+// Output: "Hello, world!"</code></pre>
     
     <p>Functions in JavaScript can accept parameters, which let you pass different values into them. Here's how we use a function called 'greet':</p>
     <pre class="overflow-auto shadow-md"><code>function greet(name) {
-        console.log(\`Hello, \${name}!\`);
-    }
-    greet("Alice"); // Outputs: "Hello, Alice!"
-    greet("Bob"); // Outputs: "Hello, Bob!"</code></pre>
+    console.log(\`Hello, \${name}!\`);
+}
+greet("Alice"); // Outputs: "Hello, Alice!"
+greet("Bob"); // Outputs: "Hello, Bob!"</code></pre>
     
     <p>In this example, the <code>greet</code> function takes a parameter named <code>name</code>. When we call this function and give it a name like "Alice" or "Bob", it prints a personalized greeting.</p>
     <p>To create the greeting message, we use something called a template literal. A template literal is a type of string that makes it easy to include variables directly inside the string. You create a template literal by wrapping your text with backtick characters, and you can insert variables like <code>name</code> by wrapping them in \${ } inside the string.</p>
@@ -7289,45 +7602,45 @@ class TransactionComp(ARC4Contract):
     
     <p>Functions can return values using the <code>return</code> statement. This allows us to capture the result of a function and use it in our code. Here's an example:</p>
     <pre class="overflow-auto shadow-md"><code>function add(a, b) {
-        return a + b;
-    }
-    let result = add(3, 5);
-    console.log(result);  // Output: 8</code></pre>
+    return a + b;
+}
+let result = add(3, 5);
+console.log(result);  // Output: 8</code></pre>
     
     <p>The <code>add</code> function takes two parameters <code>a</code> and <code>b</code>, adds them together, and returns the result. We can then store the returned value in a variable and print it.</p>
     
     <p>Functions can have default parameter values, which are used if no argument is provided when the function is called. Here's an example:</p>
     <pre class="overflow-auto shadow-md"><code>function greet(name = "world") {
-        console.log(\`Hello, \${name}!\`);
-    }
-    greet();  // Output: Hello, world!
-    greet("Alice");  // Output: Hello, Alice!</code></pre>
+    console.log(\`Hello, \${name}!\`);
+}
+greet();  // Output: Hello, world!
+greet("Alice");  // Output: Hello, Alice!</code></pre>
     
     <p>In this example, the <code>greet</code> function has a default parameter value of "world". If no argument is passed when the function is called, it uses the default value.</p>
     
     <p>We can also define functions that accept a variable number of arguments using the <code>...args</code> syntax. Here's an example:</p>
     <pre class="overflow-auto shadow-md"><code>function add(...args) {
-        return args.reduce((acc, curr) => acc + curr, 0);
-    }
-    console.log(add(1, 2, 3));  // Output: 6
-    console.log(add(4, 5, 6, 7));  // Output: 22</code></pre>
+    return args.reduce((acc, curr) => acc + curr, 0);
+}
+console.log(add(1, 2, 3));  // Output: 6
+console.log(add(4, 5, 6, 7));  // Output: 22</code></pre>
     
     <p>The <code>add</code> function uses <code>...args</code> to accept a variable number of arguments. Inside the function, <code>args</code> is an array containing all the arguments passed. We use the <code>reduce</code> method to add all the values together and return the result.</p>
     
     <p>The <code>...</code> syntax can also be used to accept a variable number of keyword arguments in an object. Here's an example:</p>
     <pre class="overflow-auto shadow-md"><code>function printInfo({ ...kwargs }) {
-        for (let key in kwargs) {
-            console.log(\`\${key}: \${kwargs[key]}\`);
-        }
+    for (let key in kwargs) {
+        console.log(\`\${key}: \${kwargs[key]}\`);
     }
-    printInfo({ name: "Alice", age: 30, city: "New York" });</code></pre>
+}
+printInfo({ name: "Alice", age: 30, city: "New York" });</code></pre>
     
     <p>In this example, the <code>printInfo</code> function uses <code>...</code> to accept a varying number of keyword arguments. Inside the function, <code>kwargs</code> is an object containing all the keyword arguments passed. We loop through the object and print each key-value pair.</p>
     
     <p>Functions are a fundamental part of JavaScript programming, enabling us to create modular, reusable, and maintainable code. As we progress, we'll explore more advanced concepts and techniques related to functions.</p>
     
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -7355,11 +7668,10 @@ class TransactionComp(ARC4Contract):
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
            <pre class="overflow-auto shadow-md"><code>function add(a, b) {
-      return a + b;
-  }
-  let result = add(3, 5);
-  console.log(result);
-</code></pre>
+    return a + b;
+}
+let result = add(3, 5);
+console.log(result);</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 35</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -7407,14 +7719,14 @@ class TransactionComp(ARC4Contract):
     
     <p>Or perhaps an array of addresses:</p>
     <pre class="overflow-auto shadow-md"><code>let addresses = [
-    'WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU',
-    '7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY',
-    'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA'];</code></pre>
+'WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU',
+'7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY',
+'HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA'];</code></pre>
     
     <p>Although arrays don't have to be organized in any way and are not descriptive, they can be manipulated. For example, if you wanted to remove duplicate entries in an array, you could use the Set object.</p>
     <pre class="overflow-auto shadow-md"><code>let myArray = [1, 1, 2, 3, 4, 4];
-    let myArrayWithoutDuplicates = [...new Set(myArray)];
-    console.log(myArrayWithoutDuplicates);</code></pre>
+let myArrayWithoutDuplicates = [...new Set(myArray)];
+console.log(myArrayWithoutDuplicates);</code></pre>
     
     <p># Output:# [1, 2, 3, 4]</p>
     
@@ -7435,7 +7747,7 @@ class TransactionComp(ARC4Contract):
     
     <p>... and now let's log the item at index 1 (the second item since the first item is always 0) using index notation:</p>
     <pre class="overflow-auto shadow-md"><code>let firstIndexMyArray = myArray[1];
-    console.log(firstIndexMyArray);</code></pre>
+console.log(firstIndexMyArray);</code></pre>
     <p># Output: "Hello"</p>
     
     <p>Try logging the third index into the console using index notation. I've already defined the array for you below. Click run when you're ready to run the code! The output should be 63.5.</p>
@@ -7447,7 +7759,7 @@ class TransactionComp(ARC4Contract):
     <p>Next chapter: Objects</p>
     
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -7475,8 +7787,7 @@ class TransactionComp(ARC4Contract):
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
            <pre class="overflow-auto shadow-md"><code>let myArray = [7, "Hello", false, 63.5];
-  console.log(myArray[2]);
-</code></pre>
+console.log(myArray[2]);</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 7</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -7489,9 +7800,8 @@ class TransactionComp(ARC4Contract):
           <h3>Question 4</h3>
           <p>How do you remove duplicate entries from an array in JavaScript?</p>
            <pre class="overflow-auto shadow-md"><code>let myArray = [1, 1, 2, 3, 4, 4];
-  let myArrayWithoutDuplicates = [...new Set(myArray)];
-  console.log(myArrayWithoutDuplicates);
-</code></pre>
+let myArrayWithoutDuplicates = [...new Set(myArray)];
+console.log(myArrayWithoutDuplicates);</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) Using the Set object</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -7532,12 +7842,12 @@ class TransactionComp(ARC4Contract):
     
     <p>For example, in thisIsMyObject above, you'll see the value "John" belongs to the key, "name". As well as the value 22, belongs to the key, "age". This is what key notation would look like for accessing a value for a specific key in an object:</p>
     <pre class="overflow-auto shadow-md"><code>let nameValue = thisIsMyObject['name'];
-    console.log(nameValue);</code></pre>
+console.log(nameValue);</code></pre>
     <p># Output: "John"</p>
     
     <p>Try printing the "age" value in the code editor below:</p>
     <pre class="overflow-auto shadow-md"><code>let ageValue = thisIsMyObject['age'];
-    console.log(ageValue);</code></pre>
+console.log(ageValue);</code></pre>
     <p># Output: 22</p>
     
     <p>Now we'll look over a more intricate object, that's a bit larger and complex.</p>
@@ -7545,15 +7855,15 @@ class TransactionComp(ARC4Contract):
     
     <p>We see something in this object that we haven't seen before, an array as the value to a key. Let's try accessing the 1st index of John's likes using a mix of key notation and index notation!</p>
     <pre class="overflow-auto shadow-md"><code>let likes = thisIsMyObject['likes'];
-    console.log(likes);</code></pre>
+console.log(likes);</code></pre>
     <p># Output:# ["Exercise", "Cooking", "Coding"]</p>
     
     <pre class="overflow-auto shadow-md"><code>let likesFirstIndex = likes[1];
-    console.log(likesFirstIndex);</code></pre>
+console.log(likesFirstIndex);</code></pre>
     <p># Output:# "Cooking"</p>
     
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -7581,8 +7891,7 @@ class TransactionComp(ARC4Contract):
           <h3>Question 3</h3>
           <p>What will be the output of the following code?</p>
            <pre class="overflow-auto shadow-md"><code>let thisIsMyObject = {name: "John", age: 22};
-  console.log(thisIsMyObject['age']);
-</code></pre>
+console.log(thisIsMyObject['age']);</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) "John"</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -7595,9 +7904,8 @@ class TransactionComp(ARC4Contract):
           <h3>Question 4</h3>
           <p>What will be the output of the following code?</p>
            <pre class="overflow-auto shadow-md"><code>let thisIsMyObject = {name: "John", age: 22, likes: ["Exercise", "Cooking", "Coding"]};
-  let likesFirstIndex = thisIsMyObject['likes'][1];
-  console.log(likesFirstIndex);
-</code></pre>
+let likesFirstIndex = thisIsMyObject['likes'][1];
+console.log(likesFirstIndex);</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="incorrect">a) "Exercise"</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -7639,34 +7947,34 @@ class TransactionComp(ARC4Contract):
     
     <p>Now let's get the status of the Algod client:</p>
     <pre class="overflow-auto shadow-md"><code>const algodToken = 'Your algod API token';
-    const algodServer = 'http://YourAlgodServerAddress';
-    const algodPort = 'YourAlgodServerPort';
-    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
-    algodClient.status().do()
-        .then(status => {
-            console.log(status);
-        })
-        .catch(err => {
-            console.error(err);
-        });</code></pre>
+const algodServer = 'http://YourAlgodServerAddress';
+const algodPort = 'YourAlgodServerPort';
+const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
+algodClient.status().do()
+    .then(status => {
+        console.log(status);
+    })
+    .catch(err => {
+        console.error(err);
+    });</code></pre>
     
     <p>We use the <code>status()</code> method to get the status of the Algod client. This method returns a promise, so we use <code>.then()</code> to handle the successful response and <code>.catch()</code> to handle any errors.</p>
     
     <p>Next, we generate a random number using the random module. In JavaScript, we use <code>Math.random()</code> to generate random numbers.</p>
     <pre class="overflow-auto shadow-md"><code>const random_number = Math.floor(Math.random() * 101);
-    console.log(random_number);</code></pre>
+console.log(random_number);</code></pre>
     
     <p>To decide on whether or not you want to import a specific file, function, or method, you would need to use your intuition! For example, you may only need a specific function from a module.</p>
     <pre class="overflow-auto shadow-md"><code>const { Algodv2 } = require('algosdk');
-    const algodToken = 'Your algod API token';
-    const algodServer = 'http://YourAlgodServerAddress';
-    const algodPort = 'YourAlgodServerPort';
-    const algodClient = new Algodv2(algodToken, algodServer, algodPort);</code></pre>
+const algodToken = 'Your algod API token';
+const algodServer = 'http://YourAlgodServerAddress';
+const algodPort = 'YourAlgodServerPort';
+const algodClient = new Algodv2(algodToken, algodServer, algodPort);</code></pre>
     
     <p>Now you can use <code>algodClient</code> for your transactions or other operations</p>
     
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -7744,8 +8052,8 @@ class TransactionComp(ARC4Contract):
     <p>Now that we have access to an Algorand testnet node, as well as a basic understanding of how to work with different kinds of variables, functions and imports. It's time to get started! This will reaffirm your ability to use functions, methods, and imports— as well as key notation: eg; accessing the name of a customer in a variable named my_dictionary:</p>
     
     <pre class="overflow-auto shadow-md"><code>const myDictionary = {'customer-name': 'Jerry'};
-    const customerName = myDictionary['customer-name'];
-    console.log(customerName);</code></pre>
+const customerName = myDictionary['customer-name'];
+console.log(customerName);</code></pre>
     
     <p>If you are using your own Algorand testnet node on Windows, you will need to access your algod_token and algod_port from your node's data directory:</p>
     <ol class=inText>
@@ -7760,36 +8068,36 @@ class TransactionComp(ARC4Contract):
     <pre><code>127.0.0.1:8080</code></pre>
     <p>When programming, you will format this information for variables like so:</p>
     <pre class="overflow-auto shadow-md"><code>const algodToken = 'b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd';
-    const algodServer = 'http:127.0.0.1';
-    const algodPort = 8080;</code></pre>
+const algodServer = 'http:127.0.0.1';
+const algodPort = 8080;</code></pre>
     <p>If you are not using your own Algorand testnet node, you can use these:</p>
     <p>(Free service does not require token, and the algodToken variable will be an empty string '', whereas the algodServer will be the algonode testnet cloud link)</p>
     <pre class="overflow-auto shadow-md"><code>const algodToken = ''; 
-    const algodServer = 'https://testnet-api.algonode.cloud'; 
-    const algodPort = 443;</code></pre>
+const algodServer = 'https://testnet-api.algonode.cloud'; 
+const algodPort = 443;</code></pre>
     
     <p>Note: If you are attempting to run this code outside of the browser in your own IDE, remember to use npm init -y to create a package.json, and add "type": "module" anywhere in your package. Then make sure you install the algorand sdk by using 'npm install algosdk'. Afterwards, you can run the code in your terminal by using node nameOfYourFile.js.</p>
     <p>If you get an error along the likes of 'node is not a function', this means you haven't installed node.js, you can install it here:</p>
     
     <pre class="overflow-auto shadow-md"><code>// Import algosdk
-    import algosdk from 'algosdk';
-    
-    // Initialize AlgodClient
-    const algodToken = ''; // Leave '' for public node service, or enter your node token
-    const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port
-    const algodPort = 443;
-    
-    // Create an instance of the algod client
-    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
-    
-    // Fetch the node status and print it
-    algodClient.status().do()
-        .then(status => {
-            console.log('Node status:', status);
-        })
-        .catch(err => {
-            console.error('Failed to get node status:', err);
-        });</code></pre>
+import algosdk from 'algosdk';
+
+// Initialize AlgodClient
+const algodToken = ''; // Leave '' for public node service, or enter your node token
+const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port
+const algodPort = 443;
+
+// Create an instance of the algod client
+const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
+
+// Fetch the node status and print it
+algodClient.status().do()
+    .then(status => {
+        console.log('Node status:', status);
+    })
+    .catch(err => {
+        console.error('Failed to get node status:', err);
+    });</code></pre>
     
     <p>First, we import the algosdk library, which includes the AlgodClient necessary for interacting with the Algorand network.</p>
     <p>Next, we define variables for our token, server URL, and port number for the node we'll be using. These are set up to handle connections to the Algorand testnet via a public service, but can be adjusted if you are running your own node.</p>
@@ -7831,30 +8139,30 @@ class TransactionComp(ARC4Contract):
     </ul>
     
     <pre class="overflow-auto shadow-md"><code>// Import algosdk
-    import algosdk from 'algosdk';
-    
-    // Initialize AlgodClient
-    const algodToken = ''; // Leave '' for public node service, or enter your node token
-    const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port
-    const algodPort = 443;
-    
-    // Create an instance of the algod client
-    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
-    
-    // Fetch the node status and print it
-    algodClient.status().do()
-        .then(status => {
-            // Create a variable, and name it lastRound
-            const lastRound = status['last-round'];
-            // Print your variable
-            console.log('Last round:', lastRound);
-        })
-        .catch(err => {
-            console.error('Failed to get node status:', err);
-        });</code></pre>
+import algosdk from 'algosdk';
+
+// Initialize AlgodClient
+const algodToken = ''; // Leave '' for public node service, or enter your node token
+const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port
+const algodPort = 443;
+
+// Create an instance of the algod client
+const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
+
+// Fetch the node status and print it
+algodClient.status().do()
+    .then(status => {
+        // Create a variable, and name it lastRound
+        const lastRound = status['last-round'];
+        // Print your variable
+        console.log('Last round:', lastRound);
+    })
+    .catch(err => {
+        console.error('Failed to get node status:', err);
+    });</code></pre>
     
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -7893,16 +8201,15 @@ class TransactionComp(ARC4Contract):
           <h3>Question 4</h3>
           <p>How do you access the value of the 'last-round' key from the Algorand node status object?</p>
            <pre class="overflow-auto shadow-md"><code>algodClient.status().do()
-  .then(status => {
-      // Create a variable, and name it lastRound
-      const lastRound = status['last-round'];
-      // Print your variable
-      console.log('Last round:', lastRound);
-  })
-  .catch(err => {
-      console.error('Failed to get node status:', err);
-  });
-</code></pre>
+.then(status => {
+    // Create a variable, and name it lastRound
+    const lastRound = status['last-round'];
+    // Print your variable
+    console.log('Last round:', lastRound);
+})
+.catch(err => {
+    console.error('Failed to get node status:', err);
+});</code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) const lastRound = status['last-round'];</label><br>
           <input type="radio" id="q4b" name="q4" value="b">
@@ -8173,7 +8480,7 @@ class TransactionComp(ARC4Contract):
     <p>DISCLAIMER: When rekeying and closing out accounts, this process is irreversible! If you don't know the person, or feel unsure about doing so, you should never use these transactions outside of testing purposes without ultimate confidence. No platforms currently utilize rekey transactions for users, but do use them internally when generating smart contracts for contract-to-contract calls, which will come later in our learning process.</p>
     
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -8256,43 +8563,41 @@ class TransactionComp(ARC4Contract):
     
     <p>Here are some more variable examples:</p>
     <pre class="overflow-auto shadow-md"><code>var (
-        itemCost        int     = 1     // The cost of an item, which will be 1 dollar
-        supplyRemaining int64   = 2500000000 // The number of items in inventory that are remaining
-        nameCTO         string  = "John Woods" // Name of a CTO
-        valueOfAQuarter float64 = 0.25  // The value of a quarter in dollars
-    )
-</code></pre>
+    itemCost        int     = 1     // The cost of an item, which will be 1 dollar
+    supplyRemaining int64   = 2500000000 // The number of items in inventory that are remaining
+    nameCTO         string  = "John Woods" // Name of a CTO
+    valueOfAQuarter float64 = 0.25  // The value of a quarter in dollars
+)</code></pre>
     
     <p>There are several arithmetic operators available in Go, and they are as follows:</p>
     <pre class="overflow-auto shadow-md"><code>a := 10
-    b := 3
-    addition := a + b
-    subtraction := a - b
-    multiplication := a * b
-    division := myFloat / float64(b)
-    floorDivision := a / b
-    modulus := a % b
-    exponentiation := math.Pow(float64(a), float64(b))
-</code></pre>
+b := 3
+addition := a + b
+subtraction := a - b
+multiplication := a * b
+division := myFloat / float64(b)
+floorDivision := a / b
+modulus := a % b
+exponentiation := math.Pow(float64(a), float64(b))</code></pre>
     
     <p>Similar to integers and floats, you can also use arithmetic operators on strings:</p>
     <pre class="overflow-auto shadow-md"><code>result := myText + " World!"
-    fmt.Println("Concatenated String:", result)
-    repeatedString := strings.Repeat(myText, 3)
-    fmt.Println("Repeated String:", repeatedString)</code></pre>
+fmt.Println("Concatenated String:", result)
+repeatedString := strings.Repeat(myText, 3)
+fmt.Println("Repeated String:", repeatedString)</code></pre>
     
     <p>We won't dive into Lists, Dictionaries, or Tuples just yet, but I would like to mention, and this is something you'll see in practice later— that lists and dictionaries are mutable, whereas tuples are immutable.
     When you hear mutable, think "can be changed", where mutable means it can be changed and immutable means it cannot be changed.</p>
     
     <p>Example:</p>
     <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
-    print(my_tuple[0])
-    my_tuple[0] = 2
-    print(my_tuple)
-    # ERROR
-    #    my_tuple[0] = 2
-    #    ~~~~~~~~^^^
-    # TypeError: 'tuple' object does not support item assignment
+print(my_tuple[0])
+my_tuple[0] = 2
+print(my_tuple)
+# ERROR
+#    my_tuple[0] = 2
+#    ~~~~~~~~^^^
+# TypeError: 'tuple' object does not support item assignment
 </code></pre>
     
     <p>A more advanced concept to start early with, but another thing we will review later:</p>
@@ -8319,7 +8624,7 @@ class TransactionComp(ARC4Contract):
     </ul>
     <em>*Note: Exception for various ARC types like ARC19 and ARC69 that use the reserve address and/or note field to point to metadata*</em>
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -8347,10 +8652,9 @@ class TransactionComp(ARC4Contract):
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
            <pre class="overflow-auto shadow-md"><code>a := 10
-  b := 3
-  addition := a + b
-  fmt.Println(addition)
-</code></pre>
+b := 3
+addition := a + b
+fmt.Println(addition)</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 13</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
@@ -8440,58 +8744,58 @@ class TransactionComp(ARC4Contract):
     
     <p>Let's start with a simple function that prints a greeting message:</p>
     <pre class="overflow-auto shadow-md"><code>func greet() {
-        fmt.Println("Hello, world!");
-    }
-    func main() {
-        greet();
-        // Output: "Hello, world!"</p>
-    
-    <p>Functions can also accept parameters, which allow us to pass values into the function for processing. Here's an example:</p>
-    <pre class="overflow-auto shadow-md">func greetWithName(name string) {
-        fmt.Printf("Hello, %s!\n", name);
-    }
-    greetWithName("Alice"); // Output: "Hello, Alice!"
-    greetWithName("Bob");   // Output: "Hello, Bob!"</code></pre>
+    fmt.Println("Hello, world!");
+}
+func main() {
+    greet();
+// Output: "Hello, world!"</code></pre>
+
+<p>Functions can also accept parameters, which allow us to pass values into the function for processing. Here's an example:</p>
+<pre class="overflow-auto shadow-md">func greetWithName(name string) {
+    fmt.Printf("Hello, %s!\n", name);
+}
+greetWithName("Alice"); // Output: "Hello, Alice!"
+greetWithName("Bob");   // Output: "Hello, Bob!"</code></pre>
     
     <p>Functions can return values using the <code>return</code> statement. This allows us to capture the result of a function and use it in our code. Here's an example:</p>
     <pre class="overflow-auto shadow-md"><code>func add(a, b int) int {
-        return a + b;
-    }
-    let result = add(3, 5);
-    fmt.Println(result); // Output: 8</code></pre>
+    return a + b;
+}
+let result = add(3, 5);
+fmt.Println(result); // Output: 8</code></pre>
     
     <p>Functions can have default parameter values, which are used if no argument is provided when the function is called. Here's an example:</p>
     <pre class="overflow-auto shadow-md"><code>func greetWithDefaultName(name string) {
-        if name == "" {
-            name = "world";
-        }
-        fmt.Printf("Hello, %s!\n", name);
+    if name == "" {
+        name = "world";
     }
-    greetWithDefaultName("");  // Output: Hello, world!
-    greetWithDefaultName("Alice");  // Output: Hello, Alice!</code></pre>
+    fmt.Printf("Hello, %s!\n", name);
+}
+greetWithDefaultName("");  // Output: Hello, world!
+greetWithDefaultName("Alice");  // Output: Hello, Alice!</code></pre>
     
     <p>We can also define functions that accept a variable number of arguments using the <code>...</code> syntax. Here's an example:</p>
     <pre class="overflow-auto shadow-md"><code>func addMultiple(nums ...int) int {
-        sum := 0;
-        for _, num := range nums {
-            sum += num;
-        }
-        return sum;
+    sum := 0;
+    for _, num := range nums {
+        sum += num;
     }
-    fmt.Println(addMultiple(1, 2, 3)); // Output: 6
-    fmt.Println(addMultiple(4, 5, 6, 7)); // Output: 22</code></pre>
+    return sum;
+}
+fmt.Println(addMultiple(1, 2, 3)); // Output: 6
+fmt.Println(addMultiple(4, 5, 6, 7)); // Output: 22</code></pre>
     
     <p>The <code>...</code> syntax allows us to accept a variable number of arguments. Here's an example using a map for keyword arguments:</p>
     <pre class="overflow-auto shadow-md"><code>func printInfo(info map[string]interface{}) {
-        for key, value := range info {
-            fmt.Printf("%s: %v\n", key, value);
-        }
+    for key, value := range info {
+        fmt.Printf("%s: %v\n", key, value);
     }
-    printInfo(map[string]interface{}{"name": "Alice", "age": 30, "city": "New York"});</p>
-    
-    <p>Functions are a fundamental part of Go programming, enabling us to create modular, reusable, and maintainable code. As we progress, we'll explore more advanced concepts and techniques related to functions.</p>
-  
-      <hr><form>
+}
+printInfo(map[string]interface{}{"name": "Alice", "age": 30, "city": "New York"});</code></pre>
+
+<p>Functions are a fundamental part of Go programming, enabling us to create modular, reusable, and maintainable code. As we progress, we'll explore more advanced concepts and techniques related to functions.</p>
+
+  <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -8567,26 +8871,26 @@ class TransactionComp(ARC4Contract):
     
     <p>Or perhaps a slice of addresses:</p>
     <pre class="overflow-auto shadow-md"><code>var addresses = [
-        "WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU",
-        "7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY",
-        "HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA"];</code></pre>
+"WWYUMYPM2Y5NIIZTF4O5N73A4ZTZQWXS6TNP23U37LQ6WWF543SRTGKWUU",
+"7IWZ342UGNQ2JVS2E6EGFD4MPUNL4ZIWDYNFZIANR6U7WZXORCRQCCN3YY",
+"HZ57J3K46JIJXILONBBZOHX6BKPXEM2VVXNRFSUED6DKFD5ZD24PMJ3MVA"];</code></pre>
     
     <p>Although slices don't have to be organized in any way and are not descriptive, they can be manipulated. For example, if you wanted to remove duplicate entries in a slice, you could use a map to achieve this.</p>
     <pre class="overflow-auto shadow-md"><code>func removeDuplicates(elements []int) []int {
-        encountered := map[int]bool{};
-        result := []int{};
-        for v := range elements {
-            if encountered[elements[v]] != true {
-                encountered[elements[v]] = true;
-                result = append(result, elements[v]);
-            }
+    encountered := map[int]bool{};
+    result := []int{};
+    for v := range elements {
+        if encountered[elements[v]] != true {
+            encountered[elements[v]] = true;
+            result = append(result, elements[v]);
         }
-        return result;
     }
-    mySlice := []int{1, 1, 2, 3, 4, 4};
-    mySliceWithoutDuplicates := removeDuplicates(mySlice);
-    fmt.Println(mySliceWithoutDuplicates);
-    # Output: [1, 2, 3, 4]</code></pre>
+    return result;
+}
+mySlice := []int{1, 1, 2, 3, 4, 4};
+mySliceWithoutDuplicates := removeDuplicates(mySlice);
+fmt.Println(mySliceWithoutDuplicates);
+# Output: [1, 2, 3, 4]</code></pre>
     
     <p>Let's look back at the first example of a slice:</p>
     <pre class="overflow-auto shadow-md"><code>mySlice = []interface{}{7, "Hello", false, 63.5}</p>
@@ -8598,13 +8902,13 @@ class TransactionComp(ARC4Contract):
     
     <p>To interact with the slice, we must first assign it to a variable:</p>
     <pre class="overflow-auto shadow-md">mySlice2 := []interface{}{7, "Hello", false, 63.5};
-    fmt.Println(mySlice2);</p>
-    <p># Output: [7, "Hello", false, 63.5]</p>
+fmt.Println(mySlice2);</p>
+# Output: [7, "Hello", false, 63.5]</code></pre>
     
     <p>... and now let's log the item at index 1 (the second item since the first item is always 0) using index notation:</p>
     <pre class="overflow-auto shadow-md">let firstIndexMySlice = mySlice2[1];
-    console.log(firstIndexMySlice);</code></pre>
-    <p># Output: "Hello"</p>
+console.log(firstIndexMySlice);
+# Output: "Hello"</code></pre>
     
     <p>Try logging the third index into the console using index notation. I've already defined the slice for you below. Click run when you're ready to run the code! The output should be 63.5.</p>
     
@@ -8615,7 +8919,7 @@ class TransactionComp(ARC4Contract):
     # Output: 63.5</p>
     <p>Next chapter: Structs</p>
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -8643,7 +8947,7 @@ class TransactionComp(ARC4Contract):
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
            <pre class="overflow-auto shadow-md"><code>mySlice := []interface{}{7, "Hello", false, 63.5}
-  fmt.Println(mySlice[1])
+fmt.Println(mySlice[1])
 </code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) 7</label><br>
@@ -8657,19 +8961,19 @@ class TransactionComp(ARC4Contract):
           <h3>Question 4</h3>
           <p>How do you remove duplicate entries from a slice in Go?</p>
            <pre class="overflow-auto shadow-md"><code>func removeDuplicates(elements []int) []int {
-      encountered := map[int]bool{}
-      result := []int{}
-      for v := range elements {
-          if !encountered[elements[v]] {
-              encountered[elements[v]] = true
-              result = append(result, elements[v])
-          }
-      }
-      return result
-  }
-  mySlice := []int{1, 1, 2, 3, 4, 4}
-  mySliceWithoutDuplicates := removeDuplicates(mySlice)
-  fmt.Println(mySliceWithoutDuplicates)
+    encountered := map[int]bool{}
+    result := []int{}
+    for v := range elements {
+        if !encountered[elements[v]] {
+            encountered[elements[v]] = true
+            result = append(result, elements[v])
+        }
+    }
+    return result
+}
+mySlice := []int{1, 1, 2, 3, 4, 4}
+mySliceWithoutDuplicates := removeDuplicates(mySlice)
+fmt.Println(mySliceWithoutDuplicates)
 </code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) Using a map to track encountered elements</label><br>
@@ -8694,10 +8998,10 @@ class TransactionComp(ARC4Contract):
     
     <p>Here's a simple example of a struct:</p>
     <pre class="overflow-auto shadow-md"><code>type Person struct {
-        Name string
-        Age  int
-    }
-    thisIsMyStruct := Person{Name: "John", Age: 22}</code></pre>
+    Name string
+    Age  int
+}
+thisIsMyStruct := Person{Name: "John", Age: 22}</code></pre>
     
     <p>In slices, we used a process called indexing, and the index notation format to access values, e.g.; mySlice[3]. With structs, we use a similar process called field access, and the field notation format to access values.</p>
     
@@ -8705,36 +9009,36 @@ class TransactionComp(ARC4Contract):
     
     <p>For example, in thisIsMyStruct above, you'll see the value "John" belongs to the field, "Name". As well as the value 22, belongs to the field, "Age". This is what field notation would look like for accessing a value for a specific field in a struct:</p>
     <pre class="overflow-auto shadow-md"><code>nameValue := thisIsMyStruct.Name
-    fmt.Println(nameValue)</code></pre>
+fmt.Println(nameValue)</code></pre>
     <p># Output: "John"</p>
     
     <p>Try printing the "Age" value in the code editor below:</p>
     <pre class="overflow-auto shadow-md"><code>ageValue := thisIsMyStruct.Age
-    fmt.Println(ageValue)</code></pre>
+fmt.Println(ageValue)</code></pre>
     <p># Output: 22</p>
     
     <p>Now we'll look over a more intricate struct, that's a bit larger and complex.</p>
     <pre class="overflow-auto shadow-md"><code>type PersonWithLikes struct {
-        Name  string
-        Age   int
-        Likes []string
-    }
-    thisIsMyStructWithLikes := PersonWithLikes{
-        Name:  "John",
-        Age:   22,
-        Likes: []string{"Exercise", "Cooking", "Coding"},
-    }</code></pre>
+    Name  string
+    Age   int
+    Likes []string
+}
+thisIsMyStructWithLikes := PersonWithLikes{
+    Name:  "John",
+    Age:   22,
+    Likes: []string{"Exercise", "Cooking", "Coding"},
+}</code></pre>
     
     <p>We see something in this struct that we haven't seen before, a slice as the value to a field. Let's try accessing the 1st index of John's likes using a mix of field notation and index notation!</p>
     <pre class="overflow-auto shadow-md"><code>likes := thisIsMyStructWithLikes.Likes
-    fmt.Println(likes)</code></pre>
+fmt.Println(likes)</code></pre>
     <p># Output:# ["Exercise", "Cooking", "Coding"]</p>
     
     <pre class="overflow-auto shadow-md"><code>likesFirstIndex := likes[1]
-    fmt.Println(likesFirstIndex)</code></pre>
+fmt.Println(likesFirstIndex)</code></pre>
     <p># Output:# "Cooking"</p>
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -8762,9 +9066,9 @@ class TransactionComp(ARC4Contract):
           <h3>Question 3</h3>
           <p>What will be the result of the following code?</p>
            <pre class="overflow-auto shadow-md"><code>type Person struct {
-      Name string
-      Age  int
-  }
+    Name string
+    Age  int
+}
   thisIsMyStruct := Person{Name: "John", Age: 22}
   fmt.Println(thisIsMyStruct.Name)
 </code></pre>
@@ -8780,16 +9084,16 @@ class TransactionComp(ARC4Contract):
           <h3>Question 4</h3>
           <p>How do you access the first element of the "Likes" slice in the following struct?</p>
            <pre class="overflow-auto shadow-md"><code>type PersonWithLikes struct {
-      Name  string
-      Age   int
-      Likes []string
-  }
-  thisIsMyStructWithLikes := PersonWithLikes{
-      Name: "John",
-      Age:  22,
-      Likes: []string{"Exercise", "Cooking", "Coding"},
-  }
-  fmt.Println(thisIsMyStructWithLikes.Likes[0])
+    Name  string
+    Age   int
+    Likes []string
+}
+thisIsMyStructWithLikes := PersonWithLikes{
+    Name: "John",
+    Age:  22,
+    Likes: []string{"Exercise", "Cooking", "Coding"},
+}
+fmt.Println(thisIsMyStructWithLikes.Likes[0])
 </code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) "Exercise"</label><br>
@@ -8815,32 +9119,32 @@ class TransactionComp(ARC4Contract):
     <p>The package imports are from the Go Algorand SDK library and the standard library.</p>
     
     <p>Now let's get the status of the Algod client:</p>
-    <pre class="overflow-auto shadow-md"><code>import (
-        "fmt"
-        "log"
-        "math/rand"
-        "strings"
-        "time"
-        "github.com/algorand/go-algorand-sdk/client/v2/algod"
-        "github.com/algorand/go-algorand-sdk/client/v2/common"
-    )
-    func main() {
-        var algodAddress = "http://localhost:4001";
-        var algodToken = strings.Repeat("a", 64);
-        algodClient, err := algod.MakeClient(algodAddress, algodToken);
-        if err != nil {
-            log.Fatalf("failed to make algod client: %v", err);
-        }
-        status, err := algodClient.Status().Do();
-        if err != nil {
-            log.Fatalf("failed to get status: %v", err);
-        }
-        fmt.Printf("Status: %+v\n", status);
-        rand.Seed(time.Now().UnixNano());
-        randomNumber := rand.Intn(101);
-        fmt.Println(randomNumber);
-    }</code></pre>
-    
+<pre class="overflow-auto shadow-md"><code>import (
+    "fmt"
+    "log"
+    "math/rand"
+    "strings"
+    "time"
+    "github.com/algorand/go-algorand-sdk/client/v2/algod"
+    "github.com/algorand/go-algorand-sdk/client/v2/common"
+)
+func main() {
+    var algodAddress = "http://localhost:4001";
+    var algodToken = strings.Repeat("a", 64);
+    algodClient, err := algod.MakeClient(algodAddress, algodToken);
+    if err != nil {
+        log.Fatalf("failed to make algod client: %v", err);
+    }
+    status, err := algodClient.Status().Do();
+    if err != nil {
+        log.Fatalf("failed to get status: %v", err);
+    }
+    fmt.Printf("Status: %+v\n", status);
+    rand.Seed(time.Now().UnixNano());
+    randomNumber := rand.Intn(101);
+    fmt.Println(randomNumber);
+}</code></pre>
+
     <p>The imports are:</p>
     <ul class=inText>
         <li>"fmt" for formatting and printing output.</li>
@@ -9048,7 +9352,7 @@ class TransactionComp(ARC4Contract):
     }</code>
     </pre>
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -9076,10 +9380,10 @@ class TransactionComp(ARC4Contract):
           <h3>Question 3</h3>
           <p>How do you fetch the status of an Algorand node in Go?</p>
            <pre class="overflow-auto shadow-md"><code>algodClient, err := algod.MakeClient(algodServer, algodToken)
-  if err != nil {
-      fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\n", err)
-      return
-  }
+if err != nil {
+    fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\n", err)
+    return
+}
 </code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="incorrect">a) status, err := algodClient.NodeStatus().Do(context.Background())</label><br>
@@ -9093,10 +9397,10 @@ class TransactionComp(ARC4Contract):
           <h3>Question 4</h3>
           <p>How do you access the last round from the status response in Go?</p>
            <pre class="overflow-auto shadow-md"><code>status, err := algodClient.Status().Do(context.Background())
-  if err != nil {
-      fmt.Fprintf(os.Stderr, "Failed to get node status: %s\n", err)
-      return
-  }
+if err != nil {
+    fmt.Fprintf(os.Stderr, "Failed to get node status: %s\n", err)
+    return
+}
 </code></pre>
           <input type="radio" id="q4a" name="q4" value="a">
           <label for="q4a" class="correct">a) lastRound := status.LastRound</label><br>
@@ -9418,7 +9722,7 @@ class TransactionComp(ARC4Contract):
     
     <p>DISCLAIMER: that when rekeying and closing out accounts, this process is irreversible! If you don't know the person, or feel unsure about doing so, you should never use these transactions outside of testing purposes without ultimate confidence. No platforms currently utilize rekey transactions for users, but do use them internally when generating smart contracts for contract to contract calls, which will come later in our learning process.</p>
   
-      <hr><form>
+      <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -9446,8 +9750,7 @@ class TransactionComp(ARC4Contract):
           <h3>Question 3</h3>
           <p>How do you convert an amount in Algos to microAlgos in the Algorand Go SDK?</p>
            <pre class="overflow-auto shadow-md"><code>amount := 1.001
-  microAlgos := uint64(amount * 1e6)
-</code></pre>
+microAlgos := uint64(amount * 1e6)</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="correct">a) uint64(amount * 1e6)</label><br>
           <input type="radio" id="q3b" name="q3" value="b">

@@ -140,7 +140,9 @@ export default function ChapterPage() {
             </CardContent>
             {output && (
               <CardFooter>
-                <pre className='bg-gray-100 p-4 rounded-md w-full overflow-x-auto'>{output}</pre>
+                <pre className='border bg-card text-card-foreground dark:bg-card-dark dark:text-card-foreground p-4 rounded-md w-full overflow-x-auto'>
+                  {output}
+                </pre>
               </CardFooter>
             )}
           </Card>

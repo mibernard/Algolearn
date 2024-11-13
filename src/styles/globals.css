@@ -37,7 +37,7 @@
   }
 
   .dark {
-    --background: 224 71% 4%;
+    --background: 224 71% 10%;
     --foreground: 213 31% 91%;
 
     --muted: 223 47% 11%;
@@ -52,7 +52,7 @@
     --border: 216 34% 17%;
     --input: 216 34% 17%;
 
-    --card: 224 71% 4%;
+    --card: 224 71% 10%;
     --card-foreground: 213 31% 91%;
 
     --primary: 210 40% 98%;
@@ -67,13 +67,11 @@
     --ring: 216 34% 17%;
 
     --radius: 0.5rem;
+
+    --code-background: 210, 50%, 12%;
+    --code-foreground: 213 31% 91%;
   }
-  .dark pre {
-    background-color: theme('colors.dark-navy');
-    color: #f8f8f2; /* Light text color for readability */
-    padding: 1rem;
-    border-radius: 0.375rem; /* Optional: add rounded corners */
-  }
+
   .prose :first-child {
     margin-top: 0;
   }
@@ -89,19 +87,77 @@
   }
 }
 
-input[type='radio']:checked + label.correct {
-  border-color: green;
-  border-width: 2px;
-  border-radius: .5rem;
+.quiz-form {
+  @apply mx-auto p-6 bg-card text-card-foreground rounded-lg;
 }
 
-input[type='radio']:checked + label.incorrect {
-  border-color: red;
-  border-width: 2px;
-  border-radius: .5rem;
+.quiz-form h1 {
+  @apply text-2xl font-bold mb-6 text-center;
 }
 
-label{
-  margin:2px;
-  padding:2px;
+.quiz-form h3 {
+  @apply text-lg font-semibold mt-6 mb-3;
+}
+
+.quiz-form p {
+  @apply text-base mb-3;
+}
+
+.quiz-form input[type='radio'] {
+  @apply hidden;
+}
+
+.quiz-form label {
+  @apply block p-3 bg-background border border-input rounded-md cursor-pointer transition-colors;
+}
+
+.quiz-form label:hover {
+  @apply bg-accent;
+}
+
+.quiz-form input[type='radio']:checked + label {
+  @apply bg-secondary border-primary;
+}
+
+.quiz-form input[type='radio']:checked + label.correct {
+  @apply bg-green-100 border-green-500 text-green-800;
+}
+
+.dark .quiz-form input[type='radio']:checked + label.correct {
+  @apply bg-green-900 border-green-500 text-green-100;
+}
+
+.quiz-form input[type='radio']:checked + label.incorrect {
+  @apply bg-red-100 border-red-500 text-red-800;
+}
+
+.dark .quiz-form input[type='radio']:checked + label.incorrect {
+  @apply bg-red-900 border-red-500 text-red-100;
+}
+
+.quiz-form pre {
+  @apply border border-border rounded-md p-4 overflow-x-auto text-sm leading-relaxed mb-4;
+}
+
+.quiz-form code {
+  @apply font-mono;
+}
+
+@media (max-width: 768px) {
+  .quiz-form {
+    @apply p-4;
+  }
+
+  .quiz-form h1 {
+    @apply text-xl;
+  }
+
+  .quiz-form h3 {
+    @apply text-base;
+  }
+
+  .quiz-form p,
+  .quiz-form label {
+    @apply text-sm;
+  }
 }
