@@ -1,37 +1,42 @@
-import { exec } from 'child_process';
-import path from 'path';
-import fs from 'fs';
-import { v4 as uuidv4 } from 'uuid';
+import { loadPyodide, PyodideInterface } from 'pyodide';
+
+let pyodideInstance: PyodideInterface | null = null;
 
 export async function executePython(code: string): Promise<string> {
-  // Format the directory path to be Unix-compatible
-  const tmpDirPath = path.join(process.cwd(), 'tmp').replace(/\\/g, '/');
-  if (!fs.existsSync(tmpDirPath)) {
-    fs.mkdirSync(tmpDirPath, { recursive: true });
+  // Load Pyodide if not already loaded
+  if (!pyodideInstance) {
+    console.log('Loading Pyodide...');
+    pyodideInstance = await loadPyodide();
+    console.log('Pyodide loaded successfully.');
   }
 
-  return new Promise((resolve, reject) => {
-    const id = uuidv4();
-    const filename = `user_code_${id}.py`;
-    const filepath = path.join(tmpDirPath, filename).replace(/\\/g, '/');
+  try {
+    // Redirect Python's stdout to capture `print` output
+    pyodideInstance.runPython(`
+import sys
+from io import StringIO
 
-    fs.writeFile(filepath, code, (err) => {
-      if (err) return reject(new Error('Failed to write code file.'));
+sys.stdout = StringIO()
+sys.stderr = StringIO()
+    `);
 
-      // Docker command to execute Python inside a container
-      const dockerCommand = `docker run --rm -v "${tmpDirPath}:/usr/src/app" -w /usr/src/app python:3.9 python ${filename}`;
+    // Execute user code
+    pyodideInstance.runPython(code);
 
-      // Log the command for debugging
-      console.log(`Executing Docker command: ${dockerCommand}`);
+    // Capture stdout and stderr
+    const stdout = pyodideInstance.runPython('sys.stdout.getvalue()');
+    const stderr = pyodideInstance.runPython('sys.stderr.getvalue()');
 
-      exec(dockerCommand, { timeout: 5000 }, (error, stdout, stderr) => {
-        fs.unlink(filepath, () => {}); // Clean up file
-        if (error) {
-          console.error('Error executing Docker command:', stderr || error.message);
-          return reject(new Error(stderr || error.message));
-        }
-        resolve(stdout);
-      });
-    });
-  });
+    if (stderr) {
+      console.error('Python stderr:', stderr);
+      return `Error: ${stderr}`;
+    }
+
+    return stdout || ''; // Return stdout or an empty string if no output
+  } catch (error: unknown) {
+    // Handle any errors during execution
+    const message = error instanceof Error ? error.message : 'An unknown error occurred';
+    console.error('Execution error:', message);
+    return `Error: ${message}`;
+  }
 }

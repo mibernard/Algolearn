@@ -12,6 +12,7 @@ type Data = {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   console.log('Request body:', req.body); // Log the request body
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
@@ -20,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const { code, language } = req.body;
 
   if (!code || !language) {
+    console.error('Missing code or language:', { code, language });
     return res.status(400).json({ error: 'Code and language are required.' });
   }
 
@@ -37,22 +39,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         output = await executeGo(code);
         break;
       default:
+        console.error('Unsupported language:', language);
         return res.status(400).json({ error: 'Unsupported language.' });
     }
 
+    console.log('Execution output:', output); // Log the execution output
     return res.status(200).json({ output });
-  } catch (error: unknown) {
-    // Log the error for internal debugging (ensure sensitive info isn't exposed)
-    if (error instanceof Error) {
-      console.error(`Code execution error: ${error.message}`);
-
-      // Return a sanitized error message to the user
-      return res.status(400).json({ error: error.message });
-    } else {
-      console.error('Code execution error: Unknown error');
-
-      // Return a generic error message if the error is not an instance of Error
-      return res.status(400).json({ error: 'An unknown error occurred.' });
+  } catch (error: any) {
+    // Log the error details for debugging
+    console.error('Unhandled error:', error);
+    if (error.response) {
+      console.error('Judge0 API Error Response:', error.response.data);
     }
+    return res.status(500).json({ error: error.message || 'Internal Server Error' });
   }
 }

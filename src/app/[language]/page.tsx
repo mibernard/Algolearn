@@ -50,7 +50,9 @@ export default function LanguageTableOfContents() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription>{getExcerpt(chapter.content)}</CardDescription>
+                <CardDescription className='overflow-hidden text-ellipsis'>
+                  {getExcerpt(chapter.content)}
+                </CardDescription>
               </CardContent>
               {/* <div className='absolute bottom-4 right-4'>
                 <ChevronRight className='h-6 w-6 text-muted-foreground' />

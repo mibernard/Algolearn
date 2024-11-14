@@ -8681,58 +8681,28 @@ fmt.Println(addition)</code></pre>
     initialCode: `package main
 
 import (
-    "fmt"
-    "math"
-    "strings"
-)
-
-var (
-    myNumber     int     = 1000
-    myText       string  = "Hello!"
-    myFloat      float64 = 7.5
-    myBool1      bool    = true
-    myBool2      bool    = false
-    myList       []interface{} = []interface{}{"Example", 42, true}
-    myDictionary map[string]interface{} = map[string]interface{}{"key": "value"}
-    itemCost     int     = 1
-    supplyRemaining int64 = 2500000000
-    nameCTO      string  = "John Woods"
-    valueOfAQuarter float64 = 0.25
+	"fmt"
+	"math"
 )
 
 func main() {
-    myNumber := 1
-    myNumberPlusOne := myNumber + 1
-    fmt.Println("My number plus one:", myNumberPlusOne)
+	// Variables
+	name := "Alice"
+	age := 25
+	height := 5.6
+	isStudent := true
 
-    a := 10
-    b := 3
+	fmt.Println("Name:", name, "Age:", age, "Height:", height, "Is Student:", isStudent)
 
-    addition := a + b
-    subtraction := a - b
-    multiplication := a * b
-    division := myFloat / float64(b)
-    floorDivision := a / b
-    modulus := a % b
-    exponentiation := math.Pow(float64(a), float64(b))
+	// Arithmetic
+	a, b := 10, 3
+	fmt.Println("Sum:", a+b, "Product:", a*b, "Power:", math.Pow(float64(a), float64(b)))
 
-    fmt.Println("Addition:", addition)
-    fmt.Println("Subtraction:", subtraction)
-    fmt.Println("Multiplication:", multiplication)
-    fmt.Println("Division:", division)
-    fmt.Println("Floor Division:", floorDivision)
-    fmt.Println("Modulus:", modulus)
-    fmt.Println("Exponentiation:", exponentiation)
-
-    result := myText + " World!"
-    fmt.Println("Concatenated String:", result)
-
-    repeatedString := strings.Repeat(myText, 3)
-    fmt.Println("Repeated String:", repeatedString)
-
-    fmt.Println("List Example:", myList)
-    fmt.Println("Dictionary Example:", myDictionary)
-}`,
+	// Strings
+	greeting := "Hello"
+	fmt.Println(greeting + ", " + name + "!")
+}
+`,
   },
   {
     id: 12,
@@ -8852,7 +8822,26 @@ printInfo(map[string]interface{}{"name": "Alice", "age": 30, "city": "New York"}
           
       </form>
     `,
-    initialCode: ``,
+    initialCode: `package main
+
+import "fmt"
+
+// Simple function
+func greet(name string) {
+    fmt.Printf("Hello, %s!\n", name)
+}
+
+// Function with return value
+func add(a, b int) int {
+    return a + b
+}
+
+func main() {
+    greet("Alice")          // Output: Hello, Alice!
+    result := add(3, 5)     // Adds 3 and 5
+    fmt.Println("Sum:", result) // Output: Sum: 8
+}
+`,
   },
   {
     id: 13,
@@ -8862,7 +8851,7 @@ printInfo(map[string]interface{}{"name": "Alice", "age": 30, "city": "New York"}
     <p>Before we go over structs, which are the most common data type when sending and receiving information between applications (back-end to front-end, front-end to back-end, or back-end to websites, etc.), and this is especially true when interacting with the Algorand blockchain, I think it's important to have an understanding of how slices work.</p>
     
     <p>Below is an example of a slice:</p>
-    <pre class="overflow-auto shadow-md"><code>var mySlice = []interface{}{7, "Hello", false, 63.5}</p>
+    <pre class="overflow-auto shadow-md"><code>var mySlice = []interface{}{7, "Hello", false, 63.5}</code></pre>
     
     <p>A slice can hold all types of data, and you can have all kinds of data in one slice. You use slices when you need exactly that, a list. Slices are also mutable, which means we can rearrange, extend, and replace items in a slice, meaning they're super flexible!</p>
     
@@ -8893,7 +8882,7 @@ fmt.Println(mySliceWithoutDuplicates);
 # Output: [1, 2, 3, 4]</code></pre>
     
     <p>Let's look back at the first example of a slice:</p>
-    <pre class="overflow-auto shadow-md"><code>mySlice = []interface{}{7, "Hello", false, 63.5}</p>
+    <pre class="overflow-auto shadow-md"><code>mySlice = []interface{}{7, "Hello", false, 63.5}</code></pre>
     
     <p>In the slice above we have an integer at the first spot, 7; a string in the second spot, "Hello"; a boolean (true or false value) in the third spot; a float (decimal value), in the fourth spot.
     I refer to the places these items are in the slice as "spots", but the correct term is actually "indexes". We referenced them as the first, second, third, and fourth spot— however, in programming slices are zero-indexed. This means that we always start from zero, and use an integer to refer to their position in the slice. This feels strange, but it is something you should have ingrained into your mind, as this is universal across all programming when indexing for positions in a slice.</p>
@@ -8901,8 +8890,8 @@ fmt.Println(mySliceWithoutDuplicates);
     <p>The correct reference to the positions would be Index 0 for 7, Index 1 for "Hello", Index 2 for false, and Index 3 for 63.5. But, how would we see this utilized in a programming scenario?</p>
     
     <p>To interact with the slice, we must first assign it to a variable:</p>
-    <pre class="overflow-auto shadow-md">mySlice2 := []interface{}{7, "Hello", false, 63.5};
-fmt.Println(mySlice2);</p>
+    <pre class="overflow-auto shadow-md"><code>mySlice2 := []interface{}{7, "Hello", false, 63.5};
+fmt.Println(mySlice2);
 # Output: [7, "Hello", false, 63.5]</code></pre>
     
     <p>... and now let's log the item at index 1 (the second item since the first item is always 0) using index notation:</p>
@@ -8912,12 +8901,10 @@ console.log(firstIndexMySlice);
     
     <p>Try logging the third index into the console using index notation. I've already defined the slice for you below. Click run when you're ready to run the code! The output should be 63.5.</p>
     
-    <p>IDE WINDOW:
-    mySlice3 := []interface{}{7, "Hello", false, 63.5};
-    thirdIndexMySlice := mySlice3[3];
-    fmt.Println(thirdIndexMySlice);
-    # Output: 63.5</p>
-    <p>Next chapter: Structs</p>
+    <pre><code>mySlice3 := []interface{}{7, "Hello", false, 63.5};
+thirdIndexMySlice := mySlice3[3];
+fmt.Println(thirdIndexMySlice);
+# Output: 63.5</code></pre>
   
       <hr><form class="quiz-form">
     <h1>Quiz</h1>
@@ -8987,7 +8974,22 @@ fmt.Println(mySliceWithoutDuplicates)
           
       </form>
     `,
-    initialCode: ``,
+    initialCode: `package main
+
+import "fmt"
+
+func main() {
+    // Define a slice
+    mySlice := []interface{}{7, "Hello", false, 63.5}
+
+    // Print the entire slice
+    fmt.Println("Slice:", mySlice)
+
+    // Access and print specific elements by index
+    fmt.Println("Index 1:", mySlice[1]) // Output: "Hello"
+    fmt.Println("Index 3:", mySlice[3]) // Output: 63.5
+}
+`,
   },
   {
     id: 14,
@@ -9009,13 +9011,13 @@ thisIsMyStruct := Person{Name: "John", Age: 22}</code></pre>
     
     <p>For example, in thisIsMyStruct above, you'll see the value "John" belongs to the field, "Name". As well as the value 22, belongs to the field, "Age". This is what field notation would look like for accessing a value for a specific field in a struct:</p>
     <pre class="overflow-auto shadow-md"><code>nameValue := thisIsMyStruct.Name
-fmt.Println(nameValue)</code></pre>
-    <p># Output: "John"</p>
+fmt.Println(nameValue)
+# Output: "John"</code></pre>
     
     <p>Try printing the "Age" value in the code editor below:</p>
     <pre class="overflow-auto shadow-md"><code>ageValue := thisIsMyStruct.Age
-fmt.Println(ageValue)</code></pre>
-    <p># Output: 22</p>
+fmt.Println(ageValue)
+# Output: 22</code></pre>
     
     <p>Now we'll look over a more intricate struct, that's a bit larger and complex.</p>
     <pre class="overflow-auto shadow-md"><code>type PersonWithLikes struct {
@@ -9031,12 +9033,12 @@ thisIsMyStructWithLikes := PersonWithLikes{
     
     <p>We see something in this struct that we haven't seen before, a slice as the value to a field. Let's try accessing the 1st index of John's likes using a mix of field notation and index notation!</p>
     <pre class="overflow-auto shadow-md"><code>likes := thisIsMyStructWithLikes.Likes
-fmt.Println(likes)</code></pre>
-    <p># Output:# ["Exercise", "Cooking", "Coding"]</p>
+fmt.Println(likes)
+# Output: ["Exercise", "Cooking", "Coding"]</code></pre>
     
     <pre class="overflow-auto shadow-md"><code>likesFirstIndex := likes[1]
-fmt.Println(likesFirstIndex)</code></pre>
-    <p># Output:# "Cooking"</p>
+fmt.Println(likesFirstIndex)
+# Output: "Cooking"</code></pre>
   
       <hr><form class="quiz-form">
     <h1>Quiz</h1>
@@ -9107,7 +9109,25 @@ fmt.Println(thisIsMyStructWithLikes.Likes[0])
           
       </form>
     `,
-    initialCode: ``,
+    initialCode: `package main
+
+import "fmt"
+
+// Define a struct
+type Person struct {
+    Name string
+    Age  int
+}
+
+func main() {
+    // Create a struct instance
+    thisIsMyStruct := Person{Name: "John", Age: 22}
+
+    // Access and print struct fields
+    fmt.Println("Name:", thisIsMyStruct.Name) // Output: John
+    fmt.Println("Age:", thisIsMyStruct.Age)   // Output: 22
+}
+`,
   },
   {
     id: 15,
@@ -9165,29 +9185,49 @@ func main() {
     
     <p>We use the rand.Seed(time.Now().UnixNano()) to seed the random number generator with the current time. This ensures that we get different random numbers each time the program runs.</p>
     `,
-    initialCode: ``,
+    initialCode: `package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    // Seed the random number generator
+    rand.Seed(time.Now().UnixNano())
+
+    // Generate and print a random number between 0 and 100
+    randomNumber := rand.Intn(101)
+    fmt.Println("Random Number:", randomNumber)
+}
+`,
   },
   {
     id: 18,
     language: 'GO',
     title: 'Getting Started with Algorand',
     content: `
-    <pre class="overflow-auto shadow-md">
-    <code>// Guide for setting up your own node
-    /*
-    To set up your own node, visit this GitHub repository for a previous tutorial series:
-    <a href="https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/tree/main/Episode%201%20-%20Algorand%20Node%2C%20Python%2C%20Visual%20Studio%20Code%2C%20Ubuntu%2C%20and%20Module%20Installations">https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/tree/main/Episode%201%20-%20Algorand%20Node%2C%20Python%2C%20Visual%20Studio%20Code%2C%20Ubuntu%2C%20and%20Module%20Installations</a>
-    Scroll down to the section called "Algorand Node Installation" — and make sure to run these commands in an Ubuntu LTS Shell (Download link in bottom resources section)
-    If you chose to run a node, that's wonderful! If not, I will be including sections for those programming without a node.
-    */
+
+    <p>To set up your own node, visit this GitHub repository for a previous tutorial series: 
+    <a href="https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/tree/main/Episode%201%20-%20Algorand%20Node%2C%20Python%2C%20Visual%20Studio%20Code%2C%20Ubuntu%2C%20and%20Module%20Installations">https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/</a>
+    </p>
+    <p>Scroll down to the section called "Algorand Node Installation" — and make sure to run these commands in an Ubuntu LTS Shell (Download link in bottom resources section)
+    If you chose to run a node, that's wonderful! If not, I will be including sections for those programming without a node.</p>
     
-    /*
-    If you are trying to run this code natively on your computer, and not in this browser:
+    <p>If you are trying to run this code natively on your computer, and not in this browser:
+
     Make sure you have GO installed: 
     <a href="https://go.dev/dl/">https://go.dev/dl/</a>
+    </p>
+
+    
+    
+    
     
     Initialize your project by using the following command in the terminal:
-    'go mod init algolearn'
+
+    <pre class="overflow-auto shadow-md"><code>'go mod init algolearn'</code></pre>
     
     Ensure that the name of the file ends with '.go', and that you've installed the go algorand SDK afterwards using the following command in the IDE terminal:
     
@@ -9195,39 +9235,36 @@ func main() {
     
     You can copy and paste the code below into your yourFileName.go file, and use 'go run yourFileName.go' in the terminal to run it!
     */
-    
-    package main
-    
-    import (
-        "context"
-        "fmt"
-        "os"
-    
-        "github.com/algorand/go-algorand-sdk/client/v2/algod"
-    )
-    
-    func main() {
-        // Variables for Algorand testnet node access
-        algodToken := "" // Leave empty for public node service, or enter your node token
-        algodServer := "https://testnet-api.algonode.cloud"
-    
-        // Create an algod client
-        algodClient, err := algod.MakeClient(algodServer, algodToken)
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
-            return
-        }
-    
-        // Fetch the node status and print it
-        status, err := algodClient.Status().Do(context.Background())
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
-            return
-        }
-    
-        fmt.Printf("Node status: %+v\\n", status)
-    }</code>
-    </pre>
+   <pre class="overflow-auto shadow-md"><code>package main
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "github.com/algorand/go-algorand-sdk/client/v2/algod"
+)
+
+func main() {
+    // Variables for Algorand testnet node access
+    algodToken := "" // Leave empty for public node service, or enter your node token
+    algodServer := "https://testnet-api.algonode.cloud"
+
+    // Create an algod client
+    algodClient, err := algod.MakeClient(algodServer, algodToken)
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
+        return
+    }
+
+    // Fetch the node status and print it
+    status, err := algodClient.Status().Do(context.Background())
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
+        return
+    }
+
+    fmt.Printf("Node status: %+v\\n", status)
+}</code></pre>
     
     <p>First, we import the necessary Go packages, including <code>context</code> for API call management, <code>fmt</code> for formatted output, and <code>os</code> for system-level operations. We also import <code>algod</code> from the Algorand SDK, which allows us to interact with the Algorand blockchain.</p>
     
@@ -9279,78 +9316,74 @@ func main() {
       <li>Print your variable!</li>
     </ul>
     
-    <pre class="overflow-auto shadow-md">
-    <code>package main
-    
-    import (
-        "context"
-        "fmt"
-        "os"
-    
-        "github.com/algorand/go-algorand-sdk/client/v2/algod"
-    )
-    
-    func main() {
-        // Variables for Algorand testnet node access
-        algodToken := "" // Leave empty for public node service, or enter your node token
-        algodServer := "https://testnet-api.algonode.cloud"
-    
-        // Create an algod client
-        algodClient, err := algod.MakeClient(algodServer, algodToken)
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
-            return
-        }
-    
-        // Fetch the node status and print it
-        status, err := algodClient.Status().Do(context.Background())
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
-            return
-        }
-    
-        // CREATE LAST ROUND VARIABLE AND PRINT THE LAST ROUND HERE
-    
-    }</code>
-    </pre>
+    <pre class="overflow-auto shadow-md"><code>package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "github.com/algorand/go-algorand-sdk/client/v2/algod"
+)
+
+func main() {
+    // Variables for Algorand testnet node access
+    algodToken := "" // Leave empty for public node service, or enter your node token
+    algodServer := "https://testnet-api.algonode.cloud"
+
+    // Create an algod client
+    algodClient, err := algod.MakeClient(algodServer, algodToken)
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
+        return
+    }
+
+    // Fetch the node status and print it
+    status, err := algodClient.Status().Do(context.Background())
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
+        return
+    }
+
+    // CREATE LAST ROUND VARIABLE AND PRINT THE LAST ROUND HERE
+
+}</code></pre>
     
     <p><strong>Reveal Answer:</strong></p>
     
     <pre class="overflow-auto shadow-md">
-    <code>package main
-    
-    import (
-        "context"
-        "fmt"
-        "os"
-    
-        "github.com/algorand/go-algorand-sdk/client/v2/algod"
-    )
-    
-    func main() {
-        // Variables for Algorand testnet node access
-        algodToken := "" // Leave empty for public node service, or enter your node token
-        algodServer := "https://testnet-api.algonode.cloud"
-    
-        // Create an algod client
-        algodClient, err := algod.MakeClient(algodServer, algodToken)
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
-            return
-        }
-    
-        // Fetch the node status and print it
-        status, err := algodClient.Status().Do(context.Background())
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
-            return
-        }
-    
-        // Access last round status information
-        lastRound := status.LastRound
-        fmt.Printf("Last round: %d\\n", lastRound)
-    }</code>
-    </pre>
+<code>package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "github.com/algorand/go-algorand-sdk/client/v2/algod"
+)
+
+func main() {
+    // Variables for Algorand testnet node access
+    algodToken := "" // Leave empty for public node service, or enter your node token
+    algodServer := "https://testnet-api.algonode.cloud"
+
+    // Create an algod client
+    algodClient, err := algod.MakeClient(algodServer, algodToken)
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
+        return
+    }
+
+    // Fetch the node status and print it
+    status, err := algodClient.Status().Do(context.Background())
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
+        return
+    }
+
+    // Access last round status information
+    lastRound := status.LastRound
+    fmt.Printf("Last round: %d\\n", lastRound)
+}</code></pre>
   
       <hr><form class="quiz-form">
     <h1>Quiz</h1>
@@ -9414,39 +9447,37 @@ if err != nil {
           
       </form>
     `,
-    initialCode: `
-package main
+    initialCode: `package main
 
 import (
-    "context"
-    "fmt"
-    "os"
+	"context"
+	"fmt"
+	"os"
 
-    "github.com/algorand/go-algorand-sdk/client/v2/algod"
+	"github.com/algorand/go-algorand-sdk/client/v2/algod"
 )
 
 func main() {
-    // Variables for Algorand testnet node access
-    algodToken := "" // Leave empty for public node service, or enter your node token
-    algodServer := "https://testnet-api.algonode.cloud"
+	// Algorand testnet node information
+	algodToken := "" // Public node access
+	algodServer := "https://testnet-api.algonode.cloud"
 
-    // Create an algod client
-    algodClient, err := algod.MakeClient(algodServer, algodToken)
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\n", err)
-        return
-    }
+	// Create an algod client
+	algodClient, err := algod.MakeClient(algodServer, algodToken)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to create algod client: %s\n", err)
+		return
+	}
 
-    // Fetch the node status and print it
-    status, err := algodClient.Status().Do(context.Background())
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Failed to get node status: %s\n", err)
-        return
-    }
+	// Fetch and print node status
+	status, err := algodClient.Status().Do(context.Background())
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to fetch node status: %s\n", err)
+		return
+	}
 
-    // Access last round status information
-    lastRound := status.LastRound
-    fmt.Printf("Last round: %d\n", lastRound)
+	// Access and print the last round
+	fmt.Printf("Last round: %d\n", status.LastRound)
 }
     `,
   },
@@ -9455,40 +9486,38 @@ func main() {
     language: 'GO',
     title: 'Payment Transactions',
     content: `
-    <pre class="overflow-auto shadow-md">
-    <code>package main
-    
-    import (
-        "fmt"
-        "github.com/algorand/go-algorand-sdk/crypto"
-        "github.com/algorand/go-algorand-sdk/mnemonic"
-    )
-    
-    func main() {
-        // METHOD 1: Create a New Account
-        newAccount := crypto.GenerateAccount()
-        fmt.Printf("Private Key: %s\\n", newAccount.PrivateKey)
-        fmt.Printf("Address: %s\\n", newAccount.Address.String())
-    
-        // Convert Private Key to Mnemonic
-        mnemo, err := mnemonic.FromPrivateKey(newAccount.PrivateKey)
-        if err != nil {
-            fmt.Printf("Error converting private key to mnemonic: %s\\n", err)
-            return
-        }
-        fmt.Println("Mnemonic:", mnemo)
-    
-        // METHOD 2: Use Mnemonic to Obtain Private Key
-        // Assuming mnemonicPhrase is obtained securely and already exists
-        mnemonicPhrase := "brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual"
-        privKey, err := mnemonic.ToPrivateKey(mnemonicPhrase)
-        if err != nil {
-            fmt.Printf("Error retrieving private key from mnemonic: %s\\n", err)
-            return
-        }
-        fmt.Printf("Private Key from Mnemonic: %s\\n", privKey)
-    }</code>
-    </pre>
+    <pre class="overflow-auto shadow-md"><code>package main
+
+import (
+    "fmt"
+    "github.com/algorand/go-algorand-sdk/crypto"
+    "github.com/algorand/go-algorand-sdk/mnemonic"
+)
+
+func main() {
+    // METHOD 1: Create a New Account
+    newAccount := crypto.GenerateAccount()
+    fmt.Printf("Private Key: %s\\n", newAccount.PrivateKey)
+    fmt.Printf("Address: %s\\n", newAccount.Address.String())
+
+    // Convert Private Key to Mnemonic
+    mnemo, err := mnemonic.FromPrivateKey(newAccount.PrivateKey)
+    if err != nil {
+        fmt.Printf("Error converting private key to mnemonic: %s\\n", err)
+        return
+    }
+    fmt.Println("Mnemonic:", mnemo)
+
+    // METHOD 2: Use Mnemonic to Obtain Private Key
+    // Assuming mnemonicPhrase is obtained securely and already exists
+    mnemonicPhrase := "brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual"
+    privKey, err := mnemonic.ToPrivateKey(mnemonicPhrase)
+    if err != nil {
+        fmt.Printf("Error retrieving private key from mnemonic: %s\\n", err)
+        return
+    }
+    fmt.Printf("Private Key from Mnemonic: %s\\n", privKey)
+}</code></pre>
     
     <p>When developing in Go with the Algorand SDK, there are two primary methods for obtaining a private key and address which are necessary for signing transactions. The private key is typically managed in byte slice format and is essential for the creation and signing of transactions.</p>
     
@@ -9508,79 +9537,79 @@ func main() {
     <p>This text should provide a clear, non-code explanation of the key processes involved in using the Algorand Go SDK for creating and managing accounts, as well as performing transactions.</p>
     
     <pre class="overflow-auto shadow-md">
-    <code>package main
-    
-    import (
-        "context"
-        "fmt"
-        "github.com/algorand/go-algorand-sdk/client/algod"
-        "github.com/algorand/go-algorand-sdk/crypto"
-        "github.com/algorand/go-algorand-sdk/future"
-        "github.com/algorand/go-algorand-sdk/types"
-    )
-    
-    func main() {
-        // Define the Algod client
-        algodToken := ""
-        algodAddress := "https://testnet-api.algonode.cloud"
-        headers := []*algod.Header{{Key: "X-API-Key", Value: algodToken}}
-        algodClient, err := algod.MakeClientWithHeaders(algodAddress, algodToken, headers)
-        if err != nil {
-            fmt.Printf("Failed to make algod client: %s\\n", err)
-            return
-        }
-    
-        // Existing account details
-        address := "I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU"
-        privateKey := "6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=="
-    
-        // Convert 1.001 Algo to microAlgos for transaction amount
-        amount := uint64(1.001 * 1e6) // Algos are expressed in microAlgos in the SDK
-    
-        // Fetch the suggested transaction parameters
-        txParams, err := algodClient.SuggestedParams().Do(context.Background())
-        if err != nil {
-            fmt.Printf("Error getting suggested tx params: %s\\n", err)
-            return
-        }
-    
-        // Generate a new account
-        newAccount := crypto.GenerateAccount()
-        newAccountAddress := newAccount.Address.String()
-        newAccountPrivateKey := newAccount.PrivateKey
-    
-        // Create a payment transaction
-        note := []byte("Here's your one Algo!")
-        tx, err := future.MakePaymentTxn(address, newAccountAddress, amount, note, "", txParams)
-        if err != nil {
-            fmt.Printf("Failed to make transaction: %s\\n", err)
-            return
-        }
-    
-        // Sign the transaction
-        signTx, err := crypto.SignTransaction(privateKey, tx)
-        if err != nil {
-            fmt.Printf("Failed to sign transaction: %s\\n", err)
-            return
-        }
-    
-        // Send the transaction
-        sendResponse, err := algodClient.SendRawTransaction(signTx).Do(context.Background())
-        if err != nil {
-            fmt.Printf("Failed to send transaction: %s\\n", err)
-            return
-        }
-    
-        // Wait for confirmation
-        confirmedTxn, err := future.WaitForConfirmation(algodClient, sendResponse.TxID, 4, context.Background())
-        if err != nil {
-            fmt.Printf("Error waiting for confirmation: %s\\n", err)
-            return
-        }
-    
-        // Print the transaction ID
-        fmt.Printf("Transaction confirmed with ID: %s\\n", confirmedTxn.Txn.Txn.ID)
-    }</code>
+<code>package main
+
+import (
+    "context"
+    "fmt"
+    "github.com/algorand/go-algorand-sdk/client/algod"
+    "github.com/algorand/go-algorand-sdk/crypto"
+    "github.com/algorand/go-algorand-sdk/future"
+    "github.com/algorand/go-algorand-sdk/types"
+)
+
+func main() {
+    // Define the Algod client
+    algodToken := ""
+    algodAddress := "https://testnet-api.algonode.cloud"
+    headers := []*algod.Header{{Key: "X-API-Key", Value: algodToken}}
+    algodClient, err := algod.MakeClientWithHeaders(algodAddress, algodToken, headers)
+    if err != nil {
+        fmt.Printf("Failed to make algod client: %s\\n", err)
+        return
+    }
+
+    // Existing account details
+    address := "I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU"
+    privateKey := "6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=="
+
+    // Convert 1.001 Algo to microAlgos for transaction amount
+    amount := uint64(1.001 * 1e6) // Algos are expressed in microAlgos in the SDK
+
+    // Fetch the suggested transaction parameters
+    txParams, err := algodClient.SuggestedParams().Do(context.Background())
+    if err != nil {
+        fmt.Printf("Error getting suggested tx params: %s\\n", err)
+        return
+    }
+
+    // Generate a new account
+    newAccount := crypto.GenerateAccount()
+    newAccountAddress := newAccount.Address.String()
+    newAccountPrivateKey := newAccount.PrivateKey
+
+    // Create a payment transaction
+    note := []byte("Here's your one Algo!")
+    tx, err := future.MakePaymentTxn(address, newAccountAddress, amount, note, "", txParams)
+    if err != nil {
+        fmt.Printf("Failed to make transaction: %s\\n", err)
+        return
+    }
+
+    // Sign the transaction
+    signTx, err := crypto.SignTransaction(privateKey, tx)
+    if err != nil {
+        fmt.Printf("Failed to sign transaction: %s\\n", err)
+        return
+    }
+
+    // Send the transaction
+    sendResponse, err := algodClient.SendRawTransaction(signTx).Do(context.Background())
+    if err != nil {
+        fmt.Printf("Failed to send transaction: %s\\n", err)
+        return
+    }
+
+    // Wait for confirmation
+    confirmedTxn, err := future.WaitForConfirmation(algodClient, sendResponse.TxID, 4, context.Background())
+    if err != nil {
+        fmt.Printf("Error waiting for confirmation: %s\\n", err)
+        return
+    }
+
+    // Print the transaction ID
+    fmt.Printf("Transaction confirmed with ID: %s\\n", confirmedTxn.Txn.Txn.ID)
+}</code>
     </pre>
     
     <p>Steps:</p>
@@ -9615,107 +9644,105 @@ func main() {
         <li>closing your account (send all of your remaining Algo to them)</li>
     </ul>
     
-    <pre class="overflow-auto shadow-md">
-    <code>PaymentTransaction format:
-    
-    class PaymentTxn(
-        sender: str,
-        sp: SuggestedParams,
-        receiver: Any,
-        amt: Any,
-        close_remainder_to: Any | None = None,
-        note: Any | None = None,
-        lease: Any | None = None,
-        rekey_to: Any | None = None
-    )
-    Represents a payment transaction.
-    
-    Args:
-        sender (str): address of the sender
-        sp (SuggestedParams): suggested params from algod
-        receiver (str): address of the receiver
-        amt (int): amount in microAlgos to be sent
-        close_remainder_to (str, optional): if nonempty, account will be closed and remaining algos will be sent to this address
-        note (bytes, optional): arbitrary optional bytes
-        lease (byte[32], optional): specifies a lease, and no other transaction with the same sender and lease can be confirmed in this transaction's valid rounds
-        rekey_to (str, optional): additionally rekey the sender to this address
-    
-    After we define our <code>Payment Transaction</code> class parameters, we can then use the <code>sign()</code> method that is included within it. This sign function accepts our private key, and outputs a signed transaction object, which is needed to input to the <code>send_transaction()</code> function:
-    
-    (method) def sign(private_key: Any) -> SignedTransaction
-    Sign the transaction with a private key.
-    
-    Args:
-        private_key (str): the private key of the signing account
-    
-    Returns:
-        SignedTransaction: signed transaction with the signature
-    
-    The <code>wait_for_confirmation()</code> function requires the <code>AlgodClient</code> class variable we created, as well as the transaction ID to wait for:
-    
-    (function) def wait_for_confirmation(
-        algod_client: AlgodClient,
-        txid: str,
-    )
-    
-    Lastly, the <code>send_transaction()</code> function, which accepts signed transaction objects
-    
-    (method) def send_transaction(
-        txn: GenericSignedTransaction,
-    ) -> Outputs transaction ID</code>
-    </pre>
+    <pre class="overflow-auto shadow-md"><code>PaymentTransaction format:
+
+class PaymentTxn(
+    sender: str,
+    sp: SuggestedParams,
+    receiver: Any,
+    amt: Any,
+    close_remainder_to: Any | None = None,
+    note: Any | None = None,
+    lease: Any | None = None,
+    rekey_to: Any | None = None
+)
+#Represents a payment transaction.
+
+Args:
+    sender (str): address of the sender
+    sp (SuggestedParams): suggested params from algod
+    receiver (str): address of the receiver
+    amt (int): amount in microAlgos to be sent
+    close_remainder_to (str, optional): if nonempty, account will be closed and remaining algos will be sent to this address
+    note (bytes, optional): arbitrary optional bytes
+    lease (byte[32], optional): specifies a lease, and no other transaction with the same sender and lease can be confirmed in this transaction's valid rounds
+    rekey_to (str, optional): additionally rekey the sender to this address
+
+After we define our <code>Payment Transaction</code> class parameters, we can then use the <code>sign()</code> method that is included within it. This sign function accepts our private key, and outputs a signed transaction object, which is needed to input to the <code>send_transaction()</code> function:
+
+(method) def sign(private_key: Any) -> SignedTransaction
+Sign the transaction with a private key.
+
+Args:
+    private_key (str): the private key of the signing account
+
+Returns:
+    SignedTransaction: signed transaction with the signature</code></pre>
+
+The <code>wait_for_confirmation()</code> function requires the <code>AlgodClient</code> class variable we created, as well as the transaction ID to wait for:
+
+<pre class="overflow-auto shadow-md"><code>(function) def wait_for_confirmation(
+    algod_client: AlgodClient,
+    txid: str,
+)</code></pre>
+
+Lastly, the <code>send_transaction()</code> function, which accepts signed transaction objects
+
+<pre class="overflow-auto shadow-md"><code>(method) def send_transaction(
+    txn: GenericSignedTransaction,
+) -> Outputs transaction ID</code></pre>
     
     <p>Below are examples of rekey transactions and close amount to transactions, which are sent in succession (BUT NOT A GROUP TRANSACTION, WHICH WE WILL LEARN ABOUT LATER)</p>
     
     <pre class="overflow-auto shadow-md">
-    <code># Repeat the process for the Rekey Transaction and the close remainder to transaction
-    
-    // Rekey Transaction
-    rekey_to_new_account_payment = PaymentTxn(
-        sender = address,
-        receiver = new_account_address,
-        sp = params,
-        amt = 0,
-        rekey_to = new_account_address,
-        note = "Take care of my account for me! I'll be back in a week"
-    )
-    
-    signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)
-    transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)
-    wait_for_confirmation(algod_client, transaction_id)
-    print(transaction_id)
-    
-    // New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key
-    
-    rekey_back_to_old_account_from_new_account = PaymentTxn(
-        sender = address,
-        receiver = address,
-        sp = params,
-        rekey_to = address,
-        amt = 0,
-        note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"
-    )
-    
-    signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)
-    transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)
-    wait_for_confirmation(algod_client, transaction_id)
-    print(transaction_id)
-    
-    // Close remainder to transaction
-    
-    close_account_to_new_account = PaymentTxn(
-        sender = address,
-        receiver = new_account_address,
-        sp = params,
-        amt = 0,
-        close_remainder_to = new_account_address,
-        note = 'Take care of my precious Algo!'
-    )
-    
-    signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)
-    transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)
-    wait_for_confirmation(algod_client, transaction_id)
-    print(transaction_id)</code>
+<code># Repeat the process for the Rekey Transaction and the close remainder to transaction
+
+// Rekey Transaction
+rekey_to_new_account_payment = PaymentTxn(
+    sender = address,
+    receiver = new_account_address,
+    sp = params,
+    amt = 0,
+    rekey_to = new_account_address,
+    note = "Take care of my account for me! I'll be back in a week"
+)
+
+signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)
+transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)
+wait_for_confirmation(algod_client, transaction_id)
+print(transaction_id)
+
+// New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key
+
+rekey_back_to_old_account_from_new_account = PaymentTxn(
+    sender = address,
+    receiver = address,
+    sp = params,
+    rekey_to = address,
+    amt = 0,
+    note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"
+)
+
+signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)
+transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)
+wait_for_confirmation(algod_client, transaction_id)
+print(transaction_id)
+
+// Close remainder to transaction
+
+close_account_to_new_account = PaymentTxn(
+    sender = address,
+    receiver = new_account_address,
+    sp = params,
+    amt = 0,
+    close_remainder_to = new_account_address,
+    note = 'Take care of my precious Algo!'
+)
+
+signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)
+transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)
+wait_for_confirmation(algod_client, transaction_id)
+print(transaction_id)</code>
     </pre>
     
     <p>Although the <code>Payment Transaction</code> has many possible inputs, the bare minimum is using the sender, sp, receiver, and amt field. Anything else is at your discretion!</p>
@@ -9774,80 +9801,68 @@ microAlgos := uint64(amount * 1e6)</code></pre>
           
       </form>
     `,
-    initialCode: `
-package main
+    initialCode: `package main
 
 import (
-    "context"
-    "fmt"
-    "github.com/algorand/go-algorand-sdk/client/algod"
-    "github.com/algorand/go-algorand-sdk/crypto"
-    "github.com/algorand/go-algorand-sdk/future"
+	"context"
+	"fmt"
+	"github.com/algorand/go-algorand-sdk/client/v2/algod"
+	"github.com/algorand/go-algorand-sdk/crypto"
+	"github.com/algorand/go-algorand-sdk/future"
 )
 
 func main() {
-    // Define the Algod client
-    algodToken := ""
-    algodAddress := "https://testnet-api.algonode.cloud"
-    headers := []*algod.Header{{Key: "X-API-Key", Value: algodToken}}
-    algodClient, err := algod.MakeClientWithHeaders(algodAddress, algodToken, headers)
-    if err != nil {
-        fmt.Printf("Failed to make algod client: %s\n", err)
-        return
-    }
+	// Testnet algod client setup
+	algodToken := ""
+	algodServer := "https://testnet-api.algonode.cloud"
+	algodClient, err := algod.MakeClient(algodServer, algodToken)
+	if err != nil {
+		fmt.Printf("Failed to create algod client: %s\n", err)
+		return
+	}
 
-    // Existing account details
-    address := "I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU"
-    privateKey := "6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=="
+	// Sender account details
+	senderAddress := "YOUR_SENDER_ADDRESS"
+	privateKey := "YOUR_PRIVATE_KEY" // Private key of the sender
 
-    // Convert 1.001 Algo to microAlgos for transaction amount
-    amount := uint64(1.001 * 1e6) // Algos are expressed in microAlgos in the SDK
+	// Receiver account details
+	receiverAddress := "RECEIVER_ADDRESS"
 
-    // Fetch the suggested transaction parameters
-    txParams, err := algodClient.SuggestedParams().Do(context.Background())
-    if err != nil {
-        fmt.Printf("Error getting suggested tx params: %s\n", err)
-        return
-    }
+	// Transaction amount in microAlgos
+	amount := uint64(1000000) // 1 Algo = 1,000,000 microAlgos
 
-    // Generate a new account
-    newAccount := crypto.GenerateAccount()
-    newAccountAddress := newAccount.Address.String()
-    newAccountPrivateKey := newAccount.PrivateKey
+	// Get suggested transaction parameters
+	txParams, err := algodClient.SuggestedParams().Do(context.Background())
+	if err != nil {
+		fmt.Printf("Failed to get suggested transaction params: %s\n", err)
+		return
+	}
 
-    // Create a payment transaction
-    note := []byte("Here's your one Algo!")
-    tx, err := future.MakePaymentTxn(address, newAccountAddress, amount, note, "", txParams)
-    if err != nil {
-        fmt.Printf("Failed to make transaction: %s\n", err)
-        return
-    }
+	// Create a payment transaction
+	note := []byte("Test transaction")
+	tx, err := future.MakePaymentTxn(senderAddress, receiverAddress, amount, note, "", txParams)
+	if err != nil {
+		fmt.Printf("Failed to create payment transaction: %s\n", err)
+		return
+	}
 
-    // Sign the transaction
-    signTx, err := crypto.SignTransaction(privateKey, tx)
-    if err != nil {
-        fmt.Printf("Failed to sign transaction: %s\n", err)
-        return
-    }
+	// Sign the transaction
+	signedTx, err := crypto.SignTransaction(privateKey, tx)
+	if err != nil {
+		fmt.Printf("Failed to sign transaction: %s\n", err)
+		return
+	}
 
-    // Send the transaction
-    sendResponse, err := algodClient.SendRawTransaction(signTx).Do(context.Background())
-    if err != nil {
-        fmt.Printf("Failed to send transaction: %s\n", err)
-        return
-    }
+	// Send the transaction
+	sendResponse, err := algodClient.SendRawTransaction(signedTx).Do(context.Background())
+	if err != nil {
+		fmt.Printf("Failed to send transaction: %s\n", err)
+		return
+	}
 
-    // Wait for confirmation
-    confirmedTxn, err := future.WaitForConfirmation(algodClient, sendResponse.TxID, 4, context.Background())
-    if err != nil {
-        fmt.Printf("Error waiting for confirmation: %s\n", err)
-        return
-    }
-
-    // Print the transaction ID
-    fmt.Printf("Transaction confirmed with ID: %s\n", confirmedTxn.Txn.Txn.ID())
+	fmt.Printf("Transaction sent successfully! TxID: %s\n", sendResponse)
 }
-    
+
     `,
   },
 ];
