@@ -36,26 +36,37 @@ export default function ChapterPage() {
     }
   }, [chapter]);
 
-  const runCode = async () => {
+  interface CodeExecutionResponse {
+    output: string; // The output from the code execution
+    error?: string; // Optional error message
+  }
+
+  const runCode = async (code: string, language: string): Promise<string> => {
     try {
-      // Define the API response type
-      type CodeRunnerResponse = {
-        output?: string;
-        error?: string;
-      };
+      if (typeof code !== 'string' || typeof language !== 'string') {
+        throw new Error('Invalid input: code and language must be strings.');
+      }
 
-      // Make the API call with type annotation
-      const response = await axios.post<CodeRunnerResponse>('/api/code-runner', {
-        code,
-        language,
-      });
+      console.log('Executing code with payload:', { code, language });
 
-      // Safely access the response data
-      setOutput(response.data.output || 'No output available');
-    } catch (error) {
-      setOutput('Error running code');
-      console.error('Error executing code:', error);
+      const response = await axios.post<CodeExecutionResponse>('/api/code-runner', { code, language });
+      console.log('Response:', response.data);
+      setOutput(response.data.output);
+      return response.data.output;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Error message:', error.message);
+        throw new Error(error.message);
+      } else {
+        console.error('Unknown error:', error);
+        throw new Error('An unexpected error occurred.');
+      }
     }
+  };
+
+  const handleRunCode = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // Prevent default behavior
+    runCode(code, language); // Pass only the necessary arguments
   };
 
   const goToNextChapter = () => {
@@ -145,7 +156,7 @@ export default function ChapterPage() {
                 className='font-mono h-64 mb-4'
                 spellCheck='false'
               />
-              <Button onClick={runCode}>Run Code</Button>
+              <Button onClick={handleRunCode}>Run</Button>
             </CardContent>
             {output && (
               <CardFooter>
