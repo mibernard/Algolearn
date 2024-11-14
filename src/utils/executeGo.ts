@@ -59,13 +59,17 @@ export async function executeGo(code: string): Promise<string> {
     }
 
     throw new Error('Execution timed out.');
-  } catch (error: any) {
-    if (error.response) {
-      console.error('Judge0 API Error Response:', error.response.data);
-      throw new Error(`Execution failed: ${error.response.data.message}`);
-    } else {
-      console.error('Unexpected Error:', error.message);
-      throw new Error('Unexpected error occurred during execution.');
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      if ('response' in error && error.response) {
+        console.error('Judge0 API Error Response:', (error.response as any).data);
+        throw new Error(`Execution failed: ${(error.response as any).data.message}`);
+      } else {
+        console.error('Unexpected Error:', error.message);
+        throw new Error('Unexpected error occurred during execution.');
+      }
     }
+    console.error('Unexpected unknown error:', error);
+    throw new Error('An unknown error occurred.');
   }
 }

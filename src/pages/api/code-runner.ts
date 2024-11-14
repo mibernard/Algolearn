@@ -45,12 +45,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     console.log('Execution output:', output); // Log the execution output
     return res.status(200).json({ output });
-  } catch (error: any) {
-    // Log the error details for debugging
-    console.error('Unhandled error:', error);
-    if (error.response) {
-      console.error('Judge0 API Error Response:', error.response.data);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Unhandled error:', error);
+      if ('response' in error && error.response) {
+        console.error('Judge0 API Error Response:', (error.response as any).data);
+      }
+      return res.status(500).json({ error: error.message || 'Internal Server Error' });
     }
-    return res.status(500).json({ error: error.message || 'Internal Server Error' });
+    console.error('Unhandled unknown error:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
