@@ -7569,9 +7569,9 @@ console.log(myNumberPlusOne);
     
     `,
     initialCode: `let myArray = [1, 2]; 
-  console.log(myArray[0]);
-  myArray[0] = 2;
-  console.log(myArray);`,
+console.log(myArray[0]);
+myArray[0] = 2;
+console.log(myArray);`,
   },
 
   {
@@ -7697,10 +7697,10 @@ console.log(result);</code></pre>
     
     `,
     initialCode: `function add(a, b) {
-  return a + b;
-  }
-  let result = add(3, 5);
-  console.log(result); // Output: 8`,
+return a + b;
+}
+let result = add(3, 5);
+console.log(result); // Output: 8`,
   },
   {
     id: 8,
@@ -7816,14 +7816,14 @@ console.log(myArrayWithoutDuplicates);</code></pre>
     
     `,
     initialCode: `let myArray = [7, "Hello", false, 63.5];
-  
-  // Access and log the element at index 1
-  let firstIndexMyArray = myArray[1];
-  console.log(firstIndexMyArray);
-  
-  // Access and log the element at index 3
-  let thirdIndexMyArray = myArray[3];
-  console.log(thirdIndexMyArray);
+
+// Access and log the element at index 1
+let firstIndexMyArray = myArray[1];
+console.log(firstIndexMyArray);
+
+// Access and log the element at index 3
+let thirdIndexMyArray = myArray[3];
+console.log(thirdIndexMyArray);
   `,
   },
   {
@@ -7920,17 +7920,17 @@ console.log(likesFirstIndex);</code></pre>
     `,
     initialCode: `let thisIsMyObject = {name: "John", age: 22, likes: ["Exercise", "Cooking", "Coding"]};
   
-  // Access and log the "likes" array using key notation
-  let likes = thisIsMyObject['likes'];
-  console.log(likes);
-  
-  // Expected Output: ["Exercise", "Cooking", "Coding"]
-  
-  // Access and log the value at the 1st index of the "likes" array
-  let likesFirstIndex = likes[1];
-  console.log(likesFirstIndex);
-  
-  // Expected Output: "Cooking"
+// Access and log the "likes" array using key notation
+let likes = thisIsMyObject['likes'];
+console.log(likes);
+
+// Expected Output: ["Exercise", "Cooking", "Coding"]
+
+// Access and log the value at the 1st index of the "likes" array
+let likesFirstIndex = likes[1];
+console.log(likesFirstIndex);
+
+// Expected Output: "Cooking"
   `,
   },
   {
@@ -8026,18 +8026,18 @@ const algodClient = new Algodv2(algodToken, algodServer, algodPort);</code></pre
     
     `,
     initialCode: `// Import algosdk
-  const algosdk = require('algosdk');
-  
-  // Set up your API token, server, and port
-  const algodToken = '';
-  const algodServer = 'https://testnet-api.algonode.cloud';
-  const algodPort = '';
-  
-  // Initialize the Algodv2 client
-  const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
-  
-  // Log client instance to ensure it's initialized correctly
-  console.log(algodClient);
+const algosdk = require('algosdk');
+
+// Set up your API token, server, and port
+const algodToken = '';
+const algodServer = 'https://testnet-api.algonode.cloud';
+const algodPort = '';
+
+// Initialize the Algodv2 client
+const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
+
+// Log client instance to ensure it's initialized correctly
+console.log(algodClient);
   `,
   },
   {
@@ -8224,26 +8224,26 @@ algodClient.status().do()
     
     `,
     initialCode: `
-  const algosdk = require('algosdk');
-  
-  // Initialize AlgodClient
-  const algodToken = ''; // Leave '' for public node service, or enter your node token
-  const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port
-  const algodPort = 443;
-  
-  // Create an instance of the Algod client
-  const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
-  
-  // Fetch the node status and print it
-  algodClient.status().do()
-    .then(status => {
-      console.log('Node status:', status);
-    })
-    .catch(err => {
-      console.error('Failed to get node status:', err);
-    });
-  
-    `,
+const algosdk = require('algosdk');
+
+// Initialize AlgodClient
+const algodToken = ''; // Leave '' for public node service, or enter your node token
+const algodServer = 'https://testnet-api.algonode.cloud'; // Use this cloud link, or enter your own host & port
+const algodPort = 443;
+
+// Create an instance of the Algod client
+const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
+
+// Fetch the node status and print it
+algodClient.status().do()
+  .then(status => {
+    console.log('Node status:', status);
+  })
+  .catch(err => {
+    console.error('Failed to get node status:', err);
+  });
+
+  `,
   },
   {
     id: 17,
@@ -8532,16 +8532,16 @@ algodClient.status().do()
     
     `,
     initialCode: `const algosdk = require('algosdk');
-  
-  // Mnemonic phrase
-  const mnemonic = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual';
-  
-  // Recover account using the mnemonic
-  const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic);
-  console.log('Recovered Private Key:', Buffer.from(recoveredAccount.sk).toString('base64')); // Output Private Key
-  console.log('Recovered Address:', recoveredAccount.addr); // Output Address
-  
-    `,
+
+// Mnemonic phrase
+const mnemonic = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual';
+
+// Recover account using the mnemonic
+const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic);
+console.log('Recovered Private Key:', Buffer.from(recoveredAccount.sk).toString('base64')); // Output Private Key
+console.log('Recovered Address:', recoveredAccount.addr); // Output Address
+
+  `,
   },
 
   {
@@ -8679,60 +8679,60 @@ fmt.Println(addition)</code></pre>
       </form>
     `,
     initialCode: `package main
-    
-    import (
-        "fmt"
-        "math"
-        "strings"
-    )
-    
-    var (
-        myNumber     int     = 1000
-        myText       string  = "Hello!"
-        myFloat      float64 = 7.5
-        myBool1      bool    = true
-        myBool2      bool    = false
-        myList       []interface{} = []interface{}{"Example", 42, true}
-        myDictionary map[string]interface{} = map[string]interface{}{"key": "value"}
-        itemCost     int     = 1
-        supplyRemaining int64 = 2500000000
-        nameCTO      string  = "John Woods"
-        valueOfAQuarter float64 = 0.25
-    )
-    
-    func main() {
-        myNumber := 1
-        myNumberPlusOne := myNumber + 1
-        fmt.Println("My number plus one:", myNumberPlusOne)
-    
-        a := 10
-        b := 3
-    
-        addition := a + b
-        subtraction := a - b
-        multiplication := a * b
-        division := myFloat / float64(b)
-        floorDivision := a / b
-        modulus := a % b
-        exponentiation := math.Pow(float64(a), float64(b))
-    
-        fmt.Println("Addition:", addition)
-        fmt.Println("Subtraction:", subtraction)
-        fmt.Println("Multiplication:", multiplication)
-        fmt.Println("Division:", division)
-        fmt.Println("Floor Division:", floorDivision)
-        fmt.Println("Modulus:", modulus)
-        fmt.Println("Exponentiation:", exponentiation)
-    
-        result := myText + " World!"
-        fmt.Println("Concatenated String:", result)
-    
-        repeatedString := strings.Repeat(myText, 3)
-        fmt.Println("Repeated String:", repeatedString)
-    
-        fmt.Println("List Example:", myList)
-        fmt.Println("Dictionary Example:", myDictionary)
-    }`,
+
+import (
+    "fmt"
+    "math"
+    "strings"
+)
+
+var (
+    myNumber     int     = 1000
+    myText       string  = "Hello!"
+    myFloat      float64 = 7.5
+    myBool1      bool    = true
+    myBool2      bool    = false
+    myList       []interface{} = []interface{}{"Example", 42, true}
+    myDictionary map[string]interface{} = map[string]interface{}{"key": "value"}
+    itemCost     int     = 1
+    supplyRemaining int64 = 2500000000
+    nameCTO      string  = "John Woods"
+    valueOfAQuarter float64 = 0.25
+)
+
+func main() {
+    myNumber := 1
+    myNumberPlusOne := myNumber + 1
+    fmt.Println("My number plus one:", myNumberPlusOne)
+
+    a := 10
+    b := 3
+
+    addition := a + b
+    subtraction := a - b
+    multiplication := a * b
+    division := myFloat / float64(b)
+    floorDivision := a / b
+    modulus := a % b
+    exponentiation := math.Pow(float64(a), float64(b))
+
+    fmt.Println("Addition:", addition)
+    fmt.Println("Subtraction:", subtraction)
+    fmt.Println("Multiplication:", multiplication)
+    fmt.Println("Division:", division)
+    fmt.Println("Floor Division:", floorDivision)
+    fmt.Println("Modulus:", modulus)
+    fmt.Println("Exponentiation:", exponentiation)
+
+    result := myText + " World!"
+    fmt.Println("Concatenated String:", result)
+
+    repeatedString := strings.Repeat(myText, 3)
+    fmt.Println("Repeated String:", repeatedString)
+
+    fmt.Println("List Example:", myList)
+    fmt.Println("Dictionary Example:", myDictionary)
+}`,
   },
   {
     id: 12,
@@ -9415,39 +9415,39 @@ if err != nil {
       </form>
     `,
     initialCode: `
-    package main
-    
-    import (
-        "context"
-        "fmt"
-        "os"
-    
-        "github.com/algorand/go-algorand-sdk/client/v2/algod"
-    )
-    
-    func main() {
-        // Variables for Algorand testnet node access
-        algodToken := "" // Leave empty for public node service, or enter your node token
-        algodServer := "https://testnet-api.algonode.cloud"
-    
-        // Create an algod client
-        algodClient, err := algod.MakeClient(algodServer, algodToken)
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\n", err)
-            return
-        }
-    
-        // Fetch the node status and print it
-        status, err := algodClient.Status().Do(context.Background())
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Failed to get node status: %s\n", err)
-            return
-        }
-    
-        // Access last round status information
-        lastRound := status.LastRound
-        fmt.Printf("Last round: %d\n", lastRound)
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "github.com/algorand/go-algorand-sdk/client/v2/algod"
+)
+
+func main() {
+    // Variables for Algorand testnet node access
+    algodToken := "" // Leave empty for public node service, or enter your node token
+    algodServer := "https://testnet-api.algonode.cloud"
+
+    // Create an algod client
+    algodClient, err := algod.MakeClient(algodServer, algodToken)
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\n", err)
+        return
     }
+
+    // Fetch the node status and print it
+    status, err := algodClient.Status().Do(context.Background())
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Failed to get node status: %s\n", err)
+        return
+    }
+
+    // Access last round status information
+    lastRound := status.LastRound
+    fmt.Printf("Last round: %d\n", lastRound)
+}
     `,
   },
   {
@@ -9775,78 +9775,78 @@ microAlgos := uint64(amount * 1e6)</code></pre>
       </form>
     `,
     initialCode: `
-    package main
-    
-    import (
-        "context"
-        "fmt"
-        "github.com/algorand/go-algorand-sdk/client/algod"
-        "github.com/algorand/go-algorand-sdk/crypto"
-        "github.com/algorand/go-algorand-sdk/future"
-    )
-    
-    func main() {
-        // Define the Algod client
-        algodToken := ""
-        algodAddress := "https://testnet-api.algonode.cloud"
-        headers := []*algod.Header{{Key: "X-API-Key", Value: algodToken}}
-        algodClient, err := algod.MakeClientWithHeaders(algodAddress, algodToken, headers)
-        if err != nil {
-            fmt.Printf("Failed to make algod client: %s\n", err)
-            return
-        }
-    
-        // Existing account details
-        address := "I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU"
-        privateKey := "6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=="
-    
-        // Convert 1.001 Algo to microAlgos for transaction amount
-        amount := uint64(1.001 * 1e6) // Algos are expressed in microAlgos in the SDK
-    
-        // Fetch the suggested transaction parameters
-        txParams, err := algodClient.SuggestedParams().Do(context.Background())
-        if err != nil {
-            fmt.Printf("Error getting suggested tx params: %s\n", err)
-            return
-        }
-    
-        // Generate a new account
-        newAccount := crypto.GenerateAccount()
-        newAccountAddress := newAccount.Address.String()
-        newAccountPrivateKey := newAccount.PrivateKey
-    
-        // Create a payment transaction
-        note := []byte("Here's your one Algo!")
-        tx, err := future.MakePaymentTxn(address, newAccountAddress, amount, note, "", txParams)
-        if err != nil {
-            fmt.Printf("Failed to make transaction: %s\n", err)
-            return
-        }
-    
-        // Sign the transaction
-        signTx, err := crypto.SignTransaction(privateKey, tx)
-        if err != nil {
-            fmt.Printf("Failed to sign transaction: %s\n", err)
-            return
-        }
-    
-        // Send the transaction
-        sendResponse, err := algodClient.SendRawTransaction(signTx).Do(context.Background())
-        if err != nil {
-            fmt.Printf("Failed to send transaction: %s\n", err)
-            return
-        }
-    
-        // Wait for confirmation
-        confirmedTxn, err := future.WaitForConfirmation(algodClient, sendResponse.TxID, 4, context.Background())
-        if err != nil {
-            fmt.Printf("Error waiting for confirmation: %s\n", err)
-            return
-        }
-    
-        // Print the transaction ID
-        fmt.Printf("Transaction confirmed with ID: %s\n", confirmedTxn.Txn.Txn.ID())
+package main
+
+import (
+    "context"
+    "fmt"
+    "github.com/algorand/go-algorand-sdk/client/algod"
+    "github.com/algorand/go-algorand-sdk/crypto"
+    "github.com/algorand/go-algorand-sdk/future"
+)
+
+func main() {
+    // Define the Algod client
+    algodToken := ""
+    algodAddress := "https://testnet-api.algonode.cloud"
+    headers := []*algod.Header{{Key: "X-API-Key", Value: algodToken}}
+    algodClient, err := algod.MakeClientWithHeaders(algodAddress, algodToken, headers)
+    if err != nil {
+        fmt.Printf("Failed to make algod client: %s\n", err)
+        return
     }
+
+    // Existing account details
+    address := "I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU"
+    privateKey := "6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=="
+
+    // Convert 1.001 Algo to microAlgos for transaction amount
+    amount := uint64(1.001 * 1e6) // Algos are expressed in microAlgos in the SDK
+
+    // Fetch the suggested transaction parameters
+    txParams, err := algodClient.SuggestedParams().Do(context.Background())
+    if err != nil {
+        fmt.Printf("Error getting suggested tx params: %s\n", err)
+        return
+    }
+
+    // Generate a new account
+    newAccount := crypto.GenerateAccount()
+    newAccountAddress := newAccount.Address.String()
+    newAccountPrivateKey := newAccount.PrivateKey
+
+    // Create a payment transaction
+    note := []byte("Here's your one Algo!")
+    tx, err := future.MakePaymentTxn(address, newAccountAddress, amount, note, "", txParams)
+    if err != nil {
+        fmt.Printf("Failed to make transaction: %s\n", err)
+        return
+    }
+
+    // Sign the transaction
+    signTx, err := crypto.SignTransaction(privateKey, tx)
+    if err != nil {
+        fmt.Printf("Failed to sign transaction: %s\n", err)
+        return
+    }
+
+    // Send the transaction
+    sendResponse, err := algodClient.SendRawTransaction(signTx).Do(context.Background())
+    if err != nil {
+        fmt.Printf("Failed to send transaction: %s\n", err)
+        return
+    }
+
+    // Wait for confirmation
+    confirmedTxn, err := future.WaitForConfirmation(algodClient, sendResponse.TxID, 4, context.Background())
+    if err != nil {
+        fmt.Printf("Error waiting for confirmation: %s\n", err)
+        return
+    }
+
+    // Print the transaction ID
+    fmt.Printf("Transaction confirmed with ID: %s\n", confirmedTxn.Txn.Txn.ID())
+}
     
     `,
   },

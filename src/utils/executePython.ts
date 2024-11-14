@@ -19,7 +19,7 @@ export async function executePython(code: string): Promise<string> {
       if (err) return reject(new Error('Failed to write code file.'));
 
       // Docker command to execute Python inside a container
-      const dockerCommand = `docker run --rm -v "/${tmpDirPath}:/usr/src/app" -w /usr/src/app python:3.9 python ${filename}`;
+      const dockerCommand = `docker run --rm -v "${tmpDirPath}:/usr/src/app" -w /usr/src/app python:3.9 python ${filename}`;
 
       // Log the command for debugging
       console.log(`Executing Docker command: ${dockerCommand}`);
