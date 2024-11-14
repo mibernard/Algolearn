@@ -10,6 +10,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { ChevronRight, ChevronLeft, Menu, X } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 export default function ChapterPage() {
   const params = useParams();
@@ -28,6 +29,7 @@ export default function ChapterPage() {
   const chapter = languageChapters[chapterIndex];
   const [code, setCode] = useState(chapter ? chapter.initialCode : '');
   const [output, setOutput] = useState('');
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     if (chapter) {
@@ -42,6 +44,7 @@ export default function ChapterPage() {
   }
 
   const runCode = async (code: string, language: string): Promise<string> => {
+    setIsRunning(true);
     try {
       if (typeof code !== 'string' || typeof language !== 'string') {
         throw new Error('Invalid input: code and language must be strings.');
@@ -61,6 +64,8 @@ export default function ChapterPage() {
         console.error('Unknown error:', error);
         throw new Error('An unexpected error occurred.');
       }
+    } finally {
+      setIsRunning(false); // Always stop the loading animation
     }
   };
 
@@ -156,7 +161,17 @@ export default function ChapterPage() {
                 className='font-mono h-64 mb-4'
                 spellCheck='false'
               />
-              <Button onClick={handleRunCode}>Run</Button>
+              {/* <Button onClick={handleRunCode}>Run</Button> */}
+              <Button onClick={handleRunCode} disabled={isRunning}>
+                {isRunning ? (
+                  <>
+                    <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+                    Running
+                  </>
+                ) : (
+                  'Run'
+                )}
+              </Button>
             </CardContent>
             {output && (
               <CardFooter>
