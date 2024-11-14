@@ -38,11 +38,20 @@ export default function ChapterPage() {
 
   const runCode = async () => {
     try {
-      const response = await axios.post('/api/code-runner', {
+      // Define the API response type
+      type CodeRunnerResponse = {
+        output?: string;
+        error?: string;
+      };
+
+      // Make the API call with type annotation
+      const response = await axios.post<CodeRunnerResponse>('/api/code-runner', {
         code,
         language,
       });
-      setOutput(response.data.output);
+
+      // Safely access the response data
+      setOutput(response.data.output || 'No output available');
     } catch (error) {
       setOutput('Error running code');
       console.error('Error executing code:', error);
