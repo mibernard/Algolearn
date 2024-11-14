@@ -1,5 +1,3 @@
-// /pages/api/code-runner.ts
-
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { executeJavaScript } from '@/utils/executeJavaScript';
 import { executePython } from '@/utils/executePython';
@@ -48,8 +46,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error('Unhandled error:', error);
-      if ('response' in error && error.response) {
-        console.error('Judge0 API Error Response:', (error.response as any).data);
+      if ('response' in error && (error as any).response) {
+        const errorResponse = (error as { response: { data: unknown } }).response.data;
+        console.error('Judge0 API Error Response:', errorResponse);
       }
       return res.status(500).json({ error: error.message || 'Internal Server Error' });
     }
