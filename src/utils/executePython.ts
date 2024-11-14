@@ -11,6 +11,15 @@ type Judge0Response = {
   compile_output?: string;
 };
 
+type ErrorWithResponse = {
+  response?: {
+    data?: {
+      message?: string;
+      [key: string]: unknown;
+    };
+  };
+};
+
 export async function executePython(code: string): Promise<string> {
   const submission = {
     source_code: code,
@@ -49,8 +58,18 @@ export async function executePython(code: string): Promise<string> {
     }
 
     throw new Error('Execution timed out.');
-  } catch (error: any) {
-    console.error('Judge0 API Error:', error.response || error.message);
-    throw new Error(error.response?.data?.error || 'Execution failed.');
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      if ('response' in error && (error as ErrorWithResponse).response) {
+        const errorResponse = (error as ErrorWithResponse).response?.data;
+        console.error('Judge0 API Error Response:', errorResponse);
+        throw new Error(`Execution failed: ${errorResponse?.message}`);
+      } else {
+        console.error('Unexpected Error:', error.message);
+        throw new Error('Unexpected error occurred during execution.');
+      }
+    }
+    console.error('Unexpected unknown error:', error);
+    throw new Error('An unknown error occurred.');
   }
 }
