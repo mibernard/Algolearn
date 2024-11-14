@@ -8,6 +8,12 @@ type Data = {
   error?: string;
 };
 
+type ErrorWithResponse = {
+  response?: {
+    data?: unknown;
+  };
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   console.log('Request body:', req.body); // Log the request body
 
@@ -46,8 +52,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error('Unhandled error:', error);
-      if ('response' in error && (error as any).response) {
-        const errorResponse = (error as { response: { data: unknown } }).response.data;
+      if ('response' in error && (error as ErrorWithResponse).response) {
+        const errorResponse = (error as ErrorWithResponse).response?.data;
         console.error('Judge0 API Error Response:', errorResponse);
       }
       return res.status(500).json({ error: error.message || 'Internal Server Error' });
