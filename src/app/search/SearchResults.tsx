@@ -36,7 +36,7 @@ export default function SearchResults() {
 
   return (
     <>
-      <h2 className='text-2xl font-semibold mb-4'>Results for "{query}"</h2>
+      <h2 className='text-2xl font-semibold mb-4'>Results for &quot;{query}&quot;</h2>
       {searchResults.length > 0 ? (
         <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {searchResults.map((result) => (
@@ -61,7 +61,7 @@ export default function SearchResults() {
           ))}
         </div>
       ) : (
-        <p className='text-center text-muted-foreground'>No results found for "{query}"</p>
+        <p className='text-center text-muted-foreground'>No results found for &quot;{query}&quot;</p>
       )}
     </>
   );
