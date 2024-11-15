@@ -4,6 +4,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import { useParams } from 'next/navigation'; // For dynamic routing in Next.js 13
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 // import { Badge } from '@/components/ui/badge';
@@ -44,6 +45,7 @@ export default function LanguageTableOfContents() {
                 <CardDescription className='overflow-hidden text-ellipsis'>
                   {getExcerpt(chapter.content)}
                 </CardDescription>
+                <Button className='mt-4'>View Chapter</Button>
               </CardContent>
               {/* <div className='absolute bottom-4 right-4'>
                 <ChevronRight className='h-6 w-6 text-muted-foreground' />
