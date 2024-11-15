@@ -10,16 +10,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 // import { ChevronRight } from 'lucide-react';
 
 // Import the chapters array
-import chapters from '@/data/chapters';
-
-// Define the Chapter type
-type Chapter = {
-  language: string;
-  title: string;
-  content: string;
-  id: number;
-  initialCode: string;
-};
+import { chapters, Chapter } from '../../data/chapters';
 
 export default function LanguageTableOfContents() {
   const params = useParams();

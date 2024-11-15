@@ -1,8 +1,8 @@
-// src/app/layout.tsx
 'use client';
 
 import React, { ReactNode, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Moon, Sun, ChevronDown, Search, BookCheck, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,12 +12,14 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
-import chapters, { Chapter } from '@/data/chapters';
+import { chapters, Chapter } from '@/data/chapters';
 import '@/styles/globals.css';
 import Image from 'next/image';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   const groupedChapters: Record<string, Chapter[]> = chapters.reduce((acc, chapter) => {
     if (!acc[chapter.language]) {
@@ -27,16 +29,20 @@ export default function Layout({ children }: { children: ReactNode }) {
     return acc;
   }, {} as Record<string, Chapter[]>);
 
-  // const logoSrc = darkMode ? '/images/AlgolearnWhite.png' : '/images/AlgolearnBlack.png';
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
 
   return (
-    <html lang='en' className={darkMode ? 'dark' : ''}>
+    <html lang='en' className={`${darkMode ? 'dark' : ''} h-full`}>
       <head>
         <title>AlgoLearn</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </head>
       <body className='min-h-screen bg-background text-foreground'>
-        {/* Make navbar sticky */}
         <nav className='sticky top-0 z-50 bg-background border-b'>
           <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex items-center justify-between h-16'>
@@ -51,22 +57,19 @@ export default function Layout({ children }: { children: ReactNode }) {
               </Link>
               <div className='hidden md:block ml-10'>
                 <div className='flex items-baseline space-x-4'>
-                  <div className='relative'>
-                    <Input type='search' placeholder='Search docs...' className='w-64 pl-10' />
+                  <form onSubmit={handleSearch} className='relative'>
+                    <Input
+                      type='search'
+                      placeholder='Search docs...'
+                      className='w-64 pl-10'
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
                     <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground' />
-                  </div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant='ghost'>
-                        Docs <ChevronDown className='ml-1 h-4 w-4' />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuItem>Getting Started</DropdownMenuItem>
-                      <DropdownMenuItem>API Reference</DropdownMenuItem>
-                      <DropdownMenuItem>SDKs</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                    <Button type='submit' className='sr-only'>
+                      Search
+                    </Button>
+                  </form>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant='ghost'>
@@ -83,10 +86,22 @@ export default function Layout({ children }: { children: ReactNode }) {
                       ))}
                     </DropdownMenuContent>
                   </DropdownMenu>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant='ghost'>
+                        Docs <ChevronDown className='ml-1 h-4 w-4' />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>
+                        <Link href={`/python/getting-started-with-algorand`}>Getting Started</Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>API Reference</DropdownMenuItem>
+                      <DropdownMenuItem>SDKs</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               </div>
-              {/* Icons for smaller screens */}
-
               <div className='space-x-0 flex'>
                 <div className='md:hidden'>
                   <DropdownMenu>
@@ -118,9 +133,6 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
-
-                {/* Dark mode toggle button */}
-
                 <Button
                   variant='ghost'
                   size='icon'
@@ -134,6 +146,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             </div>
           </div>
         </nav>
+        {/* <main className='flex-1'>{children}</main> */}
         <main className='container mx-auto px-4 sm:px-6 lg:px-8 py-8'>{children}</main>
       </body>
     </html>

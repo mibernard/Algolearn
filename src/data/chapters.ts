@@ -1,12 +1,12 @@
-export type Chapter = {
+export interface Chapter {
   language: string;
   title: string;
   content: string;
   id: number;
   initialCode: string;
-};
+}
 
-const chapters: Chapter[] = [
+export const chapters: Chapter[] = [
   {
     id: 1,
     language: 'Python',
@@ -8041,7 +8041,7 @@ console.log(algodClient);
   `,
   },
   {
-    id: 16,
+    id: 38,
     language: 'Javascript',
     title: 'Getting Started with Algorand',
     content: `
@@ -8246,7 +8246,7 @@ algodClient.status().do()
   `,
   },
   {
-    id: 17,
+    id: 39,
     language: 'Javascript',
     title: 'Payment Transactions',
     content: `
@@ -9867,4 +9867,4 @@ func main() {
   },
 ];
 
-export default chapters;
+// export default chapters;

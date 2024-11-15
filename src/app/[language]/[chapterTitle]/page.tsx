@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
-import chapters from '@/data/chapters';
+import { chapters } from '@/data/chapters';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -94,6 +94,7 @@ export default function ChapterPage() {
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } md:relative md:translate-x-0 md:w-64 md:block`}
       >
+        {/* <div className='p-0 ml-20 mt-10'> */}
         <div className='p-0'>
           <Button
             variant='ghost'
@@ -108,6 +109,7 @@ export default function ChapterPage() {
           </h2>
 
           <ScrollArea className='h-[calc(100vh-8rem)]'>
+            {/* <ScrollArea className='h-screen'> */}
             <div className='pr-4'>
               {languageChapters.map((ch, index) => (
                 <Link
