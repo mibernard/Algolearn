@@ -39,7 +39,7 @@ export default function SearchResults() {
 
   return (
     <div className='container mx-auto px-4 py-8'>
-      <h1 className='text-3xl font-bold mb-6'>Search Results for "{query}"</h1>
+      <h1 className='text-3xl font-bold mb-6'>Search Results for &quot;{query}&quot;</h1>
       {searchResults.length > 0 ? (
         <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {searchResults.map((result) => (
@@ -63,7 +63,7 @@ export default function SearchResults() {
           ))}
         </div>
       ) : (
-        <p className='text-center text-muted-foreground'>No results found for "{query}"</p>
+        <p className='text-center text-muted-foreground'>No results found for &quot;{query}&quot;</p>
       )}
     </div>
   );
