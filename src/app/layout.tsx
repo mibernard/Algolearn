@@ -33,6 +33,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery('');
     }
   };
 
