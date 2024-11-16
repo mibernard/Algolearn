@@ -107,18 +107,6 @@ export default function Layout({ children }: { children: ReactNode }) {
                 <div className='md:hidden'>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant='ghost' size='icon' aria-label='Docs'>
-                        <FileText size={10} strokeWidth={2.5} />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuItem>Getting Started</DropdownMenuItem>
-                      <DropdownMenuItem>API Reference</DropdownMenuItem>
-                      <DropdownMenuItem>SDKs</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
                       <Button variant='ghost' size='icon' aria-label='Tutorials'>
                         <BookCheck size={1} strokeWidth={2.5} />
                       </Button>
@@ -131,6 +119,20 @@ export default function Layout({ children }: { children: ReactNode }) {
                           </Link>
                         </DropdownMenuItem>
                       ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant='ghost' size='icon' aria-label='Docs'>
+                        <FileText size={10} strokeWidth={2.5} />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuItem>
+                        <Link href={`/python/getting-started-with-algorand`}>Getting Started</Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>API Reference</DropdownMenuItem>
+                      <DropdownMenuItem>SDKs</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
