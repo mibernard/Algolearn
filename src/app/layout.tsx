@@ -114,7 +114,10 @@ export default function Layout({ children }: { children: ReactNode }) {
                     <DropdownMenuContent>
                       {Object.keys(groupedChapters).map((language) => (
                         <DropdownMenuItem asChild key={language}>
-                          <Link href={`/${language.toLowerCase()}`} className='block w-full h-full cursor-pointer'>
+                          <Link
+                            href={`/${language.toLowerCase()}`}
+                            className='block w-full h-full cursor-pointer active:bg-gray-200'
+                          >
                             {language}
                           </Link>
                         </DropdownMenuItem>
@@ -129,7 +132,9 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>
-                        <Link href={`/python/getting-started-with-algorand`}>Getting Started</Link>
+                        <Link href={`/python/getting-started-with-algorand`} className='active:bg-gray-200'>
+                          Getting Started
+                        </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem>API Reference</DropdownMenuItem>
                       <DropdownMenuItem>SDKs</DropdownMenuItem>
