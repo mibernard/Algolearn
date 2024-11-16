@@ -87,7 +87,8 @@ export default function ChapterPage() {
   }
 
   return (
-    <div className='flex h-screen overflow-hidden relative'>
+    <div className='flex h-[calc(100vh-129px)] overflow-hidden relative'>
+      {/* <div className='flex overflow-hidden relative'> */}
       {/* Sidebar */}
       <aside
         className={`absolute top-0 left-0 h-full bg-background border-r w-64 transition-transform duration-300 ease-in-out z-40 transform ${
@@ -108,8 +109,9 @@ export default function ChapterPage() {
             {language.charAt(0).toUpperCase() + language.slice(1)} Chapters
           </h2>
 
-          <ScrollArea className='h-[calc(100vh-8rem)]'>
+          <ScrollArea className='h-[calc(100vh-12rem)]'>
             {/* <ScrollArea className='h-screen'> */}
+            {/* <ScrollArea> */}
             <div className='pr-4'>
               {languageChapters.map((ch, index) => (
                 <Link
@@ -134,82 +136,77 @@ export default function ChapterPage() {
 
       {/* Main content */}
       <div className='flex-grow overflow-auto'>
-        <ScrollArea className='h-[calc(100vh-8rem)]'>
-          <div className='container mx-auto px-0 sm:px-8 py-0 max-w-4xl'>
-            <Button
-              variant='ghost'
-              className='md:hidden p-0'
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              aria-label='Toggle sidebar'
-            >
-              <Menu className='' />
-            </Button>
+        <div className='container mx-auto px-0 sm:px-8 py-0 max-w-4xl'>
+          <Button
+            variant='ghost'
+            className='md:hidden p-0'
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            aria-label='Toggle sidebar'
+          >
+            <Menu className='' />
+          </Button>
 
-            <h1 className='text-4xl font-bold mb-6'>{chapter.title}</h1>
-            <Card className='mb-8 border-0 sm:border'>
-              <CardContent className='prose dark:prose-invert max-w-none pt-6 text-foreground dark:text-foreground p-0 sm:p-8'>
-                <div dangerouslySetInnerHTML={{ __html: chapter.content }}></div>
-              </CardContent>
-            </Card>
+          <h1 className='text-4xl font-bold mb-6'>{chapter.title}</h1>
+          <Card className='mb-8 border-0 sm:border'>
+            <CardContent className='prose dark:prose-invert max-w-none pt-6 text-foreground dark:text-foreground p-0 sm:p-8'>
+              <div dangerouslySetInnerHTML={{ __html: chapter.content }}></div>
+            </CardContent>
+          </Card>
 
-            <Card className='mb-8'>
-              <CardHeader>
-                <CardTitle>Code Editor</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Textarea
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  placeholder={`Write your ${language} code here...`}
-                  className='font-mono h-64 mb-4'
-                  spellCheck='false'
-                />
-                {/* <Button onClick={handleRunCode}>Run</Button> */}
-                <Button onClick={handleRunCode} disabled={isRunning}>
-                  {isRunning ? (
-                    <>
-                      <Loader2 className='h-4 w-4 animate-spin' />
-                      Running
-                    </>
-                  ) : (
-                    'Run'
-                  )}
+          <Card className='mb-8'>
+            <CardHeader>
+              <CardTitle>Code Editor</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Textarea
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+                placeholder={`Write your ${language} code here...`}
+                className='font-mono h-64 mb-4'
+                spellCheck='false'
+              />
+              {/* <Button onClick={handleRunCode}>Run</Button> */}
+              <Button onClick={handleRunCode} disabled={isRunning}>
+                {isRunning ? (
+                  <>
+                    <Loader2 className='h-4 w-4 animate-spin' />
+                    Running
+                  </>
+                ) : (
+                  'Run'
+                )}
+              </Button>
+            </CardContent>
+            {output && (
+              <CardFooter>
+                <pre className='border bg-card text-card-foreground dark:bg-card-dark dark:text-card-foreground p-4 rounded-md w-full overflow-x-auto'>
+                  {output}
+                </pre>
+              </CardFooter>
+            )}
+          </Card>
+          <div className='flex justify-between'>
+            {chapterIndex > 0 && (
+              <Link
+                href={`/${language.toLowerCase()}/${languageChapters[chapterIndex - 1].title
+                  .toLowerCase()
+                  .replace(/\s+/g, '-')}`}
+              >
+                <Button variant='outline' className='transition-all duration-300 ease-in-out transform hover:scale-105'>
+                  <ChevronLeft className='mr-2 h-4 w-4' /> Previous Chapter
                 </Button>
-              </CardContent>
-              {output && (
-                <CardFooter>
-                  <pre className='border bg-card text-card-foreground dark:bg-card-dark dark:text-card-foreground p-4 rounded-md w-full overflow-x-auto'>
-                    {output}
-                  </pre>
-                </CardFooter>
-              )}
-            </Card>
-            <div className='flex justify-between'>
-              {chapterIndex > 0 && (
-                <Link
-                  href={`/${language.toLowerCase()}/${languageChapters[chapterIndex - 1].title
-                    .toLowerCase()
-                    .replace(/\s+/g, '-')}`}
-                >
-                  <Button
-                    variant='outline'
-                    className='transition-all duration-300 ease-in-out transform hover:scale-105'
-                  >
-                    <ChevronLeft className='mr-2 h-4 w-4' /> Previous Chapter
-                  </Button>
-                </Link>
-              )}
-              {chapterIndex < languageChapters.length - 1 && (
-                <Button
-                  onClick={goToNextChapter}
-                  className='transition-all duration-300 ease-in-out transform hover:scale-105 ml-auto'
-                >
-                  Next Chapter <ChevronRight className='ml-2 h-4 w-4' />
-                </Button>
-              )}
-            </div>
+              </Link>
+            )}
+            {chapterIndex < languageChapters.length - 1 && (
+              <Button
+                onClick={goToNextChapter}
+                className='transition-all duration-300 ease-in-out transform hover:scale-105 ml-auto'
+              >
+                Next Chapter <ChevronRight className='ml-2 h-4 w-4' />
+              </Button>
+            )}
           </div>
-        </ScrollArea>
+        </div>
       </div>
     </div>
   );
