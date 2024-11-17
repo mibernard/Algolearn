@@ -186,8 +186,11 @@ export default function Layout({ children }: { children: ReactNode }) {
             </div>
           </div>
         </nav>
+
         {/* <main className='flex-1'>{children}</main> */}
         <main className='container mx-auto px-4 sm:px-6 lg:px-8 py-8'>{children}</main>
+
+        {/* FOOTER SECTION */}
         <footer className='bg-background border-t mt-auto'>
           <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-8'>
             <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
@@ -214,7 +217,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </Link>
                   </li>
                   <li>
-                    <Link href='/#SDKs' className='text-sm hover:underline'>
+                    <Link href='/#SDK' className='text-sm hover:underline'>
                       SDKs
                     </Link>
                   </li>
