@@ -166,7 +166,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <Link href='/#SDKs' className='block w-full h-full cursor-pointer active:bg-gray-200'>
+                        <Link href='/#SDK' className='block w-full h-full cursor-pointer active:bg-gray-200'>
                           SDKs
                         </Link>
                       </DropdownMenuItem>

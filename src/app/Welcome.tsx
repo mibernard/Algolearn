@@ -48,7 +48,7 @@ export default function Welcome() {
             <Book className='h-6 w-6 text-primary' />
             <div>
               <h3 className='font-semibold'>Comprehensive Documentation</h3>
-              <p className='text-sm text-muted-foreground'>
+              <p id='SDK' className='text-sm text-muted-foreground'>
                 Access detailed guides, tutorials, and API references to support your development journey.
               </p>
             </div>
