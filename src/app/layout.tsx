@@ -119,6 +119,8 @@ export default function Layout({ children }: { children: ReactNode }) {
                   </DropdownMenu>
                 </div>
               </div>
+
+              {/* MOBILE NAV ELEMENTS */}
               <div className='space-x-0 flex'>
                 <div className='md:hidden'>
                   <DropdownMenu>
@@ -147,7 +149,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem asChild>
                         <Link
                           href={`/python/getting-started-with-algorand`}
                           className='block w-full h-full cursor-pointer active:bg-gray-200'
@@ -155,8 +157,19 @@ export default function Layout({ children }: { children: ReactNode }) {
                           Getting Started
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>API Reference</DropdownMenuItem>
-                      <DropdownMenuItem>SDKs</DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          href={`/python/compiling-launching-and-interacting-with-your-first-contract`}
+                          className='block w-full h-full cursor-pointer active:bg-gray-200'
+                        >
+                          API Reference
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href='/#SDKs' className='block w-full h-full cursor-pointer active:bg-gray-200'>
+                          SDKs
+                        </Link>
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
