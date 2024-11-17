@@ -3,7 +3,7 @@
 import React, { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Moon, Sun, ChevronDown, Search, BookCheck, FileText } from 'lucide-react';
+import { Moon, Sun, ChevronDown, Search, BookCheck, FileText, Github, Twitter, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -94,11 +94,27 @@ export default function Layout({ children }: { children: ReactNode }) {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      <DropdownMenuItem>
-                        <Link href={`/python/getting-started-with-algorand`}>Getting Started</Link>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          href={`/python/getting-started-with-algorand`}
+                          className='block w-full h-full cursor-pointer'
+                        >
+                          Getting Started
+                        </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuItem>API Reference</DropdownMenuItem>
-                      <DropdownMenuItem>SDKs</DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          href={`/python/compiling-launching-and-interacting-with-your-first-contract`}
+                          className='block w-full h-full cursor-pointer'
+                        >
+                          API Reference
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href='/#SDKs' className='block w-full h-full cursor-pointer'>
+                          SDKs
+                        </Link>
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -132,7 +148,10 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>
-                        <Link href={`/python/getting-started-with-algorand`} className='active:bg-gray-200'>
+                        <Link
+                          href={`/python/getting-started-with-algorand`}
+                          className='block w-full h-full cursor-pointer active:bg-gray-200'
+                        >
                           Getting Started
                         </Link>
                       </DropdownMenuItem>
@@ -156,6 +175,83 @@ export default function Layout({ children }: { children: ReactNode }) {
         </nav>
         {/* <main className='flex-1'>{children}</main> */}
         <main className='container mx-auto px-4 sm:px-6 lg:px-8 py-8'>{children}</main>
+        <footer className='bg-background border-t mt-auto'>
+          <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-8'>
+            <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
+              <div>
+                <h3 className='text-lg font-semibold mb-4'>About</h3>
+                <p className='text-sm text-muted-foreground'>
+                  AlgoLearn is your go-to resource for learning about Algorand Smart Contract development.
+                </p>
+              </div>
+              <div>
+                <h3 className='text-lg font-semibold mb-4'>Quick Links</h3>
+                <ul className='space-y-2'>
+                  <li>
+                    <Link href='/python/getting-started-with-algorand' className='text-sm hover:underline'>
+                      Getting Started
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='/python/compiling-launching-and-interacting-with-your-first-contract'
+                      className='text-sm hover:underline'
+                    >
+                      API Reference
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href='/#SDKs' className='text-sm hover:underline'>
+                      SDKs
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='text-lg font-semibold mb-4'>Community</h3>
+                <ul className='space-y-2'>
+                  <li>
+                    <Link href='#' className='text-sm hover:underline'>
+                      Forum
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href='#' className='text-sm hover:underline'>
+                      Discord
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href='#' className='text-sm hover:underline'>
+                      Events
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className='text-lg font-semibold mb-4'>Follow Us</h3>
+                <div className='flex space-x-4'>
+                  <Link href='#' className='text-foreground hover:text-primary'>
+                    <Github size={24} />
+                    <span className='sr-only'>GitHub</span>
+                  </Link>
+                  <Link href='#' className='text-foreground hover:text-primary'>
+                    <Twitter size={24} />
+                    <span className='sr-only'>Twitter</span>
+                  </Link>
+                  <Link href='#' className='text-foreground hover:text-primary'>
+                    <Linkedin size={24} />
+                    <span className='sr-only'>LinkedIn</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className='mt-8 pt-8 border-t text-center'>
+              <p className='text-sm text-muted-foreground'>
+                © {new Date().getFullYear()} AlgoLearn. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );

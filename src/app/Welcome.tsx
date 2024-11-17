@@ -101,7 +101,7 @@ export default function Welcome() {
         </Card>
       </div>
 
-      <div className='text-center'>
+      <div id='SDKs' className='text-center'>
         <h2 className='text-2xl font-bold mb-4'>Ready to dive in?</h2>
         <p className='text-muted-foreground mb-6'>
           Start your journey with Algorand smart contracts today and build the decentralized applications of tomorrow.
