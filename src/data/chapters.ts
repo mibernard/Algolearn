@@ -3207,7 +3207,7 @@ app_id = 724455779
       
       <h3>Step 4: Compile Asset for Algo Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <pre class="overflow-auto shadow-md"><code>algokit compile py fileName.py</code></pre>
       <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
@@ -3441,7 +3441,7 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
       
-      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <h3>Step 8: Make an Asset for Algo Listing Box (All listing types are supported from parts 1-4)</h3>
       <p>Create an asset listing box to manage your asset listings.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
@@ -3559,6 +3559,9 @@ for box in boxes:
 </code></pre>
       
       <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+      <p>When generating a listing, the counter variable should be incremented.</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <p>Note; counter should match the number of listings generated so far.</p>
       <p>Execute the purchase of the asset using the buyer's private key.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
@@ -3677,7 +3680,7 @@ app_id = 724455779
       
       <h3>Step 4: Compile Asset for Asset Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <pre class="overflow-auto shadow-md"><code>algokit compile py fileName.py</code></pre>
       <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
@@ -3939,7 +3942,7 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
       
-      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <h3>Step 8: Make an Asset for Algo Listing Box (All listing types are supported from parts 1-4)</h3>
       <p>Create an asset listing box to manage your asset listings.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
@@ -4056,6 +4059,9 @@ for box in boxes:
 </code></pre>
       
       <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+      <p>When generating a listing, the counter variable should be incremented.</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <p>Note; counter should match the number of listings generated so far.</p>
       <p>Execute the purchase of the asset using the buyer's private key.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
@@ -4321,7 +4327,7 @@ app_id = 724455779
       
       <h3>Step 4: Compile Asset for Asset Quantity Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <pre class="overflow-auto shadow-md"><code>algokit compile py fileName.py</code></pre>
       <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
@@ -4585,7 +4591,7 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
       
-      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <h3>Step 8: Make an Asset for Algo Listing Box (All listing types are supported from parts 1-4)</h3>
       <p>Create an asset listing box to manage your asset listings.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
@@ -4703,6 +4709,9 @@ for box in boxes:
 </code></pre>
       
       <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+      <p>When generating a listing, the counter variable should be incremented.</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <p>Note; counter should match the number of listings generated so far.</p>
       <p>Execute the purchase of the asset using the buyer's private key.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
@@ -4969,7 +4978,7 @@ app_id = 724455779
       
       <h3>Step 4: Compile Asset Quantity for Asset Quantity Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <pre class="overflow-auto shadow-md"><code>algokit compile py fileName.py</code></pre>
       <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
@@ -5233,7 +5242,7 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
       
-      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <h3>Step 8: Make an Asset for Algo Listing Box (All listing types are supported from parts 1-4)</h3>
       <p>Create an asset listing box to manage your asset listings.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
@@ -5352,6 +5361,9 @@ for box in boxes:
 </code></pre>
       
       <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+      <p>When generating a listing, the counter variable should be incremented.</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <p>Note; counter should match the number of listings generated so far.</p>
       <p>Execute the purchase of the asset using the buyer's private key.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
@@ -5617,7 +5629,7 @@ app_id = 724455779
       
       <h3>Step 4: Compile Universal Listing Contract</h3>
       <p>Create and compile the asset listing contract:</p>
-       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <pre class="overflow-auto shadow-md"><code>algokit compile py fileName.py</code></pre>
       <p>Use the following implementation to compile your contract:</p>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, String, gtxn, Asset, Txn, GlobalState, itxn, Global, BoxRef, UInt64, TransactionType
 from algopy.arc4 import abimethod, Address, Struct, Bool
@@ -5927,7 +5939,7 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
       
-      <h3>Step 8: Make an Asset for Algo Listing Box</h3>
+      <h3>Step 8: Make an Asset for Algo Listing Box (All listing types are supported from parts 1-4)</h3>
       <p>Create an asset listing box to manage your asset listings.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
@@ -6045,6 +6057,13 @@ for box in boxes:
 </code></pre>
       
       <h3>Step 10: Purchase the Asset with Your Buyer Private Key</h3>
+    <p>When generating a listing, the counter variable should be incremented.</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <p>Note; counter should match the number of listings generated so far.</p>
+      <p>When generating a listing, the counter variable should be incremented.</p>
+       <pre class="overflow-auto shadow-md"><code>counter = 1</code></pre>
+       <p>Note; counter should match the number of listings generated so far.</p>
+
       <p>Execute the purchase of the asset using the buyer's private key.</p>
       <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
 from algosdk.v2client.algod import AlgodClient
