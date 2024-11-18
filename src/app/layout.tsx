@@ -95,10 +95,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem asChild>
-                        <Link
-                          href={`/python/getting-started-with-algorand`}
-                          className='block w-full h-full cursor-pointer'
-                        >
+                        <Link href={`/python/installation-and-setup`} className='block w-full h-full cursor-pointer'>
                           Getting Started
                         </Link>
                       </DropdownMenuItem>
@@ -151,7 +148,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     <DropdownMenuContent>
                       <DropdownMenuItem asChild>
                         <Link
-                          href={`/python/getting-started-with-algorand`}
+                          href={`/python/installation-and-setup`}
                           className='block w-full h-full cursor-pointer active:bg-gray-200'
                         >
                           Getting Started
@@ -204,7 +201,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                 <h3 className='text-lg font-semibold mb-4'>Quick Links</h3>
                 <ul className='space-y-2'>
                   <li>
-                    <Link href='/python/getting-started-with-algorand' className='text-sm hover:underline'>
+                    <Link href='/python/installation-and-setup' className='text-sm hover:underline'>
                       Getting Started
                     </Link>
                   </li>

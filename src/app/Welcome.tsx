@@ -107,7 +107,7 @@ export default function Welcome() {
           Start your journey with Algorand smart contracts today and build the decentralized applications of tomorrow.
         </p>
 
-        <Link href={`/python/getting-started-with-algorand`} passHref>
+        <Link href={`/python/installation-and-setup`} passHref>
           <Button size='lg'>
             Get Started
             <ArrowRight className='ml-2 h-5 w-5' />

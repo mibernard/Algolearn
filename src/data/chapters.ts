@@ -8,6 +8,495 @@ export interface Chapter {
 
 export const chapters: Chapter[] = [
   {
+    id: 20,
+    language: 'Python',
+    title: 'Installation and Setup',
+    content: `<h2>Getting Started with Discord Bot Development on the Algorand Blockchain</h2>
+        <p>This tutorial will walk you through the installation and setup needed to start building a Discord bot for the Algorand blockchain. The steps outlined below cover essential tools, libraries, and additional resources to ensure a smooth start.</p>
+        
+        <h2>Resources</h2>
+        <ul class="inText">
+          <li>YouTube Tutorial: <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+        <iframe
+            class="absolute top-0 left-0 w-full h-full border-0"
+            src="https://www.youtube.com/embed/z9lZ_ypTZzA"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div></li>
+          <li>Download Python at <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a> 
+          <ul><li>(Ensure 'Add Python to PATH' is selected during installation)</li></li></ul>
+          <li>Install Visual Studio Code at <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></li>
+          <li>Python IntelliSense Extension for VS Code: Install within VS Code for enhanced Python support</li>
+        </ul>
+    
+        <h2>Installing Essential Libraries</h2>
+        <p>Install the following libraries in your terminal:</p>
+        <pre class="overflow-auto shadow-md"><code>pip install aiohttp</code>
+<code>pip install algokit</code>
+<code>pip install py-algorand-sdk</code>
+<code>pip install algorand-python</code>
+<code>pip install python-dotenv</code></pre>
+        <p><strong>Note:</strong> If you encounter errors during Algokit installation regarding missing C++ tools, please follow the instructions in the video and install the <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/" target="_blank">Microsoft Visual C++ Build Tools</a>.</p>
+    
+        <h2>Test Contract Example</h2>
+        <p>Create a new Python file called <code>testcontract.py</code> and add the following code to define a simple contract:</p>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract
+from algopy.arc4 import abimethod
+    
+class TestContract(ARC4Contract):
+    def __init__(self) -> None:
+        pass
+
+    @abimethod
+    def test(self) -> None:
+        pass</code></pre>
+    <p>Compile the contract with the following terminal command:</p>
+    <pre class="overflow-auto shadow-md"><code>algokit compile py testcontract.py</code></pre>
+    <p>If the approval and clear TEAL files are generated successfully, your setup is complete, and you can proceed with the tutorial series.</p>
+
+    <h2>Running Your Own Node</h2>
+    <p>If you wish to run your own Algorand node rather than using Algonode, refer to the tutorial playlist. Note: Based on community feedback, we've shifted from a Discord bot-focused series to a PUYA-focused series. Only two videos were released for the Discord bot series before this shift. Start with <a href="https://www.youtube.com/watch?v=JjmH-KA7UcQ&list=PL5aELASDGbIAw8QqqdGoc9y2zqwsr_J4L&index=1" target="_blank">the first video in the new series</a>, which includes node installation for Windows.</p>
+    
+    <h2>Visual Studio Code - Code Editing</h2>
+    <p>Download Visual Studio Code to edit your code efficiently, and install the Python IntelliSense extension to help with code completion and suggestions.</p>
+    <p>This tutorial guides you through developing Discord bots for the Algorand blockchain. It’s designed to complement the YouTube tutorial series.</p>
+    <h2>YouTube Tutorial</h2>
+    <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/JjmH-KA7UcQ"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+    
+    <h2>Installing Dependencies</h2>
+    <h3>Using Regular Terminal (not Ubuntu)</h3>
+    <ul class="inText">
+        <li><strong>PIP Installation:</strong></li>
+    </ul>
+    <pre class="overflow-auto shadow-md">
+<code>curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</code>
+<code>python get-pip.py</code></pre>
+    <ul class="inText">
+        <li><strong>AIOHTTP (required before installing Discord.py):</strong></li>
+        </ul>
+        <pre class="overflow-auto shadow-md">
+<code>pip install aiohttp>=3.9.0b0</code></pre>
+        <ul class="inText">
+            <li><strong>Discord.py:</strong></li>
+        </ul>
+        <pre class="overflow-auto shadow-md">
+<code>pip install discord.py</code></pre>
+        <ul class="inText">
+            <li><strong>Python AlgoSDK:</strong></li>
+        </ul>
+        <pre class="overflow-auto shadow-md">
+<code>pip3 install py-algorand-sdk</code></pre>
+        
+        <h3>Using Ubuntu Terminal</h3>
+        <h4>Algorand Node Installation</h4>
+        <pre class="overflow-auto shadow-md"><code>sudo apt-get update
+sudo apt-get install -y gnupg2 curl software-properties-common
+curl -o - https://releases.algorand.com/key.pub | sudo tee /etc/apt/trusted.gpg.d/algorand.asc
+sudo add-apt-repository "deb [arch=amd64] https://releases.algorand.com/deb/ stable main"
+sudo apt-get update
+sudo apt-get install -y algorand-devtools</code></pre>
+        
+        <h4>Preparing & Running Algorand Node</h4>
+        <pre class="overflow-auto shadow-md"><code>mkdir ~/node 
+cd ~/node 
+curl https://raw.githubusercontent.com/algorand/go-algorand/rel/stable/cmd/updater/update.sh -O 
+chmod 744 update.sh 
+./update.sh -i -c stable -p ~/node -d ~/node/data -n 
+goal node start -d data 
+goal node catchup <a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Get Catchpoint from Mainnet</a> -d data</code></pre>
+        
+        <h4>Algorand Node Commands</h4>
+        <ul class="inText">
+            <li><strong>Start Node:</strong> <code>goal node start -d data</code></li>
+            <li><strong>Restart Node:</strong> <code>goal node restart -d data</code></li>
+            <li><strong>Stop Node:</strong> <code>goal node stop -d data</code></li>
+            <li><strong>Catchup Node:</strong> <code>goal node catchup [Catchpoint Link] -d data</code></li>
+        </ul>
+        
+        <h4>Obtain Algorand Node Token & Port</h4>
+        <pre class="overflow-auto shadow-md"><code>cd node/data
+cat algod.token (Displays token)
+cat algod.net</code> (Displays port)</pre>
+        
+        <h4>Basic Terminal Commands</h4>
+        <ul class="inText">
+            <li><strong>Clear Terminal:</strong> <code>clear</code></li>
+            <li><strong>Create Folder:</strong> <code>mkdir FolderName</code></li>
+            <li><strong>List Directories:</strong> <code>ls</code></li>
+            <li><strong>Change Directory:</strong> <code>cd FolderName</code></li>
+            <li><strong>Move Up One Directory:</strong> <code>cd ..</code></li>
+            <li><strong>Delete Directory:</strong> <code>rm -r FolderName</code></li>
+            <li><strong>View File Contents:</strong> <code>cat FileName</code></li>
+        </ul>
+        
+        <h2>Useful Links</h2>
+        <ul class="inText">
+            <li><a href="https://www.python.org/downloads/" target="_blank">Install Python (Select 'Add Python to PATH')</a></li>
+            <li><a href="https://code.visualstudio.com/Download" target="_blank">Install Visual Studio Code</a></li>
+            <li><a href="https://www.microsoft.com/store/productId/9MTTCL66CPXJ?ocid=pdpshare" target="_blank">Microsoft Store Ubuntu LTS</a></li>
+            <li><a href="https://developer.algorand.org/docs/run-a-node/setup/install/" target="_blank">Algorand Node Documentation</a></li>
+            <li><a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Algorand Node Mainnet Catchpoint</a></li>
+            <li><a href="https://discord.com/developers" target="_blank">Discord Developer Portal</a></li>
+        </ul>
+        
+        <hr><form class="quiz-form">
+            <h1>Quiz</h1>
+            <h3>Question 1</h3>
+            <p>Which package should be installed before installing discord.py?</p>
+            <input type="radio" id="q1a" name="q1" value="a">
+            <label for="q1a" class="incorrect">a) py-algorand-sdk</label><br>
+            <input type="radio" id="q1b" name="q1" value="b">
+            <label for="q1b" class="correct">b) aiohttp>=3.9.0b0</label><br>
+            <input type="radio" id="q1c" name="q1" value="c">
+            <label for="q1c" class="incorrect">c) Visual Studio Code</label><br>
+            <input type="radio" id="q1d" name="q1" value="d">
+            <label for="q1d" class="incorrect">d) Node</label><br>
+            
+            <h3>Question 2</h3>
+            <p>What command starts the Algorand node?</p>
+            <input type="radio" id="q2a" name="q2" value="a">
+            <label for="q2a" class="incorrect">a) mkdir node</label><br>
+            <input type="radio" id="q2b" name="q2" value="b">
+            <label for="q2b" class="correct">b) goal node start -d data</label><br>
+            <input type="radio" id="q2c" name="q2" value="c">
+            <label for="q2c" class="incorrect">c) chmod 744 update.sh</label><br>
+            <input type="radio" id="q2d" name="q2" value="d">
+            <label for="q2d" class="incorrect">d) apt-get update</label><br>
+        </form>
+        `,
+    initialCode: ``,
+  },
+
+  {
+    id: 40,
+    language: 'Python',
+    title: 'Speed Run Variables',
+    content: `<h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/AXohx-PI1CU"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <p>Python offers various data types to store information:</p>
+        <ul class=inText>
+            <li><strong>Integer</strong>: Whole numbers without decimals (e.g., <code>10</code>).</li>
+            <li><strong>String</strong>: Text enclosed in quotes (e.g., <code>"Hello"</code>).</li>
+            <li><strong>Float</strong>: Numbers with decimals (e.g., <code>3.14</code>).</li>
+            <li><strong>Boolean</strong>: Logical values <code>True</code> or <code>False</code>.</li>
+            <li><strong>List</strong>: Ordered collection in square brackets (e.g., <code>[1, 2, 3]</code>).</li>
+            <li><strong>Dictionary</strong>: Key-value pairs in curly braces (e.g., <code>{"key": "value"}</code>).</li>
+            <li><strong>Tuple</strong>: Immutable ordered collection in parentheses (e.g., <code>(1, 2, 3)</code>).</li>
+        </ul>
+        
+        <pre class="overflow-auto shadow-md"><code>my_number = 1000        # Integer
+    my_text = "Hello!"      # String
+    my_float = 7.5          # Float
+    my_bool = True          # Boolean
+    my_list = [1, 2, 3]     # List
+    my_dict = {"a": 1}      # Dictionary
+    my_tuple = (1, 2, 3)    # Tuple</code></pre>
+        
+        <p>Variables are names assigned to data. Use descriptive names and follow naming rules:</p>
+        <ul class=inText>
+            <li>Cannot start with a number.</li>
+            <li>No spaces; use underscores (<code>_</code>).</li>
+            <li>No special characters except underscores.</li>
+        </ul>
+        
+        <p>Examples of valid variable names:</p>
+        <pre class="overflow-auto shadow-md"><code>item_cost = 1.0
+    supply_remaining = 2_500_000_000
+    cto_name = "John Woods"
+    quarter_value = 0.25</code></pre>
+        
+        <p>Invalid variable names:</p>
+        <pre class="overflow-auto shadow-md"><code>3variable = 5      # Invalid
+    my-variable = 6    # Invalid
+    my variable = 7    # Invalid</code></pre>
+        
+        <h2>Arithmetic Operations</h2>
+        
+        <p>Basic arithmetic with integers and floats:</p>
+        <pre class="overflow-auto shadow-md"><code>a = 10
+    b = 3
+    print(a + b)          # 13
+    print(a - b)          # 7
+    print(a * b)          # 30
+    print(a / b)          # 3.333...
+    print(a // b)         # 3
+    print(a % b)          # 1
+    print(a ** b)         # 1000</code></pre>
+        
+        <p>String operations:</p>
+        <pre class="overflow-auto shadow-md"><code>greeting = "Hello, " + "World!"
+    print(greeting)        # "Hello, World!"
+    repeat = "Hi" * 3
+    print(repeat)          # "HiHiHi"</code></pre>
+        
+        <p>Data mutability:</p>
+        <ul class=inText>
+            <li><strong>Mutable</strong>: Lists, Dictionaries.</li>
+            <li><strong>Immutable</strong>: Tuples, Strings.</li>
+        </ul>
+        
+        <p>Attempting to modify an immutable type results in an error:</p>
+        <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
+    my_tuple[0] = 3       # Error: 'tuple' object does not support item assignment</code></pre>
+        
+        <hr><form class="quiz-form">
+        <h1>Quiz</h1>
+            <h3>Question 1</h3>
+            <p>Which data type is used for whole numbers in Python?</p>
+            <input type="radio" id="q1a" name="q1" value="a">
+            <label for="q1a" class="incorrect">a) String</label><br>
+            <input type="radio" id="q1b" name="q1" value="b">
+            <label for="q1b" class="incorrect">b) Float</label><br>
+            <input type="radio" id="q1c" name="q1" value="c">
+            <label for="q1c" class="correct">c) Integer</label><br>
+            <input type="radio" id="q1d" name="q1" value="d">
+            <label for="q1d" class="incorrect">d) Boolean</label><br>
+    
+            <h3>Question 2</h3>
+            <p>Which variable name is valid in Python?</p>
+            <input type="radio" id="q2a" name="q2" value="a">
+            <label for="q2a" class="incorrect">a) 3variable</label><br>
+            <input type="radio" id="q2b" name="q2" value="b">
+            <label for="q2b" class="incorrect">b) my-variable</label><br>
+            <input type="radio" id="q2c" name="q2" value="c">
+            <label for="q2c" class="incorrect">c) my variable</label><br>
+            <input type="radio" id="q2d" name="q2" value="d">
+            <label for="q2d" class="correct">d) my_variable</label><br>
+    
+            <h3>Question 3</h3>
+            <p>What is the output of the following code?</p>
+            <pre class="overflow-auto shadow-md"><code>string = "Hello"
+    result = string * 3
+    print(result)</code></pre>
+            <input type="radio" id="q3a" name="q3" value="a">
+            <label for="q3a" class="correct">a) HelloHelloHello</label><br>
+            <input type="radio" id="q3b" name="q3" value="b">
+            <label for="q3b" class="incorrect">b) Hello, Hello, Hello</label><br>
+            <input type="radio" id="q3c" name="q3" value="c">
+            <label for="q3c" class="incorrect">c) Error</label><br>
+            <input type="radio" id="q3d" name="q3" value="d">
+            <label for="q3d" class="incorrect">d) Hello*3</label><br>
+    
+            <h3>Question 4</h3>
+            <p>Which data type is immutable in Python?</p>
+            <input type="radio" id="q4a" name="q4" value="a">
+            <label for="q4a" class="incorrect">a) List</label><br>
+            <input type="radio" id="q4b" name="q4" value="b">
+            <label for="q4b" class="incorrect">b) Dictionary</label><br>
+            <input type="radio" id="q4c" name="q4" value="c">
+            <label for="q4c" class="correct">c) Tuple</label><br>
+            <input type="radio" id="q4d" name="q4" value="d">
+            <label for="q4d" class="incorrect">d) Set</label><br>
+            
+        </form>
+        `,
+    initialCode: `a = 10\nb = 3.5\nprint(a + b)`,
+  },
+
+  {
+    id: 41,
+    language: 'Python',
+    title: 'Speed Run Functions and Classes',
+    content: `<h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/6DDU8wdZzOE"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div><p>Functions in Python are reusable blocks of code that perform specific tasks, enhancing modularity and readability.</p>
+    
+    <p>Functions and classes are fundamental building blocks in Python for creating reusable and modular code.</p>
+
+    <h2>Functions</h2>
+    <p>Functions are reusable blocks of code that perform specific tasks.</p>
+    <p><strong>Defining a Function:</strong> Use the <code>def</code> keyword.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def greet():
+    print("Hello, world!")
+greet()  # Output: "Hello, world!"</code></pre>
+
+    <p><strong>Functions with Parameters:</strong> Pass data into functions using parameters.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def greet(name):
+    print(f"Hello, {name}!")
+greet("Alice")  # Output: "Hello, Alice!"</code></pre>
+
+    <p><strong>Returning Values:</strong> Use <code>return</code> to output a value from a function.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def add(a, b):
+    return a + b
+result = add(3, 5)
+print(result)  # Output: 8</code></pre>
+
+    <p><strong>Default Parameters:</strong> Assign default values to parameters.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def greet(name="world"):
+    print(f"Hello, {name}!")
+greet()         # Output: "Hello, world!"
+greet("Bob")    # Output: "Hello, Bob!"</code></pre>
+
+    <p><strong>Variable Number of Arguments:</strong> Use <code>*args</code> and <code>**kwargs</code> for flexible arguments.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def add(*args):
+    return sum(args)
+print(add(1, 2, 3))  # Output: 6
+
+def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+print_info(name="Alice", age=30)</code></pre>
+
+    <h2>Classes</h2>
+    <p>Classes are blueprints for creating objects (instances), encapsulating data and functions together.</p>
+    <p><strong>Defining a Class:</strong> Use the <code>class</code> keyword.</p>
+
+    <pre class="overflow-auto shadow-md"><code>class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print(f"Hello, my name is {self.name}.")
+
+person1 = Person("Alice", 30)
+person1.greet()  # Output: "Hello, my name is Alice."</code></pre>
+
+    <p><strong>Class Components:</strong></p>
+    <ul class=inText>
+        <li><strong>Constructor (<code>__init__</code>):</strong> Initializes new objects.</li>
+        <li><strong>Instance Variables:</strong> Data unique to each instance (<code>self.name</code>, <code>self.age</code>).</li>
+        <li><strong>Methods:</strong> Functions defined within a class (<code>greet</code>).</li>
+    </ul>
+
+    <p><strong>Inheritance:</strong> Classes can inherit from other classes.</p>
+
+    <pre class="overflow-auto shadow-md"><code>class Employee(Person):
+    def __init__(self, name, age, employee_id):
+        super().__init__(name, age)
+        self.employee_id = employee_id
+
+    def display_id(self):
+        print(f"My employee ID is {self.employee_id}.")
+
+employee1 = Employee("Bob", 25, "E123")
+employee1.greet()         # Output: "Hello, my name is Bob."
+employee1.display_id()    # Output: "My employee ID is E123."</code></pre>
+
+    <p><strong>Encapsulation:</strong> Use underscores to indicate private variables (convention).</p>
+
+    <pre class="overflow-auto shadow-md"><code>class BankAccount:
+    def __init__(self, balance):
+        self._balance = balance  # Protected attribute
+
+    def deposit(self, amount):
+        self._balance += amount
+
+    def get_balance(self):
+        return self._balance
+
+account = BankAccount(1000)
+account.deposit(500)
+print(account.get_balance())  # Output: 1500</code></pre>
+
+    <hr><form class="quiz-form">
+<h1>Quiz</h1>
+
+    <h3>Question 1</h3>
+    <p>What will be the output of the following code snippet?</p>
+    <pre class="overflow-auto shadow-md"><code>def func(a, b=2, c=3):
+    return a + b * c
+
+result = func(1, c=4)
+print(result)</code></pre>
+    <input type="radio" id="q1a" name="q1" value="a">
+    <label for="q1a" class="incorrect">a) 13</label><br>
+    <input type="radio" id="q1b" name="q1" value="b">
+    <label for="q1b" class="correct">b) 9</label><br>
+    <input type="radio" id="q1c" name="q1" value="c">
+    <label for="q1c" class="incorrect">c) 14</label><br>
+    <input type="radio" id="q1d" name="q1" value="d">
+    <label for="q1d" class="incorrect">d) Error</label><br>
+
+    <h3>Question 2</h3>
+    <p>Given the following class definition, what will be the output?</p>
+    <pre class="overflow-auto shadow-md"><code>class Counter:
+    count = 0
+
+    def __init__(self):
+        Counter.count += 1
+
+c1 = Counter()
+c2 = Counter()
+print(Counter.count)</code></pre>
+    <input type="radio" id="q2a" name="q2" value="a">
+    <label for="q2a" class="correct">a) 2</label><br>
+    <input type="radio" id="q2b" name="q2" value="b">
+    <label for="q2b" class="incorrect">b) 1</label><br>
+    <input type="radio" id="q2c" name="q2" value="c">
+    <label for="q2c" class="incorrect">c) 0</label><br>
+    <input type="radio" id="q2d" name="q2" value="d">
+    <label for="q2d" class="incorrect">d) Error</label><br>
+
+    <h3>Question 3</h3>
+    <p>Which of the following statements is true about methods in Python classes?</p>
+    <input type="radio" id="q3a" name="q3" value="a">
+    <label for="q3a" class="correct">a) Methods can modify the state of an object.</label><br>
+    <input type="radio" id="q3b" name="q3" value="b">
+    <label for="q3b" class="incorrect">b) Methods cannot access instance variables.</label><br>
+    <input type="radio" id="q3c" name="q3" value="c">
+    <label for="q3c" class="incorrect">c) Methods must return a value.</label><br>
+    <input type="radio" id="q3d" name="q3" value="d">
+    <label for="q3d" class="incorrect">d) Methods cannot call other methods within the same class.</label><br>
+
+    <h3>Question 4</h3>
+    <p>What is the output of the following code snippet involving closures?</p>
+    <pre class="overflow-auto shadow-md"><code>def outer():
+    x = "local"
+    def inner():
+        nonlocal x
+        x = "nonlocal"
+    inner()
+    print("x =", x)
+
+outer()</code></pre>
+    <input type="radio" id="q4a" name="q4" value="a">
+    <label for="q4a" class="incorrect">a) x = local</label><br>
+    <input type="radio" id="q4b" name="q4" value="b">
+    <label for="q4b" class="correct">b) x = nonlocal</label><br>
+    <input type="radio" id="q4c" name="q4" value="c">
+    <label for="q4c" class="incorrect">c) x = </label><br>
+    <input type="radio" id="q4d" name="q4" value="d">
+    <label for="q4d" class="incorrect">d) Error</label><br>
+    
+</form>
+
+    `,
+    initialCode: `class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        print(f"Hello, {self.name}!")\n\nperson = Person("Alice")\nperson.greet()`,
+  },
+
+  {
     id: 1,
     language: 'Python',
     title: 'Variables',
@@ -1071,177 +1560,7 @@ print("Mnemonic Phrase:", mnemonic_phrase)
   
     `,
   },
-  {
-    id: 20,
-    language: 'Python',
-    title: 'Installation and Setup',
-    content: `<h2>Getting Started with Discord Bot Development on the Algorand Blockchain</h2>
-    <p>This tutorial will walk you through the installation and setup needed to start building a Discord bot for the Algorand blockchain. The steps outlined below cover essential tools, libraries, and additional resources to ensure a smooth start.</p>
-    
-    <h2>Resources</h2>
-    <ul class="inText">
-      <li>YouTube Tutorial: <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-    <iframe
-        class="absolute top-0 left-0 w-full h-full border-0"
-        src="https://www.youtube.com/embed/z9lZ_ypTZzA "
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-</div></li>
-      <li>Download Python at <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a> 
-      <ul><li>(Ensure 'Add Python to PATH' is selected during installation)</li></li></ul>
-      <li>Install Visual Studio Code at <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></li>
-      <li>Python IntelliSense Extension for VS Code: Install within VS Code for enhanced Python support</li>
-    </ul>
 
-    <h2>Installing Essential Libraries</h2>
-    <p>Install the following libraries in your terminal:</p>
-    <pre class="overflow-auto shadow-md"><code>pip install aiohttp</code>
-<code>pip install algokit</code>
-<code>pip install py-algorand-sdk</code>
-<code>pip install algorand-python</code>
-<code>pip install python-dotenv</code></pre>
-    <p><strong>Note:</strong> If you encounter errors during Algokit installation regarding missing C++ tools, please follow the instructions in the video and install the <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/" target="_blank">Microsoft Visual C++ Build Tools</a>.</p>
-
-    <h2>Test Contract Example</h2>
-    <p>Create a new Python file called <code>testcontract.py</code> and add the following code to define a simple contract:</p>
-    <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract
-from algopy.arc4 import abimethod
-
-class TestContract(ARC4Contract):
-    def __init__(self) -> None:
-        pass
-
-    @abimethod
-    def test(self) -> None:
-        pass</code></pre>
-    <p>Compile the contract with the following terminal command:</p>
-    <pre class="overflow-auto shadow-md"><code>algokit compile py testcontract.py</code></pre>
-    <p>If the approval and clear TEAL files are generated successfully, your setup is complete, and you can proceed with the tutorial series.</p>
-
-    <h2>Running Your Own Node</h2>
-    <p>If you wish to run your own Algorand node rather than using Algonode, refer to the tutorial playlist. Note: Based on community feedback, we've shifted from a Discord bot-focused series to a PUYA-focused series. Only two videos were released for the Discord bot series before this shift. Start with <a href="https://www.youtube.com/watch?v=JjmH-KA7UcQ&list=PL5aELASDGbIAw8QqqdGoc9y2zqwsr_J4L&index=1" target="_blank">the first video in the new series</a>, which includes node installation for Windows.</p>
-    
-    <h2>Visual Studio Code - Code Editing</h2>
-    <p>Download Visual Studio Code to edit your code efficiently, and install the Python IntelliSense extension to help with code completion and suggestions.</p>
-    <p>This tutorial guides you through developing Discord bots for the Algorand blockchain. It’s designed to complement the YouTube tutorial series.</p>
-    <h2>YouTube Tutorial</h2>
-    <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-    <iframe
-        class="absolute top-0 left-0 w-full h-full border-0"
-        src="https://www.youtube.com/embed/JjmH-KA7UcQ"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-</div>
-
-    
-    <h2>Installing Dependencies</h2>
-    <h3>Using Regular Terminal (not Ubuntu)</h3>
-    <ul class="inText">
-        <li><strong>PIP Installation:</strong></li>
-    </ul>
-    <pre class="overflow-auto shadow-md">
-<code>curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</code>
-<code>python get-pip.py</code></pre>
-    <ul class="inText">
-        <li><strong>AIOHTTP (required before installing Discord.py):</strong></li>
-    </ul>
-    <pre class="overflow-auto shadow-md">
-<code>pip install aiohttp>=3.9.0b0</code></pre>
-    <ul class="inText">
-        <li><strong>Discord.py:</strong></li>
-    </ul>
-    <pre class="overflow-auto shadow-md">
-<code>pip install discord.py</code></pre>
-    <ul class="inText">
-        <li><strong>Python AlgoSDK:</strong></li>
-    </ul>
-    <pre class="overflow-auto shadow-md">
-<code>pip3 install py-algorand-sdk</code></pre>
-    
-    <h3>Using Ubuntu Terminal</h3>
-    <h4>Algorand Node Installation</h4>
-    <pre class="overflow-auto shadow-md">
-<code>sudo apt-get update
-sudo apt-get install -y gnupg2 curl software-properties-common
-curl -o - https://releases.algorand.com/key.pub | sudo tee /etc/apt/trusted.gpg.d/algorand.asc
-sudo add-apt-repository "deb [arch=amd64] https://releases.algorand.com/deb/ stable main"
-sudo apt-get update
-sudo apt-get install -y algorand-devtools</code></pre>
-    
-    <h4>Preparing & Running Algorand Node</h4>
-    <pre class="overflow-auto shadow-md"><code>mkdir ~/node 
-cd ~/node 
-curl https://raw.githubusercontent.com/algorand/go-algorand/rel/stable/cmd/updater/update.sh -O 
-chmod 744 update.sh 
-./update.sh -i -c stable -p ~/node -d ~/node/data -n 
-goal node start -d data 
-goal node catchup <a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Get Catchpoint from Mainnet</a> -d data</code></pre>
-    
-    <h4>Algorand Node Commands</h4>
-    <ul class="inText">
-        <li><strong>Start Node:</strong> <code>goal node start -d data</code></li>
-        <li><strong>Restart Node:</strong> <code>goal node restart -d data</code></li>
-        <li><strong>Stop Node:</strong> <code>goal node stop -d data</code></li>
-        <li><strong>Catchup Node:</strong> <code>goal node catchup [Catchpoint Link] -d data</code></li>
-    </ul>
-    
-    <h4>Obtain Algorand Node Token & Port</h4>
-    <pre class="overflow-auto shadow-md"><code>cd node/data
-cat algod.token (Displays token)
-cat algod.net</code> (Displays port)</pre>
-    
-    <h4>Basic Terminal Commands</h4>
-    <ul class="inText">
-        <li><strong>Clear Terminal:</strong> <code>clear</code></li>
-        <li><strong>Create Folder:</strong> <code>mkdir FolderName</code></li>
-        <li><strong>List Directories:</strong> <code>ls</code></li>
-        <li><strong>Change Directory:</strong> <code>cd FolderName</code></li>
-        <li><strong>Move Up One Directory:</strong> <code>cd ..</code></li>
-        <li><strong>Delete Directory:</strong> <code>rm -r FolderName</code></li>
-        <li><strong>View File Contents:</strong> <code>cat FileName</code></li>
-    </ul>
-    
-    <h2>Useful Links</h2>
-    <ul class="inText">
-        <li><a href="https://www.python.org/downloads/" target="_blank">Install Python (Select 'Add Python to PATH')</a></li>
-        <li><a href="https://code.visualstudio.com/Download" target="_blank">Install Visual Studio Code</a></li>
-        <li><a href="https://www.microsoft.com/store/productId/9MTTCL66CPXJ?ocid=pdpshare" target="_blank">Microsoft Store Ubuntu LTS</a></li>
-        <li><a href="https://developer.algorand.org/docs/run-a-node/setup/install/" target="_blank">Algorand Node Documentation</a></li>
-        <li><a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Algorand Node Mainnet Catchpoint</a></li>
-        <li><a href="https://discord.com/developers" target="_blank">Discord Developer Portal</a></li>
-    </ul>
-    
-    <hr><form class="quiz-form">
-        <h1>Quiz</h1>
-        <h3>Question 1</h3>
-        <p>Which package should be installed before installing discord.py?</p>
-        <input type="radio" id="q1a" name="q1" value="a">
-        <label for="q1a" class="incorrect">a) py-algorand-sdk</label><br>
-        <input type="radio" id="q1b" name="q1" value="b">
-        <label for="q1b" class="correct">b) aiohttp>=3.9.0b0</label><br>
-        <input type="radio" id="q1c" name="q1" value="c">
-        <label for="q1c" class="incorrect">c) Visual Studio Code</label><br>
-        <input type="radio" id="q1d" name="q1" value="d">
-        <label for="q1d" class="incorrect">d) Node</label><br>
-        
-        <h3>Question 2</h3>
-        <p>What command starts the Algorand node?</p>
-        <input type="radio" id="q2a" name="q2" value="a">
-        <label for="q2a" class="incorrect">a) mkdir node</label><br>
-        <input type="radio" id="q2b" name="q2" value="b">
-        <label for="q2b" class="correct">b) goal node start -d data</label><br>
-        <input type="radio" id="q2c" name="q2" value="c">
-        <label for="q2c" class="incorrect">c) chmod 744 update.sh</label><br>
-        <input type="radio" id="q2d" name="q2" value="d">
-        <label for="q2d" class="incorrect">d) apt-get update</label><br>
-    </form>
-    `,
-    initialCode: ``,
-  },
   {
     id: 21,
     language: 'Python',
@@ -1508,6 +1827,815 @@ application_client.compose_call(atc, call_abi_method='hello', name='AlgoLearn Co
 result = atc.execute(algod_client, 2)
 print(result.abi_results[0].tx_id)
 print(result.abi_results[0].return_value)</code></pre>
+    `,
+    initialCode: ``,
+  },
+
+  {
+    id: 35,
+    language: 'Python',
+    title: 'Transaction Comprehension',
+    content: `
+        <h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/jeHALmgfB7w"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2>Compiling Contracts</h2>
+        <p>Compile contracts with:</p>
+        <pre class="overflow-auto shadow-md"><code>algokit compile py filename.py</code></pre>
+
+        <h3>Generate Two Accounts</h3>
+        <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+print(address)</code></pre>
+
+        <h3>Generate One Asset</h3>
+        <p>Create one asset and place its ID in your <code>.env</code> file.</p>
+        <p><em>Note: Remember the account that owns the asset, as it will be used for asset transfers later.</em></p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+asset_create_txn = AssetCreateTxn(
+    sender=address,
+    sp=params,
+    total=10,
+    decimals=0,
+    default_frozen=False,
+    manager=address,
+    reserve=address,
+    asset_name = 'Test Asset One',
+    unit_name= 'TEST#1',
+)
+
+signed_asset_create_txn = asset_create_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_asset_create_txn)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+tx_info = algod_client.pending_transaction_info(tx_id)
+print(tx_info)</code></pre>
+
+        <h2>Launching Contracts</h2>
+        <p><em>Note: Adjust approval and clear teal filenames, as well as global/local states, as needed.</em></p>
+        <p>In this tutorial, we use a second contract, <code>SecondApp</code>, which has 1 local state <code>uint</code>.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
+from algosdk.account import address_from_private_key
+from algosdk.v2client.algod import AlgodClient
+from algosdk import logic
+from dotenv import load_dotenv
+import base64
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+algod_client = AlgodClient(node_token, node_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+approval_teal_file_name = 'TransactionComp.approval.teal'
+clear_teal_file_name = 'TransactionComp.clear.teal'
+
+with open(f'./{approval_teal_file_name}', 'r') as f:
+    approval_teal_source = f.read()
+
+with open(f'{clear_teal_file_name}', 'r') as f:
+    clear_teal_source = f.read()
+
+approval_result = algod_client.compile(approval_teal_source)
+approval_program = base64.b64decode(approval_result['result'])
+
+clear_result = algod_client.compile(clear_teal_source)
+clear_program = base64.b64decode(clear_result['result'])
+
+global_schema = StateSchema(num_uints=0, num_byte_slices=0)
+local_schema = StateSchema(num_uints=0, num_byte_slices=0)
+
+txn = ApplicationCreateTxn(
+    sender = address,
+    sp = params,
+    on_complete=OnComplete.NoOpOC,
+    approval_program=approval_program,
+    clear_program=clear_program,
+    global_schema=global_schema,
+    local_schema=local_schema,
+)
+signed_txn = txn.sign(private_key)
+
+try:
+    txid = algod_client.send_transaction(signed_txn)
+except Exception as e:
+    print(e)
+    
+print(f'Tx ID: {txid}')
+wait_for_confirmation(algod_client, txid)
+tx_info = algod_client.pending_transaction_info(txid)
+print(f'App ID: {tx_info['application-index']}')
+
+app_address = logic.get_application_address(tx_info['application-index'])
+print(f'Application Address: {app_address}')
+
+
+activate_contract = PaymentTxn(
+    sender = address,
+    sp = params,
+    receiver = app_address,
+    amt = 100_000
+)
+
+signed_activation = activate_contract.sign(private_key)
+activation_tx = algod_client.send_transaction(signed_activation)
+print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
+</code></pre>
+
+        <h3>Transaction Comprehension (TXN)</h3>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, Txn, Bytes, String
+from algopy.arc4 import abimethod, Address
+from algopy.arc4 import UInt64 as arc4UInt64
+
+class TransactionComp(ARC4Contract):
+    def __init__(self) -> None:
+        pass
+    
+    @abimethod
+    def txn_comprehension(self) -> tuple[Address, Address, Bytes, arc4UInt64, arc4UInt64, String, String, arc4UInt64, Address, arc4UInt64, String, Address]:
+        sender = Address(Txn.sender)
+        foreign_accounts = Address(Txn.accounts(1))
+        app_arg_1 = Txn.application_args(0)
+        txn_foreign_applications = Txn.applications(0)
+        txn_foreign_application_id = arc4UInt64(txn_foreign_applications.id)
+        foreign_asset_1 = Txn.assets(0)
+        foreign_asset_id = arc4UInt64(foreign_asset_1.id)
+        foreign_asset_name = String.from_bytes(foreign_asset_1.name)
+        foreign_asset_unit_name = String.from_bytes(foreign_asset_1.unit_name)
+        sender_foreign_asset_balance = arc4UInt64(foreign_asset_1.balance(Txn.sender))
+        foreign_asset_creator_address = Address(foreign_asset_1.creator)
+        fee_for_this_transaction = arc4UInt64(Txn.fee)
+        transaction_type = String.from_bytes(Txn.type)
+        transaction_id = Address(Txn.tx_id)
+        return sender, foreign_accounts, app_arg_1, txn_foreign_application_id, foreign_asset_id, foreign_asset_name, foreign_asset_unit_name, sender_foreign_asset_balance, foreign_asset_creator_address, fee_for_this_transaction, transaction_type, transaction_id
+        
+</code></pre>
+        <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer, TransactionWithSigner
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+import os
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+from dotenv import load_dotenv
+
+load_dotenv()
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+path = Path(__file__).parent / './TransactionComp.arc32.json'
+app_id = int(os.getenv('app_id'))
+private_key = os.getenv('private_key')
+signer = AccountTransactionSigner(private_key)
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=path,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+asset_id = 723609532
+
+arbitrary_account = 'MXOT5NO6DVCGIS22AWEP7N5WD72RSV6QJG4OWGDOTEH3DQKCG4R4WLLMR4'
+
+app_client.compose_call(atc, call_abi_method='txn_comprehension', transaction_parameters={'accounts': [arbitrary_account], 'foreign_assets': [asset_id]})
+
+result = atc.execute(algod_client, 2)
+
+all_tx_ids = [result.abi_results[i].tx_id for i in range(len(result.abi_results))]
+all_abi_results = [result.abi_results[i].return_value for i in range(len(result.abi_results))]
+
+print(all_tx_ids)
+print(all_abi_results)
+</code></pre>
+    `,
+    initialCode: ``,
+  },
+
+  {
+    id: 36,
+    language: 'Python',
+    title: 'Inner Transaction Comprehension',
+    content: `
+        <h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/IRhE9E53Qhc"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2>Compiling Contracts</h2>
+        <p>Compile contracts with:</p>
+        <pre class="overflow-auto shadow-md"><code>algokit compile py filename.py</code></pre>
+
+        <h3>Generate Two Accounts</h3>
+        <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+private_key, address = generate_account()
+print(address)</code></pre>
+
+        <h3>Generate One Asset</h3>
+        <p>Create one asset and place its ID in your <code>.env</code> file.</p>
+        <p><em>Note: Remember the account that owns the asset, as it will be used for asset transfers later.</em></p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+asset_create_txn = AssetCreateTxn(
+    sender=address,
+    sp=params,
+    total=10,
+    decimals=0,
+    default_frozen=False,
+    manager=address,
+    reserve=address,
+    asset_name = 'Test Asset One',
+    unit_name= 'TEST#1',
+)
+
+signed_asset_create_txn = asset_create_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_asset_create_txn)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+tx_info = algod_client.pending_transaction_info(tx_id)
+print(tx_info)</code></pre>
+
+        <h2>Launching Contracts</h2>
+        <p><em>Note: Adjust approval and clear teal filenames, as well as global/local states, as needed.</em></p>
+        <p>In this tutorial, we use a second contract, <code>SecondApp</code>, which has 1 local state <code>uint</code>.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
+from algosdk.account import address_from_private_key
+from algosdk.v2client.algod import AlgodClient
+from algosdk import logic
+from dotenv import load_dotenv
+import base64
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+algod_client = AlgodClient(node_token, node_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+approval_teal_file_name = 'TransactionComp.approval.teal'
+clear_teal_file_name = 'TransactionComp.clear.teal'
+
+with open(f'./{approval_teal_file_name}', 'r') as f:
+    approval_teal_source = f.read()
+
+with open(f'{clear_teal_file_name}', 'r') as f:
+    clear_teal_source = f.read()
+
+approval_result = algod_client.compile(approval_teal_source)
+approval_program = base64.b64decode(approval_result['result'])
+
+clear_result = algod_client.compile(clear_teal_source)
+clear_program = base64.b64decode(clear_result['result'])
+
+global_schema = StateSchema(num_uints=0, num_byte_slices=0)
+local_schema = StateSchema(num_uints=0, num_byte_slices=0)
+
+txn = ApplicationCreateTxn(
+    sender = address,
+    sp = params,
+    on_complete=OnComplete.NoOpOC,
+    approval_program=approval_program,
+    clear_program=clear_program,
+    global_schema=global_schema,
+    local_schema=local_schema,
+)
+signed_txn = txn.sign(private_key)
+
+try:
+    txid = algod_client.send_transaction(signed_txn)
+except Exception as e:
+    print(e)
+    
+print(f'Tx ID: {txid}')
+wait_for_confirmation(algod_client, txid)
+tx_info = algod_client.pending_transaction_info(txid)
+print(f'App ID: {tx_info['application-index']}')
+
+app_address = logic.get_application_address(tx_info['application-index'])
+print(f'Application Address: {app_address}')
+
+
+activate_contract = PaymentTxn(
+    sender = address,
+    sp = params,
+    receiver = app_address,
+    amt = 100_000
+)
+
+signed_activation = activate_contract.sign(private_key)
+activation_tx = algod_client.send_transaction(signed_activation)
+print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
+</code></pre>
+
+        <h3>Inner Transaction Comprehension (ITXN and abi_calls)</h3>
+        
+        <h4>Inner Txn with itxn Class</h4>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, UInt64, itxn, Global
+from algopy.arc4 import abimethod
+
+class TransactionComp(ARC4Contract):
+    def __init__(self) -> None:
+        pass   
+
+    @abimethod
+    def inner_txn_comprehension(self) -> tuple[UInt64, UInt64, UInt64]:
+        asset_config_txn = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#1",
+            asset_name="TEST ASSET ONE",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            ).submit()        
+        
+        asset_config_txn_2 = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#2",
+            asset_name="TEST ASSET TWO",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            )        
+        
+        asset_config_txn_3 = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#3",
+            asset_name="TEST ASSET THREE",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            )
+        
+        submit_tx_1, submit_tx_2 = itxn.submit_txns(asset_config_txn_2, asset_config_txn_3)        
+            
+        return asset_config_txn.created_asset.id, submit_tx_1.created_asset.id, submit_tx_2.created_asset.id</code></pre>
+        <pre class="overflow-auto shadow-md"><code>interact_with_contract_2.py</code></pre>
+
+        <h4>Inner Txn with abi_call Class</h4>
+        <p><em>Note: Deploy a second application and place the generated app ID in the new inner transaction method, <code>inner_txn_two</code>.</em></p>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, LocalState, Txn, UInt64, gtxn
+from algopy.arc4 import abimethod
+
+class MySecondContract(ARC4Contract):
+    def __init__(self) -> None:
+        self.opted_in = LocalState(UInt64)        
+        
+    @abimethod()
+    def return_nothing(self) -> None:
+        pass        
+        
+    @abimethod(allow_actions=['OptIn'])
+    def local_state_return_something(self,
+                                     payment_txn: gtxn.PaymentTransaction) -> UInt64:
+        self.opted_in[Txn.sender] = UInt64(1)
+        return UInt64(1)</code></pre>
+        
+        <p>Replace the second App ID in the contract below, compile the contract, and include the new app in the <em>Foreign Assets Array</em>.</p>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, UInt64, itxn, Global, OnCompleteAction
+from algopy.arc4 import abimethod, arc4_signature, abi_call
+
+class TransactionComp(ARC4Contract):
+    def __init__(self) -> None:
+        pass    
+
+    @abimethod
+    def inner_txn_two(self) -> UInt64:
+        
+        method_signature = arc4_signature('return_nothing()void')
+        
+        itxn.ApplicationCall(
+            app_id=727594507,
+            app_args=(method_signature,),
+            on_completion=OnCompleteAction.NoOp,
+            fee=Global.min_txn_fee
+        ).submit()        
+        
+        result, txn = abi_call[UInt64](
+            'local_state_return_something',
+            app_id=727594507,
+            on_completion=OnCompleteAction.OptIn,
+            fee=Global.min_txn_fee
+        )
+        
+        txn = abi_call(
+            'return_nothing',
+            app_id=727594507,
+            fee=Global.min_txn_fee
+        )
+        
+        return result
+        
+</code></pre>
+        <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
+from algosdk.v2client.algod import AlgodClient
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer, TransactionWithSigner
+from algosdk.transaction import PaymentTxn, AssetTransferTxn
+from algosdk.account import address_from_private_key
+from pathlib import Path
+import os
+from algosdk.util import algos_to_microalgos
+from algosdk.abi import ABIType
+from dotenv import load_dotenv
+
+load_dotenv()
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+path = Path(__file__).parent / './TransactionComp.arc32.json'
+app_id = int(os.getenv('app_id'))
+private_key = os.getenv('private_key')
+signer = AccountTransactionSigner(private_key)
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+app_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=path,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+#asset_id = 723609532
+
+#arbitrary_account = 'MXOT5NO6DVCGIS22AWEP7N5WD72RSV6QJG4OWGDOTEH3DQKCG4R4WLLMR4'
+
+#app_client.compose_call(atc, call_abi_method='txn_comprehension', transaction_parameters={'accounts': [arbitrary_account], 'foreign_assets': [asset_id]})
+
+#app_client.compose_call(
+#    atc, 
+#    call_abi_method='inner_txn_comprehension',
+#)
+
+second_app = int(os.getenv('second_app_id'))
+
+app_client.compose_call(
+    atc, 
+    call_abi_method='inner_txn_two',
+        transaction_parameters={
+        'foreign_apps': [second_app]
+    }
+)
+
+result = atc.execute(algod_client, 2)
+
+all_tx_ids = [result.abi_results[i].tx_id for i in range(len(result.abi_results))]
+all_abi_results = [result.abi_results[i].return_value for i in range(len(result.abi_results))]
+
+print(all_tx_ids)
+print(all_abi_results)
+</code></pre>
+    `,
+    initialCode: ``,
+  },
+
+  {
+    id: 37,
+    language: 'Python',
+    title: 'Group Transaction',
+    content: `
+        <h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/E8DAtyrW4Rw"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h3>Generate Two Accounts</h3>
+        <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+
+
+private_key, address = generate_account()
+print(private_key, address)</code></pre>
+
+        <h3>Generate One Asset</h3>
+        <p>Create one asset and place its ID in your <code>.env</code> file.</p>
+        <p><em>Note: Remember the account that owns the asset, as it will be used for asset transfers later.</em></p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+asset_create_txn = AssetCreateTxn(
+    sender=address,
+    sp=params,
+    total=10,
+    decimals=0,
+    default_frozen=False,
+    manager=address,
+    reserve=address,
+    asset_name = 'Test Asset One',
+    unit_name= 'TEST#1',
+)
+
+signed_asset_create_txn = asset_create_txn.sign(private_key)
+tx_id = algod_client.send_transaction(signed_asset_create_txn)
+print(tx_id)
+
+wait_for_confirmation(algod_client, tx_id)
+tx_info = algod_client.pending_transaction_info(tx_id)
+print(tx_info)</code></pre>
+
+        <h2>Launching Contracts</h2>
+        <p><em>Note: Adjust approval and clear teal filenames, as well as global/local states, as needed.</em></p>
+        <p>In this tutorial, we use a second contract, <code>SecondApp</code>, which has 1 local state <code>uint</code>.</p>
+        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
+from algosdk.account import address_from_private_key
+from algosdk.v2client.algod import AlgodClient
+from algosdk import logic
+from dotenv import load_dotenv
+import base64
+import os
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+algod_client = AlgodClient(node_token, node_server)
+
+private_key = os.getenv('private_key')
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+approval_teal_file_name = 'TransactionComp.approval.teal'
+clear_teal_file_name = 'TransactionComp.clear.teal'
+
+with open(f'./{approval_teal_file_name}', 'r') as f:
+    approval_teal_source = f.read()
+
+with open(f'{clear_teal_file_name}', 'r') as f:
+    clear_teal_source = f.read()
+
+approval_result = algod_client.compile(approval_teal_source)
+approval_program = base64.b64decode(approval_result['result'])
+
+clear_result = algod_client.compile(clear_teal_source)
+clear_program = base64.b64decode(clear_result['result'])
+
+global_schema = StateSchema(num_uints=0, num_byte_slices=0)
+local_schema = StateSchema(num_uints=0, num_byte_slices=0)
+
+txn = ApplicationCreateTxn(
+    sender = address,
+    sp = params,
+    on_complete=OnComplete.NoOpOC,
+    approval_program=approval_program,
+    clear_program=clear_program,
+    global_schema=global_schema,
+    local_schema=local_schema,
+)
+signed_txn = txn.sign(private_key)
+
+try:
+    txid = algod_client.send_transaction(signed_txn)
+except Exception as e:
+    print(e)
+    
+print(f'Tx ID: {txid}')
+wait_for_confirmation(algod_client, txid)
+tx_info = algod_client.pending_transaction_info(txid)
+print(f'App ID: {tx_info['application-index']}')
+
+app_address = logic.get_application_address(tx_info['application-index'])
+print(f'Application Address: {app_address}')
+
+
+activate_contract = PaymentTxn(
+    sender = address,
+    sp = params,
+    receiver = app_address,
+    amt = 100_000
+)
+
+signed_activation = activate_contract.sign(private_key)
+activation_tx = algod_client.send_transaction(signed_activation)
+print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
+</code></pre>
+
+        <h3>Group Transaction Comprehension (GTXN)</h3>
+        <p>In this section, we put it all together and use relative indexing in our group transaction method to enhance scalability.</p>
+        <pre class="overflow-auto shadow-md"><code>TransactionComprehension_4.py</code></pre>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, Txn, Bytes, UInt64, String, itxn, Global, OnCompleteAction, gtxn, TransactionType
+from algopy.arc4 import abimethod, Address, arc4_signature, abi_call
+from algopy.arc4 import UInt64 as arc4UInt64
+
+class TransactionComp(ARC4Contract):
+    def __init__(self) -> None:
+        pass
+    
+    @abimethod
+    def txn_comprehension(self) -> tuple[Address, Address, Bytes, arc4UInt64, arc4UInt64, String, String, arc4UInt64, Address, arc4UInt64, String, Address]:
+        sender = Address(Txn.sender)
+        foreign_accounts = Address(Txn.accounts(1))
+        app_arg_1 = Txn.application_args(0)
+        txn_foreign_applications = Txn.applications(0)
+        txn_foreign_application_id = arc4UInt64(txn_foreign_applications.id)
+        foreign_asset_1 = Txn.assets(0)
+        foreign_asset_id = arc4UInt64(foreign_asset_1.id)
+        foreign_asset_name = String.from_bytes(foreign_asset_1.name)
+        foreign_asset_unit_name = String.from_bytes(foreign_asset_1.unit_name)
+        sender_foreign_asset_balance = arc4UInt64(foreign_asset_1.balance(Txn.sender))
+        foreign_asset_creator_address = Address(foreign_asset_1.creator)
+        fee_for_this_transaction = arc4UInt64(Txn.fee)
+        transaction_type = String.from_bytes(Txn.type)
+        transaction_id = Address(Txn.tx_id)
+        return sender, foreign_accounts, app_arg_1, txn_foreign_application_id, foreign_asset_id, foreign_asset_name, foreign_asset_unit_name, sender_foreign_asset_balance, foreign_asset_creator_address, fee_for_this_transaction, transaction_type, transaction_id        
+
+    @abimethod
+    def inner_txn_comprehension(self) -> tuple[UInt64, UInt64, UInt64]:
+        asset_config_txn = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#1",
+            asset_name="TEST ASSET ONE",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            ).submit()        
+        
+        asset_config_txn_2 = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#2",
+            asset_name="TEST ASSET TWO",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            )        
+        
+        asset_config_txn_3 = itxn.AssetConfig(
+            total=1,
+            unit_name="TEST#3",
+            asset_name="TEST ASSET THREE",
+            decimals=0,
+            default_frozen=False,
+            manager=Global.current_application_address,
+            reserve=Global.current_application_address,
+            fee=Global.min_txn_fee,
+            )
+        
+        submit_tx_1, submit_tx_2 = itxn.submit_txns(asset_config_txn_2, asset_config_txn_3)        
+            
+        return asset_config_txn.created_asset.id, submit_tx_1.created_asset.id, submit_tx_2.created_asset.id    
+    
+    
+    @abimethod
+    def inner_txn_two(self) -> UInt64:
+        
+        method_signature = arc4_signature('return_nothing()void')
+        
+        itxn.ApplicationCall(
+            app_id=727594507,
+            app_args=(method_signature,),
+            on_completion=OnCompleteAction.NoOp,
+            fee=Global.min_txn_fee
+        ).submit()        
+        
+        result, txn = abi_call[UInt64](
+            'local_state_return_something',
+            app_id=727594507,
+            on_completion=OnCompleteAction.OptIn,
+            fee=Global.min_txn_fee
+        )
+        
+        txn = abi_call(
+            'return_nothing',
+            app_id=727594507,
+            fee=Global.min_txn_fee
+        )
+        
+        return result        
+
+    @abimethod
+    def group_txn_comprehension(
+        self,
+        first_transaction: gtxn.PaymentTransaction
+    ) -> tuple[UInt64, UInt64, UInt64]:
+        
+        assert first_transaction.amount == 1000
+        
+        second_transaction = gtxn.Transaction(Txn.group_index + 1)
+        
+        if second_transaction.type == TransactionType.Payment:
+            second_transaction_amount = second_transaction.amount
+            assert second_transaction_amount == 2000
+            
+        elif second_transaction.type == TransactionType.AssetTransfer:
+            second_transaction_amount = second_transaction.asset_amount
+            assert second_transaction_amount == 1
+            
+        third_transaction = gtxn.Transaction(Txn.group_index + 2)
+
+        if third_transaction.type == TransactionType.Payment:
+            third_transaction_amount = third_transaction.amount
+            assert third_transaction_amount == 2000
+
+        elif third_transaction.type == TransactionType.AssetTransfer:
+            third_transaction_amount = third_transaction.asset_amount
+            assert third_transaction_amount == 1            
+                    
+        return first_transaction.amount, second_transaction_amount, third_transaction_amount</code></pre>
     `,
     initialCode: ``,
   },
@@ -6603,815 +7731,6 @@ tx_ids = [results.tx_ids[i] for i in range(len(results.tx_ids))]
 abi_results = [results.abi_results[i].return_value for i in range(len(results.abi_results))]
 print(tx_ids)
 print(abi_results)</code></pre>
-    `,
-    initialCode: ``,
-  },
-
-  {
-    id: 35,
-    language: 'Python',
-    title: 'Transaction Comprehension',
-    content: `
-        <h2>Video Tutorial</h2>
-        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-            <iframe
-                class="absolute top-0 left-0 w-full h-full border-0"
-                src="https://www.youtube.com/embed/jeHALmgfB7w"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <h2>Compiling Contracts</h2>
-        <p>Compile contracts with:</p>
-        <pre class="overflow-auto shadow-md"><code>algokit compile py filename.py</code></pre>
-
-        <h3>Generate Two Accounts</h3>
-        <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
-        <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
-
-private_key, address = generate_account()
-print(address)</code></pre>
-
-        <h3>Generate One Asset</h3>
-        <p>Create one asset and place its ID in your <code>.env</code> file.</p>
-        <p><em>Note: Remember the account that owns the asset, as it will be used for asset transfers later.</em></p>
-        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
-from algosdk.v2client.algod import AlgodClient
-from algosdk.account import address_from_private_key
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-algod_token = os.getenv('algod_token')
-algod_server = os.getenv('algod_server')
-algod_client = AlgodClient(algod_token, algod_server)
-
-private_key = os.getenv('private_key')
-address = address_from_private_key(private_key)
-params = algod_client.suggested_params()
-
-asset_create_txn = AssetCreateTxn(
-    sender=address,
-    sp=params,
-    total=10,
-    decimals=0,
-    default_frozen=False,
-    manager=address,
-    reserve=address,
-    asset_name = 'Test Asset One',
-    unit_name= 'TEST#1',
-)
-
-signed_asset_create_txn = asset_create_txn.sign(private_key)
-tx_id = algod_client.send_transaction(signed_asset_create_txn)
-print(tx_id)
-
-wait_for_confirmation(algod_client, tx_id)
-tx_info = algod_client.pending_transaction_info(tx_id)
-print(tx_info)</code></pre>
-
-        <h2>Launching Contracts</h2>
-        <p><em>Note: Adjust approval and clear teal filenames, as well as global/local states, as needed.</em></p>
-        <p>In this tutorial, we use a second contract, <code>SecondApp</code>, which has 1 local state <code>uint</code>.</p>
-        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
-from algosdk.account import address_from_private_key
-from algosdk.v2client.algod import AlgodClient
-from algosdk import logic
-from dotenv import load_dotenv
-import base64
-import os
-
-load_dotenv()
-
-node_token = os.getenv('algod_token')
-node_server = os.getenv('algod_server')
-algod_client = AlgodClient(node_token, node_server)
-
-private_key = os.getenv('private_key')
-address = address_from_private_key(private_key)
-
-params = algod_client.suggested_params()
-
-approval_teal_file_name = 'TransactionComp.approval.teal'
-clear_teal_file_name = 'TransactionComp.clear.teal'
-
-with open(f'./{approval_teal_file_name}', 'r') as f:
-    approval_teal_source = f.read()
-
-with open(f'{clear_teal_file_name}', 'r') as f:
-    clear_teal_source = f.read()
-
-approval_result = algod_client.compile(approval_teal_source)
-approval_program = base64.b64decode(approval_result['result'])
-
-clear_result = algod_client.compile(clear_teal_source)
-clear_program = base64.b64decode(clear_result['result'])
-
-global_schema = StateSchema(num_uints=0, num_byte_slices=0)
-local_schema = StateSchema(num_uints=0, num_byte_slices=0)
-
-txn = ApplicationCreateTxn(
-    sender = address,
-    sp = params,
-    on_complete=OnComplete.NoOpOC,
-    approval_program=approval_program,
-    clear_program=clear_program,
-    global_schema=global_schema,
-    local_schema=local_schema,
-)
-signed_txn = txn.sign(private_key)
-
-try:
-    txid = algod_client.send_transaction(signed_txn)
-except Exception as e:
-    print(e)
-    
-print(f'Tx ID: {txid}')
-wait_for_confirmation(algod_client, txid)
-tx_info = algod_client.pending_transaction_info(txid)
-print(f'App ID: {tx_info['application-index']}')
-
-app_address = logic.get_application_address(tx_info['application-index'])
-print(f'Application Address: {app_address}')
-
-
-activate_contract = PaymentTxn(
-    sender = address,
-    sp = params,
-    receiver = app_address,
-    amt = 100_000
-)
-
-signed_activation = activate_contract.sign(private_key)
-activation_tx = algod_client.send_transaction(signed_activation)
-print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
-</code></pre>
-
-        <h3>Transaction Comprehension (TXN)</h3>
-        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, Txn, Bytes, String
-from algopy.arc4 import abimethod, Address
-from algopy.arc4 import UInt64 as arc4UInt64
-
-class TransactionComp(ARC4Contract):
-    def __init__(self) -> None:
-        pass
-    
-    @abimethod
-    def txn_comprehension(self) -> tuple[Address, Address, Bytes, arc4UInt64, arc4UInt64, String, String, arc4UInt64, Address, arc4UInt64, String, Address]:
-        sender = Address(Txn.sender)
-        foreign_accounts = Address(Txn.accounts(1))
-        app_arg_1 = Txn.application_args(0)
-        txn_foreign_applications = Txn.applications(0)
-        txn_foreign_application_id = arc4UInt64(txn_foreign_applications.id)
-        foreign_asset_1 = Txn.assets(0)
-        foreign_asset_id = arc4UInt64(foreign_asset_1.id)
-        foreign_asset_name = String.from_bytes(foreign_asset_1.name)
-        foreign_asset_unit_name = String.from_bytes(foreign_asset_1.unit_name)
-        sender_foreign_asset_balance = arc4UInt64(foreign_asset_1.balance(Txn.sender))
-        foreign_asset_creator_address = Address(foreign_asset_1.creator)
-        fee_for_this_transaction = arc4UInt64(Txn.fee)
-        transaction_type = String.from_bytes(Txn.type)
-        transaction_id = Address(Txn.tx_id)
-        return sender, foreign_accounts, app_arg_1, txn_foreign_application_id, foreign_asset_id, foreign_asset_name, foreign_asset_unit_name, sender_foreign_asset_balance, foreign_asset_creator_address, fee_for_this_transaction, transaction_type, transaction_id
-        
-</code></pre>
-        <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
-from algosdk.v2client.algod import AlgodClient
-from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer, TransactionWithSigner
-from algosdk.transaction import PaymentTxn, AssetTransferTxn
-from algosdk.account import address_from_private_key
-from pathlib import Path
-import os
-from algosdk.util import algos_to_microalgos
-from algosdk.abi import ABIType
-from dotenv import load_dotenv
-
-load_dotenv()
-
-algod_token = os.getenv('algod_token')
-algod_server = os.getenv('algod_server')
-algod_client = AlgodClient(algod_token, algod_server)
-
-path = Path(__file__).parent / './TransactionComp.arc32.json'
-app_id = int(os.getenv('app_id'))
-private_key = os.getenv('private_key')
-signer = AccountTransactionSigner(private_key)
-address = address_from_private_key(private_key)
-params = algod_client.suggested_params()
-
-app_client = ApplicationClient(
-    algod_client=algod_client,
-    app_spec=path,
-    app_id=app_id,
-    signer=signer,
-    sender=address,
-    suggested_params=params,
-)
-
-atc = AtomicTransactionComposer()
-
-asset_id = 723609532
-
-arbitrary_account = 'MXOT5NO6DVCGIS22AWEP7N5WD72RSV6QJG4OWGDOTEH3DQKCG4R4WLLMR4'
-
-app_client.compose_call(atc, call_abi_method='txn_comprehension', transaction_parameters={'accounts': [arbitrary_account], 'foreign_assets': [asset_id]})
-
-result = atc.execute(algod_client, 2)
-
-all_tx_ids = [result.abi_results[i].tx_id for i in range(len(result.abi_results))]
-all_abi_results = [result.abi_results[i].return_value for i in range(len(result.abi_results))]
-
-print(all_tx_ids)
-print(all_abi_results)
-</code></pre>
-    `,
-    initialCode: ``,
-  },
-
-  {
-    id: 36,
-    language: 'Python',
-    title: 'Inner Transaction Comprehension',
-    content: `
-        <h2>Video Tutorial</h2>
-        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-            <iframe
-                class="absolute top-0 left-0 w-full h-full border-0"
-                src="https://www.youtube.com/embed/IRhE9E53Qhc"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <h2>Compiling Contracts</h2>
-        <p>Compile contracts with:</p>
-        <pre class="overflow-auto shadow-md"><code>algokit compile py filename.py</code></pre>
-
-        <h3>Generate Two Accounts</h3>
-        <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
-        <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
-
-private_key, address = generate_account()
-print(address)</code></pre>
-
-        <h3>Generate One Asset</h3>
-        <p>Create one asset and place its ID in your <code>.env</code> file.</p>
-        <p><em>Note: Remember the account that owns the asset, as it will be used for asset transfers later.</em></p>
-        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
-from algosdk.v2client.algod import AlgodClient
-from algosdk.account import address_from_private_key
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-algod_token = os.getenv('algod_token')
-algod_server = os.getenv('algod_server')
-algod_client = AlgodClient(algod_token, algod_server)
-
-private_key = os.getenv('private_key')
-address = address_from_private_key(private_key)
-params = algod_client.suggested_params()
-
-asset_create_txn = AssetCreateTxn(
-    sender=address,
-    sp=params,
-    total=10,
-    decimals=0,
-    default_frozen=False,
-    manager=address,
-    reserve=address,
-    asset_name = 'Test Asset One',
-    unit_name= 'TEST#1',
-)
-
-signed_asset_create_txn = asset_create_txn.sign(private_key)
-tx_id = algod_client.send_transaction(signed_asset_create_txn)
-print(tx_id)
-
-wait_for_confirmation(algod_client, tx_id)
-tx_info = algod_client.pending_transaction_info(tx_id)
-print(tx_info)</code></pre>
-
-        <h2>Launching Contracts</h2>
-        <p><em>Note: Adjust approval and clear teal filenames, as well as global/local states, as needed.</em></p>
-        <p>In this tutorial, we use a second contract, <code>SecondApp</code>, which has 1 local state <code>uint</code>.</p>
-        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
-from algosdk.account import address_from_private_key
-from algosdk.v2client.algod import AlgodClient
-from algosdk import logic
-from dotenv import load_dotenv
-import base64
-import os
-
-load_dotenv()
-
-node_token = os.getenv('algod_token')
-node_server = os.getenv('algod_server')
-algod_client = AlgodClient(node_token, node_server)
-
-private_key = os.getenv('private_key')
-address = address_from_private_key(private_key)
-
-params = algod_client.suggested_params()
-
-approval_teal_file_name = 'TransactionComp.approval.teal'
-clear_teal_file_name = 'TransactionComp.clear.teal'
-
-with open(f'./{approval_teal_file_name}', 'r') as f:
-    approval_teal_source = f.read()
-
-with open(f'{clear_teal_file_name}', 'r') as f:
-    clear_teal_source = f.read()
-
-approval_result = algod_client.compile(approval_teal_source)
-approval_program = base64.b64decode(approval_result['result'])
-
-clear_result = algod_client.compile(clear_teal_source)
-clear_program = base64.b64decode(clear_result['result'])
-
-global_schema = StateSchema(num_uints=0, num_byte_slices=0)
-local_schema = StateSchema(num_uints=0, num_byte_slices=0)
-
-txn = ApplicationCreateTxn(
-    sender = address,
-    sp = params,
-    on_complete=OnComplete.NoOpOC,
-    approval_program=approval_program,
-    clear_program=clear_program,
-    global_schema=global_schema,
-    local_schema=local_schema,
-)
-signed_txn = txn.sign(private_key)
-
-try:
-    txid = algod_client.send_transaction(signed_txn)
-except Exception as e:
-    print(e)
-    
-print(f'Tx ID: {txid}')
-wait_for_confirmation(algod_client, txid)
-tx_info = algod_client.pending_transaction_info(txid)
-print(f'App ID: {tx_info['application-index']}')
-
-app_address = logic.get_application_address(tx_info['application-index'])
-print(f'Application Address: {app_address}')
-
-
-activate_contract = PaymentTxn(
-    sender = address,
-    sp = params,
-    receiver = app_address,
-    amt = 100_000
-)
-
-signed_activation = activate_contract.sign(private_key)
-activation_tx = algod_client.send_transaction(signed_activation)
-print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
-</code></pre>
-
-        <h3>Inner Transaction Comprehension (ITXN and abi_calls)</h3>
-        
-        <h4>Inner Txn with itxn Class</h4>
-        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, UInt64, itxn, Global
-from algopy.arc4 import abimethod
-
-class TransactionComp(ARC4Contract):
-    def __init__(self) -> None:
-        pass   
-
-    @abimethod
-    def inner_txn_comprehension(self) -> tuple[UInt64, UInt64, UInt64]:
-        asset_config_txn = itxn.AssetConfig(
-            total=1,
-            unit_name="TEST#1",
-            asset_name="TEST ASSET ONE",
-            decimals=0,
-            default_frozen=False,
-            manager=Global.current_application_address,
-            reserve=Global.current_application_address,
-            fee=Global.min_txn_fee,
-            ).submit()        
-        
-        asset_config_txn_2 = itxn.AssetConfig(
-            total=1,
-            unit_name="TEST#2",
-            asset_name="TEST ASSET TWO",
-            decimals=0,
-            default_frozen=False,
-            manager=Global.current_application_address,
-            reserve=Global.current_application_address,
-            fee=Global.min_txn_fee,
-            )        
-        
-        asset_config_txn_3 = itxn.AssetConfig(
-            total=1,
-            unit_name="TEST#3",
-            asset_name="TEST ASSET THREE",
-            decimals=0,
-            default_frozen=False,
-            manager=Global.current_application_address,
-            reserve=Global.current_application_address,
-            fee=Global.min_txn_fee,
-            )
-        
-        submit_tx_1, submit_tx_2 = itxn.submit_txns(asset_config_txn_2, asset_config_txn_3)        
-            
-        return asset_config_txn.created_asset.id, submit_tx_1.created_asset.id, submit_tx_2.created_asset.id</code></pre>
-        <pre class="overflow-auto shadow-md"><code>interact_with_contract_2.py</code></pre>
-
-        <h4>Inner Txn with abi_call Class</h4>
-        <p><em>Note: Deploy a second application and place the generated app ID in the new inner transaction method, <code>inner_txn_two</code>.</em></p>
-        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, LocalState, Txn, UInt64, gtxn
-from algopy.arc4 import abimethod
-
-class MySecondContract(ARC4Contract):
-    def __init__(self) -> None:
-        self.opted_in = LocalState(UInt64)        
-        
-    @abimethod()
-    def return_nothing(self) -> None:
-        pass        
-        
-    @abimethod(allow_actions=['OptIn'])
-    def local_state_return_something(self,
-                                     payment_txn: gtxn.PaymentTransaction) -> UInt64:
-        self.opted_in[Txn.sender] = UInt64(1)
-        return UInt64(1)</code></pre>
-        
-        <p>Replace the second App ID in the contract below, compile the contract, and include the new app in the <em>Foreign Assets Array</em>.</p>
-        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, UInt64, itxn, Global, OnCompleteAction
-from algopy.arc4 import abimethod, arc4_signature, abi_call
-
-class TransactionComp(ARC4Contract):
-    def __init__(self) -> None:
-        pass    
-
-    @abimethod
-    def inner_txn_two(self) -> UInt64:
-        
-        method_signature = arc4_signature('return_nothing()void')
-        
-        itxn.ApplicationCall(
-            app_id=727594507,
-            app_args=(method_signature,),
-            on_completion=OnCompleteAction.NoOp,
-            fee=Global.min_txn_fee
-        ).submit()        
-        
-        result, txn = abi_call[UInt64](
-            'local_state_return_something',
-            app_id=727594507,
-            on_completion=OnCompleteAction.OptIn,
-            fee=Global.min_txn_fee
-        )
-        
-        txn = abi_call(
-            'return_nothing',
-            app_id=727594507,
-            fee=Global.min_txn_fee
-        )
-        
-        return result
-        
-</code></pre>
-        <pre class="overflow-auto shadow-md"><code>from algokit_utils import ApplicationClient
-from algosdk.v2client.algod import AlgodClient
-from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer, TransactionWithSigner
-from algosdk.transaction import PaymentTxn, AssetTransferTxn
-from algosdk.account import address_from_private_key
-from pathlib import Path
-import os
-from algosdk.util import algos_to_microalgos
-from algosdk.abi import ABIType
-from dotenv import load_dotenv
-
-load_dotenv()
-
-algod_token = os.getenv('algod_token')
-algod_server = os.getenv('algod_server')
-algod_client = AlgodClient(algod_token, algod_server)
-
-path = Path(__file__).parent / './TransactionComp.arc32.json'
-app_id = int(os.getenv('app_id'))
-private_key = os.getenv('private_key')
-signer = AccountTransactionSigner(private_key)
-address = address_from_private_key(private_key)
-params = algod_client.suggested_params()
-
-app_client = ApplicationClient(
-    algod_client=algod_client,
-    app_spec=path,
-    app_id=app_id,
-    signer=signer,
-    sender=address,
-    suggested_params=params,
-)
-
-atc = AtomicTransactionComposer()
-
-#asset_id = 723609532
-
-#arbitrary_account = 'MXOT5NO6DVCGIS22AWEP7N5WD72RSV6QJG4OWGDOTEH3DQKCG4R4WLLMR4'
-
-#app_client.compose_call(atc, call_abi_method='txn_comprehension', transaction_parameters={'accounts': [arbitrary_account], 'foreign_assets': [asset_id]})
-
-#app_client.compose_call(
-#    atc, 
-#    call_abi_method='inner_txn_comprehension',
-#)
-
-second_app = int(os.getenv('second_app_id'))
-
-app_client.compose_call(
-    atc, 
-    call_abi_method='inner_txn_two',
-        transaction_parameters={
-        'foreign_apps': [second_app]
-    }
-)
-
-result = atc.execute(algod_client, 2)
-
-all_tx_ids = [result.abi_results[i].tx_id for i in range(len(result.abi_results))]
-all_abi_results = [result.abi_results[i].return_value for i in range(len(result.abi_results))]
-
-print(all_tx_ids)
-print(all_abi_results)
-</code></pre>
-    `,
-    initialCode: ``,
-  },
-
-  {
-    id: 37,
-    language: 'Python',
-    title: 'Group Transaction',
-    content: `
-        <h2>Video Tutorial</h2>
-        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-            <iframe
-                class="absolute top-0 left-0 w-full h-full border-0"
-                src="https://www.youtube.com/embed/E8DAtyrW4Rw"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <h3>Generate Two Accounts</h3>
-        <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
-        <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
-
-
-private_key, address = generate_account()
-print(private_key, address)</code></pre>
-
-        <h3>Generate One Asset</h3>
-        <p>Create one asset and place its ID in your <code>.env</code> file.</p>
-        <p><em>Note: Remember the account that owns the asset, as it will be used for asset transfers later.</em></p>
-        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
-from algosdk.v2client.algod import AlgodClient
-from algosdk.account import address_from_private_key
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-algod_token = os.getenv('algod_token')
-algod_server = os.getenv('algod_server')
-algod_client = AlgodClient(algod_token, algod_server)
-
-private_key = os.getenv('private_key')
-address = address_from_private_key(private_key)
-params = algod_client.suggested_params()
-
-asset_create_txn = AssetCreateTxn(
-    sender=address,
-    sp=params,
-    total=10,
-    decimals=0,
-    default_frozen=False,
-    manager=address,
-    reserve=address,
-    asset_name = 'Test Asset One',
-    unit_name= 'TEST#1',
-)
-
-signed_asset_create_txn = asset_create_txn.sign(private_key)
-tx_id = algod_client.send_transaction(signed_asset_create_txn)
-print(tx_id)
-
-wait_for_confirmation(algod_client, tx_id)
-tx_info = algod_client.pending_transaction_info(tx_id)
-print(tx_info)</code></pre>
-
-        <h2>Launching Contracts</h2>
-        <p><em>Note: Adjust approval and clear teal filenames, as well as global/local states, as needed.</em></p>
-        <p>In this tutorial, we use a second contract, <code>SecondApp</code>, which has 1 local state <code>uint</code>.</p>
-        <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import ApplicationCreateTxn, StateSchema, OnComplete, wait_for_confirmation, PaymentTxn
-from algosdk.account import address_from_private_key
-from algosdk.v2client.algod import AlgodClient
-from algosdk import logic
-from dotenv import load_dotenv
-import base64
-import os
-
-load_dotenv()
-
-node_token = os.getenv('algod_token')
-node_server = os.getenv('algod_server')
-algod_client = AlgodClient(node_token, node_server)
-
-private_key = os.getenv('private_key')
-address = address_from_private_key(private_key)
-
-params = algod_client.suggested_params()
-
-approval_teal_file_name = 'TransactionComp.approval.teal'
-clear_teal_file_name = 'TransactionComp.clear.teal'
-
-with open(f'./{approval_teal_file_name}', 'r') as f:
-    approval_teal_source = f.read()
-
-with open(f'{clear_teal_file_name}', 'r') as f:
-    clear_teal_source = f.read()
-
-approval_result = algod_client.compile(approval_teal_source)
-approval_program = base64.b64decode(approval_result['result'])
-
-clear_result = algod_client.compile(clear_teal_source)
-clear_program = base64.b64decode(clear_result['result'])
-
-global_schema = StateSchema(num_uints=0, num_byte_slices=0)
-local_schema = StateSchema(num_uints=0, num_byte_slices=0)
-
-txn = ApplicationCreateTxn(
-    sender = address,
-    sp = params,
-    on_complete=OnComplete.NoOpOC,
-    approval_program=approval_program,
-    clear_program=clear_program,
-    global_schema=global_schema,
-    local_schema=local_schema,
-)
-signed_txn = txn.sign(private_key)
-
-try:
-    txid = algod_client.send_transaction(signed_txn)
-except Exception as e:
-    print(e)
-    
-print(f'Tx ID: {txid}')
-wait_for_confirmation(algod_client, txid)
-tx_info = algod_client.pending_transaction_info(txid)
-print(f'App ID: {tx_info['application-index']}')
-
-app_address = logic.get_application_address(tx_info['application-index'])
-print(f'Application Address: {app_address}')
-
-
-activate_contract = PaymentTxn(
-    sender = address,
-    sp = params,
-    receiver = app_address,
-    amt = 100_000
-)
-
-signed_activation = activate_contract.sign(private_key)
-activation_tx = algod_client.send_transaction(signed_activation)
-print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
-</code></pre>
-
-        <h3>Group Transaction Comprehension (GTXN)</h3>
-        <p>In this section, we put it all together and use relative indexing in our group transaction method to enhance scalability.</p>
-        <pre class="overflow-auto shadow-md"><code>TransactionComprehension_4.py</code></pre>
-        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, Txn, Bytes, UInt64, String, itxn, Global, OnCompleteAction, gtxn, TransactionType
-from algopy.arc4 import abimethod, Address, arc4_signature, abi_call
-from algopy.arc4 import UInt64 as arc4UInt64
-
-class TransactionComp(ARC4Contract):
-    def __init__(self) -> None:
-        pass
-    
-    @abimethod
-    def txn_comprehension(self) -> tuple[Address, Address, Bytes, arc4UInt64, arc4UInt64, String, String, arc4UInt64, Address, arc4UInt64, String, Address]:
-        sender = Address(Txn.sender)
-        foreign_accounts = Address(Txn.accounts(1))
-        app_arg_1 = Txn.application_args(0)
-        txn_foreign_applications = Txn.applications(0)
-        txn_foreign_application_id = arc4UInt64(txn_foreign_applications.id)
-        foreign_asset_1 = Txn.assets(0)
-        foreign_asset_id = arc4UInt64(foreign_asset_1.id)
-        foreign_asset_name = String.from_bytes(foreign_asset_1.name)
-        foreign_asset_unit_name = String.from_bytes(foreign_asset_1.unit_name)
-        sender_foreign_asset_balance = arc4UInt64(foreign_asset_1.balance(Txn.sender))
-        foreign_asset_creator_address = Address(foreign_asset_1.creator)
-        fee_for_this_transaction = arc4UInt64(Txn.fee)
-        transaction_type = String.from_bytes(Txn.type)
-        transaction_id = Address(Txn.tx_id)
-        return sender, foreign_accounts, app_arg_1, txn_foreign_application_id, foreign_asset_id, foreign_asset_name, foreign_asset_unit_name, sender_foreign_asset_balance, foreign_asset_creator_address, fee_for_this_transaction, transaction_type, transaction_id        
-
-    @abimethod
-    def inner_txn_comprehension(self) -> tuple[UInt64, UInt64, UInt64]:
-        asset_config_txn = itxn.AssetConfig(
-            total=1,
-            unit_name="TEST#1",
-            asset_name="TEST ASSET ONE",
-            decimals=0,
-            default_frozen=False,
-            manager=Global.current_application_address,
-            reserve=Global.current_application_address,
-            fee=Global.min_txn_fee,
-            ).submit()        
-        
-        asset_config_txn_2 = itxn.AssetConfig(
-            total=1,
-            unit_name="TEST#2",
-            asset_name="TEST ASSET TWO",
-            decimals=0,
-            default_frozen=False,
-            manager=Global.current_application_address,
-            reserve=Global.current_application_address,
-            fee=Global.min_txn_fee,
-            )        
-        
-        asset_config_txn_3 = itxn.AssetConfig(
-            total=1,
-            unit_name="TEST#3",
-            asset_name="TEST ASSET THREE",
-            decimals=0,
-            default_frozen=False,
-            manager=Global.current_application_address,
-            reserve=Global.current_application_address,
-            fee=Global.min_txn_fee,
-            )
-        
-        submit_tx_1, submit_tx_2 = itxn.submit_txns(asset_config_txn_2, asset_config_txn_3)        
-            
-        return asset_config_txn.created_asset.id, submit_tx_1.created_asset.id, submit_tx_2.created_asset.id    
-    
-    
-    @abimethod
-    def inner_txn_two(self) -> UInt64:
-        
-        method_signature = arc4_signature('return_nothing()void')
-        
-        itxn.ApplicationCall(
-            app_id=727594507,
-            app_args=(method_signature,),
-            on_completion=OnCompleteAction.NoOp,
-            fee=Global.min_txn_fee
-        ).submit()        
-        
-        result, txn = abi_call[UInt64](
-            'local_state_return_something',
-            app_id=727594507,
-            on_completion=OnCompleteAction.OptIn,
-            fee=Global.min_txn_fee
-        )
-        
-        txn = abi_call(
-            'return_nothing',
-            app_id=727594507,
-            fee=Global.min_txn_fee
-        )
-        
-        return result        
-
-    @abimethod
-    def group_txn_comprehension(
-        self,
-        first_transaction: gtxn.PaymentTransaction
-    ) -> tuple[UInt64, UInt64, UInt64]:
-        
-        assert first_transaction.amount == 1000
-        
-        second_transaction = gtxn.Transaction(Txn.group_index + 1)
-        
-        if second_transaction.type == TransactionType.Payment:
-            second_transaction_amount = second_transaction.amount
-            assert second_transaction_amount == 2000
-            
-        elif second_transaction.type == TransactionType.AssetTransfer:
-            second_transaction_amount = second_transaction.asset_amount
-            assert second_transaction_amount == 1
-            
-        third_transaction = gtxn.Transaction(Txn.group_index + 2)
-
-        if third_transaction.type == TransactionType.Payment:
-            third_transaction_amount = third_transaction.amount
-            assert third_transaction_amount == 2000
-
-        elif third_transaction.type == TransactionType.AssetTransfer:
-            third_transaction_amount = third_transaction.asset_amount
-            assert third_transaction_amount == 1            
-                    
-        return first_transaction.amount, second_transaction_amount, third_transaction_amount</code></pre>
     `,
     initialCode: ``,
   },
