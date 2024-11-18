@@ -285,8 +285,8 @@ my_tuple[0] = 3       # Error: 'tuple' object does not support item assignment</
             <h3>Question 3</h3>
             <p>What is the output of the following code?</p>
             <pre class="overflow-auto shadow-md"><code>string = "Hello"
-    result = string * 3
-    print(result)</code></pre>
+result = string * 3
+print(result)</code></pre>
             <input type="radio" id="q3a" name="q3" value="a">
             <label for="q3a" class="correct">a) HelloHelloHello</label><br>
             <input type="radio" id="q3b" name="q3" value="b">
