@@ -204,12 +204,12 @@ cat algod.net</code> (Displays port)</pre>
         </ul>
         
         <pre class="overflow-auto shadow-md"><code>my_number = 1000        # Integer
-    my_text = "Hello!"      # String
-    my_float = 7.5          # Float
-    my_bool = True          # Boolean
-    my_list = [1, 2, 3]     # List
-    my_dict = {"a": 1}      # Dictionary
-    my_tuple = (1, 2, 3)    # Tuple</code></pre>
+my_text = "Hello!"      # String
+my_float = 7.5          # Float
+my_bool = True          # Boolean
+my_list = [1, 2, 3]     # List
+my_dict = {"a": 1}      # Dictionary
+my_tuple = (1, 2, 3)    # Tuple</code></pre>
         
         <p>Variables are names assigned to data. Use descriptive names and follow naming rules:</p>
         <ul class=inText>
@@ -220,33 +220,33 @@ cat algod.net</code> (Displays port)</pre>
         
         <p>Examples of valid variable names:</p>
         <pre class="overflow-auto shadow-md"><code>item_cost = 1.0
-    supply_remaining = 2_500_000_000
-    cto_name = "John Woods"
-    quarter_value = 0.25</code></pre>
+supply_remaining = 2_500_000_000
+cto_name = "John Woods"
+quarter_value = 0.25</code></pre>
         
         <p>Invalid variable names:</p>
         <pre class="overflow-auto shadow-md"><code>3variable = 5      # Invalid
-    my-variable = 6    # Invalid
-    my variable = 7    # Invalid</code></pre>
+my-variable = 6    # Invalid
+my variable = 7    # Invalid</code></pre>
         
         <h2>Arithmetic Operations</h2>
         
         <p>Basic arithmetic with integers and floats:</p>
         <pre class="overflow-auto shadow-md"><code>a = 10
-    b = 3
-    print(a + b)          # 13
-    print(a - b)          # 7
-    print(a * b)          # 30
-    print(a / b)          # 3.333...
-    print(a // b)         # 3
-    print(a % b)          # 1
-    print(a ** b)         # 1000</code></pre>
+b = 3
+print(a + b)          # 13
+print(a - b)          # 7
+print(a * b)          # 30
+print(a / b)          # 3.333...
+print(a // b)         # 3
+print(a % b)          # 1
+print(a ** b)         # 1000</code></pre>
         
         <p>String operations:</p>
         <pre class="overflow-auto shadow-md"><code>greeting = "Hello, " + "World!"
-    print(greeting)        # "Hello, World!"
-    repeat = "Hi" * 3
-    print(repeat)          # "HiHiHi"</code></pre>
+print(greeting)        # "Hello, World!"
+repeat = "Hi" * 3
+print(repeat)          # "HiHiHi"</code></pre>
         
         <p>Data mutability:</p>
         <ul class=inText>
@@ -256,7 +256,7 @@ cat algod.net</code> (Displays port)</pre>
         
         <p>Attempting to modify an immutable type results in an error:</p>
         <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
-    my_tuple[0] = 3       # Error: 'tuple' object does not support item assignment</code></pre>
+my_tuple[0] = 3       # Error: 'tuple' object does not support item assignment</code></pre>
         
         <hr><form class="quiz-form">
         <h1>Quiz</h1>
