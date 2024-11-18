@@ -243,13 +243,13 @@ export default function Layout({ children }: { children: ReactNode }) {
               <div>
                 <h3 className='text-lg font-semibold mb-4'>Follow Us</h3>
                 <div className='flex space-x-4'>
-                  <Link href='https://github.com/atsoc1993/' className='text-foreground hover:text-primary'>
-                    <Github size={24} />
-                    <span className='sr-only'>GitHub</span>
-                  </Link>
                   <Link href='https://x.com/atsoc93' className='text-foreground hover:text-primary'>
                     <Twitter size={24} />
                     <span className='sr-only'>Twitter</span>
+                  </Link>
+                  <Link href='https://github.com/atsoc1993/' className='text-foreground hover:text-primary'>
+                    <Github size={24} />
+                    <span className='sr-only'>GitHub</span>
                   </Link>
                   <Link href='#' className='text-foreground hover:text-primary'>
                     <Linkedin size={24} />
