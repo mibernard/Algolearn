@@ -2,6 +2,12 @@
 
 **AlgoLearn** is an interactive platform designed to help users learn and practice algorithms revolving around Algorand Smart Contracts. Built with modern web technologies, it provides an intuitive interface and multi-language support to enhance the learning experience.
 
+## 🌐 Live Demo
+
+The application is live and can be accessed here:
+
+Visit [https://algo-learn.com](https://algo-learn.com)
+
 ## 🚀 Features
 
 - **Interactive Algorithm Practice:** Solve problems and see step-by-step visualizations of algorithms.
@@ -24,22 +30,6 @@
 | **Security**            | vm2 for JavaScript sandboxing, External code execution via Judge0, Error handling and logging                                                                                                                                                                                                                                                                                                                   |
 | **Deployment**          | Vercel                                                                                                                                                                                                                                                                                                                                  |
 | **Additional Libraries**| Axios for HTTP requests, React Suspense for asynchronous data fetching, Shadcn/UI or similar component library for UI components                                                                                                                                                                                                                                                                                    |
-
-## 📂 Project Structure
-```
-algolearn/
-├── src/                     # Main application source code
-│   ├── components/          # Reusable UI components
-│   ├── pages/               # Next.js pages and routing
-│   ├── utils/               # Utility functions and helpers
-│   ├── services/            # API and backend services
-├── public/                  # Static assets
-├── styles/                  # Global and component-specific styles
-├── tailwind.config.ts       # Tailwind CSS configuration
-├── tsconfig.json            # TypeScript configuration
-├── package.json             # Project dependencies and scripts
-└── README.md                # Project documentation
-```
 
 ## 🛡️ Installation and Setup
 
