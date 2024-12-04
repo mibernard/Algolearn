@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const JUDGE0_API_URL = 'https://judge0-ce.p.rapidapi.com/submissions';
-const RAPIDAPI_KEY = '15c8f0d337mshf942e9d9c652c94p1890c7jsn88a8e0bcc86d';
+const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY;
+const JUDGE0_API_URL = process.env.JUDGE0_API_URL;
+const JUDGE0_HOST = process.env.JUDGE0_HOST;
 
 type Judge0SubmissionResponse = {
   token: string;
@@ -35,11 +36,15 @@ export async function executeGo(code: string): Promise<string> {
   try {
     console.log('Submitting payload to Judge0 via RapidAPI:', submission);
 
+    if (!JUDGE0_API_URL) {
+      throw new Error('JUDGE0_API_URL is not defined. Please check your environment variables.');
+    }
+
     const { data } = await axios.post<Judge0SubmissionResponse>(JUDGE0_API_URL, submission, {
       headers: {
         'Content-Type': 'application/json',
         'X-RapidAPI-Key': RAPIDAPI_KEY,
-        'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com',
+        'X-RapidAPI-Host': JUDGE0_HOST,
       },
     });
 
@@ -51,7 +56,7 @@ export async function executeGo(code: string): Promise<string> {
         headers: {
           'Content-Type': 'application/json',
           'X-RapidAPI-Key': RAPIDAPI_KEY,
-          'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com',
+          'X-RapidAPI-Host': JUDGE0_HOST,
         },
       });
 
