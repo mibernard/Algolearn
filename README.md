@@ -4,17 +4,17 @@
 
 ## 🌐 Live Demo
 
-The application is live and can be accessed here:
-
-Visit [https://algo-learn.com](https://algo-learn.com)
+The application is live and can be accessed here: [https://algo-learn.com](https://algo-learn.com)
 
 ## 🚀 Features
 
-- **Interactive Algorithm Practice:** Solve problems and see step-by-step visualizations of algorithms.
-- **Multi-Language Support:** Practice algorithms in Python, Java, and Go.
-- **User-Friendly UI:** Clean and responsive design using Tailwind CSS.
-- **State Management:** Efficient state management with React Hooks.
-- **Scalable Framework:** Built with Next.js for performance and flexibility.
+- **Interactive Algorithm Practice:** Solve practice problems and see step-by-step implementations of algorithms.
+- **Search Functionality:** Quickly find chapters by title, content, or code snippets using a powerful search feature with real-time results.
+- **Multi-Language Code Compilation:** Practice, compile, and test algorithms in Python, Java, and Go.
+- **User-Friendly UI:** Clean and responsive design built with Tailwind CSS for an intuitive user experience.
+- **State Management:** Efficient state management implemented using React Hooks.
+- **Scalable Framework:** Built with Next.js for optimal performance, scalability, and flexibility.
+
 
 ## 🛠️ Technologies Used
 
