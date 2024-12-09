@@ -1485,23 +1485,31 @@ print(transaction_id)</code></pre>
 <p>What function is used to create a new Algorand account in the algosdk library?</p>
 <input type="radio" id="q1a" name="q1" value="a">
 <label for="q1a" class="incorrect">a) algosdk.create_account()</label><br>
+
 <input type="radio" id="q1b" name="q1" value="b">
-<label for="q1b" class="correct">b) algosdk.generate_account()</label><br>
+<label for="q1b" class="incorrect">b) algosdk.generate_account()</label><br>
+
 <input type="radio" id="q1c" name="q1" value="c">
 <label for="q1c" class="incorrect">c) algosdk.new_account()</label><br>
+
 <input type="radio" id="q1d" name="q1" value="d">
-<label for="q1d" class="incorrect">d) algosdk.account_create()</label><br>
+<label for="q1d" class="correct">d) algosdk.account.generate_account()</label><br>
+
 
 <h3>Question 2</h3>
 <p>How can you obtain the mnemonic phrase from a private key in the algosdk library?</p>
 <input type="radio" id="q2a" name="q2" value="a">
 <label for="q2a" class="incorrect">a) algosdk.private_key_to_mnemonic()</label><br>
+
 <input type="radio" id="q2b" name="q2" value="b">
-<label for="q2b" class="correct">b) algosdk.secret_key_to_mnemonic()</label><br>
+<label for="q2b" class="incorrect">b) algosdk.secret_key_to_mnemonic()</label><br>
+
 <input type="radio" id="q2c" name="q2" value="c">
 <label for="q2c" class="incorrect">c) algosdk.mnemonic_from_private_key()</label><br>
+
 <input type="radio" id="q2d" name="q2" value="d">
-<label for="q2d" class="incorrect">d) algosdk.mnemonic_convert()</label><br>
+<label for="q2d" class="correct">d) algosdk.mnemonic.from_private_key()</label><br>
+
 
 <h3>Question 3</h3>
 <p>What is the correct way to initialize an AlgodClient instance to connect to the Algorand testnet?</p>
@@ -1510,7 +1518,8 @@ algod_server = 'https://testnet-api.algonode.cloud'
 algod_client = algod.AlgodClient(algod_token, algod_server)
 </code></pre>
 <input type="radio" id="q3a" name="q3" value="a">
-<label for="q3a" class="correct">a) algod.AlgodClient()</label><br>
+<label for="q3a" class="correct">a) algod.AlgodClient(algod_token, algod_server)</label><br>
+
 <input type="radio" id="q3b" name="q3" value="b">
 <label for="q3b" class="incorrect">b) algod.AlgodNode()</label><br>
 <input type="radio" id="q3c" name="q3" value="c">
