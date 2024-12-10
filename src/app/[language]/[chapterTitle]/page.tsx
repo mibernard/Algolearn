@@ -71,7 +71,11 @@ export default function ChapterPage() {
 
   const handleRunCode = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault(); // Prevent default behavior
-    runCode(code, language); // Pass only the necessary arguments
+    if (chapter.output) {
+      setOutput(chapter.output); // Use predefined output
+    } else {
+      runCode(code, language); // Execute code
+    }
   };
 
   const goToNextChapter = () => {
@@ -85,6 +89,9 @@ export default function ChapterPage() {
   if (!chapter) {
     return <div className='flex items-center justify-center h-screen'>Chapter not found</div>;
   }
+
+  const isEditable = chapter.editable !== false;
+  const hasPredefinedOutput = !!chapter.output;
 
   return (
     <div className='flex h-[calc(100vh-129px)] overflow-hidden relative'>
@@ -162,9 +169,11 @@ export default function ChapterPage() {
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 placeholder={`Write your ${language} code here...`}
-                className='font-mono h-64 mb-4'
+                className={`font-mono h-64 mb-4 ${isEditable ? '' : 'bg-gray-100 cursor-not-allowed'}`}
                 spellCheck='false'
+                readOnly={!isEditable} // Make textarea read-only if not editable
               />
+
               {/* <Button onClick={handleRunCode}>Run</Button> */}
               <Button onClick={handleRunCode} disabled={isRunning}>
                 {isRunning ? (
@@ -172,6 +181,8 @@ export default function ChapterPage() {
                     <Loader2 className='h-4 w-4 animate-spin' />
                     Running
                   </>
+                ) : hasPredefinedOutput ? (
+                  'Show Output'
                 ) : (
                   'Run'
                 )}

@@ -4,6 +4,8 @@ export interface Chapter {
   content: string;
   id: number;
   initialCode: string;
+  editable?: boolean;
+  output?: string;
 }
 
 export const chapters: Chapter[] = [
@@ -1247,6 +1249,8 @@ try:
 except Exception as e:
     print(f"Failed to connect to public testnet: {e}")
   `,
+    editable: false,
+    output: 'Connected to public Algorand testnet! Last round: 1234567',
   },
 
   {
@@ -9372,8 +9376,7 @@ algodClient.status().do()
       </form>
     
     `,
-    initialCode: `
-const algosdk = require('algosdk');
+    initialCode: `const algosdk = require('algosdk');
 
 // Initialize AlgodClient
 const algodToken = ''; // Leave '' for public node service, or enter your node token
@@ -9391,8 +9394,19 @@ algodClient.status().do()
   .catch(err => {
     console.error('Failed to get node status:', err);
   });
-
   `,
+    editable: false,
+    output: `Node status: {
+  lastRound: 7890123,
+  lastVersion: 'v2.1.0',
+  lastTimeStamp: 1702051200,
+  nextVersion: 'v2.1.1',
+  lastProtocolVersion: 11,
+  nextProtocolVersion: 12,
+  genesisHash: 'SGENHASH...',
+  genesisID: 'testnet-v1.0',
+}
+`,
   },
   {
     id: 39,
@@ -10629,6 +10643,8 @@ func main() {
 	fmt.Printf("Last round: %d\n", status.LastRound)
 }
     `,
+    editable: false,
+    output: `Last round: 7890123`,
   },
   {
     id: 19,
