@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, useMemo, memo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Moon, Sun, ChevronDown, Search, BookCheck, FileText, Github, Twitter, Linkedin } from 'lucide-react';
@@ -16,18 +16,23 @@ import { chapters, Chapter } from '@/data/chapters';
 import '@/styles/globals.css';
 import Image from 'next/image';
 
+// Memoized DropdownMenuItem
+const MemoizedDropdownMenuItem = memo(DropdownMenuItem);
+
 export default function Layout({ children }: { children: ReactNode }) {
   const [darkMode, setDarkMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
 
-  const groupedChapters: Record<string, Chapter[]> = chapters.reduce((acc, chapter) => {
-    if (!acc[chapter.language]) {
-      acc[chapter.language] = [];
-    }
-    acc[chapter.language].push(chapter);
-    return acc;
-  }, {} as Record<string, Chapter[]>);
+  const groupedChapters = useMemo(() => {
+    return chapters.reduce((acc, chapter) => {
+      if (!acc[chapter.language]) {
+        acc[chapter.language] = [];
+      }
+      acc[chapter.language].push(chapter);
+      return acc;
+    }, {} as Record<string, Chapter[]>);
+  }, [chapters]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,11 +84,11 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       {Object.keys(groupedChapters).map((language) => (
-                        <DropdownMenuItem asChild key={language}>
+                        <MemoizedDropdownMenuItem asChild key={language}>
                           <Link href={`/${language.toLowerCase()}`} className='block w-full h-full cursor-pointer'>
                             {language}
                           </Link>
-                        </DropdownMenuItem>
+                        </MemoizedDropdownMenuItem>
                       ))}
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -94,24 +99,24 @@ export default function Layout({ children }: { children: ReactNode }) {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      <DropdownMenuItem asChild>
-                        <Link href={`/python/installation-and-setup`} className='block w-full h-full cursor-pointer'>
+                      <MemoizedDropdownMenuItem asChild>
+                        <Link href='/python/installation-and-setup' className='block w-full h-full cursor-pointer'>
                           Getting Started
                         </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
+                      </MemoizedDropdownMenuItem>
+                      <MemoizedDropdownMenuItem asChild>
                         <Link
-                          href={`/python/compiling-launching-and-interacting-with-your-first-contract`}
+                          href='/python/compiling-launching-and-interacting-with-your-first-contract'
                           className='block w-full h-full cursor-pointer'
                         >
                           API Reference
                         </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
+                      </MemoizedDropdownMenuItem>
+                      <MemoizedDropdownMenuItem asChild>
                         <Link href='/sdks' className='block w-full h-full cursor-pointer'>
                           SDKs
                         </Link>
-                      </DropdownMenuItem>
+                      </MemoizedDropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -128,14 +133,14 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       {Object.keys(groupedChapters).map((language) => (
-                        <DropdownMenuItem asChild key={language}>
+                        <MemoizedDropdownMenuItem asChild key={language}>
                           <Link
                             href={`/${language.toLowerCase()}`}
                             className='block w-full h-full cursor-pointer active:bg-gray-200'
                           >
                             {language}
                           </Link>
-                        </DropdownMenuItem>
+                        </MemoizedDropdownMenuItem>
                       ))}
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -146,27 +151,27 @@ export default function Layout({ children }: { children: ReactNode }) {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      <DropdownMenuItem asChild>
+                      <MemoizedDropdownMenuItem asChild>
                         <Link
-                          href={`/python/installation-and-setup`}
+                          href='/python/installation-and-setup'
                           className='block w-full h-full cursor-pointer active:bg-gray-200'
                         >
                           Getting Started
                         </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
+                      </MemoizedDropdownMenuItem>
+                      <MemoizedDropdownMenuItem asChild>
                         <Link
-                          href={`/python/compiling-launching-and-interacting-with-your-first-contract`}
+                          href='/python/compiling-launching-and-interacting-with-your-first-contract'
                           className='block w-full h-full cursor-pointer active:bg-gray-200'
                         >
                           API Reference
                         </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
+                      </MemoizedDropdownMenuItem>
+                      <MemoizedDropdownMenuItem asChild>
                         <Link href='/sdks' className='block w-full h-full cursor-pointer active:bg-gray-200'>
                           SDKs
                         </Link>
-                      </DropdownMenuItem>
+                      </MemoizedDropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -184,7 +189,6 @@ export default function Layout({ children }: { children: ReactNode }) {
           </div>
         </nav>
 
-        {/* <main className='flex-1'>{children}</main> */}
         <main className='container mx-auto px-4 sm:px-6 lg:px-8 py-8'>{children}</main>
 
         {/* FOOTER SECTION */}
