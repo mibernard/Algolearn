@@ -14,7 +14,7 @@ export default function ComingSoonPage() {
         </CardHeader>
         <CardContent className='text-center'>
           <p className='text-muted-foreground mb-6'>
-            We're excited to bring you this new feature. Stay tuned for updates!
+            We&apos;re excited to bring you this new feature. Stay tuned for updates!
           </p>
           <Button asChild>
             <Link href='/'>Return to Home</Link>
