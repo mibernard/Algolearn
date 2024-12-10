@@ -108,7 +108,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <Link href='/#SDKs' className='block w-full h-full cursor-pointer'>
+                        <Link href='/sdks' className='block w-full h-full cursor-pointer'>
                           SDKs
                         </Link>
                       </DropdownMenuItem>
@@ -163,7 +163,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
-                        <Link href='/#SDK' className='block w-full h-full cursor-pointer active:bg-gray-200'>
+                        <Link href='/sdks' className='block w-full h-full cursor-pointer active:bg-gray-200'>
                           SDKs
                         </Link>
                       </DropdownMenuItem>
@@ -214,7 +214,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </Link>
                   </li>
                   <li>
-                    <Link href='/#SDK' className='text-sm hover:underline'>
+                    <Link href='/sdks' className='text-sm hover:underline'>
                       SDKs
                     </Link>
                   </li>
@@ -224,17 +224,17 @@ export default function Layout({ children }: { children: ReactNode }) {
                 <h3 className='text-lg font-semibold mb-4'>Community</h3>
                 <ul className='space-y-2'>
                   <li>
-                    <Link href='#' className='text-sm hover:underline'>
+                    <Link href='/coming-soon' className='text-sm hover:underline'>
                       Forum
                     </Link>
                   </li>
                   <li>
-                    <Link href='#' className='text-sm hover:underline'>
+                    <Link href='/coming-soon' className='text-sm hover:underline'>
                       Discord
                     </Link>
                   </li>
                   <li>
-                    <Link href='#' className='text-sm hover:underline'>
+                    <Link href='/coming-soon' className='text-sm hover:underline'>
                       Events
                     </Link>
                   </li>
@@ -251,7 +251,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     <Github size={24} />
                     <span className='sr-only'>GitHub</span>
                   </Link>
-                  <Link href='#' className='text-foreground hover:text-primary'>
+                  <Link href='/coming-soon' className='text-foreground hover:text-primary'>
                     <Linkedin size={24} />
                     <span className='sr-only'>LinkedIn</span>
                   </Link>

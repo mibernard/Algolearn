@@ -1571,6 +1571,808 @@ print("Mnemonic Phrase:", mnemonic_phrase)
   },
 
   {
+    id: 42,
+    language: 'Python',
+    title: 'Key Registration Transactions',
+    content: `
+    <p>Generating Key Registration Transactions requires setting up a node, which is guided in the "Running Your Own Node" section in the "Installation and Setup" Python Chapter.</p>
+    
+    <p>Once a node is running and caught up, from the node directory, you can type the following command, where 'NameYourWallet' can be whatever you'd like:</p>
+    
+    <pre class="overflow-auto shadow-md"><code>goal wallet new NameYourWallet</code></pre>
+    
+    <img src="/images/New Wallet 1.png" alt="New Wallet Creation">
+    
+    <p>Type in a secure password for your new wallet. Note that you will not see the text as it is being entered.</p>
+    
+    <p>You will be asked to type the password again, and then it will provide the option to view your backup phrase. It is recommended to type "Yes" and save this in a secure manner for future reference.</p>
+    
+    <p>Now we will generate a participation key (part key) that will be valid for the recommended 3,000,000 rounds, which is approximately 3 months.</p>
+    
+    <p>We need to get the current round, which can be done using the following command:</p>
+    
+    <pre class="overflow-auto shadow-md"><code>goal node status -d data</code></pre>
+    
+    <img src="/images/CheckCurrentRound.png" alt="Check Current Round">
+    
+    <p>The "Last Committed Block" value will be our first round.</p>
+    
+    <pre class="overflow-auto shadow-md"><code>goal account addpartkey -a &lt;address-of-participating-account&gt; --roundFirstValid=&lt;partkey-first-round&gt; --roundLastValid=&lt;partkey-last-round&gt;</code></pre>
+    
+    <p>For example, if your address is <strong>3CB66YMOQOMPZBRIEUJ5R2CQ6S3Q6L6Z4B6O7ISJKQ5YPUUPCGQQIBQA6A</strong> and the current round is <strong>45136193</strong>, the command will be:</p>
+    
+    <pre class="overflow-auto shadow-md"><code>goal account addpartkey -a 3CB66YMOQOMPZBRIEUJ5R2CQ6S3Q6L6Z4B6O7ISJKQ5YPUUPCGQQIBQA6A --roundFirstValid=45136193 --roundLastValid=48136193</code></pre>
+    
+    <p>The part key generation will begin and may take a few minutes. Once complete, it will provide a transaction ID:</p>
+    
+    <img src="/images/PartKeyPending.png" alt="Part Key Pending">
+    
+    <p>To view part key information needed for the transaction, execute:</p>
+    
+    <pre class="overflow-auto shadow-md"><code>goal account partkeyinfo -d data</code></pre>
+    
+    <img src="/images/GeneratedPartKey.png" alt="Generated Part Key">
+    
+    <p>We can now begin registering the account online with the information generated. This includes the selection key, voting key, state proof key, and another parameter defined in the official Algorand documentation known as "Key Dilution":</p>
+    
+    <p><strong>Key Dilution:</strong></p>
+    <p>"To optimize storage, the Key Dilution parameter defaults to the square root of the participation period length but this can be overridden with the flag --keyDilution. The Key Dilution determines how many ephemeral keys will be stored on an Algorand node, as they are generated in batches. For example, if your participation period is set to 3,000,000 rounds, a batch of 1,732 ephemeral keys will be generated upfront, with additional batches getting generated after each set is used."</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import KeyregTxn, KeyregOnlineTxn, KeyregOfflineTxn, KeyregNonparticipatingTxn
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('mainnet_algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get our first private key from .env
+private_key_1 = os.getenv('private_key_1')
+
+# Get address from private key
+address_1 = address_from_private_key(private_key_1)
+
+# Get parameters for transaction
+params = algod_client.suggested_params()
+
+# Input your vote key and selection key from the part key generation
+selection_key = "5yqxpwCkMTkbaBDIvv+eH1zD2Z0U8JS9B956CrOZT7U="
+vote_key = "EwZuJ4a/UZ0ti6bfyD1lvor1gOMs0CEJYaGvAOLk3gg=" 
+state_proof_key = "ZNs6g2+Mv5PI+Ceb8t+ArivW+C1Bj6yJ59qaFmTd0r+061a4zyKKuY4+/b4aQctWLF7YVuqlXElSQcyjzANhwg=="
+
+# Set the first valid round from suggested params
+first_valid_round = params.first
+
+# The recommended 3,000,000 rounds for the key to be valid
+rounds_valid = 3_000_000 
+
+# Set the last valid round to 3,000,000 blocks after the first valid round
+last_valid_round = first_valid_round + rounds_valid
+
+# Define the key dilution parameter
+key_dilution = int(rounds_valid**0.5)  # dilution default is sqrt(num rounds)
+
+# Create transaction
+set_node_online = KeyregTxn(
+    sender=address_1,
+    selkey=selection_key,
+    votekey=vote_key,
+    sprfkey=state_proof_key,
+    votefst=first_valid_round,
+    votelst=last_valid_round,
+    votekd=key_dilution,
+    sp=params,
+)
+
+# Sign the transaction
+signed_tx = set_node_online.sign(private_key_1)
+
+# Send the transaction
+tx_id = algod_client.send_transaction(signed_tx)
+print(tx_id)
+</code></pre>
+    
+    <p>After sending the above transaction, you can verify the part key information by using the terminal command:</p>
+    
+    <pre class="overflow-auto shadow-md"><code>goal account partkeyinfo -d data</code></pre>
+    
+    <p>Alternatively, you can check your part key status by querying your account information with the following Python script:</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import KeyregTxn, KeyregOnlineTxn, KeyregOfflineTxn, KeyregNonparticipatingTxn
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('mainnet_algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get our first private key from .env
+private_key_1 = os.getenv('private_key_1')
+
+# Get address from private key
+address_1 = address_from_private_key(private_key_1)
+
+# Retrieve account participation information
+account_information = algod_client.account_info(address_1)['participation']
+print(account_information)
+
+# Example Output:
+# {'selection-participation-key': '5yqxpwCkMTkbaBDIvv+eH1zD2Z0U8JS9B956CrOZT7U=', 'state-proof-key': 'ZNs6g2+Mv5PI+Ceb8t+ArivW+C1Bj6yJ59qaFmTd0r+061a4zyKKuY4+/b4aQctWLF7YVuqlXElSQcyjzANhwg==', 'vote-first-valid': 45137536, 'vote-key-dilution': 1732, 'vote-last-valid': 48137536, 'vote-participation-key': 'EwZuJ4a/UZ0ti6bfyD1lvor1gOMs0CEJYaGvAOLk3gg='}
+</code></pre>
+    `,
+    initialCode: `from algosdk.transaction import KeyregTxn, KeyregOnlineTxn, KeyregOfflineTxn, KeyregNonparticipatingTxn
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('mainnet_algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get our first private key from .env
+private_key_1 = os.getenv('private_key_1')
+
+# Get address from private key
+address_1 = address_from_private_key(private_key_1)
+
+# Get parameters for transaction
+params = algod_client.suggested_params()
+
+# Input your vote key and selection key from the part key generation
+selection_key = "5yqxpwCkMTkbaBDIvv+eH1zD2Z0U8JS9B956CrOZT7U="
+vote_key = "EwZuJ4a/UZ0ti6bfyD1lvor1gOMs0CEJYaGvAOLk3gg=" 
+state_proof_key = "ZNs6g2+Mv5PI+Ceb8t+ArivW+C1Bj6yJ59qaFmTd0r+061a4zyKKuY4+/b4aQctWLF7YVuqlXElSQcyjzANhwg=="
+
+# Set the first valid round from suggested params
+first_valid_round = params.first
+
+# The recommended 3,000,000 rounds for the key to be valid
+rounds_valid = 3_000_000 
+
+# Set the last valid round to 3,000,000 blocks after the first valid round
+last_valid_round = first_valid_round + rounds_valid
+
+# Define the key dilution parameter
+key_dilution = int(rounds_valid**0.5)  # dilution default is sqrt(num rounds)
+
+# Create transaction
+set_node_online = KeyregTxn(
+    sender=address_1,
+    selkey=selection_key,
+    votekey=vote_key,
+    sprfkey=state_proof_key,
+    votefst=first_valid_round,
+    votelst=last_valid_round,
+    votekd=key_dilution,
+    sp=params,
+)
+
+# Sign the transaction
+signed_tx = set_node_online.sign(private_key_1)
+
+# Send the transaction
+tx_id = algod_client.send_transaction(signed_tx)
+print(tx_id)
+`,
+  },
+
+  {
+    id: 43,
+    language: 'Python',
+    title: 'Asset Management',
+    content: `
+    <p>In this chapter, we will explore how to manage assets on the Algorand blockchain using Python. This includes generating accounts, creating assets, opting in accounts to receive assets, transferring assets between accounts, freezing assets, and performing clawback transactions.</p>
+    
+    <h2>1. Generating Accounts</h2>
+    <p>First, we'll generate three Algorand accounts and store their private keys and addresses securely using a .env file.</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+from dotenv import load_dotenv, set_key
+
+# Load our .env file where we store discrete information
+load_dotenv()
+
+# Generate three accounts
+private_key_1, address_1 = generate_account()
+private_key_2, address_2 = generate_account()
+private_key_3, address_3 = generate_account()
+
+# Print the private key and address generated
+print(private_key_1, address_1)
+print(private_key_2, address_2)
+print(private_key_3, address_3)
+
+# Save our private keys and addresses to our .env
+set_key('.env', key_to_set='private_key_1', value_to_set=private_key_1)
+set_key('.env', key_to_set='private_key_2', value_to_set=private_key_2)
+set_key('.env', key_to_set='private_key_3', value_to_set=private_key_3)
+
+set_key('.env', key_to_set='address_1', value_to_set=address_1)
+set_key('.env', key_to_set='address_2', value_to_set=address_2)
+set_key('.env', key_to_set='address_3', value_to_set=address_3)
+
+# Fund these three addresses with testnet Algorand @ https://bank.testnet.algorand.network/
+</code></pre>
+    
+    <p>Ensure that all three generated accounts are funded with testnet Algorand using the [Algorand Testnet Bank](https://bank.testnet.algorand.network/).</p>
+    
+    <h2>2. Creating an Asset</h2>
+    <p>Next, we'll create a new asset on the Algorand blockchain. This example demonstrates how to create an asset without freeze functionality.</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get our first private key from .env
+private_key_1 = os.getenv('private_key_1')
+
+# Get address from private key
+address_1 = address_from_private_key(private_key_1)
+
+# Get parameters for transaction
+params = algod_client.suggested_params()
+
+# Define the asset creation transaction parameters
+asset_creation_transaction = AssetCreateTxn(
+    sender=address_1,
+    sp=params,
+    total=1000,
+    decimals=0,
+    default_frozen=False,
+    manager=address_1,
+    reserve=address_1,
+    freeze=address_1,
+    asset_name='Test Token',
+    unit_name='TEST',   
+)
+
+# Sign the transaction
+signed_asset_creation_transaction = asset_creation_transaction.sign(private_key_1)
+
+# Submit the transaction, which returns a transaction ID
+transaction_id = algod_client.send_transaction(signed_asset_creation_transaction)
+
+# Wait for the transaction to be confirmed 
+wait_for_confirmation(algod_client, transaction_id)
+
+# Get the confirmed transaction information
+transaction_info = algod_client.pending_transaction_info(transaction_id)
+
+# Get the asset ID from the transaction information returned
+new_asset_id = transaction_info['asset-index']
+
+# Print the asset ID
+print(new_asset_id)
+
+# Create/Set a key in our .env called asset_id, with its value set to the asset ID as a string
+set_key('.env', key_to_set='asset_id', value_to_set=str(new_asset_id))
+</code></pre>
+    
+    <p>**Note:** You may use the same code as we did previously to opt in the second and third accounts into the asset and transfer an amount to them.</p>
+    
+    <h2>3. Opting In Accounts to the Asset</h2>
+    <p>Before accounts can receive the newly created asset, they must opt in. Opting in is essentially an asset transfer to self with the amount field set to 0.</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetTransferTxn, wait_for_confirmation, assign_group_id
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get the private keys of our other two accounts from .env
+private_key_2 = os.getenv('private_key_2')
+private_key_3 = os.getenv('private_key_3')
+
+# Get the public keys of our other two accounts
+address_2 = address_from_private_key(private_key_2)
+address_3 = address_from_private_key(private_key_3)
+
+# Get the new asset ID from our .env, make sure to convert to an integer
+asset_id = int(os.getenv('asset_id'))
+
+# Get suggested transaction parameters
+params = algod_client.suggested_params()
+
+# Create an opt-in transaction for Account 2
+optin_account_2 = AssetTransferTxn(
+    sender=address_2,
+    sp=params,
+    receiver=address_2,
+    index=asset_id,
+    amt=0,
+)
+
+# Create an opt-in transaction for Account 3
+optin_account_3 = AssetTransferTxn(
+    sender=address_3,
+    sp=params,
+    receiver=address_3,
+    index=asset_id,
+    amt=0,
+)
+
+# Sign the asset opt-in transactions with the respective accounts
+signed_optin_tx_account_2 = optin_account_2.sign(private_key_2)
+signed_optin_tx_account_3 = optin_account_3.sign(private_key_3)
+
+# Create a list of our unsigned transactions
+txs = [optin_account_2, optin_account_3]
+
+# Assign a group ID to the unsigned transaction group
+assign_group_id(txs)
+
+# Create a new list and sign the transactions by the correct accounts from our txs list
+signed_txs = [txs[0].sign(private_key_2), txs[1].sign(private_key_3)]
+
+# Send the group transactions by using "send_transactions" [plural]
+# This returns the transaction ID of the first transaction in the group
+submit_txs = algod_client.send_transactions(signed_txs)
+
+print(submit_txs)
+</code></pre>
+    
+    <h2>4. Transferring Assets to Accounts</h2>
+    <p>Now that the accounts have opted in, we can transfer assets from the creator account (Account 1) to Account 2 and Account 3.</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetTransferTxn, wait_for_confirmation, assign_group_id
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get our first private key from .env
+private_key_1 = os.getenv('private_key_1')
+
+# Get address from private key
+address_1 = address_from_private_key(private_key_1)
+
+# Get the addresses of our other two accounts from .env
+address_2 = os.getenv('address_2')
+address_3 = os.getenv('address_3')
+
+# Get the new asset ID from our .env, make sure to convert to an integer
+asset_id = int(os.getenv('asset_id'))
+
+# Get suggested transaction parameters
+params = algod_client.suggested_params()
+
+# Create two asset transfer transactions to provide each of the other two accounts some of our asset 
+provide_asset_to_account_2 = AssetTransferTxn(
+    sender=address_1,
+    receiver=address_2,
+    amt=10,
+    index=asset_id,
+    sp=params
+)
+
+provide_asset_to_account_3 = AssetTransferTxn(
+    sender=address_1,
+    receiver=address_3,
+    amt=10,
+    index=asset_id,
+    sp=params
+)
+
+# Create a list from these two transactions and assign them a group ID
+txs = [provide_asset_to_account_2, provide_asset_to_account_3]
+assign_group_id(txs)
+
+# Iteratively sign each transaction since account 1 is the sender of both
+signed_txs = [tx.sign(private_key_1) for tx in txs]
+
+# Submit the transactions and print the first transaction ID in the group
+submit_txs = algod_client.send_transactions(signed_txs)
+print(submit_txs)
+</code></pre>
+    
+    <h2>5. Transferring Assets Between Accounts</h2>
+    <p>We can also transfer assets directly between Account 2 and Account 3.</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetTransferTxn, wait_for_confirmation, assign_group_id
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get the private key and address of our second account from .env
+private_key_2 = os.getenv('private_key_2')
+address_2 = address_from_private_key(private_key_2)
+
+# Get the public key of our third account
+address_3 = os.getenv('address_3')
+
+# Get the new asset ID from our .env, make sure to convert to an integer
+asset_id = int(os.getenv('asset_id'))
+
+# Get suggested transaction parameters
+params = algod_client.suggested_params()
+
+# Create a transfer transaction from Account 2 to Account 3
+transfer_account_2_to_account_3 = AssetTransferTxn(
+    sender=address_2,
+    receiver=address_3,
+    amt=1,
+    index=asset_id,
+    sp=params,
+)
+
+# Sign the transaction
+signed_transfer_transaction = transfer_account_2_to_account_3.sign(private_key_2)
+
+# Submit the transaction and print the asset ID
+tx_id = algod_client.send_transaction(signed_transfer_transaction)
+print(tx_id)
+</code></pre>
+    
+    <h2>6. Freezing Assets</h2>
+    <p>Asset managers can freeze and unfreeze assets for specific accounts. This example demonstrates how to freeze an account's ability to transfer assets.</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetFreezeTxn, wait_for_confirmation
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get our first account's private key from .env
+private_key_1 = os.getenv('private_key_1')
+
+# Get first account's address from private key
+address_1 = address_from_private_key(private_key_1)
+
+# Get address of our second account from .env
+address_2 = os.getenv('address_2')
+
+# Get the new asset ID from our .env, make sure to convert to an integer
+asset_id = int(os.getenv('asset_id'))
+
+# Get parameters for transaction
+params = algod_client.suggested_params()
+
+# Create the freeze transaction to prevent address 2 from sending until further notice by setting new_freeze_state to True
+freeze_address_2 = AssetFreezeTxn(
+    sender=address_1,
+    target=address_2,
+    new_freeze_state=True,
+    index=asset_id,
+    sp=params,
+)
+
+# Sign the transaction with account 1
+signed_freeze_address_2 = freeze_address_2.sign(private_key_1)
+
+# Submit the transaction
+tx_id = algod_client.send_transaction(signed_freeze_address_2)
+print(tx_id)
+</code></pre>
+    
+    <p>**Error Handling Example:** If you attempt to send an asset from Account 2 to Account 3 after freezing, it will fail with an error similar to this:</p>
+    
+    <pre class="overflow-auto shadow-md"><code>algosdk.error.AlgodHTTPError: TransactionPool.Remember: transaction 5RUU5XXTX7NHNWTWUDZ3RVN6SE5ZMGWNQZVRMS7Z2YM6LYVZ3YCQ: asset 730599733 frozen in RAVEP7VNGT37QSYY3VXNX7EYA2DVUSX67H4X3RXBFJMPIOAOZ7BVEMJJ2UPS 
+</code></pre>
+    
+    <p>If you want to allow the address to send assets again, resend the same transaction but set new_freeze_state to False.</p>
+    
+    <p>**Note:** To have all accounts' assets frozen by default, set default_frozen to True during asset creation. This depends on your specific use case.</p>
+    
+    <h2>7. Creating an Asset with Clawback Functionality</h2>
+    <p>Clawback functionality allows the asset manager to revoke assets from any account. Here's how to create an asset with the clawback feature enabled.</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetCreateTxn, wait_for_confirmation
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get our first private key from .env
+private_key_1 = os.getenv('private_key_1')
+
+# Get address from private key
+address_1 = address_from_private_key(private_key_1)
+
+# Get parameters for transaction
+params = algod_client.suggested_params()
+
+# Define the asset creation transaction parameters with clawback
+asset_creation_transaction = AssetCreateTxn(
+    sender=address_1,
+    sp=params,
+    total=1000,
+    decimals=0,
+    manager=address_1,
+    reserve=address_1,
+    clawback=address_1,
+    asset_name='Test Token',
+    unit_name='TEST',   
+    default_frozen=False,
+)
+
+# Sign the transaction
+signed_asset_creation_transaction = asset_creation_transaction.sign(private_key_1)
+
+# Submit the transaction, which returns a transaction ID
+transaction_id = algod_client.send_transaction(signed_asset_creation_transaction)
+
+# Wait for the transaction to be confirmed 
+wait_for_confirmation(algod_client, transaction_id)
+
+# Get the confirmed transaction information
+transaction_info = algod_client.pending_transaction_info(transaction_id)
+
+# Get the asset ID from the transaction information returned
+new_asset_id = transaction_info['asset-index']
+
+# Print the asset ID
+print(new_asset_id)
+
+# Create/Set a key in our .env called asset_id, with its value set to the asset ID as a string
+set_key('.env', key_to_set='asset_id', value_to_set=str(new_asset_id))
+
+# You may use the same code as we did previously to opt in the second and third accounts into the asset and transfer an amount to them
+</code></pre>
+    
+    <h2>8. Performing Clawback Transactions</h2>
+    <p>With clawback functionality enabled, the asset manager can revoke assets from any account. Below is an example of performing a clawback transaction from Account 2 to Account 3.</p>
+    
+    <pre class="overflow-auto shadow-md"><code>from algosdk.transaction import AssetTransferTxn, wait_for_confirmation, assign_group_id
+from algosdk.v2client.algod import AlgodClient
+from dotenv import load_dotenv, set_key
+from algosdk.account import address_from_private_key
+import os
+
+# Load the .env file
+load_dotenv()
+
+# Instantiate Algorand Client
+algod_token = os.getenv('algod_token')
+algod_server = os.getenv('algod_server')
+algod_client = AlgodClient(algod_token, algod_server)
+
+# Get the private key and address of our first account from .env
+private_key_1 = os.getenv('private_key_1')
+address_1 = address_from_private_key(private_key_1)
+
+# Get the public key of our third account
+address_2 = os.getenv('address_2')
+
+# Get the new asset ID from our .env, make sure to convert to an integer
+asset_id = int(os.getenv('asset_id'))
+
+# Get suggested transaction parameters
+params = algod_client.suggested_params()
+
+# Create a clawback transaction as Account 1 to send the asset from Account 2 to Account 1 
+clawback_asset_from_account_2 = AssetTransferTxn(
+    sender=address_1,
+    receiver=address_1,
+    revocation_target=address_2,
+    amt=1,
+    index=asset_id,
+    sp=params,
+)
+
+# Sign the transaction
+signed_transfer_transaction = clawback_asset_from_account_2.sign(private_key_1)
+
+# Submit the transaction and print the asset ID
+tx_id = algod_client.send_transaction(signed_transfer_transaction)
+print(tx_id)
+
+# Additional Clawback Example: Revoking from Account 2 to Account 3
+address_3 = os.getenv('address_3')
+clawback_asset_from_account_2 = AssetTransferTxn(
+    sender=address_1,
+    receiver=address_3,
+    revocation_target=address_2,
+    amt=1,
+    index=asset_id,
+    sp=params,
+)
+
+# Sign the transaction
+signed_transfer_transaction = clawback_asset_from_account_2.sign(private_key_1)
+
+# Submit the transaction and print the asset ID
+tx_id = algod_client.send_transaction(signed_transfer_transaction)
+print(tx_id) 
+</code></pre>
+    
+    <p><strong>Explanation of Clawback Fields:</strong></p>
+    <ul class="inText">
+        <li><strong>sender:</strong> The account authorizing the clawback (typically the asset manager).</li>
+        <li><strong>receiver:</strong> The account receiving the clawbacked assets.</li>
+        <li><strong>revocation_target:</strong> The account from which assets are being clawed back.</li>
+        <li><strong>amt:</strong> The amount of assets to claw back.</li>
+        <li><strong>index:</strong> The asset ID.</li>
+    </ul>
+    
+    <p>**Important Notes:**</p>
+    <ul class="inText">
+        <li>The sender of the clawback transaction must be the asset manager.</li>
+        <li>The receiver is where the clawed assets will be sent.</li>
+        <li>The revocation target is the account from which the assets are being removed.</li>
+    </ul>
+    
+    <p>**Context of Clawback Transaction:**</p>
+    <p>In the context of a clawback transaction, the sender field is not the account from which the asset is being sent but rather the authorizing party (the asset manager). The receiver is the destination for the clawbacked asset amount, and the revocation_target is the target account from which the asset amount is removed.</p>
+    
+    <p>**Example Error:**</p>
+    <pre class="overflow-auto shadow-md"><code>algosdk.error.AlgodHTTPError: TransactionPool.Remember: transaction 5RUU5XXTX7NHNWTWUDZ3RVN6SE5ZMGWNQZVRMS7Z2YM6LYVZ3YCQ: asset 730599733 frozen in RAVEP7VNGT37QSYY3VXNX7EYA2DVUSX67H4X3RXBFJMPIOAOZ7BVEMJJ2UPS 
+</code></pre>
+    
+    <p>This error occurs if you attempt to transfer assets from a frozen account.</p>
+    
+    <hr>
+    <form class="quiz-form">
+        <h1>Quiz</h1>
+      
+        <h3>Question 1</h3>
+        <p>What function is used to generate a new Algorand account in the algosdk library?</p>
+        <input type="radio" id="q1a" name="q1" value="a">
+        <label for="q1a" class="incorrect">a) algosdk.create_account()</label><br>
+        
+        <input type="radio" id="q1b" name="q1" value="b">
+        <label for="q1b" class="incorrect">b) algosdk.generate_account()</label><br>
+        
+        <input type="radio" id="q1c" name="q1" value="c">
+        <label for="q1c" class="incorrect">c) algosdk.new_account()</label><br>
+        
+        <input type="radio" id="q1d" name="q1" value="d">
+        <label for="q1d" class="correct">d) algosdk.account.generate_account()</label><br>
+        
+        
+        <h3>Question 2</h3>
+        <p>How can you obtain the asset ID after creating a new asset?</p>
+        <input type="radio" id="q2a" name="q2" value="a">
+        <label for="q2a" class="incorrect">a) transaction_info['asset-id']</label><br>
+        
+        <input type="radio" id="q2b" name="q2" value="b">
+        <label for="q2b" class="incorrect">b) transaction_info['asset_id']</label><br>
+        
+        <input type="radio" id="q2c" name="q2" value="c">
+        <label for="q2c" class="incorrect">c) transaction_info['id']</label><br>
+        
+        <input type="radio" id="q2d" name="q2" value="d">
+        <label for="q2d" class="correct">d) transaction_info['asset-index']</label><br>
+        
+        
+        <h3>Question 3</h3>
+        <p>What transaction type is used to freeze an account's assets?</p>
+        <input type="radio" id="q3a" name="q3" value="a">
+        <label for="q3a" class="incorrect">a) AssetFreezeTxn</label><br>
+        
+        <input type="radio" id="q3b" name="q3" value="b">
+        <label for="q3b" class="incorrect">b) AssetClawbackTxn</label><br>
+        
+        <input type="radio" id="q3c" name="q3" value="c">
+        <label for="q3c" class="incorrect">c) AssetTransferTxn</label><br>
+        
+        <input type="radio" id="q3d" name="q3" value="d">
+        <label for="q3d" class="correct">d) AssetFreezeTransaction</label><br>
+        
+        <h3>Question 4</h3>
+        <p>Which field in the AssetCreateTxn specifies the ability to revoke assets?</p>
+        <input type="radio" id="q4a" name="q4" value="a">
+        <label for="q4a" class="incorrect">a) manager</label><br>
+        
+        <input type="radio" id="q4b" name="q4" value="b">
+        <label for="q4b" class="incorrect">b) reserve</label><br>
+        
+        <input type="radio" id="q4c" name="q4" value="c">
+        <label for="q4c" class="incorrect">c) freeze</label><br>
+        
+        <input type="radio" id="q4d" name="q4" value="d">
+        <label for="q4d" class="correct">d) clawback</label><br>
+        
+        <h3>Question 5</h3>
+        <p>What function is used to assign a group ID to a list of transactions?</p>
+        <input type="radio" id="q5a" name="q5" value="a">
+        <label for="q5a" class="incorrect">a) assign_group()</label><br>
+        <input type="radio" id="q5b" name="q5" value="b">
+        <label for="q5b" class="correct">b) assign_group_id()</label><br>
+        <input type="radio" id="q5c" name="q5" value="c">
+        <label for="q5c" class="incorrect">c) set_group_id()</label><br>
+        <input type="radio" id="q5d" name="q5" value="d">
+        <label for="q5d" class="incorrect">d) group_transactions()</label><br>
+    </form>
+    
+    `,
+    initialCode: `from algosdk.account import generate_account
+from dotenv import load_dotenv, set_key
+
+# Load our .env file where we store discrete information
+load_dotenv()
+
+# Generate three accounts
+private_key_1, address_1 = generate_account()
+private_key_2, address_2 = generate_account()
+private_key_3, address_3 = generate_account()
+
+# Print the private key and address generated
+print(private_key_1, address_1)
+print(private_key_2, address_2)
+print(private_key_3, address_3)
+
+# Save our private keys and addresses to our .env
+set_key('.env', key_to_set='private_key_1', value_to_set=private_key_1)
+set_key('.env', key_to_set='private_key_2', value_to_set=private_key_2)
+set_key('.env', key_to_set='private_key_3', value_to_set=private_key_3)
+
+set_key('.env', key_to_set='address_1', value_to_set=address_1)
+set_key('.env', key_to_set='address_2', value_to_set=address_2)
+set_key('.env', key_to_set='address_3', value_to_set=address_3)
+
+# Fund these three addresses with testnet Algorand @ https://bank.testnet.algorand.network/
+`,
+  },
+
+  {
     id: 21,
     language: 'Python',
     title: 'Compiling Launching and Interacting with Your First Contract',
