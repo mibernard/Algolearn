@@ -1573,7 +1573,7 @@ print("Mnemonic Phrase:", mnemonic_phrase)
   {
     id: 42,
     language: 'Python',
-    title: 'Key Registration Transactions',
+    title: 'Key Registration',
     content: `
     <p>Generating Key Registration Transactions requires setting up a node, which is guided in the "Running Your Own Node" section in the "Installation and Setup" Python Chapter.</p>
     
@@ -1776,7 +1776,7 @@ print(tx_id)
   {
     id: 43,
     language: 'Python',
-    title: 'Asset Management',
+    title: 'Freeze and Clawback',
     content: `
     <p>In this chapter, we will explore how to manage assets on the Algorand blockchain using Python. This includes generating accounts, creating assets, opting in accounts to receive assets, transferring assets between accounts, freezing assets, and performing clawback transactions.</p>
     
