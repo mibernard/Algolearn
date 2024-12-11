@@ -1572,6 +1572,11 @@ mnemonic_phrase = mnemonic.from_private_key(private_key)
 print("Mnemonic Phrase:", mnemonic_phrase)
   
     `,
+    editable: false,
+    output: `Private Key: b'G9YgqD6iD1TnIsxEJ6fvqzlyU+vGixzslr6b6LZriAsGZKFfSgEzYlvHgT3OQpYdODsXaT1ePz7uKXZv5eLjlA=='
+Address: E3X4YZ5ABCDE12345FGHIJKLMNO67890PQRSTU1234567890ABCDEF1234567890AB
+Mnemonic Phrase: pumpkin present galaxy zebra window tough swarm urban mansion favorite august battle speed replace cradle office cross absent inmate long lumber nephew task final aspect
+`,
   },
 
   {
@@ -1716,65 +1721,7 @@ print(account_information)
 # {'selection-participation-key': '5yqxpwCkMTkbaBDIvv+eH1zD2Z0U8JS9B956CrOZT7U=', 'state-proof-key': 'ZNs6g2+Mv5PI+Ceb8t+ArivW+C1Bj6yJ59qaFmTd0r+061a4zyKKuY4+/b4aQctWLF7YVuqlXElSQcyjzANhwg==', 'vote-first-valid': 45137536, 'vote-key-dilution': 1732, 'vote-last-valid': 48137536, 'vote-participation-key': 'EwZuJ4a/UZ0ti6bfyD1lvor1gOMs0CEJYaGvAOLk3gg='}
 </code></pre>
     `,
-    initialCode: `from algosdk.transaction import KeyregTxn, KeyregOnlineTxn, KeyregOfflineTxn, KeyregNonparticipatingTxn
-from algosdk.v2client.algod import AlgodClient
-from dotenv import load_dotenv, set_key
-from algosdk.account import address_from_private_key
-import os
-
-# Load the .env file
-load_dotenv()
-
-# Instantiate Algorand Client
-algod_token = os.getenv('algod_token')
-algod_server = os.getenv('mainnet_algod_server')
-algod_client = AlgodClient(algod_token, algod_server)
-
-# Get our first private key from .env
-private_key_1 = os.getenv('private_key_1')
-
-# Get address from private key
-address_1 = address_from_private_key(private_key_1)
-
-# Get parameters for transaction
-params = algod_client.suggested_params()
-
-# Input your vote key and selection key from the part key generation
-selection_key = "5yqxpwCkMTkbaBDIvv+eH1zD2Z0U8JS9B956CrOZT7U="
-vote_key = "EwZuJ4a/UZ0ti6bfyD1lvor1gOMs0CEJYaGvAOLk3gg=" 
-state_proof_key = "ZNs6g2+Mv5PI+Ceb8t+ArivW+C1Bj6yJ59qaFmTd0r+061a4zyKKuY4+/b4aQctWLF7YVuqlXElSQcyjzANhwg=="
-
-# Set the first valid round from suggested params
-first_valid_round = params.first
-
-# The recommended 3,000,000 rounds for the key to be valid
-rounds_valid = 3_000_000 
-
-# Set the last valid round to 3,000,000 blocks after the first valid round
-last_valid_round = first_valid_round + rounds_valid
-
-# Define the key dilution parameter
-key_dilution = int(rounds_valid**0.5)  # dilution default is sqrt(num rounds)
-
-# Create transaction
-set_node_online = KeyregTxn(
-    sender=address_1,
-    selkey=selection_key,
-    votekey=vote_key,
-    sprfkey=state_proof_key,
-    votefst=first_valid_round,
-    votelst=last_valid_round,
-    votekd=key_dilution,
-    sp=params,
-)
-
-# Sign the transaction
-signed_tx = set_node_online.sign(private_key_1)
-
-# Send the transaction
-tx_id = algod_client.send_transaction(signed_tx)
-print(tx_id)
-`,
+    initialCode: ``,
   },
 
   {
@@ -2347,33 +2294,7 @@ print(tx_id)
     </form>
     
     `,
-    initialCode: `from algosdk.account import generate_account
-from dotenv import load_dotenv, set_key
-
-# Load our .env file where we store discrete information
-load_dotenv()
-
-# Generate three accounts
-private_key_1, address_1 = generate_account()
-private_key_2, address_2 = generate_account()
-private_key_3, address_3 = generate_account()
-
-# Print the private key and address generated
-print(private_key_1, address_1)
-print(private_key_2, address_2)
-print(private_key_3, address_3)
-
-# Save our private keys and addresses to our .env
-set_key('.env', key_to_set='private_key_1', value_to_set=private_key_1)
-set_key('.env', key_to_set='private_key_2', value_to_set=private_key_2)
-set_key('.env', key_to_set='private_key_3', value_to_set=private_key_3)
-
-set_key('.env', key_to_set='address_1', value_to_set=address_1)
-set_key('.env', key_to_set='address_2', value_to_set=address_2)
-set_key('.env', key_to_set='address_3', value_to_set=address_3)
-
-# Fund these three addresses with testnet Algorand @ https://bank.testnet.algorand.network/
-`,
+    initialCode: ``,
   },
 
   {
@@ -9190,8 +9111,15 @@ const algodPort = '';
 const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
 
 // Log client instance to ensure it's initialized correctly
-console.log(algodClient);
-  `,
+console.log(algodClient);`,
+    editable: false,
+    output: `Algodv2 {
+  token: '',
+  host: 'https://testnet-api.algonode.cloud',
+  port: '',
+  headers: {},
+}
+`,
   },
   {
     id: 38,
@@ -9413,43 +9341,41 @@ algodClient.status().do()
     language: 'Javascript',
     title: 'Payment Transactions',
     content: `
-    <pre class="overflow-auto shadow-md">
-    <code>const algosdk = require('algosdk');
+    <pre class="overflow-auto shadow-md"><code>const algosdk = require('algosdk');
     
-    // TWO WAYS TO IMPORT AN ACCOUNT
-    
-    // METHOD 1
-    // CREATE A NEW ACCOUNT
-    const account = algosdk.generateAccount();
-    console.log('Private Key:', Buffer.from(account.sk).toString('base64')); // Output Private Key
-    console.log('Address:', account.addr); // Output Address
-    
-    // IF NEEDED TO IMPORT TO A WALLET, YOU CAN OBTAIN THE MNEMONIC FROM THE PRIVATE KEY
-    // REDEEM MNEMONIC FROM PRIVATE KEY
-    const mnemonicPhrase = algosdk.secretKeyToMnemonic(account.sk);
-    console.log('Mnemonic Phrase:', mnemonicPhrase); // Output Mnemonic Phrase
-    
-    // METHOD 2
-    // USE MNEMONIC TO OBTAIN PRIVATE KEY
-    // REDEEM PRIVATE KEY FROM MNEMONIC
-    const mnemonic = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual';
-    const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic);
-    console.log('Recovered Private Key:', Buffer.from(recoveredAccount.sk).toString('base64')); // Output Private Key</code>
-    </pre>
-    
-    <p>When developing in JavaScript with the Algorand blockchain, there are two methods to obtain a private key and address for signing transactions you create. The private key is in base64 format and is required for transaction signing.</p>
-    
-    <h4>Method 1: Create a brand new account and obtain the private key and address directly</h4>
+// TWO WAYS TO IMPORT AN ACCOUNT
+
+// METHOD 1
+// CREATE A NEW ACCOUNT
+const account = algosdk.generateAccount();
+console.log('Private Key:', Buffer.from(account.sk).toString('base64')); // Output Private Key
+console.log('Address:', account.addr); // Output Address
+
+// IF NEEDED TO IMPORT TO A WALLET, YOU CAN OBTAIN THE MNEMONIC FROM THE PRIVATE KEY
+// REDEEM MNEMONIC FROM PRIVATE KEY
+const mnemonicPhrase = algosdk.secretKeyToMnemonic(account.sk);
+console.log('Mnemonic Phrase:', mnemonicPhrase); // Output Mnemonic Phrase
+
+// METHOD 2
+// USE MNEMONIC TO OBTAIN PRIVATE KEY
+// REDEEM PRIVATE KEY FROM MNEMONIC
+const mnemonic = 'brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual';
+const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic);
+console.log('Recovered Private Key:', Buffer.from(recoveredAccount.sk).toString('base64')); // Output Private Key</code>
+</pre>
+
+<p>When developing in JavaScript with the Algorand blockchain, there are two methods to obtain a private key and address for signing transactions you create. The private key is in base64 format and is required for transaction signing.</p>
+
+<h4>Method 1: Create a brand new account and obtain the private key and address directly</h4>
     
     <p>In the algosdk's account module, there is a function called generateAccount(), which you can import at the beginning of your code, and is defined here:</p>
     
-    <pre class="overflow-auto shadow-md">
-    <code>function generateAccount() 
-    Generate an account.
-    
-    Returns:
-    {addr: string, sk: Uint8Array}: An object containing the account address and secret key</code>
-    </pre>
+    <pre class="overflow-auto shadow-md"><code>function generateAccount() 
+Generate an account.
+
+Returns:
+{addr: string, sk: Uint8Array}: An object containing the account address and secret key</code>
+</pre>
     
     <p>This returns an object containing the private key (as a Uint8Array) and the account address as strings. You would assign the output of the function to a variable and then subsequently print them.</p>
     
@@ -9458,31 +9384,27 @@ algodClient.status().do()
     
     <p>Should you need the mnemonic to import into a wallet application later, you can do so with the secretKeyToMnemonic() function in the algosdk library as well; input your secret key into the function and assign the output variable to something like "mnemonicPhrase". Function is defined below:</p>
     
-    <pre class="overflow-auto shadow-md">
-    <code>function secretKeyToMnemonic(secretKey: Uint8Array) -> string
-    Return the mnemonic for the secret key.
-    
-    Args:
-    secretKey (Uint8Array): The secret key as a Uint8Array
-    
-    Returns:
-    string: mnemonic phrase</code>
-    </pre>
+<pre class="overflow-auto shadow-md"><code>function secretKeyToMnemonic(secretKey: Uint8Array) -> string
+Return the mnemonic for the secret key.
+
+Args:
+secretKey (Uint8Array): The secret key as a Uint8Array
+
+Returns:
+string: mnemonic phrase</code></pre>
     
     <h4>Method 2: Convert an Existing Mnemonic to a Private Key</h4>
     
     <p>Should you already have a mnemonic and require the private key in base64 format, you can create a variable called "mnemonicPhrase" and use the result of the mnemonicToSecretKey() function in the algosdk library, which is defined below:</p>
     
-    <pre class="overflow-auto shadow-md">
-    <code>function mnemonicToSecretKey(mnemonic: string) -> {addr: string, sk: Uint8Array}
-    Return the account object for the mnemonic.
-    
-    Args:
-    mnemonic (string): mnemonic of the private key
-    
-    Returns:
-    {addr: string, sk: Uint8Array}: An object containing the account address and secret key</code>
-    </pre>
+    <pre class="overflow-auto shadow-md"><code>function mnemonicToSecretKey(mnemonic: string) -> {addr: string, sk: Uint8Array}
+Return the account object for the mnemonic.
+
+Args:
+mnemonic (string): mnemonic of the private key
+
+Returns:
+{addr: string, sk: Uint8Array}: An object containing the account address and secret key</code></pre>
     
     <p>The mnemonic must be a string, meaning it is enclosed in apostrophes or double quotes ('' or ""), and there must be a space between words.</p>
     
@@ -9490,57 +9412,55 @@ algodClient.status().do()
     
     <p>We will be trying a typical payment transaction with a note field, followed by a rekey transaction (rekey to a new account and back to ourselves from the new account), and an account closing transaction. All three are under the scope of a payment transaction.</p>
     
-    <pre class="overflow-auto shadow-md">
-    <code>const algosdk = require('algosdk');
+    <pre class="overflow-auto shadow-md"><code>const algosdk = require('algosdk');
     
-    // Algod client connection parameters
-    const algodToken = '';
-    const algodServer = 'https://testnet-api.algonode.cloud';
-    const algodPort = '443';
-    const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
-    
-    // Sender's account details
-    const address = 'I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU';
-    const private_key = '6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg==';
-    
-    // Convert 1.001 Algos to microalgos
-    const amount = algosdk.algosToMicroalgos(1.001);
-    
-    // Get transaction parameters
-    async function submitTransaction() {
-        let params = await algodClient.getTransactionParams().do();
-    
-        // Generate a new account
-        const { addr: newAccountAddress, sk: newAccountPrivateKey } = algosdk.generateAccount();
-        console.log('New Account Address:', newAccountAddress);
-    
-        // Create a payment transaction
-        let txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
-            from: address,
-            to: newAccountAddress,
-            amount: amount,
-            note: new TextEncoder().encode("Here's your one Algo!"),
-            suggestedParams: params
-        });
-    
-        // Sign the transaction
-        const signedTxn = txn.signTxn(Buffer.from(private_key, 'base64'));
-    
-        // Send the transaction
-        try {
-            let { txId } = await algodClient.sendRawTransaction(signedTxn).do();
-            console.log('Transaction ID:', txId);
-    
-            // Wait for confirmation
-            let confirmedTxn = await algosdk.waitForConfirmation(algodClient, txId, 4);
-            console.log('Transaction confirmed in round', confirmedTxn['confirmed-round']);
-        } catch (err) {
-            console.log('Error submitting transaction:', err);
-        }
+// Algod client connection parameters
+const algodToken = '';
+const algodServer = 'https://testnet-api.algonode.cloud';
+const algodPort = '443';
+const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
+
+// Sender's account details
+const address = 'I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU';
+const private_key = '6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg==';
+
+// Convert 1.001 Algos to microalgos
+const amount = algosdk.algosToMicroalgos(1.001);
+
+// Get transaction parameters
+async function submitTransaction() {
+    let params = await algodClient.getTransactionParams().do();
+
+    // Generate a new account
+    const { addr: newAccountAddress, sk: newAccountPrivateKey } = algosdk.generateAccount();
+    console.log('New Account Address:', newAccountAddress);
+
+    // Create a payment transaction
+    let txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
+        from: address,
+        to: newAccountAddress,
+        amount: amount,
+        note: new TextEncoder().encode("Here's your one Algo!"),
+        suggestedParams: params
+    });
+
+    // Sign the transaction
+    const signedTxn = txn.signTxn(Buffer.from(private_key, 'base64'));
+
+    // Send the transaction
+    try {
+        let { txId } = await algodClient.sendRawTransaction(signedTxn).do();
+        console.log('Transaction ID:', txId);
+
+        // Wait for confirmation
+        let confirmedTxn = await algosdk.waitForConfirmation(algodClient, txId, 4);
+        console.log('Transaction confirmed in round', confirmedTxn['confirmed-round']);
+    } catch (err) {
+        console.log('Error submitting transaction:', err);
     }
-    
-    submitTransaction();</code>
-    </pre>
+}
+
+submitTransaction();</code></pre>
     
     <h4>Steps:</h4>
     <ol class="inText">
@@ -9575,11 +9495,9 @@ algodClient.status().do()
     </ul>
     
     <p>PaymentTransaction format:</p>
-    <pre class="overflow-auto shadow-md">
-    <code>function makePaymentTxnWithSuggestedParams(sender, receiver, amount, closeRemainderTo, note, suggestedParams, rekeyTo) {
-        // Returns a transaction object
-    }</code>
-    </pre>
+    <pre class="overflow-auto shadow-md"><code>function makePaymentTxnWithSuggestedParams(sender, receiver, amount, closeRemainderTo, note, suggestedParams, rekeyTo) {
+    // Returns a transaction object
+}</code></pre>
     
     <p>After we define our Payment Transaction parameters, we can then use the signTransaction() method that is included within it. This sign function accepts our private key, and outputs a signed transaction object, which is needed to input to the sendRawTransaction() function.</p>
     
@@ -9589,55 +9507,54 @@ algodClient.status().do()
     
     <p>Below are examples of rekey transactions and close amount to transactions, which are sent in succession (BUT NOT A GROUP TRANSACTION, WHICH WE WILL LEARN ABOUT LATER).</p>
     
-    <pre class="overflow-auto shadow-md">
-    <code>// Repeat the process for the Rekey Transaction and the Close Remainder to Transaction
-    
-    // Rekey Transaction
-    const rekeyToNewAccountPayment = algosdk.makePaymentTxnWithSuggestedParams(
-        senderAddress,
-        newAccountAddress,
-        0,
-        undefined,
-        new TextEncoder().encode("Take care of my account for me! I'll be back in a week"),
-        params,
-        newAccountAddress
-    );
-    
-    const signedRekeyToNewAccountPayment = rekeyToNewAccountPayment.signTxn(senderPrivateKey);
-    const rekeyTransactionID = await algodClient.sendRawTransaction(signedRekeyToNewAccountPayment).do();
-    await algosdk.waitForConfirmation(algodClient, rekeyTransactionID, 4);
-    console.log(rekeyTransactionID);
-    
-    // New account rekeys back to the original account
-    const rekeyBackToOldAccountFromNewAccount = algosdk.makePaymentTxnWithSuggestedParams(
-        newAccountAddress,
-        senderAddress,
-        0,
-        undefined,
-        new TextEncoder().encode("Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"),
-        params,
-        senderAddress
-    );
-    
-    const signedRekeyBackToOldAccountFromNewAccount = rekeyBackToOldAccountFromNewAccount.signTxn(newAccountPrivateKey);
-    const rekeyBackTransactionID = await algodClient.sendRawTransaction(signedRekeyBackToOldAccountFromNewAccount).do();
-    await algosdk.waitForConfirmation(algodClient, rekeyBackTransactionID, 4);
-    console.log(rekeyBackTransactionID);
-    
-    // Close Remainder to Transaction
-    const closeAccountToNewAccount = algosdk.makePaymentTxnWithSuggestedParams(
-        senderAddress,
-        newAccountAddress,
-        0,
-        newAccountAddress,
-        new TextEncoder().encode('Take care of my precious Algo!'),
-        params
-    );
-    
-    const signedCloseAccountToNewAccount = closeAccountToNewAccount.signTxn(senderPrivateKey);
-    const closeAccountTransactionID = await algodClient.sendRawTransaction(signedCloseAccountToNewAccount).do();
-    await algosdk.waitForConfirmation(algodClient, closeAccountTransactionID, 4);
-    console.log(closeAccountTransactionID);</code>
+    <pre class="overflow-auto shadow-md"><code>// Repeat the process for the Rekey Transaction and the Close Remainder to Transaction
+
+// Rekey Transaction
+const rekeyToNewAccountPayment = algosdk.makePaymentTxnWithSuggestedParams(
+    senderAddress,
+    newAccountAddress,
+    0,
+    undefined,
+    new TextEncoder().encode("Take care of my account for me! I'll be back in a week"),
+    params,
+    newAccountAddress
+);
+
+const signedRekeyToNewAccountPayment = rekeyToNewAccountPayment.signTxn(senderPrivateKey);
+const rekeyTransactionID = await algodClient.sendRawTransaction(signedRekeyToNewAccountPayment).do();
+await algosdk.waitForConfirmation(algodClient, rekeyTransactionID, 4);
+console.log(rekeyTransactionID);
+
+// New account rekeys back to the original account
+const rekeyBackToOldAccountFromNewAccount = algosdk.makePaymentTxnWithSuggestedParams(
+    newAccountAddress,
+    senderAddress,
+    0,
+    undefined,
+    new TextEncoder().encode("Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"),
+    params,
+    senderAddress
+);
+
+const signedRekeyBackToOldAccountFromNewAccount = rekeyBackToOldAccountFromNewAccount.signTxn(newAccountPrivateKey);
+const rekeyBackTransactionID = await algodClient.sendRawTransaction(signedRekeyBackToOldAccountFromNewAccount).do();
+await algosdk.waitForConfirmation(algodClient, rekeyBackTransactionID, 4);
+console.log(rekeyBackTransactionID);
+
+// Close Remainder to Transaction
+const closeAccountToNewAccount = algosdk.makePaymentTxnWithSuggestedParams(
+    senderAddress,
+    newAccountAddress,
+    0,
+    newAccountAddress,
+    new TextEncoder().encode('Take care of my precious Algo!'),
+    params
+);
+
+const signedCloseAccountToNewAccount = closeAccountToNewAccount.signTxn(senderPrivateKey);
+const closeAccountTransactionID = await algodClient.sendRawTransaction(signedCloseAccountToNewAccount).do();
+await algosdk.waitForConfirmation(algodClient, closeAccountTransactionID, 4);
+console.log(closeAccountTransactionID);</code>
     </pre>
     
     <p>DISCLAIMER: When rekeying and closing out accounts, this process is irreversible! If you don't know the person, or feel unsure about doing so, you should never use these transactions outside of testing purposes without ultimate confidence. No platforms currently utilize rekey transactions for users, but do use them internally when generating smart contracts for contract-to-contract calls, which will come later in our learning process.</p>
@@ -9702,9 +9619,11 @@ const mnemonic = 'brown repeat amazing april survey fish gospel brown bless core
 // Recover account using the mnemonic
 const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic);
 console.log('Recovered Private Key:', Buffer.from(recoveredAccount.sk).toString('base64')); // Output Private Key
-console.log('Recovered Address:', recoveredAccount.addr); // Output Address
-
-  `,
+console.log('Recovered Address:', recoveredAccount.addr); // Output Address`,
+    editable: false,
+    output: `Recovered Private Key: AbCdEfGhIjKlMnOpQrStUvWxYz0123456789+/AbCdEfGhIjKlMnOpQrStUvWxYz0123456789+/AbCdEfGhIjKlMnOpQrStUvWxYz0123
+Recovered Address: ALICE3X4YZ5ABCDE12345FGHIJKLMNO67890PQRSTU
+`,
   },
 
   {
@@ -11029,6 +10948,9 @@ func main() {
 }
 
     `,
+    editable: false,
+    output: `Transaction sent successfully! TxID: ABCD1234EFGH5678IJKL9012MNOP3456QRST7890UVWX1234YZAB5678CDEF9012
+`,
   },
 ];
 
