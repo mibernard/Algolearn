@@ -1826,7 +1826,7 @@ print(new_asset_id)
 set_key('.env', key_to_set='asset_id', value_to_set=str(new_asset_id))
 </code></pre>
     
-    <p>**Note:** You may use the same code as we did previously to opt in the second and third accounts into the asset and transfer an amount to them.</p>
+    <p><b>Note:</b> You may use the same code as we did previously to opt in the second and third accounts into the asset and transfer an amount to them.</p>
     
     <h2>3. Opting In Accounts to the Asset</h2>
     <p>Before accounts can receive the newly created asset, they must opt in. Opting in is essentially an asset transfer to self with the amount field set to 0.</p>
@@ -2055,14 +2055,14 @@ tx_id = algod_client.send_transaction(signed_freeze_address_2)
 print(tx_id)
 </code></pre>
     
-    <p>**Error Handling Example:** If you attempt to send an asset from Account 2 to Account 3 after freezing, it will fail with an error similar to this:</p>
+    <p><b>Error Handling Example:</b> If you attempt to send an asset from Account 2 to Account 3 after freezing, it will fail with an error similar to this:</p>
     
     <pre class="overflow-auto shadow-md"><code>algosdk.error.AlgodHTTPError: TransactionPool.Remember: transaction 5RUU5XXTX7NHNWTWUDZ3RVN6SE5ZMGWNQZVRMS7Z2YM6LYVZ3YCQ: asset 730599733 frozen in RAVEP7VNGT37QSYY3VXNX7EYA2DVUSX67H4X3RXBFJMPIOAOZ7BVEMJJ2UPS 
 </code></pre>
     
     <p>If you want to allow the address to send assets again, resend the same transaction but set new_freeze_state to False.</p>
     
-    <p>**Note:** To have all accounts' assets frozen by default, set default_frozen to True during asset creation. This depends on your specific use case.</p>
+    <p><b>Note:</b> To have all accounts' assets frozen by default, set default_frozen to True during asset creation. This depends on your specific use case.</p>
     
     <h2>7. Creating an Asset with Clawback Functionality</h2>
     <p>Clawback functionality allows the asset manager to revoke assets from any account. Here's how to create an asset with the clawback feature enabled.</p>
@@ -2203,17 +2203,17 @@ print(tx_id)
         <li><strong>index:</strong> The asset ID.</li>
     </ul>
     
-    <p>**Important Notes:**</p>
+    <p><b>Important Notes:</b></p>
     <ul class="inText">
         <li>The sender of the clawback transaction must be the asset manager.</li>
         <li>The receiver is where the clawed assets will be sent.</li>
         <li>The revocation target is the account from which the assets are being removed.</li>
     </ul>
     
-    <p>**Context of Clawback Transaction:**</p>
+    <p><b>Context of Clawback Transaction:</b></p>
     <p>In the context of a clawback transaction, the sender field is not the account from which the asset is being sent but rather the authorizing party (the asset manager). The receiver is the destination for the clawbacked asset amount, and the revocation_target is the target account from which the asset amount is removed.</p>
     
-    <p>**Example Error:**</p>
+    <p><b>Example Error:</b></p>
     <pre class="overflow-auto shadow-md"><code>algosdk.error.AlgodHTTPError: TransactionPool.Remember: transaction 5RUU5XXTX7NHNWTWUDZ3RVN6SE5ZMGWNQZVRMS7Z2YM6LYVZ3YCQ: asset 730599733 frozen in RAVEP7VNGT37QSYY3VXNX7EYA2DVUSX67H4X3RXBFJMPIOAOZ7BVEMJJ2UPS 
 </code></pre>
     
