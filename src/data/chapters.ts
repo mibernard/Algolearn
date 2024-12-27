@@ -3110,7 +3110,7 @@ print(all_abi_results)
   {
     id: 37,
     language: 'Python',
-    title: 'Group Transaction',
+    title: 'Group Transaction Comprehension',
     content: `
         <h2>Video Tutorial</h2>
         <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
