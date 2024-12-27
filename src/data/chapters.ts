@@ -3127,7 +3127,6 @@ print(all_abi_results)
         <p>Create two accounts and add their private keys to your <code>.env</code> file.</p>
         <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
 
-
 private_key, address = generate_account()
 print(private_key, address)</code></pre>
 
@@ -3249,7 +3248,6 @@ print(f'MBR For Contract to be Active Account Funded: {activation_tx}')
 
         <h3>Group Transaction Comprehension (GTXN)</h3>
         <p>In this section, we put it all together and use relative indexing in our group transaction method to enhance scalability.</p>
-        <pre class="overflow-auto shadow-md"><code>TransactionComprehension_4.py</code></pre>
         <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, Txn, Bytes, UInt64, String, itxn, Global, OnCompleteAction, gtxn, TransactionType
 from algopy.arc4 import abimethod, Address, arc4_signature, abi_call
 from algopy.arc4 import UInt64 as arc4UInt64
@@ -3418,10 +3416,10 @@ print(private_key, address)</code></pre>
       <h2>Setting Environment Variables (.env)</h2>
       <p>Define the following environment variables:</p>
       <pre class="overflow-auto shadow-md"><code># Private keys for both generated accounts
-  private_key=ENTER FIRST PRIVATE KEY
-  private_key_2=ENTER SECOND PRIVATE KEY
+private_key=ENTER FIRST PRIVATE KEY
+private_key_2=ENTER SECOND PRIVATE KEY
   
-  # Algod token and server (Nodely API)
+# Algod token and server (Nodely API)
 algod_token=
 algod_server=https://testnet-api.4160.nodely.dev
 
@@ -3446,20 +3444,20 @@ app_id=722568747</code></pre>
         self.arrows -= 1
       
   
-  my_archer = Archer(10)
-  print(my_archer.arrows)
-  print(my_archer.bow_equipped)
-  
-  my_archer.equip_bow()
-  print(my_archer.bow_equipped)
-  
-  my_archer.unequip_bow()
-  print(my_archer.bow_equipped)
-  
-  for i in range(5):
-      my_archer.shoot_arrow()
-      print(my_archer.arrows)</code></pre>
-  
+my_archer = Archer(10)
+print(my_archer.arrows)
+print(my_archer.bow_equipped)
+
+my_archer.equip_bow()
+print(my_archer.bow_equipped)
+
+my_archer.unequip_bow()
+print(my_archer.bow_equipped)
+
+for i in range(5):
+    my_archer.shoot_arrow()
+    print(my_archer.arrows)</code></pre>
+
       <h2>Archer Smart Contract</h2>
       <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, GlobalState, LocalState, UInt64, Txn
 from algopy.arc4 import abimethod, String

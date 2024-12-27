@@ -105,10 +105,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                         </Link>
                       </MemoizedDropdownMenuItem>
                       <MemoizedDropdownMenuItem asChild>
-                        <Link
-                          href='/python/compiling-launching-and-interacting-with-your-first-contract'
-                          className='block w-full h-full cursor-pointer'
-                        >
+                        <Link href='https://nodely.io/docs/free/start' className='block w-full h-full cursor-pointer'>
                           API Reference
                         </Link>
                       </MemoizedDropdownMenuItem>
@@ -161,7 +158,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                       </MemoizedDropdownMenuItem>
                       <MemoizedDropdownMenuItem asChild>
                         <Link
-                          href='/python/compiling-launching-and-interacting-with-your-first-contract'
+                          href='https://nodely.io/docs/free/start'
                           className='block w-full h-full cursor-pointer active:bg-gray-200'
                         >
                           API Reference
@@ -210,10 +207,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href='/python/compiling-launching-and-interacting-with-your-first-contract'
-                      className='text-sm hover:underline'
-                    >
+                    <Link href='https://nodely.io/docs/free/start' className='text-sm hover:underline'>
                       API Reference
                     </Link>
                   </li>
