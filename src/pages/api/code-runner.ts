@@ -1,18 +1,13 @@
+// pages/api/code-runner.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { executeJavaScript } from '@/utils/executeJavaScript';
-import { executePython } from '@/utils/executePython';
-import { executeGo } from '@/utils/executeGo';
 
 type Data = {
   output?: string;
   error?: string;
 };
 
-type ErrorWithResponse = {
-  response?: {
-    data?: unknown;
-  };
-};
+// Replace with your VM's external IP
+const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://35.226.166.220:3001/run-code';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   console.log('Request body:', req.body); // Log the request body
@@ -30,39 +25,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   try {
-    let output: string;
+    // Forward the request to the backend API on GCP VM
+    const response = await fetch(BACKEND_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code, language }),
+    });
 
-    switch (language.toLowerCase()) {
-      case 'javascript':
-        // This will run Node in Docker (as defined in executeJavaScript.ts)
-        output = await executeJavaScript(code);
-        break;
-      case 'python':
-        output = await executePython(code);
-        break;
-      case 'go':
-        output = await executeGo(code);
-        break;
-      default:
-        console.error('Unsupported language:', language);
-        return res.status(400).json({ error: 'Unsupported language.' });
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Error from backend API:', errorData);
+      return res.status(response.status).json({ error: errorData.error || 'Error executing code.' });
     }
 
-    console.log('Execution output:', output);
-    return res.status(200).json({ output });
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error('Unhandled error:', error);
-
-      if ('response' in error && (error as ErrorWithResponse).response) {
-        const errorResponse = (error as ErrorWithResponse).response?.data;
-        console.error('Error Response:', errorResponse);
-      }
-
-      return res.status(500).json({ error: error.message || 'Internal Server Error' });
-    }
-
-    console.error('Unhandled unknown error:', error);
+    const data = await response.json();
+    console.log('Execution output:', data.output);
+    return res.status(200).json({ output: data.output });
+  } catch (error: any) {
+    console.error('Unhandled error:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }

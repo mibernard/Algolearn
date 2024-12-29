@@ -1249,8 +1249,8 @@ try:
 except Exception as e:
     print(f"Failed to connect to public testnet: {e}")
   `,
-    editable: false,
-    output: 'Connected to public Algorand testnet! Last round: 1234567',
+    // editable: false,
+    // output: 'Connected to public Algorand testnet! Last round: 1234567',
   },
 
   {
@@ -1572,11 +1572,11 @@ mnemonic_phrase = mnemonic.from_private_key(private_key)
 print("Mnemonic Phrase:", mnemonic_phrase)
   
     `,
-    editable: false,
-    output: `Private Key: b'G9YgqD6iD1TnIsxEJ6fvqzlyU+vGixzslr6b6LZriAsGZKFfSgEzYlvHgT3OQpYdODsXaT1ePz7uKXZv5eLjlA=='
-Address: E3X4YZ5ABCDE12345FGHIJKLMNO67890PQRSTU1234567890ABCDEF1234567890AB
-Mnemonic Phrase: pumpkin present galaxy zebra window tough swarm urban mansion favorite august battle speed replace cradle office cross absent inmate long lumber nephew task final aspect
-`,
+    //     editable: false,
+    //     output: `Private Key: b'G9YgqD6iD1TnIsxEJ6fvqzlyU+vGixzslr6b6LZriAsGZKFfSgEzYlvHgT3OQpYdODsXaT1ePz7uKXZv5eLjlA=='
+    // Address: E3X4YZ5ABCDE12345FGHIJKLMNO67890PQRSTU1234567890ABCDEF1234567890AB
+    // Mnemonic Phrase: pumpkin present galaxy zebra window tough swarm urban mansion favorite august battle speed replace cradle office cross absent inmate long lumber nephew task final aspect
+    // `,
   },
 
   {
@@ -9110,14 +9110,14 @@ const algodClient = new algosdk.Algodv2(algodToken, algodServer, algodPort);
 
 // Log client instance to ensure it's initialized correctly
 console.log(algodClient);`,
-    editable: false,
-    output: `Algodv2 {
-  token: '',
-  host: 'https://testnet-api.algonode.cloud',
-  port: '',
-  headers: {},
-}
-`,
+    //     editable: false,
+    //     output: `Algodv2 {
+    //   token: '',
+    //   host: 'https://testnet-api.algonode.cloud',
+    //   port: '',
+    //   headers: {},
+    // }
+    // `,
   },
   {
     id: 38,
@@ -9321,18 +9321,18 @@ algodClient.status().do()
     console.error('Failed to get node status:', err);
   });
   `,
-    editable: false,
-    output: `Node status: {
-  lastRound: 7890123,
-  lastVersion: 'v2.1.0',
-  lastTimeStamp: 1702051200,
-  nextVersion: 'v2.1.1',
-  lastProtocolVersion: 11,
-  nextProtocolVersion: 12,
-  genesisHash: 'SGENHASH...',
-  genesisID: 'testnet-v1.0',
-}
-`,
+    //     editable: false,
+    //     output: `Node status: {
+    //   lastRound: 7890123,
+    //   lastVersion: 'v2.1.0',
+    //   lastTimeStamp: 1702051200,
+    //   nextVersion: 'v2.1.1',
+    //   lastProtocolVersion: 11,
+    //   nextProtocolVersion: 12,
+    //   genesisHash: 'SGENHASH...',
+    //   genesisID: 'testnet-v1.0',
+    // }
+    // `,
   },
   {
     id: 39,
@@ -9618,10 +9618,10 @@ const mnemonic = 'brown repeat amazing april survey fish gospel brown bless core
 const recoveredAccount = algosdk.mnemonicToSecretKey(mnemonic);
 console.log('Recovered Private Key:', Buffer.from(recoveredAccount.sk).toString('base64')); // Output Private Key
 console.log('Recovered Address:', recoveredAccount.addr); // Output Address`,
-    editable: false,
-    output: `Recovered Private Key: AbCdEfGhIjKlMnOpQrStUvWxYz0123456789+/AbCdEfGhIjKlMnOpQrStUvWxYz0123456789+/AbCdEfGhIjKlMnOpQrStUvWxYz0123
-Recovered Address: ALICE3X4YZ5ABCDE12345FGHIJKLMNO67890PQRSTU
-`,
+    //     editable: false,
+    //     output: `Recovered Private Key: AbCdEfGhIjKlMnOpQrStUvWxYz0123456789+/AbCdEfGhIjKlMnOpQrStUvWxYz0123456789+/AbCdEfGhIjKlMnOpQrStUvWxYz0123
+    // Recovered Address: ALICE3X4YZ5ABCDE12345FGHIJKLMNO67890PQRSTU
+    // `,
   },
 
   {
@@ -9908,7 +9908,7 @@ import "fmt"
 
 // Simple function
 func greet(name string) {
-    fmt.Printf("Hello, %s!\n", name)
+    fmt.Println("Hello", name)
 }
 
 // Function with return value
@@ -10560,8 +10560,8 @@ func main() {
 	fmt.Printf("Last round: %d\n", status.LastRound)
 }
     `,
-    editable: false,
-    output: `Last round: 7890123`,
+    // editable: false,
+    // output: `Last round: 7890123`,
   },
   {
     id: 19,
@@ -10946,9 +10946,9 @@ func main() {
 }
 
     `,
-    editable: false,
-    output: `Transaction sent successfully! TxID: ABCD1234EFGH5678IJKL9012MNOP3456QRST7890UVWX1234YZAB5678CDEF9012
-`,
+    //     editable: false,
+    //     output: `Transaction sent successfully! TxID: ABCD1234EFGH5678IJKL9012MNOP3456QRST7890UVWX1234YZAB5678CDEF9012
+    // `,
   },
 ];
 
