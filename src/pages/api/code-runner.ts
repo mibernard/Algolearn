@@ -34,6 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     switch (language.toLowerCase()) {
       case 'javascript':
+        // This will run Node in Docker (as defined in executeJavaScript.ts)
         output = await executeJavaScript(code);
         break;
       case 'python':
@@ -47,17 +48,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         return res.status(400).json({ error: 'Unsupported language.' });
     }
 
-    console.log('Execution output:', output); // Log the execution output
+    console.log('Execution output:', output);
     return res.status(200).json({ output });
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error('Unhandled error:', error);
+
       if ('response' in error && (error as ErrorWithResponse).response) {
         const errorResponse = (error as ErrorWithResponse).response?.data;
-        console.error('Judge0 API Error Response:', errorResponse);
+        console.error('Error Response:', errorResponse);
       }
+
       return res.status(500).json({ error: error.message || 'Internal Server Error' });
     }
+
     console.error('Unhandled unknown error:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
