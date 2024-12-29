@@ -41,8 +41,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const data = await response.json();
     console.log('Execution output:', data.output);
     return res.status(200).json({ output: data.output });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    // Changed from 'any' to 'unknown'
     console.error('Unhandled error:', error);
+
+    // Optional: Provide more detailed error information if it's an instance of Error
+    if (error instanceof Error) {
+      return res.status(500).json({ error: error.message });
+    }
+
+    // Fallback error message
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
