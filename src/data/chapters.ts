@@ -10545,19 +10545,19 @@ func main() {
 	// Create an algod client
 	algodClient, err := algod.MakeClient(algodServer, algodToken)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Failed to create algod client: %s\n", err)
+		fmt.Fprintf(os.Stderr, "Failed to create algod client: %s\\n", err)
 		return
 	}
 
 	// Fetch and print node status
 	status, err := algodClient.Status().Do(context.Background())
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Failed to fetch node status: %s\n", err)
+		fmt.Fprintf(os.Stderr, "Failed to fetch node status: %s\\n", err)
 		return
 	}
 
 	// Access and print the last round
-	fmt.Printf("Last round: %d\n", status.LastRound)
+	fmt.Printf("Last round: %d\\n", status.LastRound)
 }
     `,
     // editable: false,
@@ -10886,65 +10886,35 @@ microAlgos := uint64(amount * 1e6)</code></pre>
     initialCode: `package main
 
 import (
-	"context"
-	"fmt"
-	"github.com/algorand/go-algorand-sdk/client/v2/algod"
-	"github.com/algorand/go-algorand-sdk/crypto"
-	"github.com/algorand/go-algorand-sdk/future"
+    "fmt"
+    "github.com/algorand/go-algorand-sdk/crypto"
+    "github.com/algorand/go-algorand-sdk/mnemonic"
 )
 
 func main() {
-	// Testnet algod client setup
-	algodToken := ""
-	algodServer := "https://testnet-api.algonode.cloud"
-	algodClient, err := algod.MakeClient(algodServer, algodToken)
-	if err != nil {
-		fmt.Printf("Failed to create algod client: %s\n", err)
-		return
-	}
+    // METHOD 1: Create a New Account
+    newAccount := crypto.GenerateAccount()
+    fmt.Printf("Private Key: %s\\n", newAccount.PrivateKey)
+    fmt.Printf("Address: %s\\n", newAccount.Address.String())
 
-	// Sender account details
-	senderAddress := "YOUR_SENDER_ADDRESS"
-	privateKey := "YOUR_PRIVATE_KEY" // Private key of the sender
+    // Convert Private Key to Mnemonic
+    mnemo, err := mnemonic.FromPrivateKey(newAccount.PrivateKey)
+    if err != nil {
+        fmt.Printf("Error converting private key to mnemonic: %s\\n", err)
+        return
+    }
+    fmt.Println("Mnemonic:", mnemo)
 
-	// Receiver account details
-	receiverAddress := "RECEIVER_ADDRESS"
-
-	// Transaction amount in microAlgos
-	amount := uint64(1000000) // 1 Algo = 1,000,000 microAlgos
-
-	// Get suggested transaction parameters
-	txParams, err := algodClient.SuggestedParams().Do(context.Background())
-	if err != nil {
-		fmt.Printf("Failed to get suggested transaction params: %s\n", err)
-		return
-	}
-
-	// Create a payment transaction
-	note := []byte("Test transaction")
-	tx, err := future.MakePaymentTxn(senderAddress, receiverAddress, amount, note, "", txParams)
-	if err != nil {
-		fmt.Printf("Failed to create payment transaction: %s\n", err)
-		return
-	}
-
-	// Sign the transaction
-	signedTx, err := crypto.SignTransaction(privateKey, tx)
-	if err != nil {
-		fmt.Printf("Failed to sign transaction: %s\n", err)
-		return
-	}
-
-	// Send the transaction
-	sendResponse, err := algodClient.SendRawTransaction(signedTx).Do(context.Background())
-	if err != nil {
-		fmt.Printf("Failed to send transaction: %s\n", err)
-		return
-	}
-
-	fmt.Printf("Transaction sent successfully! TxID: %s\n", sendResponse)
+    // METHOD 2: Use Mnemonic to Obtain Private Key
+    // Assuming mnemonicPhrase is obtained securely and already exists
+    mnemonicPhrase := "brown repeat amazing april survey fish gospel brown bless core deny plate admit burden pistol device shuffle sadness genius answer hurt analyst foot above annual"
+    privKey, err := mnemonic.ToPrivateKey(mnemonicPhrase)
+    if err != nil {
+        fmt.Printf("Error retrieving private key from mnemonic: %s\\n", err)
+        return
+    }
+    fmt.Printf("Private Key from Mnemonic: %s\\n", privKey)
 }
-
     `,
     //     editable: false,
     //     output: `Transaction sent successfully! TxID: ABCD1234EFGH5678IJKL9012MNOP3456QRST7890UVWX1234YZAB5678CDEF9012
