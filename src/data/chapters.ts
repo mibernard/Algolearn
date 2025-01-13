@@ -9802,7 +9802,7 @@ func main() {
 
 <p>Functions can also accept parameters, which allow us to pass values into the function for processing. Here's an example:</p>
 <pre class="overflow-auto shadow-md">func greetWithName(name string) {
-    fmt.Printf("Hello, %s!\n", name);
+    fmt.Printf("Hello, %s!\\n", name);
 }
 greetWithName("Alice"); // Output: "Hello, Alice!"
 greetWithName("Bob");   // Output: "Hello, Bob!"</code></pre>
@@ -9819,7 +9819,7 @@ fmt.Println(result); // Output: 8</code></pre>
     if name == "" {
         name = "world";
     }
-    fmt.Printf("Hello, %s!\n", name);
+    fmt.Printf("Hello, %s!\\n", name);
 }
 greetWithDefaultName("");  // Output: Hello, world!
 greetWithDefaultName("Alice");  // Output: Hello, Alice!</code></pre>
@@ -9838,7 +9838,7 @@ fmt.Println(addMultiple(4, 5, 6, 7)); // Output: 22</code></pre>
     <p>The <code>...</code> syntax allows us to accept a variable number of arguments. Here's an example using a map for keyword arguments:</p>
     <pre class="overflow-auto shadow-md"><code>func printInfo(info map[string]interface{}) {
     for key, value := range info {
-        fmt.Printf("%s: %v\n", key, value);
+        fmt.Printf("%s: %v\\n", key, value);
     }
 }
 printInfo(map[string]interface{}{"name": "Alice", "age": 30, "city": "New York"});</code></pre>
@@ -10239,7 +10239,7 @@ func main() {
     if err != nil {
         log.Fatalf("failed to get status: %v", err);
     }
-    fmt.Printf("Status: %+v\n", status);
+    fmt.Printf("Status: %+v\\n", status);
     rand.Seed(time.Now().UnixNano());
     randomNumber := rand.Intn(101);
     fmt.Println(randomNumber);
@@ -10494,7 +10494,7 @@ func main() {
           <p>How do you fetch the status of an Algorand node in Go?</p>
            <pre class="overflow-auto shadow-md"><code>algodClient, err := algod.MakeClient(algodServer, algodToken)
 if err != nil {
-    fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\n", err)
+    fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
     return
 }
 </code></pre>
@@ -10511,7 +10511,7 @@ if err != nil {
           <p>How do you access the last round from the status response in Go?</p>
            <pre class="overflow-auto shadow-md"><code>status, err := algodClient.Status().Do(context.Background())
 if err != nil {
-    fmt.Fprintf(os.Stderr, "Failed to get node status: %s\n", err)
+    fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
     return
 }
 </code></pre>
