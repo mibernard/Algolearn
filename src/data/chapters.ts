@@ -10,666 +10,176 @@ export interface Chapter {
 
 export const chapters: Chapter[] = [
   {
-    id: 20,
-    language: 'Python',
-    title: 'Installation and Setup',
-    content: `<h2>Getting Started with Discord Bot Development on the Algorand Blockchain</h2>
-        <p>This tutorial will walk you through the installation and setup needed to start building a Discord bot for the Algorand blockchain. The steps outlined below cover essential tools, libraries, and additional resources to ensure a smooth start.</p>
-        
-        <h2>Resources</h2>
-        <ul class="inText">
-          <li>YouTube Tutorial: <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-        <iframe
-            class="absolute top-0 left-0 w-full h-full border-0"
-            src="https://www.youtube.com/embed/z9lZ_ypTZzA"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-    </div></li>
-          <li>Download Python at <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a> 
-          <ul><li>(Ensure 'Add Python to PATH' is selected during installation)</li></li></ul>
-          <li>Install Visual Studio Code at <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></li>
-          <li>Python IntelliSense Extension for VS Code: Install within VS Code for enhanced Python support</li>
-        </ul>
-    
-        <h2>Installing Essential Libraries</h2>
-        <p>Install the following libraries in your terminal:</p>
-        <pre class="overflow-auto shadow-md"><code>pip install aiohttp</code>
-<code>pip install algokit</code>
-<code>pip install py-algorand-sdk</code>
-<code>pip install algorand-python</code>
-<code>pip install python-dotenv</code></pre>
-        <p><strong>Note:</strong> If you encounter errors during Algokit installation regarding missing C++ tools, please follow the instructions in the video and install the <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/" target="_blank">Microsoft Visual C++ Build Tools</a>.</p>
-    
-        <h2>Test Contract Example</h2>
-        <p>Create a new Python file called <code>testcontract.py</code> and add the following code to define a simple contract:</p>
-        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract
-from algopy.arc4 import abimethod
-    
-class TestContract(ARC4Contract):
-    def __init__(self) -> None:
-        pass
-
-    @abimethod
-    def test(self) -> None:
-        pass</code></pre>
-    <p>Compile the contract with the following terminal command:</p>
-    <pre class="overflow-auto shadow-md"><code>algokit compile py testcontract.py</code></pre>
-    <p>If the approval and clear TEAL files are generated successfully, your setup is complete, and you can proceed with the tutorial series.</p>
-
-    <h2>Running Your Own Node</h2>
-    <p>If you wish to run your own Algorand node rather than using Algonode, refer to the tutorial playlist. Note: Based on community feedback, we've shifted from a Discord bot-focused series to a PUYA-focused series. Only two videos were released for the Discord bot series before this shift. Start with <a href="https://www.youtube.com/watch?v=JjmH-KA7UcQ&list=PL5aELASDGbIAw8QqqdGoc9y2zqwsr_J4L&index=1" target="_blank">the first video in the new series</a>, which includes node installation for Windows.</p>
-    
-    <h2>Visual Studio Code - Code Editing</h2>
-    <p>Download Visual Studio Code to edit your code efficiently, and install the Python IntelliSense extension to help with code completion and suggestions.</p>
-    <p>This tutorial guides you through developing Discord bots for the Algorand blockchain. It’s designed to complement the YouTube tutorial series.</p>
-    <h2>YouTube Tutorial</h2>
-    <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-    <iframe
-        class="absolute top-0 left-0 w-full h-full border-0"
-        src="https://www.youtube.com/embed/JjmH-KA7UcQ"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-</div>
-
-    
-    <h2>Installing Dependencies</h2>
-    <h3>Using Regular Terminal (not Ubuntu)</h3>
-    <ul class="inText">
-        <li><strong>PIP Installation:</strong></li>
-    </ul>
-    <pre class="overflow-auto shadow-md">
-<code>curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</code>
-<code>python get-pip.py</code></pre>
-    <ul class="inText">
-        <li><strong>AIOHTTP (required before installing Discord.py):</strong></li>
-        </ul>
-        <pre class="overflow-auto shadow-md">
-<code>pip install aiohttp>=3.9.0b0</code></pre>
-        <ul class="inText">
-            <li><strong>Discord.py:</strong></li>
-        </ul>
-        <pre class="overflow-auto shadow-md">
-<code>pip install discord.py</code></pre>
-        <ul class="inText">
-            <li><strong>Python AlgoSDK:</strong></li>
-        </ul>
-        <pre class="overflow-auto shadow-md">
-<code>pip3 install py-algorand-sdk</code></pre>
-        
-        <h3>Using Ubuntu Terminal</h3>
-        <h4>Algorand Node Installation</h4>
-        <pre class="overflow-auto shadow-md"><code>sudo apt-get update
-sudo apt-get install -y gnupg2 curl software-properties-common
-curl -o - https://releases.algorand.com/key.pub | sudo tee /etc/apt/trusted.gpg.d/algorand.asc
-sudo add-apt-repository "deb [arch=amd64] https://releases.algorand.com/deb/ stable main"
-sudo apt-get update
-sudo apt-get install -y algorand-devtools</code></pre>
-        
-        <h4>Preparing & Running Algorand Node</h4>
-        <pre class="overflow-auto shadow-md"><code>mkdir ~/node 
-cd ~/node 
-curl https://raw.githubusercontent.com/algorand/go-algorand/rel/stable/cmd/updater/update.sh -O 
-chmod 744 update.sh 
-./update.sh -i -c stable -p ~/node -d ~/node/data -n 
-goal node start -d data 
-goal node catchup <a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Get Catchpoint from Mainnet</a> -d data</code></pre>
-        
-        <h4>Algorand Node Commands</h4>
-        <ul class="inText">
-            <li><strong>Start Node:</strong> <code>goal node start -d data</code></li>
-            <li><strong>Restart Node:</strong> <code>goal node restart -d data</code></li>
-            <li><strong>Stop Node:</strong> <code>goal node stop -d data</code></li>
-            <li><strong>Catchup Node:</strong> <code>goal node catchup [Catchpoint Link] -d data</code></li>
-        </ul>
-        
-        <h4>Obtain Algorand Node Token & Port</h4>
-        <pre class="overflow-auto shadow-md"><code>cd node/data
-cat algod.token (Displays token)
-cat algod.net</code> (Displays port)</pre>
-        
-        <h4>Basic Terminal Commands</h4>
-        <ul class="inText">
-            <li><strong>Clear Terminal:</strong> <code>clear</code></li>
-            <li><strong>Create Folder:</strong> <code>mkdir FolderName</code></li>
-            <li><strong>List Directories:</strong> <code>ls</code></li>
-            <li><strong>Change Directory:</strong> <code>cd FolderName</code></li>
-            <li><strong>Move Up One Directory:</strong> <code>cd ..</code></li>
-            <li><strong>Delete Directory:</strong> <code>rm -r FolderName</code></li>
-            <li><strong>View File Contents:</strong> <code>cat FileName</code></li>
-        </ul>
-        
-        <h2>Useful Links</h2>
-        <ul class="inText">
-            <li><a href="https://www.python.org/downloads/" target="_blank">Install Python (Select 'Add Python to PATH')</a></li>
-            <li><a href="https://code.visualstudio.com/Download" target="_blank">Install Visual Studio Code</a></li>
-            <li><a href="https://www.microsoft.com/store/productId/9MTTCL66CPXJ?ocid=pdpshare" target="_blank">Microsoft Store Ubuntu LTS</a></li>
-            <li><a href="https://developer.algorand.org/docs/run-a-node/setup/install/" target="_blank">Algorand Node Documentation</a></li>
-            <li><a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Algorand Node Mainnet Catchpoint</a></li>
-            <li><a href="https://discord.com/developers" target="_blank">Discord Developer Portal</a></li>
-        </ul>
-        
-        <hr><form class="quiz-form">
-            <h1>Quiz</h1>
-            <h3>Question 1</h3>
-            <p>Which package should be installed before installing discord.py?</p>
-            <input type="radio" id="q1a" name="q1" value="a">
-            <label for="q1a" class="incorrect">a) py-algorand-sdk</label><br>
-            <input type="radio" id="q1b" name="q1" value="b">
-            <label for="q1b" class="correct">b) aiohttp>=3.9.0b0</label><br>
-            <input type="radio" id="q1c" name="q1" value="c">
-            <label for="q1c" class="incorrect">c) Visual Studio Code</label><br>
-            <input type="radio" id="q1d" name="q1" value="d">
-            <label for="q1d" class="incorrect">d) Node</label><br>
-            
-            <h3>Question 2</h3>
-            <p>What command starts the Algorand node?</p>
-            <input type="radio" id="q2a" name="q2" value="a">
-            <label for="q2a" class="incorrect">a) mkdir node</label><br>
-            <input type="radio" id="q2b" name="q2" value="b">
-            <label for="q2b" class="correct">b) goal node start -d data</label><br>
-            <input type="radio" id="q2c" name="q2" value="c">
-            <label for="q2c" class="incorrect">c) chmod 744 update.sh</label><br>
-            <input type="radio" id="q2d" name="q2" value="d">
-            <label for="q2d" class="incorrect">d) apt-get update</label><br>
-        </form>
-        `,
-    initialCode: ``,
-  },
-
-  {
-    id: 40,
-    language: 'Python',
-    title: 'Speed Run Variables',
-    content: `<h2>Video Tutorial</h2>
-        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-            <iframe
-                class="absolute top-0 left-0 w-full h-full border-0"
-                src="https://www.youtube.com/embed/AXohx-PI1CU"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div>
-        <p>Python offers various data types to store information:</p>
-        <ul class=inText>
-            <li><strong>Integer</strong>: Whole numbers without decimals (e.g., <code>10</code>).</li>
-            <li><strong>String</strong>: Text enclosed in quotes (e.g., <code>"Hello"</code>).</li>
-            <li><strong>Float</strong>: Numbers with decimals (e.g., <code>3.14</code>).</li>
-            <li><strong>Boolean</strong>: Logical values <code>True</code> or <code>False</code>.</li>
-            <li><strong>List</strong>: Ordered collection in square brackets (e.g., <code>[1, 2, 3]</code>).</li>
-            <li><strong>Dictionary</strong>: Key-value pairs in curly braces (e.g., <code>{"key": "value"}</code>).</li>
-            <li><strong>Tuple</strong>: Immutable ordered collection in parentheses (e.g., <code>(1, 2, 3)</code>).</li>
-        </ul>
-        
-        <pre class="overflow-auto shadow-md"><code>my_number = 1000        # Integer
-my_text = "Hello!"      # String
-my_float = 7.5          # Float
-my_bool = True          # Boolean
-my_list = [1, 2, 3]     # List
-my_dict = {"a": 1}      # Dictionary
-my_tuple = (1, 2, 3)    # Tuple</code></pre>
-        
-        <p>Variables are names assigned to data. Use descriptive names and follow naming rules:</p>
-        <ul class=inText>
-            <li>Cannot start with a number.</li>
-            <li>No spaces; use underscores (<code>_</code>).</li>
-            <li>No special characters except underscores.</li>
-        </ul>
-        
-        <p>Examples of valid variable names:</p>
-        <pre class="overflow-auto shadow-md"><code>item_cost = 1.0
-supply_remaining = 2_500_000_000
-cto_name = "John Woods"
-quarter_value = 0.25</code></pre>
-        
-        <p>Invalid variable names:</p>
-        <pre class="overflow-auto shadow-md"><code>3variable = 5      # Invalid
-my-variable = 6    # Invalid
-my variable = 7    # Invalid</code></pre>
-        
-        <h2>Arithmetic Operations</h2>
-        
-        <p>Basic arithmetic with integers and floats:</p>
-        <pre class="overflow-auto shadow-md"><code>a = 10
-b = 3
-print(a + b)          # 13
-print(a - b)          # 7
-print(a * b)          # 30
-print(a / b)          # 3.333...
-print(a // b)         # 3
-print(a % b)          # 1
-print(a ** b)         # 1000</code></pre>
-        
-        <p>String operations:</p>
-        <pre class="overflow-auto shadow-md"><code>greeting = "Hello, " + "World!"
-print(greeting)        # "Hello, World!"
-repeat = "Hi" * 3
-print(repeat)          # "HiHiHi"</code></pre>
-        
-        <p>Data mutability:</p>
-        <ul class=inText>
-            <li><strong>Mutable</strong>: Lists, Dictionaries.</li>
-            <li><strong>Immutable</strong>: Tuples, Strings.</li>
-        </ul>
-        
-        <p>Attempting to modify an immutable type results in an error:</p>
-        <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
-my_tuple[0] = 3       # Error: 'tuple' object does not support item assignment</code></pre>
-        
-        <hr><form class="quiz-form">
-        <h1>Quiz</h1>
-            <h3>Question 1</h3>
-            <p>Which data type is used for whole numbers in Python?</p>
-            <input type="radio" id="q1a" name="q1" value="a">
-            <label for="q1a" class="incorrect">a) String</label><br>
-            <input type="radio" id="q1b" name="q1" value="b">
-            <label for="q1b" class="incorrect">b) Float</label><br>
-            <input type="radio" id="q1c" name="q1" value="c">
-            <label for="q1c" class="correct">c) Integer</label><br>
-            <input type="radio" id="q1d" name="q1" value="d">
-            <label for="q1d" class="incorrect">d) Boolean</label><br>
-    
-            <h3>Question 2</h3>
-            <p>Which variable name is valid in Python?</p>
-            <input type="radio" id="q2a" name="q2" value="a">
-            <label for="q2a" class="incorrect">a) 3variable</label><br>
-            <input type="radio" id="q2b" name="q2" value="b">
-            <label for="q2b" class="incorrect">b) my-variable</label><br>
-            <input type="radio" id="q2c" name="q2" value="c">
-            <label for="q2c" class="incorrect">c) my variable</label><br>
-            <input type="radio" id="q2d" name="q2" value="d">
-            <label for="q2d" class="correct">d) my_variable</label><br>
-    
-            <h3>Question 3</h3>
-            <p>What is the output of the following code?</p>
-            <pre class="overflow-auto shadow-md"><code>string = "Hello"
-result = string * 3
-print(result)</code></pre>
-            <input type="radio" id="q3a" name="q3" value="a">
-            <label for="q3a" class="correct">a) HelloHelloHello</label><br>
-            <input type="radio" id="q3b" name="q3" value="b">
-            <label for="q3b" class="incorrect">b) Hello, Hello, Hello</label><br>
-            <input type="radio" id="q3c" name="q3" value="c">
-            <label for="q3c" class="incorrect">c) Error</label><br>
-            <input type="radio" id="q3d" name="q3" value="d">
-            <label for="q3d" class="incorrect">d) Hello*3</label><br>
-    
-            <h3>Question 4</h3>
-            <p>Which data type is immutable in Python?</p>
-            <input type="radio" id="q4a" name="q4" value="a">
-            <label for="q4a" class="incorrect">a) List</label><br>
-            <input type="radio" id="q4b" name="q4" value="b">
-            <label for="q4b" class="incorrect">b) Dictionary</label><br>
-            <input type="radio" id="q4c" name="q4" value="c">
-            <label for="q4c" class="correct">c) Tuple</label><br>
-            <input type="radio" id="q4d" name="q4" value="d">
-            <label for="q4d" class="incorrect">d) Set</label><br>
-            
-        </form>
-        `,
-    initialCode: `a = 10\nb = 3.5\nprint(a + b)`,
-  },
-
-  {
-    id: 41,
-    language: 'Python',
-    title: 'Speed Run Functions and Classes',
-    content: `<h2>Video Tutorial</h2>
-        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-            <iframe
-                class="absolute top-0 left-0 w-full h-full border-0"
-                src="https://www.youtube.com/embed/6DDU8wdZzOE"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-        </div><p>Functions in Python are reusable blocks of code that perform specific tasks, enhancing modularity and readability.</p>
-    
-    <p>Functions and classes are fundamental building blocks in Python for creating reusable and modular code.</p>
-
-    <h2>Functions</h2>
-    <p>Functions are reusable blocks of code that perform specific tasks.</p>
-    <p><strong>Defining a Function:</strong> Use the <code>def</code> keyword.</p>
-
-    <pre class="overflow-auto shadow-md"><code>def greet():
-    print("Hello, world!")
-greet()  # Output: "Hello, world!"</code></pre>
-
-    <p><strong>Functions with Parameters:</strong> Pass data into functions using parameters.</p>
-
-    <pre class="overflow-auto shadow-md"><code>def greet(name):
-    print(f"Hello, {name}!")
-greet("Alice")  # Output: "Hello, Alice!"</code></pre>
-
-    <p><strong>Returning Values:</strong> Use <code>return</code> to output a value from a function.</p>
-
-    <pre class="overflow-auto shadow-md"><code>def add(a, b):
-    return a + b
-result = add(3, 5)
-print(result)  # Output: 8</code></pre>
-
-    <p><strong>Default Parameters:</strong> Assign default values to parameters.</p>
-
-    <pre class="overflow-auto shadow-md"><code>def greet(name="world"):
-    print(f"Hello, {name}!")
-greet()         # Output: "Hello, world!"
-greet("Bob")    # Output: "Hello, Bob!"</code></pre>
-
-    <p><strong>Variable Number of Arguments:</strong> Use <code>*args</code> and <code>**kwargs</code> for flexible arguments.</p>
-
-    <pre class="overflow-auto shadow-md"><code>def add(*args):
-    return sum(args)
-print(add(1, 2, 3))  # Output: 6
-
-def print_info(**kwargs):
-    for key, value in kwargs.items():
-        print(f"{key}: {value}")
-print_info(name="Alice", age=30)</code></pre>
-
-    <h2>Classes</h2>
-    <p>Classes are blueprints for creating objects (instances), encapsulating data and functions together.</p>
-    <p><strong>Defining a Class:</strong> Use the <code>class</code> keyword.</p>
-
-    <pre class="overflow-auto shadow-md"><code>class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-    def greet(self):
-        print(f"Hello, my name is {self.name}.")
-
-person1 = Person("Alice", 30)
-person1.greet()  # Output: "Hello, my name is Alice."</code></pre>
-
-    <p><strong>Class Components:</strong></p>
-    <ul class=inText>
-        <li><strong>Constructor (<code>__init__</code>):</strong> Initializes new objects.</li>
-        <li><strong>Instance Variables:</strong> Data unique to each instance (<code>self.name</code>, <code>self.age</code>).</li>
-        <li><strong>Methods:</strong> Functions defined within a class (<code>greet</code>).</li>
-    </ul>
-
-    <p><strong>Inheritance:</strong> Classes can inherit from other classes.</p>
-
-    <pre class="overflow-auto shadow-md"><code>class Employee(Person):
-    def __init__(self, name, age, employee_id):
-        super().__init__(name, age)
-        self.employee_id = employee_id
-
-    def display_id(self):
-        print(f"My employee ID is {self.employee_id}.")
-
-employee1 = Employee("Bob", 25, "E123")
-employee1.greet()         # Output: "Hello, my name is Bob."
-employee1.display_id()    # Output: "My employee ID is E123."</code></pre>
-
-    <p><strong>Encapsulation:</strong> Use underscores to indicate private variables (convention).</p>
-
-    <pre class="overflow-auto shadow-md"><code>class BankAccount:
-    def __init__(self, balance):
-        self._balance = balance  # Protected attribute
-
-    def deposit(self, amount):
-        self._balance += amount
-
-    def get_balance(self):
-        return self._balance
-
-account = BankAccount(1000)
-account.deposit(500)
-print(account.get_balance())  # Output: 1500</code></pre>
-
-    <hr><form class="quiz-form">
-<h1>Quiz</h1>
-
-    <h3>Question 1</h3>
-    <p>What will be the output of the following code snippet?</p>
-    <pre class="overflow-auto shadow-md"><code>def func(a, b=2, c=3):
-    return a + b * c
-
-result = func(1, c=4)
-print(result)</code></pre>
-    <input type="radio" id="q1a" name="q1" value="a">
-    <label for="q1a" class="incorrect">a) 13</label><br>
-    <input type="radio" id="q1b" name="q1" value="b">
-    <label for="q1b" class="correct">b) 9</label><br>
-    <input type="radio" id="q1c" name="q1" value="c">
-    <label for="q1c" class="incorrect">c) 14</label><br>
-    <input type="radio" id="q1d" name="q1" value="d">
-    <label for="q1d" class="incorrect">d) Error</label><br>
-
-    <h3>Question 2</h3>
-    <p>Given the following class definition, what will be the output?</p>
-    <pre class="overflow-auto shadow-md"><code>class Counter:
-    count = 0
-
-    def __init__(self):
-        Counter.count += 1
-
-c1 = Counter()
-c2 = Counter()
-print(Counter.count)</code></pre>
-    <input type="radio" id="q2a" name="q2" value="a">
-    <label for="q2a" class="correct">a) 2</label><br>
-    <input type="radio" id="q2b" name="q2" value="b">
-    <label for="q2b" class="incorrect">b) 1</label><br>
-    <input type="radio" id="q2c" name="q2" value="c">
-    <label for="q2c" class="incorrect">c) 0</label><br>
-    <input type="radio" id="q2d" name="q2" value="d">
-    <label for="q2d" class="incorrect">d) Error</label><br>
-
-    <h3>Question 3</h3>
-    <p>Which of the following statements is true about methods in Python classes?</p>
-    <input type="radio" id="q3a" name="q3" value="a">
-    <label for="q3a" class="correct">a) Methods can modify the state of an object.</label><br>
-    <input type="radio" id="q3b" name="q3" value="b">
-    <label for="q3b" class="incorrect">b) Methods cannot access instance variables.</label><br>
-    <input type="radio" id="q3c" name="q3" value="c">
-    <label for="q3c" class="incorrect">c) Methods must return a value.</label><br>
-    <input type="radio" id="q3d" name="q3" value="d">
-    <label for="q3d" class="incorrect">d) Methods cannot call other methods within the same class.</label><br>
-
-    <h3>Question 4</h3>
-    <p>What is the output of the following code snippet involving closures?</p>
-    <pre class="overflow-auto shadow-md"><code>def outer():
-    x = "local"
-    def inner():
-        nonlocal x
-        x = "nonlocal"
-    inner()
-    print("x =", x)
-
-outer()</code></pre>
-    <input type="radio" id="q4a" name="q4" value="a">
-    <label for="q4a" class="incorrect">a) x = local</label><br>
-    <input type="radio" id="q4b" name="q4" value="b">
-    <label for="q4b" class="correct">b) x = nonlocal</label><br>
-    <input type="radio" id="q4c" name="q4" value="c">
-    <label for="q4c" class="incorrect">c) x = </label><br>
-    <input type="radio" id="q4d" name="q4" value="d">
-    <label for="q4d" class="incorrect">d) Error</label><br>
-    
-</form>
-
-    `,
-    initialCode: `class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        print(f"Hello, {self.name}!")\n\nperson = Person("Alice")\nperson.greet()`,
-  },
-
-  {
     id: 1,
     language: 'Python',
     title: 'Variables',
     content: `
-    <p>In Python, we have several data types that are used to store different kinds of information:</p>
-    <ul class=inText>
-        <li>Integer: Represents whole numbers without a decimal component.</li>
-        <li>String: A sequence of characters enclosed within quotes.</li>
-        <li>Float: Represents numbers that contain a decimal point.</li>
-        <li>Boolean: Represents one of two values, True or False.</li>
-        <li>List: An ordered collection of items enclosed within square brackets.</li>
-        <li>Dictionary: A collection of key-value pairs enclosed within curly braces.</li>
-        <li>Tuple: An ordered collection of items enclosed within parentheses.</li>
-    </ul>
-    
-    <pre class="overflow-auto shadow-md"><code>my_number = 1000      # Integer
-my_text = "Hello!"    # String
-my_float = 7.5        # Float
-my_bool_1 = True      # Boolean
-my_bool_2 = False     # Boolean
-my_list = []          # List
-my_dictionary = {}    # Dictionary
-my_tuple = (1, 2, 3)  # Tuple</code></pre>
-    
-    <p>These data types are essential for storing and manipulating different kinds of information in Python.</p>
-    <p>The name you see before the '=' is what's called a "variable". You can name it whatever you want! Above you can see how I named my variables eg; my_number, my_text, my_float, my_bool_1.</p>
-    <p>It's good practice to name your variable relevant to its purpose. For example if I was creating a variable that would represent the cash price of an item, I might name it something like:</p>
-    
-    <pre class="overflow-auto shadow-md"><code>item_cost = 1                       # The cost of an item, which will be 1 dollar
-supply_remaining = 2_500_000_000    # The number of items in inventory that are remaining, Note that we use '_' instead of commas as a separator
-name_CTO = "John Woods"
-value_of_a_quarter = 0.25</code></pre>
-    
-    <p>You might notice that I use the underscore symbol "_" instead of spaces in my variable. Something to keep in mind is you cannot start a variable with an integer, use any special characters aside from "_", and you cannot use spaces.
-    Here are some examples of incorrect variables that will not work in your code, and will cause an error, <strong>DO NOT USE</strong>:</p>
-    
-    <pre class="overflow-auto shadow-md"><code>3variable = 5     # Starts with a number
-my-variable = 6   # Contains a hyphen
-my variable = 7   # Contains a space</code></pre>
-    
-    <h2>General Arithmetic for Integers, Floats, and Strings</h2>
-    
-    <p>General arithmetic operations are a great place to start! Let's try creating a number variable, and printing it to the console.</p>
-    <p>If this is your first time programming, or even if you have programmed before, you'll quickly find out or are already familiar that printing is one of the most commonly used functions for debugging. It's how you "see" what the value is of your variable at a specific point in your code.</p>
-    
-    <pre class="overflow-auto shadow-md"><code>my_number = 1
-my_number_plus_one = my_number + 1
-print(my_number_plus_one)</code></pre>
-    
-    <p>The steps that occur here:</p>
-    <ol class=inText>
-    <li>Created my "my_number" variable and assigned it to the integer 1</li>
-    <li>Created another variable called "my_number_plus_one" and assigned it to what "my_number" is when 1 is added to it</li>
-    <li>Used the "print()" function to see the value in my terminal</li>
-    </ol>
-    
-    <p>There are several arithmetic operators (Like "+" or "-") available in Python, and they are as follows:</p>
-    <pre class="overflow-auto shadow-md"><code>a = 10
-b = 3
-addition = a + b          # Addition: 13
-subtraction = a - b       # Subtraction: 7
-multiplication = a * b    # Multiplication: 30
-division = a / b          # Division: 3.3333333333333335
-floor_division = a // b   # Floor Division: 3
-modulus = a % b           # Modulus: 1
-exponentiation = a ** b   # Exponentiation: 1000</code></pre>
-    
-    <p>Similar to integers and floats, you can also use arithmetic operators on strings, these are mostly limited to:</p>
-    <ul class=inText>
-    <li>Addition and multiplication: +, *</li>
-    </ul>
-    <p>The act of combining strings together or multiplying a single string is often referred to as <strong>concatenation</strong>.</p>
-    
-    <pre class="overflow-auto shadow-md"><code>result = "Hello, " + "World!"
-print(result) # result is "Hello, World!"
-string = "Hello"
-result = string * 3
-print(result) # result is "HelloHelloHello"</code></pre>
-    
-    <p>We won't dive into Lists, Dictionaries, or Tuples just yet, but I would like to mention, and this is something you'll see in practice later— that lists and dictionaries are mutable, whereas tuples are immutable.
-    When you hear mutable, think "can be changed", where mutable means it can be changed and immutable means it cannot be changed.</p>
-    
-    <p>Example:</p>
-    <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
-print(my_tuple[0])
-my_tuple[0] = 2
-print(my_tuple)
-# ERROR
-#    my_tuple[0] = 2
-#    ~~~~~~~~^^^
-# TypeError: 'tuple' object does not support item assignment</code></pre>
-    
-    <p>A more advanced concept to start early with, but another thing we will review later:</p>
-    <h2>Examples of mutable and immutable parameters on an asset on Algorand</h2>
-    <strong>Immutable Parameters:</strong></br>
-    <p>These parameters can only be specified when an asset is created.</p>
-    <ul class=inText>
-    <li>Creator: The address of the account that created the asset.</li>
-    <li>AssetName: The name of the asset.</li>
-    <li>UnitName: The unit name of the asset.</li>
-    <li>Total: The total number of units of the asset.</li>
-    <li>Decimals: The number of digits to use after the decimal point when displaying the asset.</li>
-    <li>DefaultFrozen: Whether the asset is frozen by default.</li>
-    <li>URL: A URL where more information about the asset can be retrieved.</li>
-    <li>MetaDataHash: A commitment to some unspecified asset metadata.</li>
-    </ul>
-    <strong>Mutable Parameters:</strong></br>
-    <p>These parameters can be changed after the asset is created.</p>
-    <ul class=inText>
-    <li>Manager: The address of the account that can change the asset's mutable parameters.</li>
-    <li>Reserve: The address of the account that holds the asset reserve. (Cannot be changed if initially not declared)</li>
-    <li>Freeze: The address of the account that can freeze or unfreeze user asset holdings. (Cannot be changed if initially not declared)</li>
-    <li>Clawback: The address of the account that can revoke user asset holdings and send them to other addresses. (Cannot be changed if initially not declared)</li>
-    </ul>
-    <em>*Note: Exception for various ARC types like ARC19 and ARC69 that use the reserve address and/or note field to point to metadata*</em>
-  
-      <hr><form class="quiz-form">
-      <h1>Quiz</h1>
-          <h3>Question 1</h3>
-          <p>What data type is used to store whole numbers in Python?</p>
-          <input type="radio" id="q1a" name="q1" value="a">
-          <label for="q1a" class="incorrect">a) String</label><br>
-          <input type="radio" id="q1b" name="q1" value="b">
-          <label for="q1b" class="incorrect">b) Float</label><br>
-          <input type="radio" id="q1c" name="q1" value="c">
-          <label for="q1c" class="correct">c) Integer</label><br>
-          <input type="radio" id="q1d" name="q1" value="d">
-          <label for="q1d" class="incorrect">d) Boolean</label><br>
-  
-          <h3>Question 2</h3>
-          <p>Which of the following is an example of a correct variable name in Python?</p>
-          <input type="radio" id="q2a" name="q2" value="a">
-          <label for="q2a" class="incorrect">a) 3variable</label><br>
-          <input type="radio" id="q2b" name="q2" value="b">
-          <label for="q2b" class="incorrect">b) my-variable</label><br>
-          <input type="radio" id="q2c" name="q2" value="c">
-          <label for="q2c" class="incorrect">c) my variable</label><br>
-          <input type="radio" id="q2d" name="q2" value="d">
-          <label for="q2d" class="correct">d) my_variable</label><br>
-  
-          <h3>Question 3</h3>
-          <p>What will be the result of the following code snippet?</p>
-          <pre class="overflow-auto shadow-md"><code>string = "Hello" 
-result = string * 3
-print(result)</code></pre>
-          <input type="radio" id="q3a" name="q3" value="a">
-          <label for="q3a" class="correct">a) HelloHelloHello</label><br>
-          <input type="radio" id="q3b" name="q3" value="b">
-          <label for="q3b" class="incorrect">b) Hello, Hello, Hello</label><br>
-          <input type="radio" id="q3c" name="q3" value="c">
-          <label for="q3c" class="incorrect">c) Hello*3</label><br>
-          <input type="radio" id="q3d" name="q3" value="d">
-          <label for="q3d" class="incorrect">d) Error</label><br>
-  
-          <h3>Question 4</h3>
-          <p>Which Python data type is immutable?</p>
-          <input type="radio" id="q4a" name="q4" value="a">
-          <label for="q4a" class="incorrect">a) Tuple</label><br>
-          <input type="radio" id="q4b" name="q4" value="b">
-          <label for="q4b" class="incorrect">b) String</label><br>
-          <input type="radio" id="q4c" name="q4" value="c">
-          <label for="q4c" class="correct">c) List</label><br>
-          <input type="radio" id="q4d" name="q4" value="d">
-          <label for="q4d" class="incorrect">d) Integer</label><br>
-  
-          
-      </form>
-    `,
+        <p>In Python, we have several data types that are used to store different kinds of information:</p>
+        <ul class=inText>
+            <li>Integer: Represents whole numbers without a decimal component.</li>
+            <li>String: A sequence of characters enclosed within quotes.</li>
+            <li>Float: Represents numbers that contain a decimal point.</li>
+            <li>Boolean: Represents one of two values, True or False.</li>
+            <li>List: An ordered collection of items enclosed within square brackets.</li>
+            <li>Dictionary: A collection of key-value pairs enclosed within curly braces.</li>
+            <li>Tuple: An ordered collection of items enclosed within parentheses.</li>
+        </ul>
+        
+        <pre class="overflow-auto shadow-md"><code>my_number = 1000      # Integer
+    my_text = "Hello!"    # String
+    my_float = 7.5        # Float
+    my_bool_1 = True      # Boolean
+    my_bool_2 = False     # Boolean
+    my_list = []          # List
+    my_dictionary = {}    # Dictionary
+    my_tuple = (1, 2, 3)  # Tuple</code></pre>
+        
+        <p>These data types are essential for storing and manipulating different kinds of information in Python.</p>
+        <p>The name you see before the '=' is what's called a "variable". You can name it whatever you want! Above you can see how I named my variables eg; my_number, my_text, my_float, my_bool_1.</p>
+        <p>It's good practice to name your variable relevant to its purpose. For example if I was creating a variable that would represent the cash price of an item, I might name it something like:</p>
+        
+        <pre class="overflow-auto shadow-md"><code>item_cost = 1                       # The cost of an item, which will be 1 dollar
+    supply_remaining = 2_500_000_000    # The number of items in inventory that are remaining, Note that we use '_' instead of commas as a separator
+    name_CTO = "John Woods"
+    value_of_a_quarter = 0.25</code></pre>
+        
+        <p>You might notice that I use the underscore symbol "_" instead of spaces in my variable. Something to keep in mind is you cannot start a variable with an integer, use any special characters aside from "_", and you cannot use spaces.
+        Here are some examples of incorrect variables that will not work in your code, and will cause an error, <strong>DO NOT USE</strong>:</p>
+        
+        <pre class="overflow-auto shadow-md"><code>3variable = 5     # Starts with a number
+    my-variable = 6   # Contains a hyphen
+    my variable = 7   # Contains a space</code></pre>
+        
+        <h2>General Arithmetic for Integers, Floats, and Strings</h2>
+        
+        <p>General arithmetic operations are a great place to start! Let's try creating a number variable, and printing it to the console.</p>
+        <p>If this is your first time programming, or even if you have programmed before, you'll quickly find out or are already familiar that printing is one of the most commonly used functions for debugging. It's how you "see" what the value is of your variable at a specific point in your code.</p>
+        
+        <pre class="overflow-auto shadow-md"><code>my_number = 1
+    my_number_plus_one = my_number + 1
+    print(my_number_plus_one)</code></pre>
+        
+        <p>The steps that occur here:</p>
+        <ol class=inText>
+        <li>Created my "my_number" variable and assigned it to the integer 1</li>
+        <li>Created another variable called "my_number_plus_one" and assigned it to what "my_number" is when 1 is added to it</li>
+        <li>Used the "print()" function to see the value in my terminal</li>
+        </ol>
+        
+        <p>There are several arithmetic operators (Like "+" or "-") available in Python, and they are as follows:</p>
+        <pre class="overflow-auto shadow-md"><code>a = 10
+    b = 3
+    addition = a + b          # Addition: 13
+    subtraction = a - b       # Subtraction: 7
+    multiplication = a * b    # Multiplication: 30
+    division = a / b          # Division: 3.3333333333333335
+    floor_division = a // b   # Floor Division: 3
+    modulus = a % b           # Modulus: 1
+    exponentiation = a ** b   # Exponentiation: 1000</code></pre>
+        
+        <p>Similar to integers and floats, you can also use arithmetic operators on strings, these are mostly limited to:</p>
+        <ul class=inText>
+        <li>Addition and multiplication: +, *</li>
+        </ul>
+        <p>The act of combining strings together or multiplying a single string is often referred to as <strong>concatenation</strong>.</p>
+        
+        <pre class="overflow-auto shadow-md"><code>result = "Hello, " + "World!"
+    print(result) # result is "Hello, World!"
+    string = "Hello"
+    result = string * 3
+    print(result) # result is "HelloHelloHello"</code></pre>
+        
+        <p>We won't dive into Lists, Dictionaries, or Tuples just yet, but I would like to mention, and this is something you'll see in practice later— that lists and dictionaries are mutable, whereas tuples are immutable.
+        When you hear mutable, think "can be changed", where mutable means it can be changed and immutable means it cannot be changed.</p>
+        
+        <p>Example:</p>
+        <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
+    print(my_tuple[0])
+    my_tuple[0] = 2
+    print(my_tuple)
+    # ERROR
+    #    my_tuple[0] = 2
+    #    ~~~~~~~~^^^
+    # TypeError: 'tuple' object does not support item assignment</code></pre>
+        
+        <p>A more advanced concept to start early with, but another thing we will review later:</p>
+        <h2>Examples of mutable and immutable parameters on an asset on Algorand</h2>
+        <strong>Immutable Parameters:</strong></br>
+        <p>These parameters can only be specified when an asset is created.</p>
+        <ul class=inText>
+        <li>Creator: The address of the account that created the asset.</li>
+        <li>AssetName: The name of the asset.</li>
+        <li>UnitName: The unit name of the asset.</li>
+        <li>Total: The total number of units of the asset.</li>
+        <li>Decimals: The number of digits to use after the decimal point when displaying the asset.</li>
+        <li>DefaultFrozen: Whether the asset is frozen by default.</li>
+        <li>URL: A URL where more information about the asset can be retrieved.</li>
+        <li>MetaDataHash: A commitment to some unspecified asset metadata.</li>
+        </ul>
+        <strong>Mutable Parameters:</strong></br>
+        <p>These parameters can be changed after the asset is created.</p>
+        <ul class=inText>
+        <li>Manager: The address of the account that can change the asset's mutable parameters.</li>
+        <li>Reserve: The address of the account that holds the asset reserve. (Cannot be changed if initially not declared)</li>
+        <li>Freeze: The address of the account that can freeze or unfreeze user asset holdings. (Cannot be changed if initially not declared)</li>
+        <li>Clawback: The address of the account that can revoke user asset holdings and send them to other addresses. (Cannot be changed if initially not declared)</li>
+        </ul>
+        <em>*Note: Exception for various ARC types like ARC19 and ARC69 that use the reserve address and/or note field to point to metadata*</em>
+      
+          <hr><form class="quiz-form">
+          <h1>Quiz</h1>
+              <h3>Question 1</h3>
+              <p>What data type is used to store whole numbers in Python?</p>
+              <input type="radio" id="q1a" name="q1" value="a">
+              <label for="q1a" class="incorrect">a) String</label><br>
+              <input type="radio" id="q1b" name="q1" value="b">
+              <label for="q1b" class="incorrect">b) Float</label><br>
+              <input type="radio" id="q1c" name="q1" value="c">
+              <label for="q1c" class="correct">c) Integer</label><br>
+              <input type="radio" id="q1d" name="q1" value="d">
+              <label for="q1d" class="incorrect">d) Boolean</label><br>
+      
+              <h3>Question 2</h3>
+              <p>Which of the following is an example of a correct variable name in Python?</p>
+              <input type="radio" id="q2a" name="q2" value="a">
+              <label for="q2a" class="incorrect">a) 3variable</label><br>
+              <input type="radio" id="q2b" name="q2" value="b">
+              <label for="q2b" class="incorrect">b) my-variable</label><br>
+              <input type="radio" id="q2c" name="q2" value="c">
+              <label for="q2c" class="incorrect">c) my variable</label><br>
+              <input type="radio" id="q2d" name="q2" value="d">
+              <label for="q2d" class="correct">d) my_variable</label><br>
+      
+              <h3>Question 3</h3>
+              <p>What will be the result of the following code snippet?</p>
+              <pre class="overflow-auto shadow-md"><code>string = "Hello" 
+    result = string * 3
+    print(result)</code></pre>
+              <input type="radio" id="q3a" name="q3" value="a">
+              <label for="q3a" class="correct">a) HelloHelloHello</label><br>
+              <input type="radio" id="q3b" name="q3" value="b">
+              <label for="q3b" class="incorrect">b) Hello, Hello, Hello</label><br>
+              <input type="radio" id="q3c" name="q3" value="c">
+              <label for="q3c" class="incorrect">c) Hello*3</label><br>
+              <input type="radio" id="q3d" name="q3" value="d">
+              <label for="q3d" class="incorrect">d) Error</label><br>
+      
+              <h3>Question 4</h3>
+              <p>Which Python data type is immutable?</p>
+              <input type="radio" id="q4a" name="q4" value="a">
+              <label for="q4a" class="incorrect">a) Tuple</label><br>
+              <input type="radio" id="q4b" name="q4" value="b">
+              <label for="q4b" class="incorrect">b) String</label><br>
+              <input type="radio" id="q4c" name="q4" value="c">
+              <label for="q4c" class="correct">c) List</label><br>
+              <input type="radio" id="q4d" name="q4" value="d">
+              <label for="q4d" class="incorrect">d) Integer</label><br>
+      
+              
+          </form>
+        `,
     initialCode: `a = 10\nb = 3.5\nprint(a+b)`,
   },
-
   {
     id: 3,
     language: 'Python',
@@ -1072,187 +582,6 @@ algod_client = v2client.algod.AlgodClient(node_token, node_port)</code></pre>
     initialCode: `# Import the entire random module\nimport random\n\n# Generate a random integer between 1 and 10\nrandom_number = random.randint(1, 10)\nprint(f"Random number (full random import): {random_number}")
   `,
   },
-  {
-    id: 16,
-    language: 'Python',
-    title: 'Getting Started with Algorand',
-    content: `
-    <p>To set-up your own node, visit this github repository I have created for a previous tutorial series:</p>
-    <p><a href="https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/tree/main/Episode%201%20-%20Algorand%20Node%2C%20Python%2C%20Visual%20Studio%20Code%2C%20Ubuntu%2C%20and%20Module%20Installations" target="_blank">GitHub Repository</a></p>
-    <p>Scroll down to the section called "Algorand Node Installation"— and make sure to run these commands in an Ubuntu LTS Shell (Download link in bottom resources section)</p>
-    <p>If you chose to run a node, that's wonderful! If not, I will be including sections for those programming without a node.</p>
-    <p>Now that we have access to an Algorand testnet node, as well as a basic understanding of how to work with different kinds of variables, functions and imports. It's time to get started!</p>
-    <p>This will reaffirm your ability to use functions, methods, and imports— as well as key notation: eg; accessing the name of a customer in a variable named my_dictionary</p>
-    
-    <pre class="overflow-auto shadow-md"><code>my_dictionary = {'customer-name': 'Jerry'}
-customer_name = my_dictionary['customer-name']
-print(customer_name)</code>
-</pre>
-    
-    <p>If you are using your own algorand testnet node on Windows, you will need to access your algod_token and algod_port from your node's data directory:</p>
-    
-    <p><strong>Obtaining your Algorand Node Token and Port</strong></p>
-    <pre class="overflow-auto shadow-md"><code>#Enter the data directory from the root folder
-cd node/data
-
-#Use the following commands to obtain your node token and port
-cat algod.token
-
-#Log the token into the terminal, it should look something like:
-b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd
-cat algod.net
-
-#Logs the port into the terminal, it should look something like:
-127.0.0.1:8080</code></pre>
-    
-    <p>When programming, you will format this information for variables like so:</p>
-    
-    <pre class="overflow-auto shadow-md"><code>algod_token = 'b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd'
-algod_port = 'http://127.0.0.1:8080'</code></pre>
-    
-    <p>If you are not using your own algorand testnet node, you can use these:</p>
-    <p>(Free service does not require token, and the algod_token variable will be an empty string '', whereas the algod_server will be the algonode testnet cloud link)</p>
-    <pre class="overflow-auto shadow-md"><code>algod_token = ''
-algod_server = 'https://testnet-api.algonode.cloud'</code></pre>
-    
-    <p>Let's started by simply getting the status of the Algorand testnet network!</p>
-    <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
-algod_token = ''  # Leave '' for public nodely service, or enter your node token 
-algod_server = 'https://testnet-api.algonode.cloud' # Use this cloud link, or enter your own host & port
-# Initialize AlgodClient
-algod_client = AlgodClient(algod_token, algod_server)
-status = algod_client.status()
-print(status)</code></pre>
-    
-    <p>First we import the AlgodClient from algod.py in the v2client folder of the algosdk library.</p>
-    <p>Then, we define our token and server for the node we'll be using.</p>
-    <p>We initialize an AlgodClient instance, which requires a token and server argument, and assign it to our "algod_client" variable.</p>
-    <p>We access a function available from the AlgodClient, called status, through our algod_client variable.</p>
-    <p>The result of the status function is assigned to a variable called 'status'.</p>
-    <p>Finally, we print our 'status' variable.</p>
-    <p>Try running the code now!</p>
-    
-    <p>You'll see that you receive a dictionary with several keys and associated values, here is a list of all the keys:</p>
-    <ul class=inText>
-        <li>catchpoint</li>
-        <li>catchpoint-acquired-blocks</li>
-        <li>catchpoint-processed-accounts</li>
-        <li>catchpoint-processed-kvs</li>
-        <li>catchpoint-total-accounts</li>
-        <li>catchpoint-total-blocks</li>
-        <li>catchpoint-total-kvs</li>
-        <li>catchpoint-verified-accounts</li>
-        <li>catchpoint-verified-kvs</li>
-        <li>catchup-time</li>
-        <li>last-catchpoint</li>
-        <li>last-round</li>
-        <li>last-version</li>
-        <li>next-version</li>
-        <li>next-version-round</li>
-        <li>next-version-supported</li>
-        <li>stopped-at-unsupported-round</li>
-        <li>time-since-last-round</li>
-    </ul>
-    
-    <p>The most popular keys are last-round, so you know which block you are on, and perhaps time-since-last-round, if you should need to know that information. Other keys are primarily
-    used by node running services, like upcoming reti-pool incentives, but otherwise are not especially useful for our purposes.</p>
-    
-    <p>Referencing the information from Chapter 4, for dictionaries, try this:
-    <ul class=inText>
-        <li>Create a variable, and name it last_round</li>
-        <li>Assign the value of the key 'last-round' in the status dictionary to this variable you created</li>
-        <li>Print your variable!</li>
-    </ul>
-    </p>
-    
-    
-    <pre class="overflow-auto shadow-md"><code>status = {'catchpoint': '', 'catchpoint-acquired-blocks': 0, 'catchpoint-processed-accounts': 0, 'catchpoint-processed-kvs': 0,
-'catchpoint-total-accounts': 0, 'catchpoint-total-blocks': 0, 'catchpoint-total-kvs': 0, 'catchpoint-verified-accounts': 0, 
-'catchpoint-verified-kvs': 0, 'catchup-time': 0, 'last-catchpoint': '', 'last-round': 41422522,
-'last-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95', 
-'next-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95',
-'next-version-round': 41422523, 'next-version-supported': True, 'stopped-at-unsupported-round': False, 
-'time-since-last-round': 1687057197}</code></pre>
-
-    <p>Enter this code below to get the 'last-round' value printed to the console:</p>
-    <pre class="overflow-auto shadow-md"><code>last_round = status['last-round']
-print(last_round)</code></pre>
-  
-  
-      <hr><form class="quiz-form">
-     <h1>Quiz</h1>
-  
-          <h3>Question 1</h3>
-          <p>What is the correct way to access the value associated with the key 'customer-name' in a dictionary?</p>
-          <input type="radio" id="q1a" name="q1" value="a">
-          <label for="q1a" class="incorrect">a) my_dictionary.customer-name</label><br>
-          <input type="radio" id="q1b" name="q1" value="b">
-          <label for="q1b" class="correct">b) my_dictionary['customer-name']</label><br>
-          <input type="radio" id="q1c" name="q1" value="c">
-          <label for="q1c" class="incorrect">c) my_dictionary('customer-name')</label><br>
-          <input type="radio" id="q1d" name="q1" value="d">
-          <label for="q1d" class="incorrect">d) my_dictionary[customer-name]</label><br>
-  
-          <h3>Question 2</h3>
-          <p>What is the command to view the Algorand node token in the terminal?</p>
-          <input type="radio" id="q2a" name="q2" value="a">
-          <label for="q2a" class="incorrect">a) cat algod.net</label><br>
-          <input type="radio" id="q2b" name="q2" value="b">
-          <label for="q2b" class="correct">b) cat algod.token</label><br>
-          <input type="radio" id="q2c" name="q2" value="c">
-          <label for="q2c" class="incorrect">c) cat node.token</label><br>
-          <input type="radio" id="q2d" name="q2" value="d">
-          <label for="q2d" class="incorrect">d) cat algod.port</label><br>
-  
-          <h3>Question 3</h3>
-          <p>What will be the value of 'last_round' if the key 'last-round' in the status dictionary is 1000?</p>
-           <pre class="overflow-auto shadow-md"><code>status = {'last-round': 1000}
-last_round = status['last-round']
-print(last_round)
-</code></pre>
-          <input type="radio" id="q3a" name="q3" value="a">
-          <label for="q3a" class="incorrect">a) '1000'</label><br>
-          <input type="radio" id="q3b" name="q3" value="b">
-          <label for="q3b" class="correct">b) 1000</label><br>
-          <input type="radio" id="q3c" name="q3" value="c">
-          <label for="q3c" class="incorrect">c) 999</label><br>
-          <input type="radio" id="q3d" name="q3" value="d">
-          <label for="q3d" class="incorrect">d) None</label><br>
-  
-          <h3>Question 4</h3>
-          <p>What is the correct way to initialize an AlgodClient instance using a public Algorand testnet node?</p>
-          <input type="radio" id="q4a" name="q4" value="a">
-          <label for="q4a" class="incorrect">a) algod_client = AlgodClient('', 'http://localhost:4001')</label><br>
-          <input type="radio" id="q4b" name="q4" value="b">
-          <label for="q4b" class="correct">b) algod_client = AlgodClient('', 'https://testnet-api.algonode.cloud')</label><br>
-          <input type="radio" id="q4c" name="q4" value="c">
-          <label for="q4c" class="incorrect">c) algod_client = AlgodClient('my_token', 'https://mainnet-api.algonode.cloud')</label><br>
-          <input type="radio" id="q4d" name="q4" value="d">
-          <label for="q4d" class="incorrect">d) algod_client = AlgodClient('my_token', 'http://127.0.0.1:8080')</label><br>
-  
-          
-      </form>
-    `,
-    initialCode: `# Using public Algorand testnet with empty token
-from algosdk.v2client.algod import AlgodClient
-  
-algod_token = ''
-algod_server = 'https://testnet-api.algonode.cloud'
-  
-# Initialize AlgodClient
-algod_client = AlgodClient(algod_token, algod_server)
-  
-# Fetch and print status from the public testnet
-try:
-    status = algod_client.status()
-    print(f"Connected to public Algorand testnet! Last round: {status['last-round']}")
-except Exception as e:
-    print(f"Failed to connect to public testnet: {e}")
-  `,
-    // editable: false,
-    // output: 'Connected to public Algorand testnet! Last round: 1234567',
-  },
-
   {
     id: 17,
     language: 'Python',
@@ -2296,6 +1625,674 @@ print(tx_id)
     `,
     initialCode: ``,
   },
+  {
+    id: 16,
+    language: 'Python',
+    title: 'Getting Started with Algorand',
+    content: `
+    <p>To set-up your own node, visit this github repository I have created for a previous tutorial series:</p>
+    <p><a href="https://github.com/atsoc1993/Algorand_Discord_Bots_Tutorial_Series/tree/main/Episode%201%20-%20Algorand%20Node%2C%20Python%2C%20Visual%20Studio%20Code%2C%20Ubuntu%2C%20and%20Module%20Installations" target="_blank">GitHub Repository</a></p>
+    <p>Scroll down to the section called "Algorand Node Installation"— and make sure to run these commands in an Ubuntu LTS Shell (Download link in bottom resources section)</p>
+    <p>If you chose to run a node, that's wonderful! If not, I will be including sections for those programming without a node.</p>
+    <p>Now that we have access to an Algorand testnet node, as well as a basic understanding of how to work with different kinds of variables, functions and imports. It's time to get started!</p>
+    <p>This will reaffirm your ability to use functions, methods, and imports— as well as key notation: eg; accessing the name of a customer in a variable named my_dictionary</p>
+    
+    <pre class="overflow-auto shadow-md"><code>my_dictionary = {'customer-name': 'Jerry'}
+customer_name = my_dictionary['customer-name']
+print(customer_name)</code>
+</pre>
+    
+    <p>If you are using your own algorand testnet node on Windows, you will need to access your algod_token and algod_port from your node's data directory:</p>
+    
+    <p><strong>Obtaining your Algorand Node Token and Port</strong></p>
+    <pre class="overflow-auto shadow-md"><code>#Enter the data directory from the root folder
+cd node/data
+
+#Use the following commands to obtain your node token and port
+cat algod.token
+
+#Log the token into the terminal, it should look something like:
+b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd
+cat algod.net
+
+#Logs the port into the terminal, it should look something like:
+127.0.0.1:8080</code></pre>
+    
+    <p>When programming, you will format this information for variables like so:</p>
+    
+    <pre class="overflow-auto shadow-md"><code>algod_token = 'b94c8e5d7a3f1bbd249e83a1cc5b4ae67d8c2a7e9b5f0c6d8e1a7b4f263859cd'
+algod_port = 'http://127.0.0.1:8080'</code></pre>
+    
+    <p>If you are not using your own algorand testnet node, you can use these:</p>
+    <p>(Free service does not require token, and the algod_token variable will be an empty string '', whereas the algod_server will be the algonode testnet cloud link)</p>
+    <pre class="overflow-auto shadow-md"><code>algod_token = ''
+algod_server = 'https://testnet-api.algonode.cloud'</code></pre>
+    
+    <p>Let's started by simply getting the status of the Algorand testnet network!</p>
+    <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+algod_token = ''  # Leave '' for public nodely service, or enter your node token 
+algod_server = 'https://testnet-api.algonode.cloud' # Use this cloud link, or enter your own host & port
+# Initialize AlgodClient
+algod_client = AlgodClient(algod_token, algod_server)
+status = algod_client.status()
+print(status)</code></pre>
+    
+    <p>First we import the AlgodClient from algod.py in the v2client folder of the algosdk library.</p>
+    <p>Then, we define our token and server for the node we'll be using.</p>
+    <p>We initialize an AlgodClient instance, which requires a token and server argument, and assign it to our "algod_client" variable.</p>
+    <p>We access a function available from the AlgodClient, called status, through our algod_client variable.</p>
+    <p>The result of the status function is assigned to a variable called 'status'.</p>
+    <p>Finally, we print our 'status' variable.</p>
+    <p>Try running the code now!</p>
+    
+    <p>You'll see that you receive a dictionary with several keys and associated values, here is a list of all the keys:</p>
+    <ul class=inText>
+        <li>catchpoint</li>
+        <li>catchpoint-acquired-blocks</li>
+        <li>catchpoint-processed-accounts</li>
+        <li>catchpoint-processed-kvs</li>
+        <li>catchpoint-total-accounts</li>
+        <li>catchpoint-total-blocks</li>
+        <li>catchpoint-total-kvs</li>
+        <li>catchpoint-verified-accounts</li>
+        <li>catchpoint-verified-kvs</li>
+        <li>catchup-time</li>
+        <li>last-catchpoint</li>
+        <li>last-round</li>
+        <li>last-version</li>
+        <li>next-version</li>
+        <li>next-version-round</li>
+        <li>next-version-supported</li>
+        <li>stopped-at-unsupported-round</li>
+        <li>time-since-last-round</li>
+    </ul>
+    
+    <p>The most popular keys are last-round, so you know which block you are on, and perhaps time-since-last-round, if you should need to know that information. Other keys are primarily
+    used by node running services, like upcoming reti-pool incentives, but otherwise are not especially useful for our purposes.</p>
+    
+    <p>Referencing the information from Chapter 4, for dictionaries, try this:
+    <ul class=inText>
+        <li>Create a variable, and name it last_round</li>
+        <li>Assign the value of the key 'last-round' in the status dictionary to this variable you created</li>
+        <li>Print your variable!</li>
+    </ul>
+    </p>
+    
+    
+    <pre class="overflow-auto shadow-md"><code>status = {'catchpoint': '', 'catchpoint-acquired-blocks': 0, 'catchpoint-processed-accounts': 0, 'catchpoint-processed-kvs': 0,
+'catchpoint-total-accounts': 0, 'catchpoint-total-blocks': 0, 'catchpoint-total-kvs': 0, 'catchpoint-verified-accounts': 0, 
+'catchpoint-verified-kvs': 0, 'catchup-time': 0, 'last-catchpoint': '', 'last-round': 41422522,
+'last-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95', 
+'next-version': 'https://github.com/algorandfoundation/specs/tree/925a46433742afb0b51bb939354bd907fa88bf95',
+'next-version-round': 41422523, 'next-version-supported': True, 'stopped-at-unsupported-round': False, 
+'time-since-last-round': 1687057197}</code></pre>
+
+    <p>Enter this code below to get the 'last-round' value printed to the console:</p>
+    <pre class="overflow-auto shadow-md"><code>last_round = status['last-round']
+print(last_round)</code></pre>
+  
+  
+      <hr><form class="quiz-form">
+     <h1>Quiz</h1>
+  
+          <h3>Question 1</h3>
+          <p>What is the correct way to access the value associated with the key 'customer-name' in a dictionary?</p>
+          <input type="radio" id="q1a" name="q1" value="a">
+          <label for="q1a" class="incorrect">a) my_dictionary.customer-name</label><br>
+          <input type="radio" id="q1b" name="q1" value="b">
+          <label for="q1b" class="correct">b) my_dictionary['customer-name']</label><br>
+          <input type="radio" id="q1c" name="q1" value="c">
+          <label for="q1c" class="incorrect">c) my_dictionary('customer-name')</label><br>
+          <input type="radio" id="q1d" name="q1" value="d">
+          <label for="q1d" class="incorrect">d) my_dictionary[customer-name]</label><br>
+  
+          <h3>Question 2</h3>
+          <p>What is the command to view the Algorand node token in the terminal?</p>
+          <input type="radio" id="q2a" name="q2" value="a">
+          <label for="q2a" class="incorrect">a) cat algod.net</label><br>
+          <input type="radio" id="q2b" name="q2" value="b">
+          <label for="q2b" class="correct">b) cat algod.token</label><br>
+          <input type="radio" id="q2c" name="q2" value="c">
+          <label for="q2c" class="incorrect">c) cat node.token</label><br>
+          <input type="radio" id="q2d" name="q2" value="d">
+          <label for="q2d" class="incorrect">d) cat algod.port</label><br>
+  
+          <h3>Question 3</h3>
+          <p>What will be the value of 'last_round' if the key 'last-round' in the status dictionary is 1000?</p>
+           <pre class="overflow-auto shadow-md"><code>status = {'last-round': 1000}
+last_round = status['last-round']
+print(last_round)
+</code></pre>
+          <input type="radio" id="q3a" name="q3" value="a">
+          <label for="q3a" class="incorrect">a) '1000'</label><br>
+          <input type="radio" id="q3b" name="q3" value="b">
+          <label for="q3b" class="correct">b) 1000</label><br>
+          <input type="radio" id="q3c" name="q3" value="c">
+          <label for="q3c" class="incorrect">c) 999</label><br>
+          <input type="radio" id="q3d" name="q3" value="d">
+          <label for="q3d" class="incorrect">d) None</label><br>
+  
+          <h3>Question 4</h3>
+          <p>What is the correct way to initialize an AlgodClient instance using a public Algorand testnet node?</p>
+          <input type="radio" id="q4a" name="q4" value="a">
+          <label for="q4a" class="incorrect">a) algod_client = AlgodClient('', 'http://localhost:4001')</label><br>
+          <input type="radio" id="q4b" name="q4" value="b">
+          <label for="q4b" class="correct">b) algod_client = AlgodClient('', 'https://testnet-api.algonode.cloud')</label><br>
+          <input type="radio" id="q4c" name="q4" value="c">
+          <label for="q4c" class="incorrect">c) algod_client = AlgodClient('my_token', 'https://mainnet-api.algonode.cloud')</label><br>
+          <input type="radio" id="q4d" name="q4" value="d">
+          <label for="q4d" class="incorrect">d) algod_client = AlgodClient('my_token', 'http://127.0.0.1:8080')</label><br>
+  
+          
+      </form>
+    `,
+    initialCode: `# Using public Algorand testnet with empty token
+from algosdk.v2client.algod import AlgodClient
+  
+algod_token = ''
+algod_server = 'https://testnet-api.algonode.cloud'
+  
+# Initialize AlgodClient
+algod_client = AlgodClient(algod_token, algod_server)
+  
+# Fetch and print status from the public testnet
+try:
+    status = algod_client.status()
+    print(f"Connected to public Algorand testnet! Last round: {status['last-round']}")
+except Exception as e:
+    print(f"Failed to connect to public testnet: {e}")
+  `,
+    // editable: false,
+    // output: 'Connected to public Algorand testnet! Last round: 1234567',
+  },
+  {
+    id: 20,
+    language: 'Python',
+    title: 'Installation and Setup',
+    content: `<h2>Getting Started with Discord Bot Development on the Algorand Blockchain</h2>
+        <p>This tutorial will walk you through the installation and setup needed to start building a Discord bot for the Algorand blockchain. The steps outlined below cover essential tools, libraries, and additional resources to ensure a smooth start.</p>
+        
+        <h2>Resources</h2>
+        <ul class="inText">
+          <li>YouTube Tutorial: <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+        <iframe
+            class="absolute top-0 left-0 w-full h-full border-0"
+            src="https://www.youtube.com/embed/z9lZ_ypTZzA"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div></li>
+          <li>Download Python at <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a> 
+          <ul><li>(Ensure 'Add Python to PATH' is selected during installation)</li></li></ul>
+          <li>Install Visual Studio Code at <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></li>
+          <li>Python IntelliSense Extension for VS Code: Install within VS Code for enhanced Python support</li>
+        </ul>
+    
+        <h2>Installing Essential Libraries</h2>
+        <p>Install the following libraries in your terminal:</p>
+        <pre class="overflow-auto shadow-md"><code>pip install aiohttp</code>
+<code>pip install algokit</code>
+<code>pip install py-algorand-sdk</code>
+<code>pip install algorand-python</code>
+<code>pip install python-dotenv</code></pre>
+        <p><strong>Note:</strong> If you encounter errors during Algokit installation regarding missing C++ tools, please follow the instructions in the video and install the <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/" target="_blank">Microsoft Visual C++ Build Tools</a>.</p>
+    
+        <h2>Test Contract Example</h2>
+        <p>Create a new Python file called <code>testcontract.py</code> and add the following code to define a simple contract:</p>
+        <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract
+from algopy.arc4 import abimethod
+    
+class TestContract(ARC4Contract):
+    def __init__(self) -> None:
+        pass
+
+    @abimethod
+    def test(self) -> None:
+        pass</code></pre>
+    <p>Compile the contract with the following terminal command:</p>
+    <pre class="overflow-auto shadow-md"><code>algokit compile py testcontract.py</code></pre>
+    <p>If the approval and clear TEAL files are generated successfully, your setup is complete, and you can proceed with the tutorial series.</p>
+
+    <h2>Running Your Own Node</h2>
+    <p>If you wish to run your own Algorand node rather than using Algonode, refer to the tutorial playlist. Note: Based on community feedback, we've shifted from a Discord bot-focused series to a PUYA-focused series. Only two videos were released for the Discord bot series before this shift. Start with <a href="https://www.youtube.com/watch?v=JjmH-KA7UcQ&list=PL5aELASDGbIAw8QqqdGoc9y2zqwsr_J4L&index=1" target="_blank">the first video in the new series</a>, which includes node installation for Windows.</p>
+    
+    <h2>Visual Studio Code - Code Editing</h2>
+    <p>Download Visual Studio Code to edit your code efficiently, and install the Python IntelliSense extension to help with code completion and suggestions.</p>
+    <p>This tutorial guides you through developing Discord bots for the Algorand blockchain. It’s designed to complement the YouTube tutorial series.</p>
+    <h2>YouTube Tutorial</h2>
+    <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/JjmH-KA7UcQ"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+    
+    <h2>Installing Dependencies</h2>
+    <h3>Using Regular Terminal (not Ubuntu)</h3>
+    <ul class="inText">
+        <li><strong>PIP Installation:</strong></li>
+    </ul>
+    <pre class="overflow-auto shadow-md">
+<code>curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</code>
+<code>python get-pip.py</code></pre>
+    <ul class="inText">
+        <li><strong>AIOHTTP (required before installing Discord.py):</strong></li>
+        </ul>
+        <pre class="overflow-auto shadow-md">
+<code>pip install aiohttp>=3.9.0b0</code></pre>
+        <ul class="inText">
+            <li><strong>Discord.py:</strong></li>
+        </ul>
+        <pre class="overflow-auto shadow-md">
+<code>pip install discord.py</code></pre>
+        <ul class="inText">
+            <li><strong>Python AlgoSDK:</strong></li>
+        </ul>
+        <pre class="overflow-auto shadow-md">
+<code>pip3 install py-algorand-sdk</code></pre>
+        
+        <h3>Using Ubuntu Terminal</h3>
+        <h4>Algorand Node Installation</h4>
+        <pre class="overflow-auto shadow-md"><code>sudo apt-get update
+sudo apt-get install -y gnupg2 curl software-properties-common
+curl -o - https://releases.algorand.com/key.pub | sudo tee /etc/apt/trusted.gpg.d/algorand.asc
+sudo add-apt-repository "deb [arch=amd64] https://releases.algorand.com/deb/ stable main"
+sudo apt-get update
+sudo apt-get install -y algorand-devtools</code></pre>
+        
+        <h4>Preparing & Running Algorand Node</h4>
+        <pre class="overflow-auto shadow-md"><code>mkdir ~/node 
+cd ~/node 
+curl https://raw.githubusercontent.com/algorand/go-algorand/rel/stable/cmd/updater/update.sh -O 
+chmod 744 update.sh 
+./update.sh -i -c stable -p ~/node -d ~/node/data -n 
+goal node start -d data 
+goal node catchup <a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Get Catchpoint from Mainnet</a> -d data</code></pre>
+        
+        <h4>Algorand Node Commands</h4>
+        <ul class="inText">
+            <li><strong>Start Node:</strong> <code>goal node start -d data</code></li>
+            <li><strong>Restart Node:</strong> <code>goal node restart -d data</code></li>
+            <li><strong>Stop Node:</strong> <code>goal node stop -d data</code></li>
+            <li><strong>Catchup Node:</strong> <code>goal node catchup [Catchpoint Link] -d data</code></li>
+        </ul>
+        
+        <h4>Obtain Algorand Node Token & Port</h4>
+        <pre class="overflow-auto shadow-md"><code>cd node/data
+cat algod.token (Displays token)
+cat algod.net</code> (Displays port)</pre>
+        
+        <h4>Basic Terminal Commands</h4>
+        <ul class="inText">
+            <li><strong>Clear Terminal:</strong> <code>clear</code></li>
+            <li><strong>Create Folder:</strong> <code>mkdir FolderName</code></li>
+            <li><strong>List Directories:</strong> <code>ls</code></li>
+            <li><strong>Change Directory:</strong> <code>cd FolderName</code></li>
+            <li><strong>Move Up One Directory:</strong> <code>cd ..</code></li>
+            <li><strong>Delete Directory:</strong> <code>rm -r FolderName</code></li>
+            <li><strong>View File Contents:</strong> <code>cat FileName</code></li>
+        </ul>
+        
+        <h2>Useful Links</h2>
+        <ul class="inText">
+            <li><a href="https://www.python.org/downloads/" target="_blank">Install Python (Select 'Add Python to PATH')</a></li>
+            <li><a href="https://code.visualstudio.com/Download" target="_blank">Install Visual Studio Code</a></li>
+            <li><a href="https://www.microsoft.com/store/productId/9MTTCL66CPXJ?ocid=pdpshare" target="_blank">Microsoft Store Ubuntu LTS</a></li>
+            <li><a href="https://developer.algorand.org/docs/run-a-node/setup/install/" target="_blank">Algorand Node Documentation</a></li>
+            <li><a href="https://algorand-catchpoints.s3.us-east-2.amazonaws.com/channel/mainnet/latest.catchpoint" target="_blank">Algorand Node Mainnet Catchpoint</a></li>
+            <li><a href="https://discord.com/developers" target="_blank">Discord Developer Portal</a></li>
+        </ul>
+        
+        <hr><form class="quiz-form">
+            <h1>Quiz</h1>
+            <h3>Question 1</h3>
+            <p>Which package should be installed before installing discord.py?</p>
+            <input type="radio" id="q1a" name="q1" value="a">
+            <label for="q1a" class="incorrect">a) py-algorand-sdk</label><br>
+            <input type="radio" id="q1b" name="q1" value="b">
+            <label for="q1b" class="correct">b) aiohttp>=3.9.0b0</label><br>
+            <input type="radio" id="q1c" name="q1" value="c">
+            <label for="q1c" class="incorrect">c) Visual Studio Code</label><br>
+            <input type="radio" id="q1d" name="q1" value="d">
+            <label for="q1d" class="incorrect">d) Node</label><br>
+            
+            <h3>Question 2</h3>
+            <p>What command starts the Algorand node?</p>
+            <input type="radio" id="q2a" name="q2" value="a">
+            <label for="q2a" class="incorrect">a) mkdir node</label><br>
+            <input type="radio" id="q2b" name="q2" value="b">
+            <label for="q2b" class="correct">b) goal node start -d data</label><br>
+            <input type="radio" id="q2c" name="q2" value="c">
+            <label for="q2c" class="incorrect">c) chmod 744 update.sh</label><br>
+            <input type="radio" id="q2d" name="q2" value="d">
+            <label for="q2d" class="incorrect">d) apt-get update</label><br>
+        </form>
+        `,
+    initialCode: ``,
+  },
+
+  {
+    id: 40,
+    language: 'Python',
+    title: 'Speed Run Variables',
+    content: `<h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/AXohx-PI1CU"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <p>Python offers various data types to store information:</p>
+        <ul class=inText>
+            <li><strong>Integer</strong>: Whole numbers without decimals (e.g., <code>10</code>).</li>
+            <li><strong>String</strong>: Text enclosed in quotes (e.g., <code>"Hello"</code>).</li>
+            <li><strong>Float</strong>: Numbers with decimals (e.g., <code>3.14</code>).</li>
+            <li><strong>Boolean</strong>: Logical values <code>True</code> or <code>False</code>.</li>
+            <li><strong>List</strong>: Ordered collection in square brackets (e.g., <code>[1, 2, 3]</code>).</li>
+            <li><strong>Dictionary</strong>: Key-value pairs in curly braces (e.g., <code>{"key": "value"}</code>).</li>
+            <li><strong>Tuple</strong>: Immutable ordered collection in parentheses (e.g., <code>(1, 2, 3)</code>).</li>
+        </ul>
+        
+        <pre class="overflow-auto shadow-md"><code>my_number = 1000        # Integer
+my_text = "Hello!"      # String
+my_float = 7.5          # Float
+my_bool = True          # Boolean
+my_list = [1, 2, 3]     # List
+my_dict = {"a": 1}      # Dictionary
+my_tuple = (1, 2, 3)    # Tuple</code></pre>
+        
+        <p>Variables are names assigned to data. Use descriptive names and follow naming rules:</p>
+        <ul class=inText>
+            <li>Cannot start with a number.</li>
+            <li>No spaces; use underscores (<code>_</code>).</li>
+            <li>No special characters except underscores.</li>
+        </ul>
+        
+        <p>Examples of valid variable names:</p>
+        <pre class="overflow-auto shadow-md"><code>item_cost = 1.0
+supply_remaining = 2_500_000_000
+cto_name = "John Woods"
+quarter_value = 0.25</code></pre>
+        
+        <p>Invalid variable names:</p>
+        <pre class="overflow-auto shadow-md"><code>3variable = 5      # Invalid
+my-variable = 6    # Invalid
+my variable = 7    # Invalid</code></pre>
+        
+        <h2>Arithmetic Operations</h2>
+        
+        <p>Basic arithmetic with integers and floats:</p>
+        <pre class="overflow-auto shadow-md"><code>a = 10
+b = 3
+print(a + b)          # 13
+print(a - b)          # 7
+print(a * b)          # 30
+print(a / b)          # 3.333...
+print(a // b)         # 3
+print(a % b)          # 1
+print(a ** b)         # 1000</code></pre>
+        
+        <p>String operations:</p>
+        <pre class="overflow-auto shadow-md"><code>greeting = "Hello, " + "World!"
+print(greeting)        # "Hello, World!"
+repeat = "Hi" * 3
+print(repeat)          # "HiHiHi"</code></pre>
+        
+        <p>Data mutability:</p>
+        <ul class=inText>
+            <li><strong>Mutable</strong>: Lists, Dictionaries.</li>
+            <li><strong>Immutable</strong>: Tuples, Strings.</li>
+        </ul>
+        
+        <p>Attempting to modify an immutable type results in an error:</p>
+        <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
+my_tuple[0] = 3       # Error: 'tuple' object does not support item assignment</code></pre>
+        
+        <hr><form class="quiz-form">
+        <h1>Quiz</h1>
+            <h3>Question 1</h3>
+            <p>Which data type is used for whole numbers in Python?</p>
+            <input type="radio" id="q1a" name="q1" value="a">
+            <label for="q1a" class="incorrect">a) String</label><br>
+            <input type="radio" id="q1b" name="q1" value="b">
+            <label for="q1b" class="incorrect">b) Float</label><br>
+            <input type="radio" id="q1c" name="q1" value="c">
+            <label for="q1c" class="correct">c) Integer</label><br>
+            <input type="radio" id="q1d" name="q1" value="d">
+            <label for="q1d" class="incorrect">d) Boolean</label><br>
+    
+            <h3>Question 2</h3>
+            <p>Which variable name is valid in Python?</p>
+            <input type="radio" id="q2a" name="q2" value="a">
+            <label for="q2a" class="incorrect">a) 3variable</label><br>
+            <input type="radio" id="q2b" name="q2" value="b">
+            <label for="q2b" class="incorrect">b) my-variable</label><br>
+            <input type="radio" id="q2c" name="q2" value="c">
+            <label for="q2c" class="incorrect">c) my variable</label><br>
+            <input type="radio" id="q2d" name="q2" value="d">
+            <label for="q2d" class="correct">d) my_variable</label><br>
+    
+            <h3>Question 3</h3>
+            <p>What is the output of the following code?</p>
+            <pre class="overflow-auto shadow-md"><code>string = "Hello"
+result = string * 3
+print(result)</code></pre>
+            <input type="radio" id="q3a" name="q3" value="a">
+            <label for="q3a" class="correct">a) HelloHelloHello</label><br>
+            <input type="radio" id="q3b" name="q3" value="b">
+            <label for="q3b" class="incorrect">b) Hello, Hello, Hello</label><br>
+            <input type="radio" id="q3c" name="q3" value="c">
+            <label for="q3c" class="incorrect">c) Error</label><br>
+            <input type="radio" id="q3d" name="q3" value="d">
+            <label for="q3d" class="incorrect">d) Hello*3</label><br>
+    
+            <h3>Question 4</h3>
+            <p>Which data type is immutable in Python?</p>
+            <input type="radio" id="q4a" name="q4" value="a">
+            <label for="q4a" class="incorrect">a) List</label><br>
+            <input type="radio" id="q4b" name="q4" value="b">
+            <label for="q4b" class="incorrect">b) Dictionary</label><br>
+            <input type="radio" id="q4c" name="q4" value="c">
+            <label for="q4c" class="correct">c) Tuple</label><br>
+            <input type="radio" id="q4d" name="q4" value="d">
+            <label for="q4d" class="incorrect">d) Set</label><br>
+            
+        </form>
+        `,
+    initialCode: `a = 10\nb = 3.5\nprint(a + b)`,
+  },
+
+  {
+    id: 41,
+    language: 'Python',
+    title: 'Speed Run Functions and Classes',
+    content: `<h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/6DDU8wdZzOE"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div><p>Functions in Python are reusable blocks of code that perform specific tasks, enhancing modularity and readability.</p>
+    
+    <p>Functions and classes are fundamental building blocks in Python for creating reusable and modular code.</p>
+
+    <h2>Functions</h2>
+    <p>Functions are reusable blocks of code that perform specific tasks.</p>
+    <p><strong>Defining a Function:</strong> Use the <code>def</code> keyword.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def greet():
+    print("Hello, world!")
+greet()  # Output: "Hello, world!"</code></pre>
+
+    <p><strong>Functions with Parameters:</strong> Pass data into functions using parameters.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def greet(name):
+    print(f"Hello, {name}!")
+greet("Alice")  # Output: "Hello, Alice!"</code></pre>
+
+    <p><strong>Returning Values:</strong> Use <code>return</code> to output a value from a function.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def add(a, b):
+    return a + b
+result = add(3, 5)
+print(result)  # Output: 8</code></pre>
+
+    <p><strong>Default Parameters:</strong> Assign default values to parameters.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def greet(name="world"):
+    print(f"Hello, {name}!")
+greet()         # Output: "Hello, world!"
+greet("Bob")    # Output: "Hello, Bob!"</code></pre>
+
+    <p><strong>Variable Number of Arguments:</strong> Use <code>*args</code> and <code>**kwargs</code> for flexible arguments.</p>
+
+    <pre class="overflow-auto shadow-md"><code>def add(*args):
+    return sum(args)
+print(add(1, 2, 3))  # Output: 6
+
+def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+print_info(name="Alice", age=30)</code></pre>
+
+    <h2>Classes</h2>
+    <p>Classes are blueprints for creating objects (instances), encapsulating data and functions together.</p>
+    <p><strong>Defining a Class:</strong> Use the <code>class</code> keyword.</p>
+
+    <pre class="overflow-auto shadow-md"><code>class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print(f"Hello, my name is {self.name}.")
+
+person1 = Person("Alice", 30)
+person1.greet()  # Output: "Hello, my name is Alice."</code></pre>
+
+    <p><strong>Class Components:</strong></p>
+    <ul class=inText>
+        <li><strong>Constructor (<code>__init__</code>):</strong> Initializes new objects.</li>
+        <li><strong>Instance Variables:</strong> Data unique to each instance (<code>self.name</code>, <code>self.age</code>).</li>
+        <li><strong>Methods:</strong> Functions defined within a class (<code>greet</code>).</li>
+    </ul>
+
+    <p><strong>Inheritance:</strong> Classes can inherit from other classes.</p>
+
+    <pre class="overflow-auto shadow-md"><code>class Employee(Person):
+    def __init__(self, name, age, employee_id):
+        super().__init__(name, age)
+        self.employee_id = employee_id
+
+    def display_id(self):
+        print(f"My employee ID is {self.employee_id}.")
+
+employee1 = Employee("Bob", 25, "E123")
+employee1.greet()         # Output: "Hello, my name is Bob."
+employee1.display_id()    # Output: "My employee ID is E123."</code></pre>
+
+    <p><strong>Encapsulation:</strong> Use underscores to indicate private variables (convention).</p>
+
+    <pre class="overflow-auto shadow-md"><code>class BankAccount:
+    def __init__(self, balance):
+        self._balance = balance  # Protected attribute
+
+    def deposit(self, amount):
+        self._balance += amount
+
+    def get_balance(self):
+        return self._balance
+
+account = BankAccount(1000)
+account.deposit(500)
+print(account.get_balance())  # Output: 1500</code></pre>
+
+    <hr><form class="quiz-form">
+<h1>Quiz</h1>
+
+    <h3>Question 1</h3>
+    <p>What will be the output of the following code snippet?</p>
+    <pre class="overflow-auto shadow-md"><code>def func(a, b=2, c=3):
+    return a + b * c
+
+result = func(1, c=4)
+print(result)</code></pre>
+    <input type="radio" id="q1a" name="q1" value="a">
+    <label for="q1a" class="incorrect">a) 13</label><br>
+    <input type="radio" id="q1b" name="q1" value="b">
+    <label for="q1b" class="correct">b) 9</label><br>
+    <input type="radio" id="q1c" name="q1" value="c">
+    <label for="q1c" class="incorrect">c) 14</label><br>
+    <input type="radio" id="q1d" name="q1" value="d">
+    <label for="q1d" class="incorrect">d) Error</label><br>
+
+    <h3>Question 2</h3>
+    <p>Given the following class definition, what will be the output?</p>
+    <pre class="overflow-auto shadow-md"><code>class Counter:
+    count = 0
+
+    def __init__(self):
+        Counter.count += 1
+
+c1 = Counter()
+c2 = Counter()
+print(Counter.count)</code></pre>
+    <input type="radio" id="q2a" name="q2" value="a">
+    <label for="q2a" class="correct">a) 2</label><br>
+    <input type="radio" id="q2b" name="q2" value="b">
+    <label for="q2b" class="incorrect">b) 1</label><br>
+    <input type="radio" id="q2c" name="q2" value="c">
+    <label for="q2c" class="incorrect">c) 0</label><br>
+    <input type="radio" id="q2d" name="q2" value="d">
+    <label for="q2d" class="incorrect">d) Error</label><br>
+
+    <h3>Question 3</h3>
+    <p>Which of the following statements is true about methods in Python classes?</p>
+    <input type="radio" id="q3a" name="q3" value="a">
+    <label for="q3a" class="correct">a) Methods can modify the state of an object.</label><br>
+    <input type="radio" id="q3b" name="q3" value="b">
+    <label for="q3b" class="incorrect">b) Methods cannot access instance variables.</label><br>
+    <input type="radio" id="q3c" name="q3" value="c">
+    <label for="q3c" class="incorrect">c) Methods must return a value.</label><br>
+    <input type="radio" id="q3d" name="q3" value="d">
+    <label for="q3d" class="incorrect">d) Methods cannot call other methods within the same class.</label><br>
+
+    <h3>Question 4</h3>
+    <p>What is the output of the following code snippet involving closures?</p>
+    <pre class="overflow-auto shadow-md"><code>def outer():
+    x = "local"
+    def inner():
+        nonlocal x
+        x = "nonlocal"
+    inner()
+    print("x =", x)
+
+outer()</code></pre>
+    <input type="radio" id="q4a" name="q4" value="a">
+    <label for="q4a" class="incorrect">a) x = local</label><br>
+    <input type="radio" id="q4b" name="q4" value="b">
+    <label for="q4b" class="correct">b) x = nonlocal</label><br>
+    <input type="radio" id="q4c" name="q4" value="c">
+    <label for="q4c" class="incorrect">c) x = </label><br>
+    <input type="radio" id="q4d" name="q4" value="d">
+    <label for="q4d" class="incorrect">d) Error</label><br>
+    
+</form>
+
+    `,
+    initialCode: `class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        print(f"Hello, {self.name}!")\n\nperson = Person("Alice")\nperson.greet()`,
+  },
 
   {
     id: 21,
@@ -2563,6 +2560,251 @@ application_client.compose_call(atc, call_abi_method='hello', name='AlgoLearn Co
 result = atc.execute(algod_client, 2)
 print(result.abi_results[0].tx_id)
 print(result.abi_results[0].return_value)</code></pre>
+    `,
+    initialCode: ``,
+  },
+  {
+    id: 23,
+    language: 'Python',
+    title: 'Creating Launching and Interacting with an Archer Smart Contract',
+    content: `
+      <h2>Video Walkthrough</h2>
+      <p>Watch these videos to understand the process of setting up the Archer smart contract:</p>
+      <p>Part 1:</p>
+      <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+    <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/7MPmd7yZe78"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+      <p>Part 2:</p>
+      <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+  <iframe
+        class="absolute top-0 left-0 w-full h-full border-0"
+        src="https://www.youtube.com/embed/BAINcnpxBrg"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+      <h2>Generating Accounts</h2>
+      <p>This contract will require two accounts. Use the code below to generate them:</p>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
+  
+private_key, address = generate_account()
+print(private_key, address)</code></pre>
+  
+      <h2>Funding the Accounts</h2>
+      <p>To fund the accounts, visit the Algorand testnet dispenser: <a href="https://bank.testnet.algorand.network/">https://bank.testnet.algorand.network/</a></p>
+  
+      <h2>Setting Environment Variables (.env)</h2>
+      <p>Define the following environment variables:</p>
+      <pre class="overflow-auto shadow-md"><code># Private keys for both generated accounts
+private_key=ENTER FIRST PRIVATE KEY
+private_key_2=ENTER SECOND PRIVATE KEY
+  
+# Algod token and server (Nodely API)
+algod_token=
+algod_server=https://testnet-api.4160.nodely.dev
+
+# Application ID generated by LaunchSmartContract.py
+app_id=722568747</code></pre>
+
+    <h2>Archer Class Example</h2>
+      <pre class="overflow-auto shadow-md"><code>class Archer:
+    def __init__(self, x):
+        self.arrows = x
+        self.bow_equipped = False
+        
+    def equip_bow(self):
+        assert self.bow_equipped == False
+        self.bow_equipped = True
+        
+    def unequip_bow(self):
+        self.bow_equipped = False
+        
+    def shoot_arrow(self):
+        assert self.bow_equipped == True
+        self.arrows -= 1
+      
+  
+my_archer = Archer(10)
+print(my_archer.arrows)
+print(my_archer.bow_equipped)
+
+my_archer.equip_bow()
+print(my_archer.bow_equipped)
+
+my_archer.unequip_bow()
+print(my_archer.bow_equipped)
+
+for i in range(5):
+    my_archer.shoot_arrow()
+    print(my_archer.arrows)</code></pre>
+
+      <h2>Archer Smart Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, GlobalState, LocalState, UInt64, Txn
+from algopy.arc4 import abimethod, String
+
+class Archer(ARC4Contract):
+    def __init__(self) -> None:
+        self.arrows = LocalState(UInt64)
+        self.bow_equipped = LocalState(bool)
+        self.archersCreated = GlobalState(UInt64(0))
+        
+    @abimethod(allow_actions=['OptIn'])
+    def createArcher(self, x: UInt64) -> tuple[String, String, UInt64, String, UInt64]:
+        self.arrows[Txn.sender] = x
+        self.bow_equipped[Txn.sender] = False
+        self.archersCreated.value += UInt64(1)
+        
+        return String('An Archer was Created!'), String("Archer has this many arrows: "), x, String("Contract has created this many archers so far: "), self.archersCreated.value
+        
+    @abimethod()
+    def EquipBow(self) -> tuple[String, bool]:
+        assert self.bow_equipped[Txn.sender] == False
+        self.bow_equipped[Txn.sender] = True
+        return String('Archer Equipped their Bow: '), self.bow_equipped[Txn.sender]
+        
+    @abimethod()
+    def UnequipBow(self) -> tuple[String, bool]:
+        assert self.bow_equipped[Txn.sender] == True
+        self.bow_equipped[Txn.sender] = False
+        return String('Archer Unequipped their Bow: '), self.bow_equipped[Txn.sender]
+
+    @abimethod()
+    def ShootArrow(self) -> tuple[String, String, UInt64]:
+        assert self.bow_equipped[Txn.sender] == True
+        assert self.arrows[Txn.sender] > UInt64(0)
+        self.arrows[Txn.sender] -= UInt64(1)
+        return String('Archer shot an arrow!'), String('Arrows Remaining: '), self.arrows[Txn.sender]</code></pre>
+  
+      <h2>Launching the Contract</h2>
+      <p><strong>Note:</strong> Ensure the contract name matches the approval and clear TEAL file names.</p>
+      <p>If your class is defined as:</p>
+      <pre class="overflow-auto shadow-md"><code>class Archer(ARC4Contract):</code></pre>
+      <p>Your approval and clear TEAL file names in <code>LaunchSmartContract.py</code> should be:</p>
+      <pre class="overflow-auto shadow-md"><code>approval_teal_file_name = 'Archer.approval.teal'
+clear_teal_file_name = 'Archer.clear.teal'</code></pre>
+  
+      <pre class="overflow-auto shadow-md"><code>import os
+from algosdk.v2client.algod import AlgodClient
+from algosdk.account import address_from_private_key
+from base64 import b64decode
+from algosdk.transaction import StateSchema, ApplicationCreateTxn, OnComplete, wait_for_confirmation
+from algosdk import logic
+from dotenv import load_dotenv
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+private_key = os.getenv('private_key')
+
+algod_client = AlgodClient(node_token, node_server)
+
+address = address_from_private_key(private_key)
+
+params = algod_client.suggested_params()
+
+approval_teal_file_name = 'Archer.approval.teal'
+clear_teal_file_name= 'Archer.clear.teal'
+
+with open(f'./{approval_teal_file_name}', 'r') as f:
+    approval_teal_source = f.read()
+
+with open(f'./{clear_teal_file_name}', 'r') as f:
+    clear_teal_source = f.read()
+
+approval_result = algod_client.compile(approval_teal_source)
+approval_program = b64decode(approval_result['result'])
+
+clear_result = algod_client.compile(clear_teal_source)
+clear_program = b64decode(clear_result['result'])
+
+global_schema = StateSchema(num_uints=1, num_byte_slices=0)
+local_schema = StateSchema(num_uints=2, num_byte_slices=0)
+
+tx = ApplicationCreateTxn(
+    sender=address,
+    sp=params,
+    on_complete=OnComplete.NoOpOC,
+    approval_program=approval_program,
+    clear_program=clear_program,
+    global_schema=global_schema,
+    local_schema=local_schema
+)
+
+signed_txn = tx.sign(private_key)
+
+try:
+    tx_id = algod_client.send_transaction(signed_txn)
+except Exception as e:
+    print("Failed due to:", e)
+    
+print(f'Tx ID: {tx_id}')
+wait_for_confirmation(algod_client, tx_id)
+tx_info = algod_client.pending_transaction_info(tx_id)
+application_id = tx_info['application-index']
+print(f'Application ID: {application_id}')
+
+app_address = logic.get_application_address(application_id)
+print(f'Application Address: {app_address}')</code></pre>
+  
+      <h2>Interacting with the Archer Smart Contract</h2>
+      <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
+from algokit_utils import ApplicationClient
+from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer
+from algosdk.account import address_from_private_key
+from algosdk.transaction import OnComplete
+from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+node_token = os.getenv('algod_token')
+node_server = os.getenv('algod_server')
+
+private_key = os.getenv('private_key_2')
+
+algod_client = AlgodClient(node_token, node_server)
+path = Path(__file__).parent / './Archer.arc32.json'
+app_id = int(os.getenv('app_id'))
+signer = AccountTransactionSigner(private_key)
+address = address_from_private_key(private_key)
+params = algod_client.suggested_params()
+
+application_client = ApplicationClient(
+    algod_client=algod_client,
+    app_spec=path,
+    app_id=app_id,
+    signer=signer,
+    sender=address,
+    suggested_params=params,
+)
+
+atc = AtomicTransactionComposer()
+
+application_client.compose_call(atc, call_abi_method='createArcher', transaction_parameters={'on_complete': OnComplete.OptInOC}, x=5)
+application_client.compose_call(atc, call_abi_method='EquipBow')
+application_client.compose_call(atc, call_abi_method='UneqipBow')
+application_client.compose_call(atc, call_abi_method='EquipBow', transaction_parameters={'note': 'Extra Equip Bow Transaction'})
+application_client.compose_call(atc, call_abi_method='ShootArrow')
+
+result = atc.execute(algod_client, 2)
+tx_ids = [result.abi_results[i].tx_id for i in range(0, len(result.abi_results))]
+abi_results = [result.abi_results[i].return_value for i in range(0, len(result.abi_results))]
+
+for i in range(len(result.abi_results)):
+    print(tx_ids[i])
+    print(abi_results[i])
+    print('\\n')</code></pre>
     `,
     initialCode: ``,
   },
@@ -3370,252 +3612,6 @@ class TransactionComp(ARC4Contract):
             assert third_transaction_amount == 1            
                     
         return first_transaction.amount, second_transaction_amount, third_transaction_amount</code></pre>
-    `,
-    initialCode: ``,
-  },
-
-  {
-    id: 23,
-    language: 'Python',
-    title: 'Creating Launching and Interacting with an Archer Smart Contract',
-    content: `
-      <h2>Video Walkthrough</h2>
-      <p>Watch these videos to understand the process of setting up the Archer smart contract:</p>
-      <p>Part 1:</p>
-      <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-    <iframe
-        class="absolute top-0 left-0 w-full h-full border-0"
-        src="https://www.youtube.com/embed/7MPmd7yZe78"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-</div>
-      <p>Part 2:</p>
-      <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
-  <iframe
-        class="absolute top-0 left-0 w-full h-full border-0"
-        src="https://www.youtube.com/embed/BAINcnpxBrg"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-</div>
-
-
-      <h2>Generating Accounts</h2>
-      <p>This contract will require two accounts. Use the code below to generate them:</p>
-      <pre class="overflow-auto shadow-md"><code>from algosdk.account import generate_account
-  
-private_key, address = generate_account()
-print(private_key, address)</code></pre>
-  
-      <h2>Funding the Accounts</h2>
-      <p>To fund the accounts, visit the Algorand testnet dispenser: <a href="https://bank.testnet.algorand.network/">https://bank.testnet.algorand.network/</a></p>
-  
-      <h2>Setting Environment Variables (.env)</h2>
-      <p>Define the following environment variables:</p>
-      <pre class="overflow-auto shadow-md"><code># Private keys for both generated accounts
-private_key=ENTER FIRST PRIVATE KEY
-private_key_2=ENTER SECOND PRIVATE KEY
-  
-# Algod token and server (Nodely API)
-algod_token=
-algod_server=https://testnet-api.4160.nodely.dev
-
-# Application ID generated by LaunchSmartContract.py
-app_id=722568747</code></pre>
-
-    <h2>Archer Class Example</h2>
-      <pre class="overflow-auto shadow-md"><code>class Archer:
-    def __init__(self, x):
-        self.arrows = x
-        self.bow_equipped = False
-        
-    def equip_bow(self):
-        assert self.bow_equipped == False
-        self.bow_equipped = True
-        
-    def unequip_bow(self):
-        self.bow_equipped = False
-        
-    def shoot_arrow(self):
-        assert self.bow_equipped == True
-        self.arrows -= 1
-      
-  
-my_archer = Archer(10)
-print(my_archer.arrows)
-print(my_archer.bow_equipped)
-
-my_archer.equip_bow()
-print(my_archer.bow_equipped)
-
-my_archer.unequip_bow()
-print(my_archer.bow_equipped)
-
-for i in range(5):
-    my_archer.shoot_arrow()
-    print(my_archer.arrows)</code></pre>
-
-      <h2>Archer Smart Contract</h2>
-      <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, GlobalState, LocalState, UInt64, Txn
-from algopy.arc4 import abimethod, String
-
-class Archer(ARC4Contract):
-    def __init__(self) -> None:
-        self.arrows = LocalState(UInt64)
-        self.bow_equipped = LocalState(bool)
-        self.archersCreated = GlobalState(UInt64(0))
-        
-    @abimethod(allow_actions=['OptIn'])
-    def createArcher(self, x: UInt64) -> tuple[String, String, UInt64, String, UInt64]:
-        self.arrows[Txn.sender] = x
-        self.bow_equipped[Txn.sender] = False
-        self.archersCreated.value += UInt64(1)
-        
-        return String('An Archer was Created!'), String("Archer has this many arrows: "), x, String("Contract has created this many archers so far: "), self.archersCreated.value
-        
-    @abimethod()
-    def EquipBow(self) -> tuple[String, bool]:
-        assert self.bow_equipped[Txn.sender] == False
-        self.bow_equipped[Txn.sender] = True
-        return String('Archer Equipped their Bow: '), self.bow_equipped[Txn.sender]
-        
-    @abimethod()
-    def UnequipBow(self) -> tuple[String, bool]:
-        assert self.bow_equipped[Txn.sender] == True
-        self.bow_equipped[Txn.sender] = False
-        return String('Archer Unequipped their Bow: '), self.bow_equipped[Txn.sender]
-
-    @abimethod()
-    def ShootArrow(self) -> tuple[String, String, UInt64]:
-        assert self.bow_equipped[Txn.sender] == True
-        assert self.arrows[Txn.sender] > UInt64(0)
-        self.arrows[Txn.sender] -= UInt64(1)
-        return String('Archer shot an arrow!'), String('Arrows Remaining: '), self.arrows[Txn.sender]</code></pre>
-  
-      <h2>Launching the Contract</h2>
-      <p><strong>Note:</strong> Ensure the contract name matches the approval and clear TEAL file names.</p>
-      <p>If your class is defined as:</p>
-      <pre class="overflow-auto shadow-md"><code>class Archer(ARC4Contract):</code></pre>
-      <p>Your approval and clear TEAL file names in <code>LaunchSmartContract.py</code> should be:</p>
-      <pre class="overflow-auto shadow-md"><code>approval_teal_file_name = 'Archer.approval.teal'
-clear_teal_file_name = 'Archer.clear.teal'</code></pre>
-  
-      <pre class="overflow-auto shadow-md"><code>import os
-from algosdk.v2client.algod import AlgodClient
-from algosdk.account import address_from_private_key
-from base64 import b64decode
-from algosdk.transaction import StateSchema, ApplicationCreateTxn, OnComplete, wait_for_confirmation
-from algosdk import logic
-from dotenv import load_dotenv
-
-load_dotenv()
-
-node_token = os.getenv('algod_token')
-node_server = os.getenv('algod_server')
-private_key = os.getenv('private_key')
-
-algod_client = AlgodClient(node_token, node_server)
-
-address = address_from_private_key(private_key)
-
-params = algod_client.suggested_params()
-
-approval_teal_file_name = 'Archer.approval.teal'
-clear_teal_file_name= 'Archer.clear.teal'
-
-with open(f'./{approval_teal_file_name}', 'r') as f:
-    approval_teal_source = f.read()
-
-with open(f'./{clear_teal_file_name}', 'r') as f:
-    clear_teal_source = f.read()
-
-approval_result = algod_client.compile(approval_teal_source)
-approval_program = b64decode(approval_result['result'])
-
-clear_result = algod_client.compile(clear_teal_source)
-clear_program = b64decode(clear_result['result'])
-
-global_schema = StateSchema(num_uints=1, num_byte_slices=0)
-local_schema = StateSchema(num_uints=2, num_byte_slices=0)
-
-tx = ApplicationCreateTxn(
-    sender=address,
-    sp=params,
-    on_complete=OnComplete.NoOpOC,
-    approval_program=approval_program,
-    clear_program=clear_program,
-    global_schema=global_schema,
-    local_schema=local_schema
-)
-
-signed_txn = tx.sign(private_key)
-
-try:
-    tx_id = algod_client.send_transaction(signed_txn)
-except Exception as e:
-    print("Failed due to:", e)
-    
-print(f'Tx ID: {tx_id}')
-wait_for_confirmation(algod_client, tx_id)
-tx_info = algod_client.pending_transaction_info(tx_id)
-application_id = tx_info['application-index']
-print(f'Application ID: {application_id}')
-
-app_address = logic.get_application_address(application_id)
-print(f'Application Address: {app_address}')</code></pre>
-  
-      <h2>Interacting with the Archer Smart Contract</h2>
-      <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
-from algokit_utils import ApplicationClient
-from algosdk.atomic_transaction_composer import AccountTransactionSigner, AtomicTransactionComposer
-from algosdk.account import address_from_private_key
-from algosdk.transaction import OnComplete
-from pathlib import Path
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-node_token = os.getenv('algod_token')
-node_server = os.getenv('algod_server')
-
-private_key = os.getenv('private_key_2')
-
-algod_client = AlgodClient(node_token, node_server)
-path = Path(__file__).parent / './Archer.arc32.json'
-app_id = int(os.getenv('app_id'))
-signer = AccountTransactionSigner(private_key)
-address = address_from_private_key(private_key)
-params = algod_client.suggested_params()
-
-application_client = ApplicationClient(
-    algod_client=algod_client,
-    app_spec=path,
-    app_id=app_id,
-    signer=signer,
-    sender=address,
-    suggested_params=params,
-)
-
-atc = AtomicTransactionComposer()
-
-application_client.compose_call(atc, call_abi_method='createArcher', transaction_parameters={'on_complete': OnComplete.OptInOC}, x=5)
-application_client.compose_call(atc, call_abi_method='EquipBow')
-application_client.compose_call(atc, call_abi_method='UneqipBow')
-application_client.compose_call(atc, call_abi_method='EquipBow', transaction_parameters={'note': 'Extra Equip Bow Transaction'})
-application_client.compose_call(atc, call_abi_method='ShootArrow')
-
-result = atc.execute(algod_client, 2)
-tx_ids = [result.abi_results[i].tx_id for i in range(0, len(result.abi_results))]
-abi_results = [result.abi_results[i].return_value for i in range(0, len(result.abi_results))]
-
-for i in range(len(result.abi_results)):
-    print(tx_ids[i])
-    print(abi_results[i])
-    print('\\n')</code></pre>
     `,
     initialCode: ``,
   },
@@ -7164,6 +7160,16 @@ print(tx_id)</code></pre>
     language: 'Python',
     title: 'Creating and Updating ARC19 NFTs with IPFS Metadata',
     content: `
+    <h2>Video Tutorial</h2>
+        <div class="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md" style="padding-top: 56.25%;">
+            <iframe
+                class="absolute top-0 left-0 w-full h-full border-0"
+                src="https://www.youtube.com/embed/HRowUd3d434"                
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
     <p>This tutorial demonstrates how to create an ARC19-compliant NFT with mutable metadata hosted on IPFS. The metadata can be updated by changing the reserve address, which points to a new IPFS hash for the metadata. Follow along with the code examples and steps below.</p>
 
     <h2>Generating an Account</h2>
@@ -10668,7 +10674,7 @@ func main() {
     algodClient.SendRawTransaction(signedTxBytes).Do(context.Background())
 
     fmt.Printf("Transaction sent. TxID: %s\\n", txID)
-    
+
 }</code></pre>
     
     <p>Steps:</p>
