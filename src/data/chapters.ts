@@ -10219,30 +10219,38 @@ func main() {
     <p>The package imports are from the Go Algorand SDK library and the standard library.</p>
     
     <p>Now let's get the status of the Algod client:</p>
-<pre class="overflow-auto shadow-md"><code>import (
+<pre class="overflow-auto shadow-md"><code>package main
+
+import (
+    "context"
     "fmt"
     "log"
     "math/rand"
-    "strings"
     "time"
+
     "github.com/algorand/go-algorand-sdk/client/v2/algod"
-    "github.com/algorand/go-algorand-sdk/client/v2/common"
 )
+
 func main() {
-    var algodAddress = "http://localhost:4001";
-    var algodToken = strings.Repeat("a", 64);
-    algodClient, err := algod.MakeClient(algodAddress, algodToken);
+    var algodAddress = "https://testnet-api.4160.nodely.dev"
+    var algodToken = ""
+
+    algodClient, err := algod.MakeClient(algodAddress, algodToken)
     if err != nil {
-        log.Fatalf("failed to make algod client: %v", err);
+        log.Fatalf("failed to make algod client: %v", err)
     }
-    status, err := algodClient.Status().Do();
+
+    // Provide a context argument (and optionally any headers if needed).
+    status, err := algodClient.Status().Do(context.Background())
     if err != nil {
-        log.Fatalf("failed to get status: %v", err);
+        log.Fatalf("failed to get status: %v", err)
     }
-    fmt.Printf("Status: %+v\\n", status);
-    rand.Seed(time.Now().UnixNano());
-    randomNumber := rand.Intn(101);
-    fmt.Println(randomNumber);
+
+    fmt.Printf("Status: %+v\\n", status)
+
+    rand.Seed(time.Now().UnixNano())
+    randomNumber := rand.Intn(101)
+    fmt.Println("Random Number:", randomNumber)
 }</code></pre>
 
     <p>The imports are:</p>
@@ -10395,42 +10403,7 @@ func main() {
       <li>Assign the value of the key <code>'last-round'</code> in the status dictionary to this variable you created</li>
       <li>Print your variable!</li>
     </ul>
-    
-    <pre class="overflow-auto shadow-md"><code>package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "github.com/algorand/go-algorand-sdk/client/v2/algod"
-)
-
-func main() {
-    // Variables for Algorand testnet node access
-    algodToken := "" // Leave empty for public node service, or enter your node token
-    algodServer := "https://testnet-api.algonode.cloud"
-
-    // Create an algod client
-    algodClient, err := algod.MakeClient(algodServer, algodToken)
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Failed to make algod client: %s\\n", err)
-        return
-    }
-
-    // Fetch the node status and print it
-    status, err := algodClient.Status().Do(context.Background())
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Failed to get node status: %s\\n", err)
-        return
-    }
-
-    // CREATE LAST ROUND VARIABLE AND PRINT THE LAST ROUND HERE
-
-}</code></pre>
-    
-    <p><strong>Reveal Answer:</strong></p>
-    
+        
     <pre class="overflow-auto shadow-md">
 <code>package main
 
@@ -10618,81 +10591,85 @@ func main() {
     
     <p>This text should provide a clear, non-code explanation of the key processes involved in using the Algorand Go SDK for creating and managing accounts, as well as performing transactions.</p>
     
-    <pre class="overflow-auto shadow-md">
-<code>package main
+    <pre class="overflow-auto shadow-md"><code>package main
 
 import (
     "context"
+    "crypto/ed25519"
+    "encoding/base64"
     "fmt"
-    "github.com/algorand/go-algorand-sdk/client/algod"
+    "log"
+    "math/rand"
+    "time"
+
+    "github.com/algorand/go-algorand-sdk/client/v2/algod"
     "github.com/algorand/go-algorand-sdk/crypto"
     "github.com/algorand/go-algorand-sdk/future"
     "github.com/algorand/go-algorand-sdk/types"
 )
 
 func main() {
-    // Define the Algod client
-    algodToken := ""
+    fmt.Println("Starting transaction...")
+
     algodAddress := "https://testnet-api.algonode.cloud"
-    headers := []*algod.Header{{Key: "X-API-Key", Value: algodToken}}
-    algodClient, err := algod.MakeClientWithHeaders(algodAddress, algodToken, headers)
+    algodToken := ""
+
+    algodClient, err := algod.MakeClient(algodAddress, algodToken)
     if err != nil {
-        fmt.Printf("Failed to make algod client: %s\\n", err)
-        return
+        log.Fatalf("Failed to make algod v2 client: %v", err)
     }
 
     // Existing account details
     address := "I3BHPDWGH63J47JBG2P7RJLOGD3L3HEBOI4KKUKSV3MZSYFX4VFDIDYSMU"
-    privateKey := "6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=="
+    privateKeyB64 := "6KitD65Q7V6ZDB29EEx1YtoBeqy0PDt+78Ga4DchXItGwneOxj+2nn0hNp/4pW4w9r2cgXI4pVFSrtmZYLflSg=="
 
-    // Convert 1.001 Algo to microAlgos for transaction amount
-    amount := uint64(1.001 * 1e6) // Algos are expressed in microAlgos in the SDK
+    // Decode the base64 private key into ed25519.PrivateKey
+    decodedPk, err := base64.StdEncoding.DecodeString(privateKeyB64)
+    if err != nil {
+        log.Fatalf("Failed to decode base64 private key: %v", err)
+    }
+    ed25519PrivateKey := ed25519.PrivateKey(decodedPk)
+    algos := 1.001
 
-    // Fetch the suggested transaction parameters
+    // Convert Algos -> MicroAlgos:
+    microAlgoAmount := uint64(types.ToMicroAlgos(algos))
+
+    // Fetch the suggested transaction parameters (v2 style)
     txParams, err := algodClient.SuggestedParams().Do(context.Background())
     if err != nil {
-        fmt.Printf("Error getting suggested tx params: %s\\n", err)
-        return
+        log.Fatalf("Error getting suggested tx params: %v", err)
     }
 
-    // Generate a new account
-    newAccount := crypto.GenerateAccount()
-    newAccountAddress := newAccount.Address.String()
-    newAccountPrivateKey := newAccount.PrivateKey
+    // Create a random note
+    rand.Seed(time.Now().UnixNano())
+    note := []byte(fmt.Sprintf("Random note: %d", rand.Int()))
 
     // Create a payment transaction
-    note := []byte("Here's your one Algo!")
-    tx, err := future.MakePaymentTxn(address, newAccountAddress, amount, note, "", txParams)
+    tx, err := future.MakePaymentTxn(
+        address, // From
+        crypto.GenerateAccount().Address.String(), // To (for demonstration)
+        microAlgoAmount, // Amount (microAlgos)
+        note,            // Note
+        "",              // CloseRemainderTo
+        txParams,
+    )
     if err != nil {
-        fmt.Printf("Failed to make transaction: %s\\n", err)
-        return
+        log.Fatalf("Failed to create payment transaction: %v", err)
     }
 
-    // Sign the transaction
-    signTx, err := crypto.SignTransaction(privateKey, tx)
+    // Sign the transaction: returns (signedTxBytes, txID, err)
+    txID, signedTxBytes, err := crypto.SignTransaction(ed25519PrivateKey, tx)
     if err != nil {
-        fmt.Printf("Failed to sign transaction: %s\\n", err)
-        return
+        log.Fatalf("Failed to sign transaction: %v", err)
     }
+    fmt.Printf("Signed transaction with TxID: %s\\n", txID)
 
     // Send the transaction
-    sendResponse, err := algodClient.SendRawTransaction(signTx).Do(context.Background())
-    if err != nil {
-        fmt.Printf("Failed to send transaction: %s\\n", err)
-        return
-    }
+    algodClient.SendRawTransaction(signedTxBytes).Do(context.Background())
 
-    // Wait for confirmation
-    confirmedTxn, err := future.WaitForConfirmation(algodClient, sendResponse.TxID, 4, context.Background())
-    if err != nil {
-        fmt.Printf("Error waiting for confirmation: %s\\n", err)
-        return
-    }
-
-    // Print the transaction ID
-    fmt.Printf("Transaction confirmed with ID: %s\\n", confirmedTxn.Txn.Txn.ID)
-}</code>
-    </pre>
+    fmt.Printf("Transaction sent. TxID: %s\\n", txID)
+    
+}</code></pre>
     
     <p>Steps:</p>
     <ol class="inText">
@@ -10705,16 +10682,9 @@ func main() {
         <li>Define our payment transaction and its parameters</li>
         <li>Sign the transaction with our private key</li>
         <li>Assign the result of sending our signed transaction with the <code>send_transaction()</code> function from the <code>AlgodClient</code> class</li>
-        <li>Use the <code>wait_for_confirmation()</code> function to ensure the transaction is successful</li>
         <li>Print the transaction ID for reference on an explorer like allo.info, <a href="https://testnet.explorer.perawallet.app/">https://testnet.explorer.perawallet.app/</a>, <a href="https://www.blockpack.app/#/explorer/home">https://www.blockpack.app/#/explorer/home</a>, or <a href="https://app.dappflow.org/explorer/home">https://app.dappflow.org/explorer/home</a></li>
     </ol>
     
-    <p>We introduce a few new functions here:</p>
-    <ul class="inText">
-        <li>the <code>algos_to_microalgos()</code> function from the <code>algosdk.util</code> module</li>
-        <li>the <code>PaymentTxn</code> class and <code>wait_for_confirmation()</code> function from the <code>algosdk.transaction</code> module</li>
-        <li>The <code>send_transaction()</code> function, which is a method from the <code>AlgodClient</code> class</li>
-    </ul>
     
     <p>In the Algorand SDKs, when we want to reference an amount of Algo, that amount needs to be in a format called "Microalgo"; Microalgo is essentially an amount of Algo times 1,000,000. Meaning that 1 Algo would be 1,000,000 Microalgo, and the transaction fee of 0.001 Algo is 1,000 Microalgo.</p>
     
@@ -10726,112 +10696,9 @@ func main() {
         <li>closing your account (send all of your remaining Algo to them)</li>
     </ul>
     
-    <pre class="overflow-auto shadow-md"><code>PaymentTransaction format:
-
-class PaymentTxn(
-    sender: str,
-    sp: SuggestedParams,
-    receiver: Any,
-    amt: Any,
-    close_remainder_to: Any | None = None,
-    note: Any | None = None,
-    lease: Any | None = None,
-    rekey_to: Any | None = None
-)
-#Represents a payment transaction.
-
-Args:
-    sender (str): address of the sender
-    sp (SuggestedParams): suggested params from algod
-    receiver (str): address of the receiver
-    amt (int): amount in microAlgos to be sent
-    close_remainder_to (str, optional): if nonempty, account will be closed and remaining algos will be sent to this address
-    note (bytes, optional): arbitrary optional bytes
-    lease (byte[32], optional): specifies a lease, and no other transaction with the same sender and lease can be confirmed in this transaction's valid rounds
-    rekey_to (str, optional): additionally rekey the sender to this address
-
-After we define our <code>Payment Transaction</code> class parameters, we can then use the <code>sign()</code> method that is included within it. This sign function accepts our private key, and outputs a signed transaction object, which is needed to input to the <code>send_transaction()</code> function:
-
-(method) def sign(private_key: Any) -> SignedTransaction
-Sign the transaction with a private key.
-
-Args:
-    private_key (str): the private key of the signing account
-
-Returns:
-    SignedTransaction: signed transaction with the signature</code></pre>
-
-The <code>wait_for_confirmation()</code> function requires the <code>AlgodClient</code> class variable we created, as well as the transaction ID to wait for:
-
-<pre class="overflow-auto shadow-md"><code>(function) def wait_for_confirmation(
-    algod_client: AlgodClient,
-    txid: str,
-)</code></pre>
-
-Lastly, the <code>send_transaction()</code> function, which accepts signed transaction objects
-
-<pre class="overflow-auto shadow-md"><code>(method) def send_transaction(
-    txn: GenericSignedTransaction,
-) -> Outputs transaction ID</code></pre>
     
-    <p>Below are examples of rekey transactions and close amount to transactions, which are sent in succession (BUT NOT A GROUP TRANSACTION, WHICH WE WILL LEARN ABOUT LATER)</p>
-    
-    <pre class="overflow-auto shadow-md">
-<code># Repeat the process for the Rekey Transaction and the close remainder to transaction
 
-// Rekey Transaction
-rekey_to_new_account_payment = PaymentTxn(
-    sender = address,
-    receiver = new_account_address,
-    sp = params,
-    amt = 0,
-    rekey_to = new_account_address,
-    note = "Take care of my account for me! I'll be back in a week"
-)
-
-signed_rekey_to_new_account_payment = rekey_to_new_account_payment.sign(private_key)
-transaction_id = algod_client.send_transaction(signed_rekey_to_new_account_payment)
-wait_for_confirmation(algod_client, transaction_id)
-print(transaction_id)
-
-// New account rekeys back to the original account, note that the sender is the original account but the new account uses their own private key, not the original accounts private key
-
-rekey_back_to_old_account_from_new_account = PaymentTxn(
-    sender = address,
-    receiver = address,
-    sp = params,
-    rekey_to = address,
-    amt = 0,
-    note = "Sorry! I'm too busy trading this week. Maybe ask PorkChop.algo?"
-)
-
-signed_rekey_back_to_old_account_from_new_account = rekey_back_to_old_account_from_new_account.sign(new_account_private_key)
-transaction_id = algod_client.send_transaction(signed_rekey_back_to_old_account_from_new_account)
-wait_for_confirmation(algod_client, transaction_id)
-print(transaction_id)
-
-// Close remainder to transaction
-
-close_account_to_new_account = PaymentTxn(
-    sender = address,
-    receiver = new_account_address,
-    sp = params,
-    amt = 0,
-    close_remainder_to = new_account_address,
-    note = 'Take care of my precious Algo!'
-)
-
-signed_close_account_to_new_account = close_account_to_new_account.sign(private_key)
-transaction_id = algod_client.send_transaction(signed_close_account_to_new_account)
-wait_for_confirmation(algod_client, transaction_id)
-print(transaction_id)</code>
-    </pre>
-    
-    <p>Although the <code>Payment Transaction</code> has many possible inputs, the bare minimum is using the sender, sp, receiver, and amt field. Anything else is at your discretion!</p>
-    
-    <p>DISCLAIMER: that when rekeying and closing out accounts, this process is irreversible! If you don't know the person, or feel unsure about doing so, you should never use these transactions outside of testing purposes without ultimate confidence. No platforms currently utilize rekey transactions for users, but do use them internally when generating smart contracts for contract to contract calls, which will come later in our learning process.</p>
-  
-      <hr><form class="quiz-form">
+    <hr><form class="quiz-form">
     <h1>Quiz</h1>
   
           <h3>Question 1</h3>
@@ -10859,7 +10726,9 @@ print(transaction_id)</code>
           <h3>Question 3</h3>
           <p>How do you convert an amount in Algos to microAlgos in the Algorand Go SDK?</p>
            <pre class="overflow-auto shadow-md"><code>amount := 1.001
-microAlgos := uint64(amount * 1e6)</code></pre>
+
+// Convert Algos -> MicroAlgos:
+microAlgoAmount := uint64(types.ToMicroAlgos(algos))</code></pre>
           <input type="radio" id="q3a" name="q3" value="a">
           <label for="q3a" class="correct">a) uint64(amount * 1e6)</label><br>
           <input type="radio" id="q3b" name="q3" value="b">
