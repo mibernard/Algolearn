@@ -26,29 +26,29 @@ export const chapters: Chapter[] = [
         </ul>
         
         <pre class="overflow-auto shadow-md"><code>my_number = 1000      # Integer
-    my_text = "Hello!"    # String
-    my_float = 7.5        # Float
-    my_bool_1 = True      # Boolean
-    my_bool_2 = False     # Boolean
-    my_list = []          # List
-    my_dictionary = {}    # Dictionary
-    my_tuple = (1, 2, 3)  # Tuple</code></pre>
+my_text = "Hello!"    # String
+my_float = 7.5        # Float
+my_bool_1 = True      # Boolean
+my_bool_2 = False     # Boolean
+my_list = []          # List
+my_dictionary = {}    # Dictionary
+my_tuple = (1, 2, 3)  # Tuple</code></pre>
         
         <p>These data types are essential for storing and manipulating different kinds of information in Python.</p>
         <p>The name you see before the '=' is what's called a "variable". You can name it whatever you want! Above you can see how I named my variables eg; my_number, my_text, my_float, my_bool_1.</p>
         <p>It's good practice to name your variable relevant to its purpose. For example if I was creating a variable that would represent the cash price of an item, I might name it something like:</p>
         
         <pre class="overflow-auto shadow-md"><code>item_cost = 1                       # The cost of an item, which will be 1 dollar
-    supply_remaining = 2_500_000_000    # The number of items in inventory that are remaining, Note that we use '_' instead of commas as a separator
-    name_CTO = "John Woods"
-    value_of_a_quarter = 0.25</code></pre>
+supply_remaining = 2_500_000_000    # The number of items in inventory that are remaining, Note that we use '_' instead of commas as a separator
+name_CTO = "John Woods"
+value_of_a_quarter = 0.25</code></pre>
         
         <p>You might notice that I use the underscore symbol "_" instead of spaces in my variable. Something to keep in mind is you cannot start a variable with an integer, use any special characters aside from "_", and you cannot use spaces.
         Here are some examples of incorrect variables that will not work in your code, and will cause an error, <strong>DO NOT USE</strong>:</p>
         
         <pre class="overflow-auto shadow-md"><code>3variable = 5     # Starts with a number
-    my-variable = 6   # Contains a hyphen
-    my variable = 7   # Contains a space</code></pre>
+my-variable = 6   # Contains a hyphen
+my variable = 7   # Contains a space</code></pre>
         
         <h2>General Arithmetic for Integers, Floats, and Strings</h2>
         
@@ -56,8 +56,8 @@ export const chapters: Chapter[] = [
         <p>If this is your first time programming, or even if you have programmed before, you'll quickly find out or are already familiar that printing is one of the most commonly used functions for debugging. It's how you "see" what the value is of your variable at a specific point in your code.</p>
         
         <pre class="overflow-auto shadow-md"><code>my_number = 1
-    my_number_plus_one = my_number + 1
-    print(my_number_plus_one)</code></pre>
+my_number_plus_one = my_number + 1
+print(my_number_plus_one)</code></pre>
         
         <p>The steps that occur here:</p>
         <ol class=inText>
@@ -68,14 +68,14 @@ export const chapters: Chapter[] = [
         
         <p>There are several arithmetic operators (Like "+" or "-") available in Python, and they are as follows:</p>
         <pre class="overflow-auto shadow-md"><code>a = 10
-    b = 3
-    addition = a + b          # Addition: 13
-    subtraction = a - b       # Subtraction: 7
-    multiplication = a * b    # Multiplication: 30
-    division = a / b          # Division: 3.3333333333333335
-    floor_division = a // b   # Floor Division: 3
-    modulus = a % b           # Modulus: 1
-    exponentiation = a ** b   # Exponentiation: 1000</code></pre>
+b = 3
+addition = a + b          # Addition: 13
+subtraction = a - b       # Subtraction: 7
+multiplication = a * b    # Multiplication: 30
+division = a / b          # Division: 3.3333333333333335
+floor_division = a // b   # Floor Division: 3
+modulus = a % b           # Modulus: 1
+exponentiation = a ** b   # Exponentiation: 1000</code></pre>
         
         <p>Similar to integers and floats, you can also use arithmetic operators on strings, these are mostly limited to:</p>
         <ul class=inText>
@@ -84,23 +84,23 @@ export const chapters: Chapter[] = [
         <p>The act of combining strings together or multiplying a single string is often referred to as <strong>concatenation</strong>.</p>
         
         <pre class="overflow-auto shadow-md"><code>result = "Hello, " + "World!"
-    print(result) # result is "Hello, World!"
-    string = "Hello"
-    result = string * 3
-    print(result) # result is "HelloHelloHello"</code></pre>
+print(result) # result is "Hello, World!"
+string = "Hello"
+result = string * 3
+print(result) # result is "HelloHelloHello"</code></pre>
         
         <p>We won't dive into Lists, Dictionaries, or Tuples just yet, but I would like to mention, and this is something you'll see in practice later— that lists and dictionaries are mutable, whereas tuples are immutable.
         When you hear mutable, think "can be changed", where mutable means it can be changed and immutable means it cannot be changed.</p>
         
         <p>Example:</p>
         <pre class="overflow-auto shadow-md"><code>my_tuple = (1, 2)
-    print(my_tuple[0])
-    my_tuple[0] = 2
-    print(my_tuple)
-    # ERROR
-    #    my_tuple[0] = 2
-    #    ~~~~~~~~^^^
-    # TypeError: 'tuple' object does not support item assignment</code></pre>
+print(my_tuple[0])
+my_tuple[0] = 2
+print(my_tuple)
+# ERROR
+#    my_tuple[0] = 2
+#    ~~~~~~~~^^^
+# TypeError: 'tuple' object does not support item assignment</code></pre>
         
         <p>A more advanced concept to start early with, but another thing we will review later:</p>
         <h2>Examples of mutable and immutable parameters on an asset on Algorand</h2>
@@ -153,8 +153,8 @@ export const chapters: Chapter[] = [
               <h3>Question 3</h3>
               <p>What will be the result of the following code snippet?</p>
               <pre class="overflow-auto shadow-md"><code>string = "Hello" 
-    result = string * 3
-    print(result)</code></pre>
+result = string * 3
+print(result)</code></pre>
               <input type="radio" id="q3a" name="q3" value="a">
               <label for="q3a" class="correct">a) HelloHelloHello</label><br>
               <input type="radio" id="q3b" name="q3" value="b">
