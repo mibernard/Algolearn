@@ -7052,7 +7052,7 @@ print(private_key, address)</code></pre>
     
     <h2>Displaying the NFT Image</h2>
     <p>For this tutorial, the image used is "Charmander.png". Make sure to place this image in the <code>public/images/</code> directory and reference it appropriately. Here’s the file path:</p>
-    <img src="/images/charmander.png" alt="Charmander NFT Image" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
+    <img src="/images/charmander.pn" alt="Charmander NFT Image Removed For Legal Reasons (Sorry guys <3)" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
 
     <h2>ARC69 Metadata Structure</h2>
     <p>In an ARC69 NFT, the image is immutable, but metadata (stored in the note field) can be updated. Images are hosted off-chain on IPFS, which ensures efficient and decentralized storage.</p>
@@ -7186,8 +7186,8 @@ print(private_key, address)</code></pre>
     <p>With ARC19 NFTs, the metadata is mutable. The reserve address serves as a pointer to metadata stored on IPFS. By updating this address, the NFT’s metadata can change, allowing for mutable properties while the image and other data are hosted on IPFS.</p>
 
     <h3>Image Display</h3>
-    <img src="/images/charmander.png" alt="Charmander Image" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
-    <img src="/images/charmander2.0.png" alt="Charmander Updated Image" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
+    <img src="/images/charmander.pn" alt="Charmander Image Removed For Legal Reasons (Sorry guys <3)" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
+    <img src="/images/charmander2.0.pn" alt="Charmander Updated Image Removed For Legal Reasons (Sorry guys <3)" class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
 
     <h2>Minting an ARC19 NFT</h2>
     <p>The code snippet below uploads an image to IPFS via Pinata, then creates an ARC19-compliant NFT on Algorand, linking to the image metadata:</p>
@@ -7428,9 +7428,9 @@ app_id = ENTER APP ID GENERATED</code></pre>
 
         <h2>Upload Pokemon Images to IPFS</h2>
         <div class="flex justify-center space-x-4">
-    <img src="/images/charmander.png" alt="Charmander Image" class="w-10 h-auto rounded-lg shadow-md" />
-    <img src="/images/bulba.png" alt="Bulbasaur Image" class="w-10 h-auto rounded-lg shadow-md" />
-    <img src="/images/squirtle.png" alt="Squirtle Image" class="w-10 h-auto rounded-lg shadow-md" />
+    <img src="/images/charmander.pn" alt="Charmander Image Removed For Legal Reasons (Sorry guys <3)" class="w-10 h-auto rounded-lg shadow-md" />
+    <img src="/images/bulba.pn" alt="Bulbasaur Image Removed For Legal Reasons (Sorry guys <3)" class="w-10 h-auto rounded-lg shadow-md" />
+    <img src="/images/squirtle.pn" alt="Squirtle Image Removed For Legal Reasons (Sorry guys <3)" class="w-10 h-auto rounded-lg shadow-md" />
 </div>
         <pre class="overflow-auto shadow-md"><code>from pinata import Pinata
 from dotenv import load_dotenv
