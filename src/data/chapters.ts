@@ -7093,7 +7093,7 @@ metadata = {
     "mime_type": "image/png",
     "properties": {
         "Type": "Fire",
-        "Description": "A fire pokemon with a fiery tail",
+        "Description": "A fire monster with a fiery tail",
         "Level": "1",
         "Experience": "0",
     }
@@ -7132,7 +7132,7 @@ print(asset_index)
     "mime_type": "image/png",
     "properties": {
         "Type": "Fire",
-        "Description": "A fire pokemon with a fiery tail",
+        "Description": "A fire monster with a fiery tail",
         "Level": "4",
         "Experience": "15",
     }
@@ -7235,7 +7235,7 @@ metadata = {
     "image_integrity": "sha256-" + str(hashlib.sha256(img.tobytes()).hexdigest()),
     "properties": {
         "Type": "Fire",
-        "Description": "A fire pokemon with a fiery tail",
+        "Description": "A fire monster with a fiery tail",
         "Level": "1",
         "Experience": "0",
     }
@@ -7290,7 +7290,7 @@ metadata = {
     "image_integrity": "sha256-" + str(hashlib.sha256(img.tobytes()).hexdigest()),
     "properties": {
         "Type": "Fire",
-        "Description": "A fire pokemon with a fiery tail",
+        "Description": "A fire monster with a fiery tail",
         "Level": "4",
         "Experience": "15",
     }
@@ -7340,7 +7340,7 @@ print(tx_id)</code></pre>
         allowfullscreen>
     </iframe>
 </div>
-        <h2>Contract - Registering and Determining the User's Pokemon</h2>
+        <h2>Contract - Registering and Determining the User's Monster</h2>
         <p>Compile the contract using:</p>
         <pre class="overflow-auto shadow-md"><code>algokit compile arc69NFTmodifier.py</code></pre>
 
@@ -7350,47 +7350,47 @@ from algopy.arc4 import abimethod, Struct
 from algopy.arc4 import UInt64 as arc4UInt64
 from algopy.arc4 import String as arc4String
 
-class availablePokemon(Struct):
-    pokemon_name: arc4String
-    pokemon_type: arc4String
-    pokemon_description: arc4String
-    pokemon_ipfs_hash: arc4String
+class availableMonster(Struct):
+    monster_name: arc4String
+    monster_type: arc4String
+    monster_description: arc4String
+    monster_ipfs_hash: arc4String
 
 class arc69NFTmodifier(ARC4Contract):
     def __init__(self) -> None:
-        self.pokemonUnitCounter = GlobalState(arc4UInt64(0))
+        self.monsterUnitCounter = GlobalState(arc4UInt64(0))
     
     @abimethod
-    def registerNewPokemonData(
+    def registerNewMonsterData(
         self,
-        pokemon_name: arc4String,
-        pokemon_type: arc4String,
-        pokemon_description: arc4String,
-        pokemon_ipfs_hash: arc4String,
+        monster_name: arc4String,
+        monster_type: arc4String,
+        monster_description: arc4String,
+        monster_ipfs_hash: arc4String,
         payment_txn: gtxn.PaymentTransaction,
     ) -> arc4String:
         
         assert payment_txn.receiver == Global.current_application_address
-        self.pokemonUnitCounter.value = arc4UInt64(self.pokemonUnitCounter.value.native + 1)
+        self.monsterUnitCounter.value = arc4UInt64(self.monsterUnitCounter.value.native + 1)
         
-        box_ref = BoxRef(key=self.pokemonUnitCounter.value.bytes)
+        box_ref = BoxRef(key=self.monsterUnitCounter.value.bytes)
         value, exists = box_ref.maybe()
         assert not exists
         
-        new_pokemon_info = availablePokemon(
-            pokemon_name=pokemon_name,
-            pokemon_type=pokemon_type,
-            pokemon_description=pokemon_description,
-            pokemon_ipfs_hash=pokemon_ipfs_hash
+        new_monster_info = availableMonster(
+            monster_name=monster_name,
+            monster_type=monster_type,
+            monster_description=monster_description,
+            monster_ipfs_hash=monster_ipfs_hash
         )
         
-        box_ref.create(size=new_pokemon_info.bytes.length)
-        box_ref.put(new_pokemon_info.bytes)
+        box_ref.create(size=new_monster_info.bytes.length)
+        box_ref.put(new_monster_info.bytes)
         
-        return arc4String('Pokemon Registered to Contract: ') + pokemon_name
+        return arc4String('Monster Registered to Contract: ') + monster_name
 
     @abimethod
-    def determineUserPokemon(
+    def determineUserMonster(
         self,
         payment_txn: gtxn.PaymentTransaction
     ) -> tuple[arc4String, arc4UInt64]:
@@ -7404,16 +7404,16 @@ class arc69NFTmodifier(ARC4Contract):
         
         hashed_randomizer = op.sha256(randomizer.bytes)
         
-        pokemon_selection = arc4UInt64((arc4UInt64.from_bytes(hashed_randomizer[0:8]).native % self.pokemonUnitCounter.value.native) + 1)
+        monster_selection = arc4UInt64((arc4UInt64.from_bytes(hashed_randomizer[0:8]).native % self.monsterUnitCounter.value.native) + 1)
         
         users_claim_box = BoxRef(key=Txn.sender.bytes)
         value, exists = users_claim_box.maybe()
         assert not exists
         
         users_claim_box.create(size=8)
-        users_claim_box.put(pokemon_selection.bytes)
+        users_claim_box.put(monster_selection.bytes)
         
-        return arc4String('Users Pokemon # Selected:'), pokemon_selection
+        return arc4String('Users Monster # Selected:'), monster_selection
         </code></pre>
 
         <h2>Setting Up Environment Variables (.env)</h2>
@@ -7426,7 +7426,7 @@ algod_token =
 algod_server = https://testnet-api.4160.nodely.dev
 app_id = ENTER APP ID GENERATED</code></pre>
 
-        <h2>Upload Pokemon Images to IPFS</h2>
+        <h2>Upload Monster Images to IPFS</h2>
         <div class="flex justify-center space-x-4">
     <img src="/images/charmander.pn" alt="Charmander Image Removed For Legal Reasons (Sorry guys <3)" class="w-10 h-auto rounded-lg shadow-md" />
     <img src="/images/bulba.pn" alt="Bulbasaur Image Removed For Legal Reasons (Sorry guys <3)" class="w-10 h-auto rounded-lg shadow-md" />
@@ -7451,7 +7451,7 @@ for name in file_names:
     viewable_hash = f'https://gateway.pinata.cloud/ipfs/' + image_ipfs_hash
     print(image_ipfs_hash, viewable_hash)</code></pre>
 
-        <h2>Registering Pokemon for Minting to the Contract</h2>
+        <h2>Registering Monster for Minting to the Contract</h2>
         <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 from algokit_utils import ApplicationClient
 from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
@@ -7485,28 +7485,28 @@ application_client = ApplicationClient(
     suggested_params=params
 )
 
-pokemon_name_1 = 'Bulbasaur'
-pokemon_name_2 = 'Charmander'
-pokemon_name_3 = 'Squirtle'
+monster_name_1 = 'Bulbasaur'
+monster_name_2 = 'Charmander'
+monster_name_3 = 'Squirtle'
 
-pokemon_type_1 = 'Grass'
-pokemon_type_2 = 'Fire'
-pokemon_type_3 = 'Water'
+monster_type_1 = 'Grass'
+monster_type_2 = 'Fire'
+monster_type_3 = 'Water'
 
-pokemon_description_1 = 'A grass pokemon'
-pokemon_description_2 = 'A fire pokemon'
-pokemon_description_3 = 'A water pokemon'
+monster_description_1 = 'A grass monster'
+monster_description_2 = 'A fire monster'
+monster_description_3 = 'A water monster'
 
-pokemon_ipfs_hash_1 = 'Qmc75zNUFoFFX3uPcjnUMqhvuzezHF9tTpgbf5pph2XegF'
-pokemon_ipfs_hash_2 = 'QmP2M7nPDjhU9hPr8ManjzyFzBVEJDT3LKAAKC2o5f639q'
-pokemon_ipfs_hash_3 = 'QmRbPCwbQ7vps64kPUHygCkSmW36FkCLbET9X7cEjtPHJV'
+monster_ipfs_hash_1 = 'Qmc75zNUFoFFX3uPcjnUMqhvuzezHF9tTpgbf5pph2XegF'
+monster_ipfs_hash_2 = 'QmP2M7nPDjhU9hPr8ManjzyFzBVEJDT3LKAAKC2o5f639q'
+monster_ipfs_hash_3 = 'QmRbPCwbQ7vps64kPUHygCkSmW36FkCLbET9X7cEjtPHJV'
 
 atc = AtomicTransactionComposer()
 
-pokemon_info_coder = ABIType.from_string('(string,string,string,string,uint64)')
-total_bytes_1 = len(pokemon_info_coder.encode((pokemon_name_1, pokemon_type_1, pokemon_description_1, pokemon_ipfs_hash_1, 0)))
-total_bytes_2 = len(pokemon_info_coder.encode((pokemon_name_2, pokemon_type_2, pokemon_description_2, pokemon_ipfs_hash_2, 0)))
-total_bytes_3 = len(pokemon_info_coder.encode((pokemon_name_3, pokemon_type_3, pokemon_description_3, pokemon_ipfs_hash_3, 0)))
+monster_info_coder = ABIType.from_string('(string,string,string,string,uint64)')
+total_bytes_1 = len(monster_info_coder.encode((monster_name_1, monster_type_1, monster_description_1, monster_ipfs_hash_1, 0)))
+total_bytes_2 = len(monster_info_coder.encode((monster_name_2, monster_type_2, monster_description_2, monster_ipfs_hash_2, 0)))
+total_bytes_3 = len(monster_info_coder.encode((monster_name_3, monster_type_3, monster_description_3, monster_ipfs_hash_3, 0)))
 
 box_cost_1 = 2500 + (400 * total_bytes_1)
 box_cost_2 = 2500 + (400 * total_bytes_2)
@@ -7545,11 +7545,11 @@ box_ref_3 = (3).to_bytes(8, 'big')
 
 application_client.compose_call(
     atc, 
-    call_abi_method='registerNewPokemonData', 
-    pokemon_name=pokemon_name_1, 
-    pokemon_type=pokemon_type_1,
-    pokemon_description=pokemon_description_1,
-    pokemon_ipfs_hash=pokemon_ipfs_hash_1,
+    call_abi_method='registerNewMonsterData', 
+    monster_name=monster_name_1, 
+    monster_type=monster_type_1,
+    monster_description=monster_description_1,
+    monster_ipfs_hash=monster_ipfs_hash_1,
     payment_txn=wrapped_payment_tx_1,
     transaction_parameters={
         'boxes':[[app_id, box_ref_1]]
@@ -7558,11 +7558,11 @@ application_client.compose_call(
 
 application_client.compose_call(
     atc, 
-    call_abi_method='registerNewPokemonData', 
-    pokemon_name=pokemon_name_2, 
-    pokemon_type=pokemon_type_2,
-    pokemon_description=pokemon_description_2,
-    pokemon_ipfs_hash=pokemon_ipfs_hash_2,
+    call_abi_method='registerNewMonsterData', 
+    monster_name=monster_name_2, 
+    monster_type=monster_type_2,
+    monster_description=monster_description_2,
+    monster_ipfs_hash=monster_ipfs_hash_2,
     payment_txn=wrapped_payment_tx_2,
     transaction_parameters={
         'boxes':[[app_id, box_ref_2]]
@@ -7571,11 +7571,11 @@ application_client.compose_call(
 
 application_client.compose_call(
     atc, 
-    call_abi_method='registerNewPokemonData', 
-    pokemon_name=pokemon_name_3, 
-    pokemon_type=pokemon_type_3,
-    pokemon_description=pokemon_description_3,
-    pokemon_ipfs_hash=pokemon_ipfs_hash_3,
+    call_abi_method='registerNewMonsterData', 
+    monster_name=monster_name_3, 
+    monster_type=monster_type_3,
+    monster_description=monster_description_3,
+    monster_ipfs_hash=monster_ipfs_hash_3,
     payment_txn=wrapped_payment_tx_3,
     transaction_parameters={
         'boxes':[[app_id, box_ref_3]]
@@ -7589,7 +7589,7 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
 
-<h2>Determining the User's Pokemon</h2>
+<h2>Determining the User's Monster</h2>
 <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 from algokit_utils import ApplicationClient
 from algosdk.atomic_transaction_composer import AtomicTransactionComposer, AccountTransactionSigner, TransactionWithSigner
@@ -7642,7 +7642,7 @@ box_ref_1 = decode_address(address)
 
 application_client.compose_call(
     atc, 
-    call_abi_method='determineUserPokemon', 
+    call_abi_method='determineUserMonster', 
     payment_txn=wrapped_payment_tx_1,
     transaction_parameters={
         'boxes':[[app_id, box_ref_1]]
@@ -7658,7 +7658,7 @@ print(tx_ids)
 print(abi_results)</pre></code>
 
 
-        <h2>Confirming Existence of Pokemon Info in Contract</h2>
+        <h2>Confirming Existence of Monster Info in Contract</h2>
         <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 import os
 from base64 import b64decode
@@ -7674,17 +7674,17 @@ algod_client = AlgodClient(algod_token, algod_server)
 app_id = int(os.getenv('app_id'))
 app_boxes = algod_client.application_boxes(app_id)['boxes']
 
-pokemon_info_coder = ABIType.from_string('(string,string,string,string)')
+monster_info_coder = ABIType.from_string('(string,string,string,string)')
 
 for box in app_boxes:
     box_name = b64decode(box['name'])
-    if len(box_name) == 8: #This is a pokemon info box 
+    if len(box_name) == 8: #This is a monster info box 
         box_value = algod_client.application_box_by_name(app_id, box_name)['value']
-        decoded_box_value = pokemon_info_coder.decode(b64decode(box_value))
+        decoded_box_value = monster_info_coder.decode(b64decode(box_value))
         print(decoded_box_value)
         </code></pre>
 
-        <h2>Confirming Pokemon Selected for the User</h2>
+        <h2>Confirming Monster Selected for the User</h2>
         <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 import os
 from base64 import b64decode
@@ -7700,14 +7700,14 @@ algod_client = AlgodClient(algod_token, algod_server)
 app_id = int(os.getenv('app_id'))
 app_boxes = algod_client.application_boxes(app_id)['boxes']
 
-pokemon_info_coder = ABIType.from_string('(uint64)')
+monster_info_coder = ABIType.from_string('(uint64)')
 
 for box in app_boxes:
     box_name = b64decode(box['name'])
-    if len(box_name) == 32: #This is the users selected pokemon ready to claim
-                            #contains only the pokemon #, eg; pokemon #1, pokemon #2, or pokemon #3 
+    if len(box_name) == 32: #This is the users selected monster ready to claim
+                            #contains only the monster #, eg; monster #1, monster #2, or monster #3 
         box_value = algod_client.application_box_by_name(app_id, box_name)['value']
-        decoded_box_value = pokemon_info_coder.decode(b64decode(box_value))
+        decoded_box_value = monster_info_coder.decode(b64decode(box_value))
         print(decoded_box_value)
         </code></pre>
     `,
@@ -7730,7 +7730,7 @@ for box in app_boxes:
             </iframe>
         </div>
 
-        <h2>Contract - User Mints and Claims Pokemon</h2>
+        <h2>Contract - User Mints and Claims Monster</h2>
         <p>Compile the contract using:</p>
         <pre class="overflow-auto shadow-md"><code>algokit compile arc69NFTmodifier.py</code></pre>
 
@@ -7740,17 +7740,17 @@ from algopy.arc4 import abimethod, Struct, Address, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
 from algopy.arc4 import String as arc4String
 
-class availablePokemon(Struct):
-    pokemon_name: arc4String
-    pokemon_type: arc4String
-    pokemon_description: arc4String
-    pokemon_ipfs_hash: arc4String
+class availableMonster(Struct):
+    monster_name: arc4String
+    monster_type: arc4String
+    monster_description: arc4String
+    monster_ipfs_hash: arc4String
 
-class userPokemonInfo(Struct):
+class userMonsterInfo(Struct):
     uid: arc4UInt64
     owner: Address
     asset_id: arc4UInt64
-    pokemon_id: arc4UInt64
+    monster_id: arc4UInt64
     level: arc4UInt64
     exp: arc4UInt64
     training: Bool
@@ -7758,8 +7758,8 @@ class userPokemonInfo(Struct):
 
 class arc69NFTmodifier(ARC4Contract):
     def __init__(self) -> None:
-        self.pokemonUnitCounter = GlobalState(arc4UInt64(0))
-        self.pokemonCreated = GlobalState(arc4UInt64(0))
+        self.monsterUnitCounter = GlobalState(arc4UInt64(0))
+        self.monsterCreated = GlobalState(arc4UInt64(0))
         
     @subroutine
     def itoa(self, i: UInt64) -> Bytes:
@@ -7770,33 +7770,33 @@ class arc69NFTmodifier(ARC4Contract):
         return self.itoa(i // radix) + digits[i % radix]
         
     @abimethod
-    def registerNewPokemonData(
+    def registerNewMonsterData(
         self,
-        pokemon_name: arc4String,
-        pokemon_type: arc4String,
-        pokemon_description: arc4String,
-        pokemon_ipfs_hash: arc4String,
+        monster_name: arc4String,
+        monster_type: arc4String,
+        monster_description: arc4String,
+        monster_ipfs_hash: arc4String,
         payment_txn: gtxn.PaymentTransaction,
     ) -> arc4String:
         
         assert payment_txn.receiver == Global.current_application_address
-        self.pokemonUnitCounter.value = arc4UInt64(self.pokemonUnitCounter.value.native + 1)
+        self.monsterUnitCounter.value = arc4UInt64(self.monsterUnitCounter.value.native + 1)
         
-        box_ref = BoxRef(key=self.pokemonUnitCounter.value.bytes)
+        box_ref = BoxRef(key=self.monsterUnitCounter.value.bytes)
         value, exists = box_ref.maybe()
         assert not exists
         
-        new_pokemon_info = availablePokemon(
-            pokemon_name=pokemon_name,
-            pokemon_type=pokemon_type,
-            pokemon_description=pokemon_description,
-            pokemon_ipfs_hash=pokemon_ipfs_hash
+        new_monster_info = availableMonster(
+            monster_name=monster_name,
+            monster_type=monster_type,
+            monster_description=monster_description,
+            monster_ipfs_hash=monster_ipfs_hash
         )
         
-        box_ref.create(size=new_pokemon_info.bytes.length)
-        box_ref.put(new_pokemon_info.bytes)
+        box_ref.create(size=new_monster_info.bytes.length)
+        box_ref.put(new_monster_info.bytes)
         
-        return arc4String('Pokemon Registered to Contract: ') + pokemon_name
+        return arc4String('Monster Registered to Contract: ') + monster_name
     </code></pre>
 
         <h3>Confirming User Mint</h3>
@@ -7837,15 +7837,15 @@ application_client = ApplicationClient(
 atc = AtomicTransactionComposer()
 
 decoded_address = decode_address(address)
-pokemon_selected_box_name = decoded_address
+monster_selected_box_name = decoded_address
 
 uint64_coder = ABIType.from_string('(uint64)')
-user_pokemon_selected = algod_client.application_box_by_name(app_id, pokemon_selected_box_name)['value']
-b64_decoded_value = b64decode(user_pokemon_selected)
+user_monster_selected = algod_client.application_box_by_name(app_id, monster_selected_box_name)['value']
+b64_decoded_value = b64decode(user_monster_selected)
 
 global_states = algod_client.application_info(app_id)['params']['global-state']
 for key in global_states:
-    if b64decode(key['key']) == b'pokemonCreated':
+    if b64decode(key['key']) == b'monsterCreated':
         current_uid = b64decode(key['value']['bytes'])
 
 total_bytes = (7 * 8) + (32 * 2) + 1
@@ -7860,13 +7860,13 @@ mbr_fee_payment_tx_1 = PaymentTxn(
 )
 wrapped_payment_tx_1 = TransactionWithSigner(mbr_fee_payment_tx_1, signer)
 
-box_ref_1 = b64_decoded_value              # The pokemon selected #1 , #2, or #3
+box_ref_1 = b64_decoded_value              # The monster selected #1 , #2, or #3
 box_ref_2 = decoded_address                # The users address decoded
 box_ref_3 = current_uid + decoded_address  # The next unique ID counter + the users address
 
 application_client.compose_call(
     atc, 
-    call_abi_method='mintUserPokemon', 
+    call_abi_method='mintUserMonster', 
     payment_txn=wrapped_payment_tx_1,
     transaction_parameters={
         'boxes':[[app_id, box_ref_1], [app_id, box_ref_2], [app_id, box_ref_3]]
@@ -7930,14 +7930,14 @@ mbr_fee_payment_tx_1 = PaymentTxn(
 wrapped_payment_tx_1 = TransactionWithSigner(mbr_fee_payment_tx_1, signer)
 atc.add_transaction(wrapped_payment_tx_1)
 
-users_pokemon = 728462064
+users_monster = 728462064
 
 user_optin_tx = AssetTransferTxn(
     sender=address,
     receiver=address,
     sp=params,
     amt=0,
-    index=users_pokemon
+    index=users_monster
 )
 
 wrapped_user_optin_tx = TransactionWithSigner(user_optin_tx, signer)
@@ -7947,12 +7947,12 @@ box_ref_1 = current_uid + decoded_address
 
 application_client.compose_call(
     atc, 
-    call_abi_method='claimPokemon', 
+    call_abi_method='claimMonster', 
     opt_in_txn=wrapped_user_optin_tx,
     uid=0,
     transaction_parameters={
         'boxes':[[app_id, box_ref_1]],
-        'foreign_assets': [users_pokemon]
+        'foreign_assets': [users_monster]
     }
 )
 
@@ -7982,7 +7982,7 @@ print(abi_results)</code></pre>
             </iframe>
         </div>
 
-        <h2>Contract - User Sends Pokemon To Training (Stakes) and Removes from Training (Unstakes)</h2>
+        <h2>Contract - User Sends Monster To Training (Stakes) and Removes from Training (Unstakes)</h2>
         <p>Compile the contract using:</p>
         <pre class="overflow-auto shadow-md"><code>algokit compile arc69NFTmodifier.py</code></pre>
         <pre class="overflow-auto shadow-md"><code>from algopy import ARC4Contract, itxn, Global, GlobalState, UInt64, gtxn, Bytes, subroutine, String, BoxRef, Txn, op, LocalState, Account
@@ -7990,17 +7990,17 @@ from algopy.arc4 import abimethod, Struct, Address, Bool
 from algopy.arc4 import UInt64 as arc4UInt64
 from algopy.arc4 import String as arc4String
 
-class availablePokemon(Struct):
-    pokemon_name: arc4String
-    pokemon_type: arc4String
-    pokemon_description: arc4String
-    pokemon_ipfs_hash: arc4String
+class availableMonster(Struct):
+    monster_name: arc4String
+    monster_type: arc4String
+    monster_description: arc4String
+    monster_ipfs_hash: arc4String
     
-class userPokemonInfo(Struct):
+class userMonsterInfo(Struct):
     uid: arc4UInt64
     owner: Address
     asset_id: arc4UInt64
-    pokemon_id: arc4UInt64
+    monster_id: arc4UInt64
     level: arc4UInt64
     exp: arc4UInt64
     training: Bool
@@ -8008,8 +8008,8 @@ class userPokemonInfo(Struct):
 
 class arc69NFTmodifier(ARC4Contract):
     def __init__(self) -> None:
-        self.pokemonUnitCounter = GlobalState(arc4UInt64(0))
-        self.pokemonCreated = GlobalState(arc4UInt64(0))
+        self.monsterUnitCounter = GlobalState(arc4UInt64(0))
+        self.monsterCreated = GlobalState(arc4UInt64(0))
         
     @subroutine
     def itoa(self, i: UInt64) -> Bytes:
@@ -8020,39 +8020,39 @@ class arc69NFTmodifier(ARC4Contract):
         return self.itoa(i // radix) + digits[i % radix]      
     
     @abimethod
-    def registerNewPokemonData(
+    def registerNewMonsterData(
         self,
-        pokemon_name: arc4String,
-        pokemon_type: arc4String,
-        pokemon_description: arc4String,
-        pokemon_ipfs_hash: arc4String,
+        monster_name: arc4String,
+        monster_type: arc4String,
+        monster_description: arc4String,
+        monster_ipfs_hash: arc4String,
         payment_txn: gtxn.PaymentTransaction,
     ) -> arc4String:        
         
        # assert payment_txn.amount
         assert payment_txn.receiver == Global.current_application_address
         
-        self.pokemonUnitCounter.value = arc4UInt64(self.pokemonUnitCounter.value.native + 1)
+        self.monsterUnitCounter.value = arc4UInt64(self.monsterUnitCounter.value.native + 1)
         
-        box_ref = BoxRef(key=self.pokemonUnitCounter.value.bytes)
+        box_ref = BoxRef(key=self.monsterUnitCounter.value.bytes)
         value, exists = box_ref.maybe()
         assert not exists
         
-        new_pokemon_info = availablePokemon(
-            pokemon_name=pokemon_name,
-            pokemon_type=pokemon_type,
-            pokemon_description=pokemon_description,
-            pokemon_ipfs_hash=pokemon_ipfs_hash
+        new_monster_info = availableMonster(
+            monster_name=monster_name,
+            monster_type=monster_type,
+            monster_description=monster_description,
+            monster_ipfs_hash=monster_ipfs_hash
         )
         
-        box_ref.create(size=new_pokemon_info.bytes.length)
-        box_ref.put(new_pokemon_info.bytes)
+        box_ref.create(size=new_monster_info.bytes.length)
+        box_ref.put(new_monster_info.bytes)
         
         
-        return arc4String('Pokemon Registered to Contract: ') + pokemon_name    
+        return arc4String('Monster Registered to Contract: ') + monster_name    
     
     @abimethod
-    def determineUserPokemon(
+    def determineUserMonster(
         self,
         payment_txn: gtxn.PaymentTransaction
     ) -> tuple[arc4String, arc4UInt64]:
@@ -8066,19 +8066,19 @@ class arc69NFTmodifier(ARC4Contract):
         
         hashed_randomizer = op.sha256(randomizer.bytes)
         
-        pokemon_selection = arc4UInt64((arc4UInt64.from_bytes(hashed_randomizer[0:8]).native % self.pokemonUnitCounter.value.native) + 1)
+        monster_selection = arc4UInt64((arc4UInt64.from_bytes(hashed_randomizer[0:8]).native % self.monsterUnitCounter.value.native) + 1)
         
         users_claim_box = BoxRef(key=Txn.sender.bytes)
         value, exists = users_claim_box.maybe()
         assert not exists
         
         users_claim_box.create(size=8)
-        users_claim_box.put(pokemon_selection.bytes)
+        users_claim_box.put(monster_selection.bytes)
         
-        return arc4String('Users Pokemon # Selected:'), pokemon_selection
+        return arc4String('Users Monster # Selected:'), monster_selection
         
     @abimethod()
-    def mintUserPokemon(
+    def mintUserMonster(
         self,
         payment_txn: gtxn.PaymentTransaction
     ) -> tuple[arc4String, UInt64]:
@@ -8090,46 +8090,46 @@ class arc69NFTmodifier(ARC4Contract):
         claim_box_value, exists = users_claim_box.maybe()
         assert exists
         
-        pokemon_selection = arc4UInt64.from_bytes(claim_box_value)
+        monster_selection = arc4UInt64.from_bytes(claim_box_value)
         
-        pokemon_info_bytes = BoxRef(key=pokemon_selection.bytes)
-        pokemon_info_value, exists = pokemon_info_bytes.maybe()
+        monster_info_bytes = BoxRef(key=monster_selection.bytes)
+        monster_info_value, exists = monster_info_bytes.maybe()
         assert exists
         
-        available_pokemon_info = availablePokemon.from_bytes(pokemon_info_value)
-        unit_name_int_as_string = String.from_bytes(self.itoa(pokemon_selection.native))
+        available_monster_info = availableMonster.from_bytes(monster_info_value)
+        unit_name_int_as_string = String.from_bytes(self.itoa(monster_selection.native))
         
-        uid_as_string = String.from_bytes(self.itoa(self.pokemonCreated.value.native))        
+        uid_as_string = String.from_bytes(self.itoa(self.monsterCreated.value.native))        
         
-        pokemon_creation_tx = itxn.AssetConfig(
+        monster_creation_tx = itxn.AssetConfig(
             total=1,
             manager=Global.current_application_address,
-            asset_name=available_pokemon_info.pokemon_name.native,
+            asset_name=available_monster_info.monster_name.native,
             unit_name='PK#' + unit_name_int_as_string,
             decimals=0,
-            url= 'https://gateway.pinata.cloud/ipfs/' + available_pokemon_info.pokemon_ipfs_hash.native,
+            url= 'https://gateway.pinata.cloud/ipfs/' + available_monster_info.monster_ipfs_hash.native,
             note = (
                 '{"standard": "arc69", "mime_type": "image/png", "properties": {'
-                '"Type": "' + available_pokemon_info.pokemon_type.native + '", '
-                '"Description": "' + available_pokemon_info.pokemon_description.native + '", '
+                '"Type": "' + available_monster_info.monster_type.native + '", '
+                '"Description": "' + available_monster_info.monster_description.native + '", '
                 '"Level": "1", '
                 '"Experience": "0", '
-                '"Pokemon Number": "' + unit_name_int_as_string + '", '
+                '"Monster Number": "' + unit_name_int_as_string + '", '
                 '"UID": "' + uid_as_string + '" }}' 
             ),
             fee=Global.min_txn_fee
         ).submit()
         
         
-        user_pokemon_box = BoxRef(key=self.pokemonCreated.value.bytes + Txn.sender.bytes)
-        user_pokemon_box_value, exists = user_pokemon_box.maybe()
+        user_monster_box = BoxRef(key=self.monsterCreated.value.bytes + Txn.sender.bytes)
+        user_monster_box_value, exists = user_monster_box.maybe()
         assert not exists
         
-        new_user_pokemon_info = userPokemonInfo(
-            uid=self.pokemonCreated.value,
+        new_user_monster_info = userMonsterInfo(
+            uid=self.monsterCreated.value,
             owner=Address(Txn.sender),
-            asset_id=arc4UInt64(pokemon_creation_tx.created_asset.id),
-            pokemon_id=pokemon_selection,
+            asset_id=arc4UInt64(monster_creation_tx.created_asset.id),
+            monster_id=monster_selection,
             level=arc4UInt64(1),
             exp=arc4UInt64(0),
             training=Bool(False),
@@ -8137,95 +8137,95 @@ class arc69NFTmodifier(ARC4Contract):
         )
         
         
-        user_pokemon_box.create(size=new_user_pokemon_info.bytes.length)
-        user_pokemon_box.put(new_user_pokemon_info.bytes)
+        user_monster_box.create(size=new_user_monster_info.bytes.length)
+        user_monster_box.put(new_user_monster_info.bytes)
         
         users_claim_box.delete()
         
-        self.pokemonCreated.value = arc4UInt64(self.pokemonCreated.value.native + 1)
+        self.monsterCreated.value = arc4UInt64(self.monsterCreated.value.native + 1)
         
-        return arc4String('User pokemon generated, asset ID: '), pokemon_creation_tx.created_asset.id
+        return arc4String('User monster generated, asset ID: '), monster_creation_tx.created_asset.id
         
         
     @abimethod
-    def claimPokemon(
+    def claimMonster(
         self,
         opt_in_txn: gtxn.AssetTransferTransaction,
         uid: arc4UInt64
     ) -> String:
         
-        user_pokemon_box = BoxRef(key=uid.bytes + Txn.sender.bytes)
-        user_pokemon_box_value, exists = user_pokemon_box.maybe()
+        user_monster_box = BoxRef(key=uid.bytes + Txn.sender.bytes)
+        user_monster_box_value, exists = user_monster_box.maybe()
         
         assert exists
         
-        users_pokemon_info = userPokemonInfo.from_bytes(user_pokemon_box_value)
+        users_monster_info = userMonsterInfo.from_bytes(user_monster_box_value)
         
-        #assert users_pokemon_info.owner == Address(Txn.sender)
-        #assert opt_in_txn.xfer_asset.id == users_pokemon_info.asset_id
+        #assert users_monster_info.owner == Address(Txn.sender)
+        #assert opt_in_txn.xfer_asset.id == users_monster_info.asset_id
         
         itxn.AssetTransfer(
             asset_receiver=Txn.sender,
-            xfer_asset=users_pokemon_info.asset_id.native,
+            xfer_asset=users_monster_info.asset_id.native,
             fee=Global.min_txn_fee,
             asset_amount=1
         ).submit()        
         
-        return String('User received their pokemon')       
+        return String('User received their monster')       
                 
     @abimethod
-    def trainPokemon(
+    def trainMonster(
         self,
-        stake_pokemon_tx: gtxn.AssetTransferTransaction,
+        stake_monster_tx: gtxn.AssetTransferTransaction,
         uid: arc4UInt64
     ) -> String:
         
-        assert stake_pokemon_tx.asset_amount == 1
-        assert stake_pokemon_tx.asset_receiver == Global.current_application_address
+        assert stake_monster_tx.asset_amount == 1
+        assert stake_monster_tx.asset_receiver == Global.current_application_address
         
-        pokemon_to_train = stake_pokemon_tx.xfer_asset.id
+        monster_to_train = stake_monster_tx.xfer_asset.id
         
-        users_pokemon_info = BoxRef(key=uid.bytes + Txn.sender.bytes)
-        value, exists = users_pokemon_info.maybe()
+        users_monster_info = BoxRef(key=uid.bytes + Txn.sender.bytes)
+        value, exists = users_monster_info.maybe()
         assert exists
         
-        current_pokemon_info = userPokemonInfo.from_bytes(value)
-        assert pokemon_to_train == current_pokemon_info.asset_id
+        current_monster_info = userMonsterInfo.from_bytes(value)
+        assert monster_to_train == current_monster_info.asset_id
         
-        current_pokemon_info.training_start_time = arc4UInt64(Global.latest_timestamp)
-        current_pokemon_info.training = Bool(True)
+        current_monster_info.training_start_time = arc4UInt64(Global.latest_timestamp)
+        current_monster_info.training = Bool(True)
         
-        users_pokemon_info.put(current_pokemon_info.bytes)
+        users_monster_info.put(current_monster_info.bytes)
     
-        return String("Pokemon Staked")
+        return String("Monster Staked")
         
         
     @abimethod
-    def removePokemonFromTraining(
+    def removeMonsterFromTraining(
         self,
-        pokemon_requested_uid: arc4UInt64
+        monster_requested_uid: arc4UInt64
     ) -> String:
         
-        users_pokemon_info_box = BoxRef(key=pokemon_requested_uid.bytes + Txn.sender.bytes)
-        users_pokemon_info_value, exists = users_pokemon_info_box.maybe()
+        users_monster_info_box = BoxRef(key=monster_requested_uid.bytes + Txn.sender.bytes)
+        users_monster_info_value, exists = users_monster_info_box.maybe()
         assert exists
         
-        current_users_pokemon_info = userPokemonInfo.from_bytes(users_pokemon_info_value)
+        current_users_monster_info = userMonsterInfo.from_bytes(users_monster_info_value)
         
-        general_pokemon_info_box = BoxRef(key=current_users_pokemon_info.pokemon_id.bytes)
-        general_pokemon_info_value, exists = general_pokemon_info_box.maybe()
+        general_monster_info_box = BoxRef(key=current_users_monster_info.monster_id.bytes)
+        general_monster_info_value, exists = general_monster_info_box.maybe()
         
-        general_pokemon_info = availablePokemon.from_bytes(general_pokemon_info_value)
+        general_monster_info = availableMonster.from_bytes(general_monster_info_value)
 
 
-        unit_name_as_string = String.from_bytes(self.itoa(current_users_pokemon_info.pokemon_id.native))
+        unit_name_as_string = String.from_bytes(self.itoa(current_users_monster_info.monster_id.native))
         
-        initial_training_time = current_users_pokemon_info.training_start_time.native
+        initial_training_time = current_users_monster_info.training_start_time.native
         current_time = Global.latest_timestamp
         time_difference = current_time - initial_training_time
         
-        current_level = current_users_pokemon_info.level.native
-        current_experience = current_users_pokemon_info.exp.native
+        current_level = current_users_monster_info.level.native
+        current_experience = current_users_monster_info.exp.native
         
         base_experience = UInt64(200)
         cumulative_experience = current_level * base_experience
@@ -8246,19 +8246,19 @@ class arc69NFTmodifier(ARC4Contract):
         new_level_string = String.from_bytes(self.itoa(new_level))
         new_experience_string = String.from_bytes(self.itoa(new_experience))
 
-        uid_as_string = String.from_bytes(self.itoa(current_users_pokemon_info.uid.native))
+        uid_as_string = String.from_bytes(self.itoa(current_users_monster_info.uid.native))
         
         itxn.AssetConfig(
             sender=Global.current_application_address,
             manager=Global.current_application_address,
-            config_asset=current_users_pokemon_info.asset_id.native,
+            config_asset=current_users_monster_info.asset_id.native,
             note = (
                 '{"standard": "arc69", "mime_type": "image/png", "properties": {'
-                '"Type": "' + general_pokemon_info.pokemon_type.native + '", '
-                '"Description": "' + general_pokemon_info.pokemon_description.native + '", '
+                '"Type": "' + general_monster_info.monster_type.native + '", '
+                '"Description": "' + general_monster_info.monster_description.native + '", '
                 '"Level": "' + new_level_string + '", '
                 '"Experience": "' + new_experience_string + '", '
-                '"Pokemon Number": "' + unit_name_as_string + '", '
+                '"Monster Number": "' + unit_name_as_string + '", '
                 '"UID": "' + uid_as_string + '" }}' 
             ),
             fee=Global.min_txn_fee
@@ -8267,21 +8267,21 @@ class arc69NFTmodifier(ARC4Contract):
         itxn.AssetTransfer(
             asset_receiver=Txn.sender,
             asset_amount=1,
-            xfer_asset=current_users_pokemon_info.asset_id.native,
+            xfer_asset=current_users_monster_info.asset_id.native,
             fee=Global.min_txn_fee
         ).submit()
         
         
-        new_users_pokemon_info = current_users_pokemon_info.copy()
-        new_users_pokemon_info.level = arc4UInt64(new_level)
-        new_users_pokemon_info.exp = arc4UInt64(new_experience)
-        new_users_pokemon_info.training = Bool(False)
+        new_users_monster_info = current_users_monster_info.copy()
+        new_users_monster_info.level = arc4UInt64(new_level)
+        new_users_monster_info.exp = arc4UInt64(new_experience)
+        new_users_monster_info.training = Bool(False)
 
-        users_pokemon_info_box.put(new_users_pokemon_info.bytes)
+        users_monster_info_box.put(new_users_monster_info.bytes)
         
-        return String('Pokemon Removed from Stake')</code></pre>
+        return String('Monster Removed from Stake')</code></pre>
 
-        <h3>Seeing the Current Status of the User's Pokemon</h3>
+        <h3>Seeing the Current Status of the User's Monster</h3>
         <p>Note: The UID in the metadata and the user's address is the box name</p>
         <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 import os
@@ -8298,25 +8298,25 @@ algod_client = AlgodClient(algod_token, algod_server)
 app_id = int(os.getenv('app_id'))
 app_boxes = algod_client.application_boxes(app_id)['boxes']
 
-pokemon_info_coder = ABIType.from_string('(uint64,address,uint64,uint64,uint64,uint64,bool,uint64)')
+monster_info_coder = ABIType.from_string('(uint64,address,uint64,uint64,uint64,uint64,bool,uint64)')
 
 for box in app_boxes:
     box_name = b64decode(box['name'])
-    if len(box_name) == 40: #This is user specific pokemon information (box name is uid for pokemon [8 bytes] + user address [32 bytes])
+    if len(box_name) == 40: #This is user specific monster information (box name is uid for monster [8 bytes] + user address [32 bytes])
         box_value = algod_client.application_box_by_name(app_id, )['value']
-        decoded_box_value = pokemon_info_coder.decode(b64decode(box_value))
+        decoded_box_value = monster_info_coder.decode(b64decode(box_value))
         print(decoded_box_value)</code></pre>
 
         <h2>Executing in Python</h2>
 
-        <h2>The Pokemon Level-up System</h2>
+        <h2>The Monster Level-up System</h2>
         <p>Note: Experience and level gain are calculated based on time staked, with each second providing an additional experience point.</p>
-        <pre class="overflow-auto shadow-md"><code>initial_training_time = current_users_pokemon_info.training_start_time.native
+        <pre class="overflow-auto shadow-md"><code>initial_training_time = current_users_monster_info.training_start_time.native
 current_time = Global.latest_timestamp
 time_difference = current_time - initial_training_time
 
-current_level = current_users_pokemon_info.level.native
-current_experience = current_users_pokemon_info.exp.native
+current_level = current_users_monster_info.level.native
+current_experience = current_users_monster_info.exp.native
 
 base_experience = UInt64(200)
 cumulative_experience = current_level * base_experience
@@ -8333,7 +8333,7 @@ else:
     new_level = current_level
     new_experience = total_experience</code></pre>
 
-        <h3>Staking the Pokemon</h3>
+        <h3>Staking the Monster</h3>
        
         <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 from algokit_utils import ApplicationClient
@@ -8374,29 +8374,29 @@ atc = AtomicTransactionComposer()
 
 decoded_address = decode_address(address)
 
-users_pokemon = 728462064
+users_monster = 728462064
 
-stake_pokemon_tx = AssetTransferTxn(
+stake_monster_tx = AssetTransferTxn(
     sender=address,
     receiver=application_client.app_address,
     sp=params,
     amt=1,
-    index=users_pokemon
+    index=users_monster
 )
 
-wrapped_stake_tx = TransactionWithSigner(stake_pokemon_tx, signer)
+wrapped_stake_tx = TransactionWithSigner(stake_monster_tx, signer)
 
 current_uid = (0).to_bytes(8, 'big')
 box_ref_1 = current_uid + decoded_address
 
 application_client.compose_call(
     atc, 
-    call_abi_method='trainPokemon', 
-    stake_pokemon_tx=wrapped_stake_tx,
+    call_abi_method='trainMonster', 
+    stake_monster_tx=wrapped_stake_tx,
     uid=0,
     transaction_parameters={
         'boxes':[[app_id, box_ref_1]],
-        'foreign_assets': [users_pokemon]
+        'foreign_assets': [users_monster]
     }
 )
 
@@ -8407,7 +8407,7 @@ abi_results = [results.abi_results[i].return_value for i in range(len(results.ab
 print(tx_ids)
 print(abi_results)</code></pre>
 
-        <h3>Unstaking the Pokemon</h3>
+        <h3>Unstaking the Monster</h3>
       
         <pre class="overflow-auto shadow-md"><code>from algosdk.v2client.algod import AlgodClient
 from algokit_utils import ApplicationClient
@@ -8458,17 +8458,17 @@ mbr_fee_payment_tx_1 = PaymentTxn(
 wrapped_payment_tx_1 = TransactionWithSigner(mbr_fee_payment_tx_1, signer)
 atc.add_transaction(wrapped_payment_tx_1)
 
-users_pokemon = 728462064
+users_monster = 728462064
 
-stake_pokemon_tx = AssetTransferTxn(
+stake_monster_tx = AssetTransferTxn(
     sender=address,
     receiver=application_client.app_address,
     sp=params,
     amt=1,
-    index=users_pokemon
+    index=users_monster
 )
 
-wrapped_stake_tx = TransactionWithSigner(stake_pokemon_tx, signer)
+wrapped_stake_tx = TransactionWithSigner(stake_monster_tx, signer)
 
 current_uid = (0).to_bytes(8, 'big')
 box_ref_1 = current_uid + decoded_address
@@ -8476,11 +8476,11 @@ box_ref_2 = (3).to_bytes(8, 'big')
 
 application_client.compose_call(
     atc, 
-    call_abi_method='removePokemonFromTraining', 
-    pokemon_requested_uid=0,
+    call_abi_method='removeMonsterFromTraining', 
+    monster_requested_uid=0,
     transaction_parameters={
         'boxes':[[app_id, box_ref_1], [app_id, box_ref_2]],
-        'foreign_assets': [users_pokemon]
+        'foreign_assets': [users_monster]
     }
 )
 
