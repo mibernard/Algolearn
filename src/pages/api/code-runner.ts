@@ -7,7 +7,7 @@ type Data = {
 };
 
 // Replace with your VM's external IP
-const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://35.226.166.220:3001/run-code';
+const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://34.171.188.99:3001/run-code';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   console.log('Request body:', req.body); // Log the request body
